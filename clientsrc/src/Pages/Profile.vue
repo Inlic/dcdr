@@ -9,6 +9,14 @@
               <h5 class="card-title">Welcome {{ profile.name }}</h5>
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               <p>{{profile.email}}</p>
+              <i class="fas fa-pen-alt" aria-hidden="true" @click="toggleEdit"></i>
+              <form v-if="editing" class="form-inline" @submit="finishEdit">
+                <div class="form-group">
+                  <input type="text" v-model="eProfile.name" class="form-control" placeholder="New Name">
+                  <input type="text" v-model="eProfile.picture" class="form-control" placeholder="New Picture URL">
+                  <button class="btn btn-primary mx-2" type="submit">Submit</button>
+                </div>
+              </form>
             </div>
           </div>
       </div>
@@ -55,13 +63,14 @@ export default {
     }
   },
   methods: {
-    startEdit() {
+    toggleEdit() {
       this.eProfile = this.profile,
-      this.editing = true
+      this.editing = !this.editing
     },
     finishEdit(){
       this.editing = false
-      this.$store.dispatch("editProfile", this.eProfile)
+      //this.$store.dispatch("editProfile", this.eProfile)
+      console.log(this.eProfile)
     }
   }
 };
