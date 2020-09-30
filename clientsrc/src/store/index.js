@@ -122,5 +122,12 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
+    async respond({}, data){
+      try {
+        await api.post("responses", data)
+      } catch (error) {
+        console.error(error);
+      }
+    }
   }
 });
