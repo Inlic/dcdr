@@ -92,6 +92,7 @@ export default new Vuex.Store({
       try{
       let res = await api.post("rooms", data)
       commit("setRoom", res)
+      router.push({ name: "rooms" })
       } catch(error) {
         console.error(error);
       }

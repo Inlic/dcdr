@@ -29,7 +29,7 @@ const routes = [
     beforeEnter: authGuard,
   },
   {
-    path: "/room/:id",
+    path: "/room/:code",
     name: "Room",
     component: Room
   },
