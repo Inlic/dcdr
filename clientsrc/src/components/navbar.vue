@@ -61,7 +61,6 @@
         await this.$auth.logout({ returnTo: window.location.origin });
       },
       setActiveRoom() {
-        console.log("going to room");
         this.$store.dispatch("getRoomByCode", this.code);
         this.$router.push({ name: 'Room', params: { code: this.code } })
       },
