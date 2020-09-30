@@ -20,6 +20,7 @@ export default {
   name: "Room",
   mounted(){
     this.$store.dispatch("getRoomByCode", this.$route.params.code)
+    this.$store.dispatch('joinRoom', "room")
   },
   computed: {
     room(){
