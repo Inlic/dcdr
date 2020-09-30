@@ -91,6 +91,7 @@ export default new Vuex.Store({
     async createRoom({commit}, data){
       try{
       let res = await api.post("rooms", data)
+      commit("setRoom", res)
       } catch(error) {
         console.error(error);
       }
