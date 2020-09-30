@@ -1,4 +1,5 @@
 import { dbContext } from "../db/DbContext";
+import { BadRequest } from "../utils/Errors"
 
 // Private Methods
 
@@ -53,6 +54,15 @@ class ProfileService {
     return profiles;
   }
 
+  //Provided a user Id, returns all rooms where that user is the creator
+  async getUserRooms(id) {
+    let data = await dbContext.Rooms.find({ ownerId: id })
+    if (!data) {
+      throw new BadRequest("Invalid ID")
+    }
+    return data
+  }
+
   /**
    * Returns a user profile from the Auth0 user object
    *
@@ -70,10 +80,10 @@ class ProfileService {
     return profile;
   }
   /**
-​    * Updates profile with the request body, will only allow changes to editable fields
-​    * @param {any} user Auth0 user object
-​    * @param {any} body Updates to apply to user object
-​    */
+     * Updates profile with the request body, will only allow changes to editable fields
+     * @param {any} user Auth0 user object
+     * @param {any} body Updates to apply to user object
+     */
   async updateProfile(user, body) {
     let update = sanitizeBody(body);
     let profile = await dbContext.Profile.findOneAndUpdate(
