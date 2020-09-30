@@ -11,14 +11,14 @@ export class RoomsController extends BaseController {
     constructor() {
         super("api/rooms")
         this.router
-            .use(auth0provider.getAuthorizedUserInfo)
-            .get('', this.getAll)
-            .get('/:id', this.getByCode)
-            .get('/:id/games', this.getRoomGames)
-            .get('/:id/responses', this.getRoomResponses)
-            .post('', this.create)
-            .put('/:id', this.edit)
-            .delete('/:id', this.delete)
+        .get('', this.getAll)
+        .get('/:id', this.getByCode)
+        .get('/:id/games', this.getRoomGames)
+        .get('/:id/responses', this.getRoomResponses)
+        .post('', this.create)
+        .put('/:id', this.edit)
+        .use(auth0provider.getAuthorizedUserInfo)
+        .delete('/:id', this.delete)
     }
 
 
