@@ -85,7 +85,7 @@ export default {
   methods:{
     addRoom(){
       console.log(this.newRoom);
-      // this.$store.dispatch("createRoom", this.newRoom)
+      this.$store.dispatch("createRoom", this.newRoom)
     }
   }
 };
