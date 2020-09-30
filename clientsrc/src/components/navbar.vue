@@ -23,7 +23,7 @@
           <form class="form-inline" @submit="setActiveRoom">
             <div class="form-group">
               <input type="text" v-model="code" class="form-control" placeholder="Join Room" aria-describedby="helpId">
-              <button class="btn btn-primary" type="submit">Join!</button>
+              <button class="btn btn-primary mx-2" type="submit">Join!</button>
             </div>
           </form>
         </li>
