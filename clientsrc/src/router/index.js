@@ -44,7 +44,7 @@ const routes = [
     component: Results
   },
   {
-    path: "room/:code/vote",
+    path: "/room/:code/vote",
     name: "Vote",
     component: Vote
   }
