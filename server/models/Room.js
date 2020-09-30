@@ -11,6 +11,7 @@ const Room = new Schema({
     items: { type: Array },
     owner: { type: ObjectId },
     code: { type: String, required: true },
+    expired: { type: Boolean, default: false }
 }, { timestamps: true, toJSON: { virtuals: true } })
 
 Room.virtual("creator",
