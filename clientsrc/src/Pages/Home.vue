@@ -34,9 +34,11 @@
         <div class="card bg-dark text-dark">
           <img class="card-img" src="https://images.unsplash.com/photo-1601293058843-f34e8dd9ccfd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80" alt="Card image" style="height: 60vh">
           <div class="card-img-overlay">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text">Last updated 3 mins ago</p>
+            <h5 class="card-title">Create Room</h5>
+            <form class="row justify-content-center">
+            <input type="text" @submit.prevent="addRoom" placeholder="name" :v-modle="newRoom.name" required class="col-10 m-1" />
+            <button type="submit" class="btn btn-success"> Go! </button>
+            </form>
           </div>
         </div>
       </div>
@@ -74,6 +76,17 @@
 
 <script>
 export default {
-  name: "Home"
+  name: "Home",
+  data(){
+    return{
+      newRoom: {}
+    }
+  },
+
+  methods:{
+    startRoom(){
+      this.$store.dispatch("createRoom", newRoom)
+    }
+  }
 };
 </script>
