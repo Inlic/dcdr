@@ -73,7 +73,7 @@
 export default {
   name: "Home",
   mounted(){
-    this.$store.dispatch('joinRoom', "default")
+    
   },
 };
 </script>

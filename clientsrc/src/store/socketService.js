@@ -7,7 +7,7 @@ export const socketService = {
     initializeSocket({ commit, dispatch, state }) {
       socket = io("//localhost:3000");
       socket.on("CONNECTED", data => {
-        console.log(data.message + "sockets on")
+        console.log(data.message + " sockets on")
       })
       //registers additional listeners for client side here
       socket.on("updateBoards", data => { 
