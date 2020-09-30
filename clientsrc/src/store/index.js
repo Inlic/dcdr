@@ -55,7 +55,7 @@ export default new Vuex.Store({
     },
     async editProfile({commit}, data){
       try{
-        let res = await api.put("profile", data)
+        let res = await api.put("profile/"+data.id, data)
         commit("setProfile", res.data)
       }catch (err) {
         console.error(err);
