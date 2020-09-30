@@ -20,7 +20,7 @@
           <form class="form-inline" @submit="setActiveRoom">
             <div class="form-group">
               <input type="text" v-model="code" class="form-control" placeholder="Join Room" aria-describedby="helpId">
-              <button class="btn btn-primary" type="submit">Join!</button>
+              <button class="btn btn-primary mx-2" type="submit">Join!</button>
             </div>
           </form>
         </li>
@@ -58,7 +58,6 @@
         await this.$auth.logout({ returnTo: window.location.origin });
       },
       setActiveRoom() {
-        console.log("going to room");
         this.$store.dispatch("getRoomByCode", this.code);
         this.$router.push({ name: 'Room', params: { code: this.code } })
       },

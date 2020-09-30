@@ -70,8 +70,10 @@ export default {
       console.log(this.newRoom);
       this.$store.dispatch("createRoom", this.newRoom)
     }
-  }
-
+  },
+  mounted(){
+    this.$store.dispatch('joinRoom', "default")
+  },
 
 }
 </script>
