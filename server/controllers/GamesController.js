@@ -13,6 +13,7 @@ export class GamesController extends BaseController {
             .use(auth0provider.getAuthorizedUserInfo)
             .get('', this.getAll)
             .get('/:id', this.getById)
+            .get('/:id/responses', this.getGameResponses)
             .post('', this.create)
             .put('/:id', this.edit)
             .delete('/:id', this.delete)
@@ -30,6 +31,13 @@ export class GamesController extends BaseController {
     async getById(req, res, next) {
         try {
             let data = await gamesService.getById(req.params.id)
+            return res.send(data)
+        } catch (error) { next(error) }
+    }
+
+    async getGameResponses(req, res, next) {
+        try {
+            let data = await gamesService.getGameResponses(req.params.id)
             return res.send(data)
         } catch (error) { next(error) }
     }

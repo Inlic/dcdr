@@ -10,6 +10,7 @@ const Room = new Schema({
     options: { type: Object },
     items: { type: Array },
     owner: { type: ObjectId },
+    code: { type: String, required: true },
 }, { timestamps: true, toJSON: { virtuals: true } })
 
 Room.virtual("creator",
