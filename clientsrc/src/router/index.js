@@ -8,6 +8,8 @@ import Profile from "../Pages/Profile.vue";
 import Room from "../Pages/Room.vue";
 // @ts-ignore
 import Results from "../Pages/Results.vue";
+// @ts-ignore
+import Vote from "../Pages/Vote.vue";
 import { authGuard } from "@bcwdev/auth0-vue";
 
 Vue.use(VueRouter);
@@ -30,9 +32,14 @@ const routes = [
     component: Room
   },
   {
-    path: "results/:id",
+    path: "room/:id/results",
     name: "Results",
     component: Results
+  },
+  {
+    path: "rooms/:id/vote",
+    name: "vote",
+    component: Vote
   }
 ];
 
