@@ -10,13 +10,13 @@ export class GamesController extends BaseController {
     constructor() {
         super("api/games")
         this.router
-            .use(auth0provider.getAuthorizedUserInfo)
-            .get('', this.getAll)
-            .get('/:id', this.getById)
-            .get('/:id/responses', this.getGameResponses)
-            .post('', this.create)
-            .put('/:id', this.edit)
-            .delete('/:id', this.delete)
+        .get('', this.getAll)
+        .get('/:id', this.getById)
+        .get('/:id/responses', this.getGameResponses)
+        .post('', this.create)
+        .put('/:id', this.edit)
+        .delete('/:id', this.delete)
+        .use(auth0provider.getAuthorizedUserInfo)
     }
 
 
@@ -44,7 +44,6 @@ export class GamesController extends BaseController {
 
     async create(req, res, next) {
         try {
-            req.body.creatorEmail = req.userInfo.email
             let data = await gamesService.create(req.body)
             return res.status(201).send(data)
         } catch (error) { next(error) }
