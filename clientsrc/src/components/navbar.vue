@@ -30,6 +30,11 @@
             >Profile</router-link
           >
         </li>
+        <li class="nav-item" :class="{ active: $route.name == 'Vote' }">
+          <router-link :to="{ name: 'Vote' }" class="nav-link"
+            >Vote</router-link
+          >
+        </li>
       </ul>
       <span class="navbar-text">
         <button
