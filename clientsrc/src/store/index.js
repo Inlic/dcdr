@@ -9,11 +9,15 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    profile: {}
+    profile: {},
+    room:{}
   },
   mutations: {
     setProfile(state, profile) {
       state.profile = profile;
+    },
+    setRoom(state, room) {
+      state.room = room;
     }
   },
   actions: {
@@ -23,6 +27,7 @@ export default new Vuex.Store({
     resetBearer() {
       api.defaults.headers.authorization = "";
     },
+    // Profile Section
     async getProfile({ commit }) {
       try {
         let res = await api.get("profile");
@@ -30,6 +35,27 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error);
       }
-    }
+    },
+    async editProfile({commit}, data){
+      try {
+        let res = await api.put("profile", data)
+        commit("setProfile", res.data)
+      } catch (err) {
+        console.error(err);
+      }
+    },
+    //Rooms Section
+    async getRoom({commit}, code){
+      let res = await api.get("room", code)
+      commit("setRoom", res.data)
+    },
+    async editRoom({commit}, data){
+      try {
+        let res = await api.put("room", data)
+        commit("setRoom", res.data)
+      } catch (err) {
+        console.error(err);
+      }
+    },
   }
 });
