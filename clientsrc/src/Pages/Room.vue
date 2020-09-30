@@ -4,7 +4,8 @@
 
 <script>
 export default {
-  name: "rooms"
+  name: "room"
+
 }
 </script>
 
