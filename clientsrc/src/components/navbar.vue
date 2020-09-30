@@ -13,9 +13,6 @@
         <li class="nav-item" :class="{ active: $route.name == 'Rooms' }">
           <router-link :to="{ name: 'Rooms' }" class="nav-link">Create a Poll</router-link>
         </li>
-        <li class="nav-item" :class="{ active: $route.name == 'Vote' }">
-          <router-link :to="{ name: 'Vote' }" class="nav-link">Vote</router-link>
-        </li>
         <li class="nav-item" v-if="$auth.isAuthenticated" :class="{ active: $route.name == 'Profile' }">
           <router-link class="nav-link" :to="{ name: 'Profile' }">Profile</router-link>
         </li>

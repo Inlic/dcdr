@@ -39,12 +39,12 @@ const routes = [
     component: Rooms
   },
   {
-    path: "/room/:id/results",
+    path: "/room/:code/results",
     name: "Results",
     component: Results
   },
   {
-    path: "/vote",
+    path: "room/:code/vote",
     name: "Vote",
     component: Vote
   }

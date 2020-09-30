@@ -7,7 +7,7 @@
         </button>
       </div>
       <div class="col-8">
-        <game />
+        <game :key="game.id" :gameData="activegame" />
       </div>
       <div class="col-1 align-self-center">
         <button type="button" class="btn btn-outline-primary">
@@ -29,6 +29,9 @@ export default {
   name:"Vote",
   components:{
     game
+  },
+  computed: {
+    
   }
 
 }

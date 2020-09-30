@@ -9,6 +9,7 @@
           <input type="Url" placeholder="image" v-model="newGame.imgUrl" class="col-10 m-1" />
           <button type="submit" class="btn btn-outline-light m-1">Add a game</button>
         </form>
+        <button type="button" @click="this.startPoll" class="btn btn-primary"> Go! </button>
       </div>
     </div>
   </div>
@@ -36,7 +37,11 @@ export default {
     createGame(){
       this.newGame.roomId = this.room.id
       this.$store.dispatch("createGame", this.newGame)
-    }
+    },
+    startPoll(){
+      this.$store.dispatch("getGames", this.room.id)
+      this.$router.push({name:'Vote', params:{code:this.room.code}})
+    },
   }
 }
 </script>
