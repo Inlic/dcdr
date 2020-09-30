@@ -13,6 +13,22 @@ export default {
     profile() {
       return this.$store.state.profile;
     }
+  },
+  data(){
+    return {
+      eProfile:{},
+      editing: false
+    }
+  },
+  methods: {
+    startEdit() {
+      this.eProfile = this.profile,
+      this.editing = true
+    },
+    finishEdit(){
+      this.editing = false
+      this.$store.dispatch("editProfile", this.eProfile)
+    }
   }
 };
 </script>
