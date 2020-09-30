@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
-import ValueSchema from "../models/Value";
-import BugSchema from "../models/Bug";
-import NoteSchema from "../models/Note";
+import RoomSchema from "../models/Room";
+import GameSchema from "../models/Game";
+import ResponseSchema from "../models/Response";
 import ProfileSchema from "../models/Profile";
 
 class DbContext {
-  Values = mongoose.model("Value", ValueSchema);
-  Bugs = mongoose.model("Bug", BugSchema);
-  Notes = mongoose.model("Note", NoteSchema);
+  Rooms = mongoose.model("Room", RoomSchema);
+  Games = mongoose.model("Game", GameSchema);
+  Responses = mongoose.model("Response", ResponseSchema);
   Profile = mongoose.model("Profile", ProfileSchema);
 }
 
