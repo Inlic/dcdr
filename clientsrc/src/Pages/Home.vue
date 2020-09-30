@@ -49,7 +49,7 @@
             <div class="card-body">
               <h5 class="card-title">Create Room</h5>
             <form @submit.prevent="addRoom" class="row justify-content-center">
-            <input type="text" placeholder="name" :v-model="newRoom.name" required class="col-10 m-1" />
+            <input type="text" placeholder="name" v-model="newRoom.name" required class="col-10 m-1" />
             <button type="submit" class="btn btn-success"> Go! </button>
             </form>
             </div>
@@ -78,7 +78,7 @@ export default {
   name: "Home",
   data(){
     return{
-      newRoom: {}
+      newRoom: {name:"potato"}
     }
   },
 
