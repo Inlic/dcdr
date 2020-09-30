@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="col-8">
-        <div class="card bg-dark text-white">
+        <div class="card bg-dark text-dark">
           <img class="card-img" src="https://images.unsplash.com/photo-1601293058843-f34e8dd9ccfd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80" alt="Card image" style="height: 60vh">
           <div class="card-img-overlay">
             <h5 class="card-title">Card title</h5>
@@ -42,8 +42,33 @@
       </div>
     </div>
     <div style="height: 20vh"></div>
-
-
+    <div class="row">
+      <div class="col-8">
+        <div class="card text-center" style="height: 60vh">
+            <div class="card-header">
+              Featured
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            <div class="card-footer text-muted">
+              2 days ago
+            </div>
+          </div>
+      </div>
+      <div class="col-4">
+          <div class="card bg-dark text-dark">
+            <img class="card-img" src="https://images.unsplash.com/photo-1601293058843-f34e8dd9ccfd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80" alt="Card image" style="height: 60vh">
+            <div class="card-img-overlay">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text">Last updated 3 mins ago</p>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div style="height: 20vh"></div>
   </div>
 </template>
 

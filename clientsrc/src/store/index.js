@@ -12,7 +12,8 @@ export default new Vuex.Store({
     profile: {},
     room:{},
     myRooms: [],
-    games: []
+    games: [],
+    activeGame: {}
   },
   mutations: {
     setProfile(state, profile) {
@@ -26,6 +27,9 @@ export default new Vuex.Store({
     },
     setGames(state, games){
       state.games = games
+    },
+    setActiveGame(state, game){
+      state.activeGame = game
     },
     addGame(state, game){
       state.games.push(game)
@@ -88,6 +92,14 @@ export default new Vuex.Store({
       try{
       let res = await api.post("rooms", data)
       } catch(error) {
+        console.error(error);
+      }
+    },
+    async getGamebyID({commit}, id){
+      try{
+        let res = await api.get(`games/${id}`)
+        commit("setActiveGame", res.data)
+      }catch(error) {
         console.error(error);
       }
     },
