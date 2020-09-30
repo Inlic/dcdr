@@ -8,8 +8,9 @@ const Room = new Schema({
     // startTime: { type: Date },
     // runTime: { type: Number },
     options: { type: Object },
-    items: { type: Array },
+    items: [{ type: Object }],
     creatorEmail: { type: String },
+    names: [{type: String}],
     code: { type: String, required: true },
     expired: { type: Boolean, default: false }
 }, { timestamps: true, toJSON: { virtuals: true } })
