@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
+    <div class="row justify-content-around">
       <div class="col-2">
         <i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i>
       </div>
@@ -17,7 +17,7 @@
 <script>
 import game from "../components/game"
 export default {
-  name:"vote",
+  name:"Vote",
   components:{
     game
   }
