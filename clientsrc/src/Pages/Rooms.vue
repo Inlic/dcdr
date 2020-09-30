@@ -19,8 +19,11 @@
             Create a New Poll
           </div>
           <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <h5 class="card-title">Create Room</h5>
+            <form @submit.prevent="addRoom" class="row justify-content-center">
+            <input type="text" placeholder="name" v-model="newRoom.name" required class="col-10 m-1" />
+            <button type="submit" class="btn btn-success"> Go! </button>
+            </form>
           </div>
           <div class="card-footer text-muted">
             2 days ago
@@ -51,7 +54,24 @@
 
 <script>
 export default {
-  name: "Rooms"
+  name: "Rooms",
+  data(){
+    return{
+      newRoom: {name:"potato"}
+    }
+  },
+  computed:{
+    activeroom(){
+      return this.$store.state.room
+    }
+  },
+  methods:{
+    addRoom(){
+      console.log(this.newRoom);
+      this.$store.dispatch("createRoom", this.newRoom)
+    }
+  }
+
 
 }
 </script>

@@ -47,11 +47,7 @@
               Featured
             </div>
             <div class="card-body">
-              <h5 class="card-title">Create Room</h5>
-            <form @submit.prevent="addRoom" class="row justify-content-center">
-            <input type="text" placeholder="name" v-model="newRoom.name" required class="col-10 m-1" />
-            <button type="submit" class="btn btn-success"> Go! </button>
-            </form>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed modi excepturi consectetur quo ab in earum? Possimus voluptas natus magnam doloribus temporibus vero qui. Optio suscipit ad ipsam quaerat. Ipsa!</p>
             </div>
             <div class="card-footer text-muted">
               2 days ago
@@ -76,17 +72,6 @@
 <script>
 export default {
   name: "Home",
-  data(){
-    return{
-      newRoom: {name:"potato"}
-    }
-  },
-
-  methods:{
-    addRoom(){
-      console.log(this.newRoom);
-      this.$store.dispatch("createRoom", this.newRoom)
-    }
-  }
+  
 };
 </script>
