@@ -15,6 +15,14 @@ class GamesService {
         return data
     }
 
+    async getGameResponses(id) {
+        let data = await dbContext.Games.find({ gameId: id })
+        if (!data) {
+            throw new BadRequest("Invalid ID")
+        }
+        return data
+    }
+
     async create(rawData) {
         let data = await dbContext.Games.create(rawData)
         return data
