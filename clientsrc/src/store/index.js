@@ -92,7 +92,8 @@ export default new Vuex.Store({
       try{
       let res = await api.post("rooms", data)
       commit("setRoom", res)
-      router.push({ name: "rooms" })
+      console.log(res)
+      router.push({ name: "Room", params:{code:res.data.code} })
       } catch(error) {
         console.error(error);
       }
