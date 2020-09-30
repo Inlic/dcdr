@@ -69,8 +69,7 @@ export default {
     },
     finishEdit(){
       this.editing = false
-      //this.$store.dispatch("editProfile", this.eProfile)
-      console.log(this.eProfile)
+      this.$store.dispatch("editProfile", this.eProfile)
     }
   }
 };
