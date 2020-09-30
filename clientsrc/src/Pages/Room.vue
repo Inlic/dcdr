@@ -16,13 +16,16 @@
 </template>
 
 <script>
-  export default {
-    name: "Room",
-    computed: {
-      room() {
-        return this.$store.state.room
-      }
+export default {
+  name: "Room",
+  mounted(){
+    this.$store.dispatch("getRoomByCode", this.$route.params.code)
+  },
+  computed: {
+    room(){
+      return this.$store.state.room
     }
+
 
   }
 </script>
