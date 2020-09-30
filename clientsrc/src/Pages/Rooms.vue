@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid background">
     <div style="height: 10vh"></div>
     <div class="row">
       <div class="offset-2 col-8">
