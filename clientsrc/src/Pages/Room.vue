@@ -20,6 +20,7 @@
 </template>
 
 <script>
+  import as from '../store/alertsService'
   export default {
     name: "Room",
     data() {
@@ -30,6 +31,7 @@
     mounted() {
       this.$store.dispatch("getRoomByCode", this.$route.params.code)
       this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
+      this.checkName()
     },
     computed: {
       room() {
@@ -45,6 +47,10 @@
         this.$store.dispatch("getGames", this.room.id)
         this.$router.push({ name: 'Vote', params: { code: this.room.code } })
       },
+      async checkName(){
+        let res = await as.addName()
+        console.log(res.value);
+      }
     }
   }
 </script>
