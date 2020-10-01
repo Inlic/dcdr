@@ -20,7 +20,7 @@ export const socketService = {
     joinRoom({ commit, dispatch }, roomName) {
    
     socket.emit("dispatch", { action: "JoinRoom", data: roomName })
-     console.log(roomName);
+     
     },
     leaveRoom({ commit, dispatch }, roomName) {
       socket.emit("disconnect", { action: "LeaveRoom", data: roomName })

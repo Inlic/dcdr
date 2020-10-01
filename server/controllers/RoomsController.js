@@ -63,7 +63,7 @@ export class RoomsController extends BaseController {
     async edit(req, res, next) {
         try {
             let data = await roomsService.edit(req.params.id, req.body)
-            socketService.messageRoom("room", "updateRoom", data)
+            socketService.messageRoom(req.params.id, "updateRoom", data)
             return res.send(data)
         } catch (error) { next(error) }
     }

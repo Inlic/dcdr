@@ -10,6 +10,9 @@
           <button type="submit" class="btn btn-outline-light m-1">Add a game</button>
         </form>
         <button type="button" @click="this.startPoll" class="btn btn-primary"> Go! </button>
+        <ul>
+          <li v-for="name in room.names" :key="name">{{name}}</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -26,7 +29,7 @@
     },
     mounted() {
       this.$store.dispatch("getRoomByCode", this.$route.params.code)
-      this.$store.dispatch('joinRoom', "room")
+      this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
     },
     computed: {
       room() {
