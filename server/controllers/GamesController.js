@@ -15,8 +15,10 @@ export class GamesController extends BaseController {
         .get('/:id/responses', this.getGameResponses)
         .post('', this.create)
         .put('/:id', this.edit)
+        .put('/:id/upvote', this.upvote)
+        .put('/:id/downvote', this.downvote)
         .delete('/:id', this.delete)
-        .use(auth0provider.getAuthorizedUserInfo)
+        // .use(auth0provider.getAuthorizedUserInfo)
     }
 
 
@@ -52,6 +54,19 @@ export class GamesController extends BaseController {
     async edit(req, res, next) {
         try {
             let data = await gamesService.edit(req.params.id, req.body)
+            return res.send(data)
+        } catch (error) { next(error) }
+    }
+    async upvote(req, res, next) {
+        try {
+            let data = await gamesService.update(req.params.id, {$inc:{upvotes: 1 }})
+            return res.send(data)
+        } catch (error) { next(error) }
+    }
+
+    async downvote(req, res, next) {
+        try {
+            let data = await gamesService.update(req.params.id, {$inc:{downvotes: 1 }})
             return res.send(data)
         } catch (error) { next(error) }
     }

@@ -7,12 +7,12 @@
       </div>
       <div class="col-4">
         <div class="card text-center border-0" style="height: 60vh">
-          <div class="card-header bg-dark">
+          <div class="card-header bg-dark flashy neon red">
             Level Up Your Gaming Experience
           </div>
           <div class="card-body bg-dark">
-            <h5 class="card-title">Don't Waste Time Deciding what to play.</h5>
-            <p>Match with your friends, find a game you all love, and get to the game faster.</p>
+            <h5 class="card-title neon blue">Don't Waste Time Deciding what to play.</h5>
+            <p class="neon blue">Match with your friends, find a game you all love, and get to the game faster.</p>
           </div>
         </div>
       </div>
@@ -38,10 +38,10 @@
       
       <div class="col-5">
         <div class="card text-center border-0" style="height: 60vh">
-            <div class="card-header bg-dark">
+            <div class="card-header bg-dark flashy neon red">
               Persistent Polls
             </div>
-            <div class="card-body bg-dark">
+            <div class="card-body bg-dark neon blue">
             <p>Love the games you voted on last time, but want to create another poll?  No problem your prior polls are saved to your account.</p>
             </div>
           </div>

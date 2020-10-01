@@ -57,7 +57,9 @@
                 ctx.fillRect((c.width / 2) + xPos, (c.height / 2) + yPos, shapeSize, shapeSize)
 
                 setTimeout(() => {
-                    this.scribbleAnimation(red, green, blue, xPos, yPos)
+                    if (document.getElementById("animationCanvas")) {
+                        this.scribbleAnimation(red, green, blue, xPos, yPos)
+                    }
                 }, animationRate);
             }
 
