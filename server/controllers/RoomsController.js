@@ -54,7 +54,6 @@ export class RoomsController extends BaseController {
     async create(req, res, next) {
         try {
             req.body.code = codeGenerator.generateCode()
-            req.body.creatorEmail = req.userInfo.email
             let data = await roomsService.create(req.body)
             return res.status(201).send(data)
         } catch (error) { next(error) }
