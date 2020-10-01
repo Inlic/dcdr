@@ -3,6 +3,9 @@ import { BadRequest } from "../utils/Errors"
 
 class RoomsService {
     async addName(data, id) {
+        if(data.addName == null){
+            throw new BadRequest("Please Enter a Name")
+        }
         await dbContext.Rooms.findOneAndUpdate({_id: id}, {$push:{"names": data.addName}})
         return await dbContext.Rooms.findOne({ _id: id })
     }

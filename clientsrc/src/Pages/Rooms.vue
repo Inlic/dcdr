@@ -60,16 +60,23 @@
     computed: {
       activeroom() {
         return this.$store.state.room
-      }
+      },
+      profile() {
+      return this.$store.state.profile;
+    },
+    name() {
+      return this.$store.state.name;
+    }
     },
     methods: {
       addRoom() {
-        console.log(this.newRoom);
+        this.$store.dispatch("setMyName", this.profile.name)
         this.$store.dispatch("createRoom", this.newRoom)
       }
     },
     mounted() {
       this.$store.dispatch('joinRoom', "default")
+      this.$store.dispatch("setMyName", this.profile.name)
     },
 
   }

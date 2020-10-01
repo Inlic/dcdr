@@ -37,7 +37,8 @@
     mounted() {
       this.$store.dispatch("getRoomByCode", this.$route.params.code)
       this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
-      if (!this.$auth.isAuthenticated){this.checkName()}
+      this.$store.dispatch('addName', {addName: this.$store.state.name})
+      
     },
     computed: {
       games(){
@@ -68,9 +69,7 @@
         }
         else if (!this.$auth.isAuthenticated){
           let res = await as.addName()
-          if(res.isDismissed){
-          this.checkName()
-          }
+          
         
         this.$store.dispatch("addName", {id:this.room.id, addName: res.value})
         }

@@ -36,6 +36,7 @@
 </template>
 
 <script>
+  import as from '../store/alertsService'
   import axios from "axios";
   import { getUserData } from "@bcwdev/auth0-vue";
   export default {
@@ -44,6 +45,11 @@
       return {
         code: ""
       }
+    },
+    computed: {
+      profile() {
+      return this.$store.state.profile;
+    }
     },
     methods: {
       async login() {
@@ -57,7 +63,14 @@
         this.$store.dispatch("resetBearer");
         await this.$auth.logout({ returnTo: window.location.origin });
       },
-      setActiveRoom() {
+      async setActiveRoom() {
+        if(this.$auth.isAuthenticated){
+          this.$store.dispatch("setMyName", this.profile.name)
+        }
+        else if (!this.$auth.isAuthenticated){
+        let res = await as.addName()
+        this.$store.dispatch("setMyName", res.value)
+        }
         this.$store.dispatch("getRoomByCode", this.code);
         this.$router.push({ name: 'Room', params: { code: this.code } })
       },
