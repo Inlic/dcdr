@@ -1,18 +1,19 @@
 import Swal from "sweetalert2"
 export default class NotificationService {
-    static async confirmClose(text = "You won't be able to revert this!") {
+    static async addName() {
         try {
             let res = await Swal.fire({
-                title: "Are You Sure?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, close it!',
-                
+                title: "Enter your name",
+                input: 'text',
+                showCancelButton: false,
+                confirmButtonText: 'Yes',
+                inputValidator: (value) => {
+                    if (!value) {
+                      return 'You need to write something!'
+                    }
+                  }
             })
-            if (res.value) {
-                return true
-            }
-            return false
+            return res
         } catch (error) {
 
         }

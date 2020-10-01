@@ -3,6 +3,10 @@ import { BadRequest } from "../utils/Errors"
 
 
 class GamesService {
+    async update(id, data) {
+        let res= await dbContext.Games.update({_id : id}, data)
+        return res
+    }
     async getAll() {
         return await dbContext.Games.find({}).populate("creator", "name picture")
     }
@@ -35,6 +39,7 @@ class GamesService {
         }
         return data;
     }
+
 
     async delete(id, userEmail) {
         let data = await dbContext.Games.findOneAndRemove({ _id: IDBKeyRange });
