@@ -15,11 +15,16 @@
         </ul>
       </div>
     </div>
+    <div>
+      <loading-component></loading-component>
+    </div>
   </div>
 
 </template>
 
 <script>
+  import as from '../store/alertsService'
+  import loadingComponent from "../components/loadingComponent.vue"
   export default {
     name: "Room",
     data() {
@@ -30,6 +35,7 @@
     mounted() {
       this.$store.dispatch("getRoomByCode", this.$route.params.code)
       this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
+      this.checkName()
     },
     computed: {
       room() {
@@ -40,11 +46,20 @@
       createGame() {
         this.newGame.roomId = this.room.id
         this.$store.dispatch("createGame", this.newGame)
+        this.newGame = {}
       },
       startPoll() {
         this.$store.dispatch("getGames", this.room.id)
         this.$router.push({ name: 'Vote', params: { code: this.room.code } })
       },
+      async checkName(){
+        let res = await as.addName()
+        console.log(res.value);
+      }
+    },
+    
+    components: {
+      loadingComponent
     }
   }
 </script>

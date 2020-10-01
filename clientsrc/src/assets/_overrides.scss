@@ -63,6 +63,13 @@ flex-direction: column;
   box-shadow: .2em .2em .1em #080708;
 }
 
+//Loading screen stuff
+.loading-animation{
+  height:50vh;
+  width: 50vw;
+}
+//end loading screen stuff
+
 .neon {
   text-decoration: none;
   -webkit-transition: all 0.5s;

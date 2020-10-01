@@ -144,7 +144,21 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error);
       }
-    }
+    },
+    async upGame({commit, state}, data){
+      try { 
+        await api.put(`games/${data.id}/upvote`, data)
+      } catch (error) {
+      console.error(error);
+      }
+    },
+    async downGame({commit, state}, data){
+      try { 
+        await api.put(`games/${data.id}/downvote`, data)
+      } catch (error) {
+      console.error(error);
+      }
+    },
   },
   modules:{
     socketService
