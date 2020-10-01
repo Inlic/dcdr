@@ -10,13 +10,21 @@
           <button type="submit" class="btn btn-outline-light m-1">Add a game</button>
         </form>
         <button type="button" @click="this.startPoll" class="btn btn-primary"> Go! </button>
+        <ul>
+          <li v-for="name in room.names" :key="name">{{name}}</li>
+        </ul>
       </div>
+    </div>
+    <div>
+      <loading-component></loading-component>
     </div>
   </div>
 
 </template>
 
 <script>
+  import as from '../store/alertsService'
+  import loadingComponent from "../components/loadingComponent.vue"
   export default {
     name: "Room",
     data() {
@@ -26,7 +34,8 @@
     },
     mounted() {
       this.$store.dispatch("getRoomByCode", this.$route.params.code)
-      this.$store.dispatch('joinRoom', "room")
+      this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
+      this.checkName()
     },
     computed: {
       room() {
@@ -43,6 +52,14 @@
         this.$store.dispatch("getGames", this.room.id)
         this.$router.push({ name: 'Vote', params: { code: this.room.code } })
       },
+      async checkName(){
+        let res = await as.addName()
+        console.log(res.value);
+      }
+    },
+    
+    components: {
+      loadingComponent
     }
   }
 </script>
