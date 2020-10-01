@@ -2,6 +2,9 @@ import { dbContext } from "../db/DbContext"
 import { BadRequest } from "../utils/Errors"
 
 class RoomsService {
+    async addName(data, id) {
+        return await dbContext.Rooms.update({_id: id}, {$push:{"names": data.addname}})
+    }
     async getAll() {
         return await dbContext.Rooms.find({}).populate("creator", "name picture")
     }

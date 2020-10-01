@@ -17,9 +17,18 @@ export class RoomsController extends BaseController {
         .get('/:id/games', this.getRoomGames)
         .get('/:id/responses', this.getRoomResponses)
         .put('/:id', this.edit)
+        .put('/:id/names', this.addName)
         .use(auth0provider.getAuthorizedUserInfo)
         .post('', this.create)
         .delete('/:id', this.delete)
+    }
+    async addName(req, res, next) {
+        try {
+            let data = await roomsService.addName(req.body, req.params.id)
+            return res.send(data)
+        } catch (error) {
+            console.error(error);
+        }
     }
 
 
