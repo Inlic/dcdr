@@ -10,7 +10,7 @@
       <div class="col-10 bg-seconday">
         <h4>runners up</h4>
         <ul>
-          <game v-for="game in games" :key="game.id" gameData="game"/>
+          <game-component v-for="game in games" :key="game.id" gameData="game"/>
         </ul>
       </div>
     </div>

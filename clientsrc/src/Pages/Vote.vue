@@ -7,7 +7,7 @@
         </button>
       </div>
       <div class="col-8">
-        <game :gameData="this.activeGame" />
+        <game-component :gameData="this.activeGame" />
       </div>
       <div class="col-1 align-self-center">
         <button @click="voteDown" type="button" class="btn btn-outline-primary">
