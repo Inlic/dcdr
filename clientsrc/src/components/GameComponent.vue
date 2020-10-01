@@ -1,8 +1,7 @@
 <template>
-  <div class="card">
-    <h1 class="card-title text-dark">{{gameData.name}}</h1>
-    <img class="card-img" :src="gameData.imgUrl">
-    <p class="card-body"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, ex? Libero ipsa non modi autem incidunt fugiat veritatis iure voluptas officia eaque, optio consequatur, nam dignissimos, recusandae quia asperiores laborum.</p>
+  <div class="card bg-dark">
+    <h1 class="flashy neon orange">{{gameData.name}}</h1>
+    <img class="img-fluid" :src="gameData.imgUrl">
   </div>
 </template>
 

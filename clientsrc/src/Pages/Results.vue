@@ -1,19 +1,30 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid background">
+    <div style="height: 2vh"></div>
     <div class="row">
-      <h1 class="text-center">
-        The winner is:
-      </h1>
-      <game-component/>
-    </div>
-    <div class="row">
-      <div class="col-10 bg-seconday">
-        <h4>runners up</h4>
-        <ul>
-          <game-component v-for="game in games" :key="game.id" gameData="game"/>
-        </ul>
+      <div class="col-12 text-center">
+        <h1 class=" flashy neon red">
+          The winner is:
+        </h1>
       </div>
     </div>
+    <div style="height: 2vh"></div>
+    <div class="row">
+      <div class="col-12 text-center">
+          <img class="img-fluid" src="https://images-na.ssl-images-amazon.com/images/I/416zAtw+MML._SX306_BO1,204,203,200_.jpg">
+      </div>
+    </div>
+    <div style="height: 5vh"></div>
+    <div class="row">
+      <div class="col-12">
+        <h1 class="flashy neon red text-center">Runners Up:</h1>
+      </div>
+    </div>
+    <div style="height: 5vh"></div>
+    <div class="row">
+        <game-component class="col-4 text-center" v-for="game in games" :key="game.id" :gameData="game"/>
+    </div>
+    <div style="height: 10vh"></div>
   </div>
 </template>
 
