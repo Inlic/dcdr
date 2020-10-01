@@ -37,7 +37,7 @@ export default {
   },
   computed: {
     activeGame(){
-      return this.$store.state.activeGame
+        return this.$store.state.activeGame
     },
     games(){
       return this.$store.state.games
@@ -47,8 +47,9 @@ export default {
     }
   },
   mounted(){
+    // this.$store.dispatch("getGames", this.$route.params.code)
+    // this.$store.dispatch("getGamebyID", this.games[0].id)
     this.$store.dispatch("startVote", this.$route.params.code)
-    this.$store.dispatch("getGamebyID", this.games[0].id)
   },
   methods:{
     voteUp(){

@@ -35,7 +35,7 @@
     mounted() {
       this.$store.dispatch("getRoomByCode", this.$route.params.code)
       this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
-      this.checkName()
+      if (!this.$auth.isAuthenticated){this.checkName()}
     },
     computed: {
       room() {
