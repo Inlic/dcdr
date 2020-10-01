@@ -1,22 +1,24 @@
 <template>
-  <div class="fluid-container">
-    <div class="d-flex justify-content-center">
-      <div class="card bg-primary text-center">
-        <h1>{{room.name}}</h1>
-        <h4>{{room.code}}</h4>
+  <div class="container-fluid background">
+    <div v-if="!room">
+      <loading-component></loading-component>
+    </div>
+    <div v-else class="row">
+      <div class="offset-3 col-6">
+      <div class="card bg-dark text-center">
+        <h1 class="flashy neon red">{{room.name}}</h1>
+        <h4 class="flasy neon green">{{room.code}}</h4>
         <form @submit.prevent="createGame" class="justify-content-center">
           <input type="text" placeholder="name" required v-model="newGame.name" class="col-10 m-1" />
           <input type="Url" placeholder="image" v-model="newGame.imgUrl" class="col-10 m-1" />
           <button type="submit" class="btn btn-outline-light m-1">Add a game</button>
         </form>
-        <button type="button" @click="this.startPoll" class="btn btn-primary"> Go! </button>
+        <button type="button" @click="this.startPoll" class="btn btn-dark btn-outline-light m-1 flashy neon red"> Go! </button>
         <ul>
           <li v-for="name in room.names" :key="name">{{name}}</li>
         </ul>
       </div>
     </div>
-    <div>
-      <loading-component></loading-component>
     </div>
   </div>
 
@@ -39,6 +41,9 @@
       
     },
     computed: {
+      games(){
+        return this.$store.state.games
+      },
       room() {
         return this.$store.state.room
       },
