@@ -27,6 +27,11 @@
 import game from "../components/game"
 export default {
   name:"Vote",
+  data() {
+      return {
+        index: 0
+      }
+    },
   components:{
     game
   },
@@ -44,10 +49,22 @@ export default {
   },
   methods:{
     voteUp(){
+      if(!this.activeGame.id){this.$store.dispatch("getGamebyID", this.games[this.index].id)}
       this.$store.dispatch("upGame", this.activeGame)
+      this.getNext()
     },
     voteDown(){
+      if(!this.activeGame.id){this.$store.dispatch("getGamebyID", this.games[this.index].id)}
       this.$store.dispatch("downGame", this.activeGame)
+      this.getNext()
+    },
+    getNext(){
+      this.index ++
+      if(this.index < this.games.length){
+      this.$store.dispatch("getGamebyID", this.games[this.index].id)}
+      else{
+        this.$router.push({ name: 'Results', params: { code: this.$route.params } })
+      }
     }
   }
 
