@@ -12,11 +12,15 @@
         <button type="button" @click="this.startPoll" class="btn btn-primary"> Go! </button>
       </div>
     </div>
+    <div>
+      <loading-component></loading-component>
+    </div>
   </div>
 
 </template>
 
 <script>
+  import loadingComponent from "../components/loadingComponent.vue"
   export default {
     name: "Room",
     data() {
@@ -42,7 +46,10 @@
         this.$store.dispatch("getGames", this.room.id)
         this.$router.push({ name: 'Vote', params: { code: this.room.code } })
       },
-    }
+    },
+    components: {
+      loadingComponent
+    },
   }
 </script>
 
