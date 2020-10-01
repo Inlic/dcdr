@@ -3,7 +3,8 @@ import { BadRequest } from "../utils/Errors"
 
 class RoomsService {
     async addName(data, id) {
-        return await dbContext.Rooms.update({_id: id}, {$push:{"names": data.addname}})
+        await dbContext.Rooms.findOneAndUpdate({_id: id}, {$push:{"names": data.addName}})
+        return await dbContext.Rooms.findOne({ _id: id })
     }
     async getAll() {
         return await dbContext.Rooms.find({}).populate("creator", "name picture")
@@ -39,7 +40,7 @@ class RoomsService {
     }
 
     async edit(id, update) {
-        let data = await dbContext.Rooms.findOneAndUpdate({ code: id }, update, { new: true })
+        let data = await dbContext.Rooms.findOneAndUpdate({ _id: id }, update, { new: true })
         if (!data) {
             throw new BadRequest("Invalid ID");
         }

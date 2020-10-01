@@ -25,7 +25,8 @@ export class RoomsController extends BaseController {
     async addName(req, res, next) {
         try {
             let data = await roomsService.addName(req.body, req.params.id)
-            return res.send(data)
+            socketService.messageRoom(data.code, "updateRoom", data)
+            return 
         } catch (error) {
             console.error(error);
         }
@@ -35,6 +36,7 @@ export class RoomsController extends BaseController {
     async getAll(req, res, next) {
         try {
             let data = await roomsService.getAll()
+            
             return res.send(data)
         }
         catch (err) { next(err) }
@@ -72,7 +74,7 @@ export class RoomsController extends BaseController {
     async edit(req, res, next) {
         try {
             let data = await roomsService.edit(req.params.id, req.body)
-            socketService.messageRoom(req.params.id, "updateRoom", data)
+            socketService.messageRoom(data.code, "updateRoom", data)
             return res.send(data)
         } catch (error) { next(error) }
     }
