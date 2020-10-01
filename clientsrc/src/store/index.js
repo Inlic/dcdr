@@ -14,7 +14,8 @@ export default new Vuex.Store({
     room:{},
     myRooms: [],
     games: [],
-    activeGame: {}
+    activeGame: {},
+    name: ""
   },
   mutations: {
     setProfile(state, profile) {
@@ -35,6 +36,9 @@ export default new Vuex.Store({
     addGame(state, game){
       state.games.push(game)
       state.games = state.games
+    },
+    setMyName(state, name){
+      state.name = name
     }
   },
   actions: {
@@ -92,16 +96,22 @@ export default new Vuex.Store({
     async createRoom({commit, state}, data){
       try{ if(this.state.profile.email){ data.creatorEmail = this.state.profile.email}
       let res = await api.post("rooms", data)
-      commit("setRoom", res)
+      commit("setRoom", res.data)
       console.log(res)
       router.push({ name: "Room", params:{code:res.data.code} })
       } catch(error) {
         console.error(error);
       }
     },
-    async addName({commit}, data){
+    async addName({commit}, payload){
       try {
-       await api.put(`rooms/${data.id}/names`, {addName:data.addName})
+        
+        if(this.state.room.names.includes(payload.addName) || payload.addName == ""){
+          return
+        }
+        else{
+          await api.put(`rooms/${this.state.room.id}/names`, {addName:payload.addName})
+        }
       } catch (error) {
         
       }
@@ -166,6 +176,9 @@ export default new Vuex.Store({
       console.error(error);
       }
     },
+    setMyName({commit}, name){
+      commit("setMyName", name)
+    }
   },
   modules:{
     socketService

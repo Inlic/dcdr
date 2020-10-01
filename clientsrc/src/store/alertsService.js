@@ -7,6 +7,7 @@ export default class NotificationService {
                 input: 'text',
                 showCancelButton: false,
                 confirmButtonText: 'Yes',
+                allowOutsideClick: false,
                 inputValidator: (value) => {
                     if (!value) {
                       return 'You need to write something!'
