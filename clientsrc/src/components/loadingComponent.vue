@@ -10,7 +10,9 @@
     export default {
         name: "loadingComponent",
         mounted() {
-            this.scribbleAnimation(255, 255, 255, 0, 0)
+            for (let i = 0; i < 20; i++) {
+                this.scribbleAnimation(255, 255, 255, (Math.random() - 0.5) * 100, (Math.random() - 0.5) * 100)
+            }
         },
         data() {
             return {
@@ -19,9 +21,9 @@
         },
         methods: {
             scribbleAnimation(r, g, b, x, y) {
-                let shapeSize = 2
-                let colorSpeed = 10
-                let animationSpeed = 5
+                let shapeSize = 1
+                let colorSpeed = 1
+                let animationSpeed = 2
                 let animationRate = 1 //lower is faster, minimum value is 1
 
                 let c = document.getElementById("animationCanvas")
@@ -57,7 +59,9 @@
                 ctx.fillRect((c.width / 2) + xPos, (c.height / 2) + yPos, shapeSize, shapeSize)
 
                 setTimeout(() => {
-                    this.scribbleAnimation(red, green, blue, xPos, yPos)
+                    if (document.getElementById("animationCanvas")) {
+                        this.scribbleAnimation(red, green, blue, xPos, yPos)
+                    }
                 }, animationRate);
             }
 

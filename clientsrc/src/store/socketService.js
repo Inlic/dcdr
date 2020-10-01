@@ -18,7 +18,7 @@ export const socketService = {
       socket.on("new user", data => console.log(data))
     },
     joinRoom({ commit, dispatch }, roomName) {
-   
+    
     socket.emit("dispatch", { action: "JoinRoom", data: roomName })
      
     },

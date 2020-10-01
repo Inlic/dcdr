@@ -99,6 +99,13 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
+    async addName({commit}, data){
+      try {
+       await api.put(`rooms/${data.id}/names`, {addName:data.addName})
+      } catch (error) {
+        
+      }
+    },
     async getGamebyID({commit}, id){
       try{
         let res = await api.get(`games/${id}`)

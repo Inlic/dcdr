@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <router-link class="navbar-brand flashy neon blue" :to="{ name: 'Home' }">Dcdr</router-link>
+    <router-link class="navbar-brand flashy neon red" :to="{ name: 'Home' }">Dcdr</router-link>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -8,13 +8,13 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" :class="{ active: $route.name == 'Home' }">
-          <router-link :to="{ name: 'Home' }" class="nav-link flashy neon red">Home</router-link>
+          <router-link :to="{ name: 'Home' }" class="nav-link flashy neon blue">Home</router-link>
         </li>
         <li class="nav-item" :class="{ active: $route.name == 'Rooms' }">
-          <router-link :to="{ name: 'Rooms' }" class="nav-link flashy neon yellow">Create a Poll</router-link>
+          <router-link :to="{ name: 'Rooms' }" class="nav-link flashy neon blue">Create a Poll</router-link>
         </li>
         <li class="nav-item" v-if="$auth.isAuthenticated" :class="{ active: $route.name == 'Profile' }">
-          <router-link class="nav-link flashy neon yellow" :to="{ name: 'Profile' }">Profile</router-link>
+          <router-link class="nav-link flashy neon blue" :to="{ name: 'Profile' }">Profile</router-link>
         </li>
         <li>
           <form class="form-inline" @submit="setActiveRoom">

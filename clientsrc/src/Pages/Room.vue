@@ -40,7 +40,10 @@
     computed: {
       room() {
         return this.$store.state.room
-      }
+      },
+      profile() {
+      return this.$store.state.profile;
+    }
     },
     methods: {
       createGame() {
@@ -53,8 +56,19 @@
         this.$router.push({ name: 'Vote', params: { code: this.room.code } })
       },
       async checkName(){
-        let res = await as.addName()
-        console.log(res.value);
+        
+        if(this.$auth.isAuthenticated){
+          this.$store.dispatch("addName", {id:this.room.id, addName: this.profile.name})
+          return
+        }
+        else if (!this.$auth.isAuthenticated){
+          let res = await as.addName()
+          if(res.isDismissed){
+          this.checkName()
+          }
+        
+        this.$store.dispatch("addName", {id:this.room.id, addName: res.value})
+        }
       }
     },
     
