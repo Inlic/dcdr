@@ -10,9 +10,9 @@ export const socketService = {
         console.log(data.message + " sockets on")
       })
       //registers additional listeners for client side here
-      socket.on("updateBoards", data => { 
-        dispatch("getBoards")
-        dispatch("getCollabBoards")
+      socket.on("updateRoom", data => { 
+        
+        commit("setRoom", data)
       })
     },
     joinRoom({ commit, dispatch }, roomName) {

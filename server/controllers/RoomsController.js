@@ -3,6 +3,7 @@ import BaseController from "../utils/BaseController";
 import auth0provider from "@bcwdev/auth0provider";
 import { roomsService } from '../services/RoomsService'
 import { codeGenerator } from "../utils/CodeGenerator"
+import socketService from "../services/SocketService";
 
 
 
@@ -15,9 +16,9 @@ export class RoomsController extends BaseController {
         .get('/:id', this.getByCode)
         .get('/:id/games', this.getRoomGames)
         .get('/:id/responses', this.getRoomResponses)
-        .post('', this.create)
         .put('/:id', this.edit)
         .use(auth0provider.getAuthorizedUserInfo)
+        .post('', this.create)
         .delete('/:id', this.delete)
     }
 
@@ -62,6 +63,7 @@ export class RoomsController extends BaseController {
     async edit(req, res, next) {
         try {
             let data = await roomsService.edit(req.params.id, req.body)
+            socketService.messageRoom("room", "updateRoom", data)
             return res.send(data)
         } catch (error) { next(error) }
     }
