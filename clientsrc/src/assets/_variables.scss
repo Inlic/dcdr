@@ -19,6 +19,7 @@ $cyan: cyan;
 $white: white;
 $gray: gray;
 $gray-dark: darkslategray;
+$dark: #0a0b0d;
 
 $colors: (
   "blue": $blue,
@@ -34,4 +35,5 @@ $colors: (
   "white": $white,
   "gray": $gray,
   "gray-dark": $gray-dark,
+  "dark": $dark,
 ) !default;

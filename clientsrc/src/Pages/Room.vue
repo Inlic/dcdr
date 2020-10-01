@@ -15,12 +15,16 @@
         </ul>
       </div>
     </div>
+    <div>
+      <loading-component></loading-component>
+    </div>
   </div>
 
 </template>
 
 <script>
   import as from '../store/alertsService'
+  import loadingComponent from "../components/loadingComponent.vue"
   export default {
     name: "Room",
     data() {
@@ -51,6 +55,10 @@
         let res = await as.addName()
         console.log(res.value);
       }
+    },
+    
+    components: {
+      loadingComponent
     }
   }
 </script>
