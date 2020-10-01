@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import game from "../components/game"
+import gameComponent from "../components/GameComponent"
 export default {
   name:"Vote",
   data() {
@@ -33,7 +33,7 @@ export default {
       }
     },
   components:{
-    game
+    gameComponent
   },
   computed: {
     activeGame(){

@@ -10,14 +10,7 @@
       <div class="col-10 bg-seconday">
         <h4>runners up</h4>
         <ul>
-          <li>Game</li>
-          <li>Game</li>
-          <li>Game</li>
-          <li>Game</li>
-          <li>BEAR</li>
-          <li>Game</li>
-          <li>Game</li>
-          <li>Game</li>
+          <game v-for="game in games" :key="game.id" gameData="game"/>
         </ul>
       </div>
     </div>
@@ -25,11 +18,16 @@
 </template>
 
 <script>
-import game from "../components/game.vue"
+import gameComponent from "../components/GameComponent"
 export default {
 name:"Results",
-componets: {
-  game
+computed: {
+  games(){
+    return this.$store.state.games
+  }
+},
+components: {
+  gameComponent
 }
 }
 </script>
