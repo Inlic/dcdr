@@ -36,6 +36,8 @@ class SocketService {
    */
   JoinRoom(socket, room) {
     socket.join(room);
+    socket.emit("joined room", room+" succesfully joined")
+    this.io.to(room).emit("new user", "todo")
   }
   /**
    * @param {SocketIO.Socket} socket

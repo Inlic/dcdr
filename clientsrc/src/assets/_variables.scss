@@ -6,19 +6,20 @@ $success: #c77121;
 $warning: #81807d;
 $info: #edeAe5;
 
-$blue: blue;
+$blue: #228DFF;
 $indigo: indigo;
-$purple: purple;
+$purple:  #BA01FF;
 $pink: pink;
-$red: red;
-$orange: orange;
-$yellow: yellow;
-$green: green;
+$red: #FF1177;
+$orange:#FF9900;
+$yellow: #FFDD1B;
+$green: #B6FF00;
 $teal: teal;
 $cyan: cyan;
 $white: white;
 $gray: gray;
 $gray-dark: darkslategray;
+$dark: #0a0b0d;
 
 $colors: (
   "blue": $blue,
@@ -34,4 +35,5 @@ $colors: (
   "white": $white,
   "gray": $gray,
   "gray-dark": $gray-dark,
+  "dark": $dark,
 ) !default;

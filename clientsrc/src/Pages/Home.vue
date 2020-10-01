@@ -1,71 +1,56 @@
 <template>
   <div class="background container-fluid">
-    <div style="height: 20vh"></div>
-    <div class="row">
-      <div class="col-12">
-          <div class="jumbotron" style="height: 60vh">
-            <h1 class="display-4">Hello, world!</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-            <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <p class="lead">
-            </p>
-          </div>
-        </div>
-    </div>
-    <div style="height: 20vh"></div>
-    <div class="row">
-      <div class="col-4">
-        <div class="card text-center" style="height: 60vh">
-          <div class="card-header">
-            Featured
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <img class="card-img" src="https://i.imgur.com/QT4H77w.jpg" alt="Card image" style="height: 30vh">
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          </div>
-          <div class="card-footer text-muted">
-            2 days ago
-          </div>
-        </div>
-      </div>
-      <div class="col-8">
-        <div class="card bg-dark text-dark">
-          <img class="card-img" src="https://images.unsplash.com/photo-1601293058843-f34e8dd9ccfd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80" alt="Card image" style="height: 60vh">
-          <div class="card-img-overlay">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum nemo quia, aperiam, sunt consequuntur maiores suscipit accusamus, numquam veniam fugit aliquid. Ut perspiciatis porro sunt ipsa eaque eligendi numquam accusantium.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div style="height: 20vh"></div>
+    <div style="height: 10vh"></div>
     <div class="row">
       <div class="col-8">
-        <div class="card text-center" style="height: 60vh">
-            <div class="card-header">
-              Featured
-            </div>
-            <div class="card-body">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed modi excepturi consectetur quo ab in earum? Possimus voluptas natus magnam doloribus temporibus vero qui. Optio suscipit ad ipsam quaerat. Ipsa!</p>
-            </div>
-            <div class="card-footer text-muted">
-              2 days ago
-            </div>
-          </div>
+          <img class="card-img" src="@/assets/neontogether.jpg" alt="Card image" style="height: 60vh">
       </div>
       <div class="col-4">
-          <div class="card bg-dark text-dark">
-            <img class="card-img" src="https://images.unsplash.com/photo-1601293058843-f34e8dd9ccfd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1900&q=80" alt="Card image" style="height: 60vh">
-            <div class="card-img-overlay">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text">Last updated 3 mins ago</p>
+        <div class="card text-center border-0" style="height: 60vh">
+          <div class="card-header bg-dark">
+            Level Up Your Gaming Experience
+          </div>
+          <div class="card-body bg-dark">
+            <h5 class="card-title">Don't Waste Time Deciding what to play.</h5>
+            <p>Match with your friends, find a game you all love, and get to the game faster.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="height: 10vh"></div>
+    <div class="row">
+      
+      <div class="col-3">
+        <img class="img-fluid" src="@/assets/neondesktop.jpg" style="height: 60vh; width: 100%">
+      </div>
+      <div class="col-3">
+        <img class="img-fluid" src="@/assets/racinggirl.jpg" style="height: 60vh; width: 100%">
+      </div>
+      <div class="col-3">
+        <img class="img-fluid" src="@/assets/vrdude.jpg" style="height: 60vh; width: 100%">
+      </div>
+      <div class="col-3">
+        <img class="img-fluid" src="@/assets/neoncompguts.jpg" style="height: 60vh; width: 100%">
+      </div>
+    </div>
+    <div style="height: 10vh"></div>
+    <div class="row">
+      
+      <div class="col-5">
+        <div class="card text-center border-0" style="height: 60vh">
+            <div class="card-header bg-dark">
+              Persistent Polls
+            </div>
+            <div class="card-body bg-dark">
+            <p>Love the games you voted on last time, but want to create another poll?  No problem your prior polls are saved to your account.</p>
             </div>
           </div>
       </div>
+      <div class="col-7">
+        <img class="card-img" src="@/assets/gamershardcoretwo.jpg" alt="Card image" style="height: 60vh">
+      </div>   
     </div>
-    <div style="height: 20vh"></div>
+    <div style="height: 10vh"></div>
   </div>
 </template>
 
