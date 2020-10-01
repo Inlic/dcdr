@@ -56,9 +56,10 @@
         let res = await as.addName()
         
         if(res.isDismissed){
-          this.checkName()
+         this.checkName()
         }
-        console.log(res.value);
+        
+        this.$store.dispatch("addName", {id:this.room.id, addName: res.value})
       }
     },
     
