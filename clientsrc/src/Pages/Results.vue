@@ -41,7 +41,7 @@ computed: {
 },
 components: {
   gameComponent
-}
+},
 }
 </script>
 

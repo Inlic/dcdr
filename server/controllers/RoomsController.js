@@ -13,8 +13,8 @@ export class RoomsController extends BaseController {
         super("api/rooms")
         this.router
         .get('', this.getAll)
-        .get('/:id', this.getByCode)
-        .get('/:id/games', this.getRoomGames)
+        .get('/:code', this.getByCode)
+        .get('/:code/games', this.getRoomGames)
         .get('/:id/responses', this.getRoomResponses)
         .put('/:id', this.edit)
         .put('/:id/names', this.addName)
@@ -44,14 +44,14 @@ export class RoomsController extends BaseController {
 
     async getByCode(req, res, next) {
         try {
-            let data = await roomsService.getByCode(req.params.id)
+            let data = await roomsService.getByCode(req.params.code)
             return res.send(data)
         } catch (error) { next(error) }
     }
 
     async getRoomGames(req, res, next) {
         try {
-            let data = await roomsService.getRoomGames(req.params.id)
+            let data = await roomsService.getRoomGames(req.params.code)
             return res.send(data)
         } catch (error) { next(error) }
     }
