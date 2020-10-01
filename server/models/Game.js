@@ -7,8 +7,9 @@ const Game = new Schema({
     roomId: { type: ObjectId, required: true },
     name: { type: String, required: true },
     imgUrl: { type: String },
-    upvotes: { type: Number },
-    downvotes: { type: Number },
+    upvotes: { type: Number, default: 0 },
+    downvotes: { type: Number, default: 0 },
+    score: {type:Number, default: 0}
 }, { timestamps: true, toJSON: { virtuals: true } })
 
 Game.virtual("creator",
@@ -18,5 +19,7 @@ Game.virtual("creator",
         foreignField: "email",
         justOne: true
     })
+
+
 
 export default Game
