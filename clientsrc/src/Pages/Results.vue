@@ -4,7 +4,7 @@
       <h1 class="text-center">
         The winner is:
       </h1>
-      <game/>
+      <game-component/>
     </div>
     <div class="row">
       <div class="col-10 bg-seconday">
