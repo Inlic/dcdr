@@ -7,7 +7,7 @@
         </button>
       </div>
       <div class="col-8">
-        <game :gameData="this.activeGame" />
+        <game-component :gameData="this.activeGame" />
       </div>
       <div class="col-1 align-self-center">
         <button @click="voteDown" type="button" class="btn btn-outline-primary">
@@ -37,15 +37,17 @@ export default {
   },
   computed: {
     activeGame(){
-      return this.$store.state.activeGame
+        return this.$store.state.activeGame
     },
     games(){
       return this.$store.state.games
+    },
+    room(){
+      return this.$store.state.room
     }
   },
   mounted(){
-    console.log(this.games[0].id);
-    this.$store.dispatch("getGamebyID", this.games[0].id)
+    this.$store.dispatch("startVote", this.$route.params.code)
   },
   methods:{
     voteUp(){
@@ -63,7 +65,7 @@ export default {
       if(this.index < this.games.length){
       this.$store.dispatch("getGamebyID", this.games[this.index].id)}
       else{
-        this.$router.push({ name: 'Results', params: { code: this.$route.params } })
+        this.$router.push({ name: 'Results', params: { code: this.$route.params.code } })
       }
     }
   }

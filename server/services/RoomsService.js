@@ -21,8 +21,9 @@ class RoomsService {
         return data
     }
 
-    async getRoomGames(id) {
-        let data = await dbContext.Games.find({ roomId: id })
+    async getRoomGames(code) {
+        let room = await dbContext.Rooms.findOne({code: code})
+        let data = await dbContext.Games.find({ roomId: room.id })
         if (!data) {
             throw new BadRequest("Invalid ID")
         }

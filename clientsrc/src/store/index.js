@@ -124,9 +124,9 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
-    async getGames({commit}, id){
+    async getGames({commit, state}, code ){
       try{
-        let res = await api.get(`rooms/${id}/games`)
+        let res = await api.get(`rooms/${code}/games`)
         commit("setGames", res.data)
       } catch(error) {
         console.error(error);
@@ -178,6 +178,16 @@ export default new Vuex.Store({
     },
     setMyName({commit}, name){
       commit("setMyName", name)
+    },
+    async startVote({commit, state, dispatch}, code){
+      try {
+        let res = await api.get(`rooms/${code}/games`)
+        commit("setGames", res.data)
+        commit("setActiveGame", res.data[0])
+      } catch (error) {
+        console.error(error);
+        
+      }
     }
   },
   modules:{
