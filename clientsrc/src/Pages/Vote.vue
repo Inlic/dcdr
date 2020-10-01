@@ -41,10 +41,13 @@ export default {
     },
     games(){
       return this.$store.state.games
+    },
+    room(){
+      return this.$store.state.room
     }
   },
   mounted(){
-    console.log(this.games[0].id);
+    this.$store.dispatch("startVote", this.$route.params.code)
     this.$store.dispatch("getGamebyID", this.games[0].id)
   },
   methods:{

@@ -107,7 +107,7 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
-    async getGames({commit}, id){
+    async getGames({commit, state}, id ){
       try{
         let res = await api.get(`rooms/${id}/games`)
         commit("setGames", res.data)
@@ -159,6 +159,15 @@ export default new Vuex.Store({
       console.error(error);
       }
     },
+    async startVote({commit, state, dispatch}, data){
+      try {
+        dispatch("getRoomByCode", data)
+        dispatch("getGames", state.room.id)
+      } catch (error) {
+        console.error(error);
+        
+      }
+    }
   },
   modules:{
     socketService
