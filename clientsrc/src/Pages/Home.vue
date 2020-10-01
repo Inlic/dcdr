@@ -19,23 +19,6 @@
     </div>
     <div style="height: 10vh"></div>
     <div class="row">
-      
-      <div class="col-3">
-        <img class="img-fluid" src="@/assets/neondesktop.jpg" style="height: 60vh; width: 100%">
-      </div>
-      <div class="col-3">
-        <img class="img-fluid" src="@/assets/racinggirl.jpg" style="height: 60vh; width: 100%">
-      </div>
-      <div class="col-3">
-        <img class="img-fluid" src="@/assets/vrdude.jpg" style="height: 60vh; width: 100%">
-      </div>
-      <div class="col-3">
-        <img class="img-fluid" src="@/assets/neoncompguts.jpg" style="height: 60vh; width: 100%">
-      </div>
-    </div>
-    <div style="height: 10vh"></div>
-    <div class="row">
-      
       <div class="col-5">
         <div class="card text-center border-0" style="height: 60vh">
             <div class="card-header bg-dark flashy neon red">
@@ -49,6 +32,21 @@
       <div class="col-7">
         <img class="card-img" src="@/assets/gamershardcoretwo.jpg" alt="Card image" style="height: 60vh">
       </div>   
+    </div>
+    <div style="height: 10vh"></div>
+    <div class="row">
+      <div class="col-3">
+        <img class="img-fluid" src="@/assets/neondesktop.jpg" style="height: 60vh; width: 100%">
+      </div>
+      <div class="col-3">
+        <img class="img-fluid" src="@/assets/racinggirl.jpg" style="height: 60vh; width: 100%">
+      </div>
+      <div class="col-3">
+        <img class="img-fluid" src="@/assets/vrdude.jpg" style="height: 60vh; width: 100%">
+      </div>
+      <div class="col-3">
+        <img class="img-fluid" src="@/assets/neoncompguts.jpg" style="height: 60vh; width: 100%">
+      </div>
     </div>
     <div style="height: 10vh"></div>
   </div>

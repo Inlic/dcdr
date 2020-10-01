@@ -54,6 +54,10 @@
       },
       async checkName(){
         let res = await as.addName()
+        
+        if(res.isDismissed){
+          this.checkName()
+        }
         console.log(res.value);
       }
     },
