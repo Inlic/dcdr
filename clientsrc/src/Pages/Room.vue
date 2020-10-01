@@ -37,6 +37,7 @@
       createGame() {
         this.newGame.roomId = this.room.id
         this.$store.dispatch("createGame", this.newGame)
+        this.newGame = {}
       },
       startPoll() {
         this.$store.dispatch("getGames", this.room.id)

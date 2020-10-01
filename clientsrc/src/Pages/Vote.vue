@@ -10,7 +10,7 @@
         <game :gameData="this.activeGame" />
       </div>
       <div class="col-1 align-self-center">
-        <button @click="voteUp" type="button" class="btn btn-outline-primary">
+        <button @click="voteDown" type="button" class="btn btn-outline-primary">
         <i class="far fa-thumbs-down"></i>
         </button>
       </div>
@@ -44,10 +44,10 @@ export default {
   },
   methods:{
     voteUp(){
-      
+      this.$store.dispatch("upGame", this.activeGame)
     },
     voteDown(){
-
+      this.$store.dispatch("downGame", this.activeGame)
     }
   }
 
