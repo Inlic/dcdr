@@ -97,7 +97,7 @@ export default new Vuex.Store({
     async createRoom({commit, state}, data){
       try{ if(this.state.profile.email){ data.creatorEmail = this.state.profile.email}
       let res = await api.post("rooms", data)
-      commit("setRoom", res.data)
+      
       console.log(res)
       router.push({ name: "Room", params:{code:res.data.code} })
       } catch(error) {
