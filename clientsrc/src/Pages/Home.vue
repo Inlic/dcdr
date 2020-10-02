@@ -35,16 +35,16 @@
     <div style="height: 10vh"></div>
     <div class="row">
       <div class="col-3">
-        <img class="img-fluid" src="@/assets/neondesktop.jpg" style="height: 60vh; width: 100%; border-radius: 10px; filter: brightness(85%); filter: contrast(110%);">
+        <img class="img-fluid img-card-sm" src="@/assets/neondesktop.jpg" style="height: 60vh; width: 100%;">
       </div>
       <div class="col-3">
-        <img class="img-fluid" src="@/assets/racinggirl.jpg" style="height: 60vh; width: 100%; border-radius: 10px; filter: brightness(85%); filter: contrast(110%);">
+        <img class="img-fluid img-card-sm" src="@/assets/racinggirl.jpg" style="height: 60vh; width: 100%;">
       </div>
       <div class="col-3">
-        <img class="img-fluid" src="@/assets/neoncompguts.jpg" style="height: 60vh; width: 100%; border-radius: 10px; filter: brightness(85%); filter: contrast(110%);">
+        <img class="img-fluid img-card-sm" src="@/assets/neoncompguts.jpg" style="height: 60vh; width: 100%;">
       </div>
       <div class="col-3">
-        <img class="img-fluid" src="@/assets/vrdude.jpg" style="height: 60vh; width: 100%; border-radius: 10px; filter: brightness(85%); filter: contrast(110%);">
+        <img class="img-fluid img-card-sm" src="@/assets/vrdude.jpg" style="height: 60vh; width: 100%;">
       </div>
     </div>
     <div style="height: 10vh"></div>
