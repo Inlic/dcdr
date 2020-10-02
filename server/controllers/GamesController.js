@@ -62,8 +62,8 @@ export class GamesController extends BaseController {
         try {
             let data = await gamesService.update(req.params.id, {$inc:{upvotes: 1, score: 1 }})
             console.log(data.score);
-            if(data.score == data.reqScore){
-                socketService.messageRoom(req.body.code,"poll ended")
+            if(data.score >= data.reqScore){
+                socketService.messageRoom(req.body.code,"poll ended", req.body.code)
             }
             return res.send(data)
         } catch (error) { next(error) }
