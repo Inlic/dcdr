@@ -1,16 +1,29 @@
+// Color Palette
+//#241531 //dark purple
+//#b22167 //harsh pink
+//#171228 //almost black
+//#711748 //red-purple
+//#316aae //lighter blue
+//#193f79 //blue
+//#142854 //dark blue
+//#461435 //dark red-purple
+// softer glows
+//#eeacd3 //pinkish
+//#416494 //bluish
+//#3c3444 //greyish
 
-$primary: #026670;
-$secondary: #9FEDD7;
-$danger: #FEF9C7;
-$success: #c77121;
-$warning: #81807d;
-$info: #edeAe5;
+$primary: #241531;
+$secondary: #142854;
+$danger: #b22167;
+$success: #eeacd3;
+$warning: #711748;
+$info: #3c3444;
 
-$blue: #228DFF;
+$blue: #316aae;
 $indigo: indigo;
 $purple:  #BA01FF;
-$pink: pink;
-$red: #FF1177;
+$pink: #eeacd3;
+$red:#b22167;
 $orange:#FF9900;
 $yellow: #FFDD1B;
 $green: #B6FF00;
@@ -19,7 +32,7 @@ $cyan: cyan;
 $white: white;
 $gray: gray;
 $gray-dark: darkslategray;
-$dark: #0a0b0d;
+$dark: #171228;
 
 $colors: (
   "blue": $blue,
@@ -37,3 +50,5 @@ $colors: (
   "gray-dark": $gray-dark,
   "dark": $dark,
 ) !default;
+
+

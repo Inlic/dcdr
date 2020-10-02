@@ -3,12 +3,12 @@
     <div style="height: 10vh"></div>
     <div class="row">
       <div class="col-4">
-          <div class="card" style="height: 70vh">
+          <div class="card border-0" style="height: 70vh">
             <img class="card-img-top" :src="profile.picture" alt="Card image cap" style="height: 30vh">
-            <div class="card-body">
-              <h5 class="card-title">Welcome {{ profile.name }}</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <p>{{profile.email}}</p>
+            <div class="card-body bg-dark">
+              <h5 class="card-title flashy neon red">Welcome: {{ profile.name }}</h5>
+              <p class="card-text neon blue">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <p class="flashy neon green">{{profile.email}}</p>
               <i class="fas fa-pen-alt" aria-hidden="true" @click="toggleEdit"></i>
               <form v-if="editing" class="form-inline" @submit="finishEdit">
                 <div class="form-group">
@@ -26,25 +26,24 @@
       </div>
       <div class="col-8">
         <div class="card bg-dark text-light">
-          <img class="card-img" src="@/assets/gameon.jpg" alt="Card image" style="height: 70vh">
+          <img class="card-img" src="@/assets/gameon.jpg" alt="Card image" style="height: 70vh;  filter: brightness(75%); filter: contrast(150%); filter: opacity(25%);">
           <div class="card-img-overlay">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text">Last updated 3 mins ago</p>
+            <h5 class="card-title flashy neon red">My Channel</h5>
+            <p class="card-text neon blue">This is where I could potentially invite people to hang out and run polls.  Also where I would receive messages or feeds if I was subscribed to those things.</p>
           </div>
         </div>
       </div>
     </div>
     <div style="height: 10vh"></div>
     <div class="col-12">
-      <div class="card">
-        <div class="card-header">
+      <div class="card bg-dark">
+        <div class="card-header flashy neon red">
           My Previous Polls
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Cras justo odio</li>
-          <li class="list-group-item">Dapibus ac facilisis in</li>
-          <li class="list-group-item">Vestibulum at eros</li>
+          <li class="list-group-item bg-dark neon blue">Cras justo odio</li>
+          <li class="list-group-item bg-dark neon blue">Dapibus ac facilisis in</li>
+          <li class="list-group-item bg-dark neon blue">Vestibulum at eros</li>
         </ul>
       </div>
     </div>
@@ -80,5 +79,8 @@ export default {
 </script>
 
 <style scoped>
+.fas{
+  color: #b22167
+}
 
 </style>

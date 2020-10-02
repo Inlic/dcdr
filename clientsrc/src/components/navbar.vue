@@ -16,20 +16,20 @@
         <li class="nav-item" v-if="$auth.isAuthenticated" :class="{ active: $route.name == 'Profile' }">
           <router-link class="nav-link flashy neon blue" :to="{ name: 'Profile' }">Profile</router-link>
         </li>
-        <li>
-          <form class="form-inline" @submit="setActiveRoom">
+        <li class="nav-item">
+          <form class="form-inline ml-3" @submit="setActiveRoom">
             <div class="form-group">
-              <input type="text" v-model="code" class="form-control" placeholder="Join Room" aria-describedby="helpId">
-              <button class="btn btn-primary mx-2" type="submit">Join!</button>
+              <input type="text" v-model="code" class="form-control neon blue" placeholder="Join Room" aria-describedby="helpId">
+              <button class="btn btn-primary mx-2 form-control flashy neon blue" type="submit">Join!</button>
             </div>
           </form>
         </li>
       </ul>
       <span class="navbar-text">
-        <button class="btn btn-success" @click="login" v-if="!$auth.isAuthenticated">
+        <button class="btn btn-primary flashy neon blue" @click="login" v-if="!$auth.isAuthenticated">
           Login
         </button>
-        <button class="btn btn-danger" @click="logout" v-else>logout</button>
+        <button class="btn btn-primary flashy neon blue" @click="logout" v-else>logout</button>
       </span>
     </div>
   </nav>
