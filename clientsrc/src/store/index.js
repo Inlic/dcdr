@@ -66,9 +66,10 @@ export default new Vuex.Store({
       }
     },
     //Rooms Section
-    async getRoomByCode({commit}, code){
+    async getRoomByCode({commit, dispatch}, code){
       let res = await api.get(`rooms/${code}`)
       commit("setRoom", res.data)
+      dispatch("addName")
     },
     async getRooms({commit}, email){
       try{
@@ -104,16 +105,12 @@ export default new Vuex.Store({
       }
     },
     async addName({commit}, payload){
-      try {
-        
-        if(this.state.room.names.includes(payload.addName) || payload.addName == ""){
+      if(this.state.name){
+          await api.put(`rooms/${this.state.room.id}/names`, {addName:this.state.name})
           return
-        }
-        else{
-          await api.put(`rooms/${this.state.room.id}/names`, {addName:payload.addName})
-        }
-      } catch (error) {
-        
+      }
+      else{
+        await api.put(`rooms/${this.state.room.id}/names`, {addName:this.state.profile.name})
       }
     },
     async startPoll({}, code){
