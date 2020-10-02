@@ -12,17 +12,18 @@
             <router-link :to="{ name: 'Home' }" class="nav-link text-light flashy neon blue">Home</router-link>
           </li>
           <li class="nav-item" :class="{ active: $route.name == 'Rooms' }">
-            <router-link :to="{ name: 'Rooms' }" class="nav-link text-light flashy neon blue">Create a Poll</router-link>
+            <router-link :to="{ name: 'Rooms' }" class="nav-link text-light flashy neon blue">Create a Poll
+            </router-link>
           </li>
           <li class="nav-item" v-if="$auth.isAuthenticated" :class="{ active: $route.name == 'Profile' }">
             <router-link class="nav-link text-light flashy neon blue" :to="{ name: 'Profile' }">Profile</router-link>
           </li>
           <li class="nav-item">
-            <form class="form-inline ml-3" @submit="setActiveRoom">
+            <form class="form-inline ml-md-3" @submit="setActiveRoom">
               <div class="form-group">
                 <input type="text" v-model="code" class="form-control neon blue" placeholder="Join Room"
                   aria-describedby="helpId">
-                <button class="btn btn-primary mx-2 form-control flashy neon blue" type="submit">Join!</button>
+                <button class="btn btn-primary mx-md-2 form-control flashy neon blue" type="submit">Join!</button>
               </div>
             </form>
           </li>
