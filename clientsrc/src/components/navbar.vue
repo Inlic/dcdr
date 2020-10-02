@@ -5,7 +5,7 @@
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
+    <div class="collapse navbar-collapse d-flex" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" :class="{ active: $route.name == 'Home' }">
           <router-link :to="{ name: 'Home' }" class="nav-link flashy neon blue">Home</router-link>
@@ -19,13 +19,14 @@
         <li class="nav-item">
           <form class="form-inline ml-3" @submit="setActiveRoom">
             <div class="form-group">
-              <input type="text" v-model="code" class="form-control neon blue" placeholder="Join Room" aria-describedby="helpId">
+              <input type="text" v-model="code" class="form-control neon blue" placeholder="Join Room"
+                aria-describedby="helpId">
               <button class="btn btn-primary mx-2 form-control flashy neon blue" type="submit">Join!</button>
             </div>
           </form>
         </li>
       </ul>
-      <span class="navbar-text">
+      <span class="navbar-text align-self-start">
         <button class="btn btn-primary flashy neon blue" @click="login" v-if="!$auth.isAuthenticated">
           Login
         </button>
@@ -48,8 +49,8 @@
     },
     computed: {
       profile() {
-      return this.$store.state.profile;
-    }
+        return this.$store.state.profile;
+      }
     },
     methods: {
       async login() {
@@ -64,12 +65,12 @@
         await this.$auth.logout({ returnTo: window.location.origin });
       },
       async setActiveRoom() {
-        if(this.$auth.isAuthenticated){
+        if (this.$auth.isAuthenticated) {
           this.$store.dispatch("setMyName", this.profile.name)
         }
-        else if (!this.$auth.isAuthenticated){
-        let res = await as.addName()
-        this.$store.dispatch("setMyName", res.value)
+        else if (!this.$auth.isAuthenticated) {
+          let res = await as.addName()
+          this.$store.dispatch("setMyName", res.value)
         }
         this.$store.dispatch("getRoomByCode", this.code);
         this.$router.push({ name: 'Room', params: { code: this.code } })
