@@ -106,10 +106,16 @@ export default new Vuex.Store({
     },
     async addName({commit}, payload){
       if(this.state.name){
-          await api.put(`rooms/${this.state.room.id}/names`, {addName:this.state.name})
+        if(this.state.room.names.includes(this.state.name)){
+          return
+        }
+        await api.put(`rooms/${this.state.room.id}/names`, {addName:this.state.name})
           return
       }
       else{
+        if(this.state.room.names.includes(this.state.profile.name)){
+          return
+        }
         await api.put(`rooms/${this.state.room.id}/names`, {addName:this.state.profile.name})
       }
     },
