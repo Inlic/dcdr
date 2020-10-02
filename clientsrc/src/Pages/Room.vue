@@ -4,8 +4,8 @@
     <div v-if="!room">
       <loading-component></loading-component>
     </div>
-    <div v-else class="row">
-      <div class="offset-3 col-6">
+    <div v-else class="row justify-content-center">
+      <div class="col-12 col-md-6">
         <div class="card bg-dark text-center">
           <h1 class="flashy neon red my-3">{{room.name}}</h1>
           <h4 class="flasy neon green">Room Code: {{room.code}}</h4>
@@ -26,8 +26,8 @@
     </div>
     <div class="divider-small"></div>
     <div class="row">
-      <game-component class="col-2" v-for="game in games" :key="game.id" :gameData="game"/>  
-    </div> 
+      <game-component class="col-11 col-md-2" v-for="game in games" :key="game.id" :gameData="game" />
+    </div>
   </div>
 
 </template>
@@ -46,20 +46,20 @@
     mounted() {
       this.$store.dispatch("getRoomByCode", this.$route.params.code)
       this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
-      this.$store.dispatch('addName', {addName: this.$store.state.name})
+      this.$store.dispatch('addName', { addName: this.$store.state.name })
       this.$store.dispatch("getGames", this.$route.params.code)
-      
+
     },
     computed: {
-      games(){
+      games() {
         return this.$store.state.games
       },
       room() {
         return this.$store.state.room
       },
       profile() {
-      return this.$store.state.profile;
-    }
+        return this.$store.state.profile;
+      }
     },
     methods: {
       createGame() {
@@ -72,21 +72,21 @@
         this.$store.dispatch("getGames", this.room.code)
         // this.$router.push({ name: 'Vote', params: { code: this.room.code } })
       },
-      async checkName(){
-        
-        if(this.$auth.isAuthenticated){
-          this.$store.dispatch("addName", {id:this.room.id, addName: this.profile.name})
+      async checkName() {
+
+        if (this.$auth.isAuthenticated) {
+          this.$store.dispatch("addName", { id: this.room.id, addName: this.profile.name })
           return
         }
-        else if (!this.$auth.isAuthenticated){
+        else if (!this.$auth.isAuthenticated) {
           let res = await as.addName()
-          
-        
-        this.$store.dispatch("addName", {id:this.room.id, addName: res.value})
+
+
+          this.$store.dispatch("addName", { id: this.room.id, addName: res.value })
         }
       }
     },
-    
+
     components: {
       loadingComponent,
       gameComponent
@@ -95,8 +95,7 @@
 </script>
 
 <style>
-ul{
-  list-style: none;
-}
-
+  ul {
+    list-style: none;
+  }
 </style>
