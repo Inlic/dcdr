@@ -1,7 +1,12 @@
+// @ts-ignore
 import express from 'express'
 import BaseController from "../utils/BaseController";
+// @ts-ignore
 import auth0provider from "@bcwdev/auth0provider";
 import { roomsService } from '../services/RoomsService'
+import { codeGenerator } from "../utils/CodeGenerator"
+import socketService from "../services/SocketService";
+import { gamesService } from "../services/GamesService";
 
 
 
@@ -10,33 +15,77 @@ export class RoomsController extends BaseController {
     constructor() {
         super("api/rooms")
         this.router
-            .use(auth0provider.getAuthorizedUserInfo)
-            .get('', this.getAll)
-            .get('/:id', this.getById)
-            .post('', this.create)
-            .put('/:id', this.edit)
-            .delete('/:id', this.delete)
+        .get('', this.getAll)
+        .get('/:code', this.getByCode)
+        .get('/:code/games', this.getRoomGames)
+        .get('/:id/responses', this.getRoomResponses)
+        .put('/:id', this.edit)
+        .put('/:id/names', this.addName)
+        .use(auth0provider.getAuthorizedUserInfo)
+        .put('/:code/start', this.startPoll)
+        .post('', this.create)
+        .delete('/:id', this.delete)
+    }
+    async startPoll(req, res, next) {
+        try {
+            let room = await roomsService.startPoll(req.params.code)
+            socketService.messageRoom(room.code, "startPoll", room.code)
+            return res.send("lets go")  
+        } catch (error) {
+            next(error)
+        }
+        
+        // @ts-ignore
+        
+        
+    }   
+    // @ts-ignore
+    async addName(req, res, next) {
+        try {
+            let data = await roomsService.addName(req.body, req.params.id)
+            // @ts-ignore
+            socketService.messageRoom(data.code, "updateRoom", data)
+            return res.send("added name")
+        } catch (error) {
+            next(error)
+        }
     }
 
 
+    // @ts-ignore
     async getAll(req, res, next) {
         try {
             let data = await roomsService.getAll()
+            
             return res.send(data)
         }
-        catch (err) { next(err) }
+        catch (err) {  }
     }
 
-    async getById(req, res, next) {
+    async getByCode(req, res, next) {
         try {
-            let data = await roomsService.getById(req.params.id)
+            let data = await roomsService.getByCode(req.params.code)
+            return res.send(data)
+        } catch (error) { next(error) }
+    }
+
+    async getRoomGames(req, res, next) {
+        try {
+            let data = await roomsService.getRoomGames(req.params.code)
+            return res.send(data)
+        } catch (error) { next(error) }
+    }
+
+    async getRoomResponses(req, res, next) {
+        try {
+            let data = await roomsService.getRoomResponses(req.params.id)
             return res.send(data)
         } catch (error) { next(error) }
     }
 
     async create(req, res, next) {
         try {
-            req.body.creatorEmail = req.userInfo.email
+            req.body.code = codeGenerator.generateCode()
             let data = await roomsService.create(req.body)
             return res.status(201).send(data)
         } catch (error) { next(error) }
@@ -45,6 +94,8 @@ export class RoomsController extends BaseController {
     async edit(req, res, next) {
         try {
             let data = await roomsService.edit(req.params.id, req.body)
+            // @ts-ignore
+            socketService.messageRoom(data.code, "updateRoom", data)
             return res.send(data)
         } catch (error) { next(error) }
     }

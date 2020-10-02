@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import router from "../router";
 import { api } from "./AxiosService"
+import {socketService} from "./socketService"
 
 Vue.use(Vuex);
 
@@ -9,11 +10,35 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    profile: {}
+    profile: {},
+    room:{},
+    myRooms: [],
+    games: [],
+    activeGame: {},
+    name: ""
   },
   mutations: {
     setProfile(state, profile) {
       state.profile = profile;
+    },
+    setRoom(state, room) {
+      state.room = room;
+    },
+    setMyRooms(state, rooms){
+      state.myRooms = rooms
+    },
+    setGames(state, games){
+      state.games = games
+    },
+    setActiveGame(state, game){
+      state.activeGame = game
+    },
+    addGame(state, game){
+      state.games.push(game)
+      state.games = state.games
+    },
+    setMyName(state, name){
+      state.name = name
     }
   },
   actions: {
@@ -23,13 +48,157 @@ export default new Vuex.Store({
     resetBearer() {
       api.defaults.headers.authorization = "";
     },
+    // Profile Section
     async getProfile({ commit }) {
-      try {
+      try{
         let res = await api.get("profile");
         commit("setProfile", res.data);
+      }catch (error) {
+        console.error(error);
+      }
+    },
+    async editProfile({commit}, data){
+      try{
+        let res = await api.put("profile/"+data.id, data)
+        commit("setProfile", res.data)
+      }catch (err) {
+        console.error(err);
+      }
+    },
+    //Rooms Section
+    async getRoomByCode({commit}, code){
+      let res = await api.get(`rooms/${code}`)
+      commit("setRoom", res.data)
+    },
+    async getRooms({commit}, email){
+      try{
+        let res = await api.get(`profile/${email}/rooms`)
+        commit("setMyRooms", res.data)
+      } catch(error) {
+        console.error(error);
+      }
+    },
+    async editRoom({commit}, data){
+      try{
+        let res = await api.put("rooms"+data.id, data)
+        commit("setRoom", res.data)
+      } catch(err) {
+        console.error(err);
+      }
+    },
+    async deleteRoom({}, id){
+      try{
+        await api.delete(`rooms/${id}`)
+      } catch(error) {
+        console.error(error);
+      }
+    },
+    async createRoom({commit, state}, data){
+      try{ if(this.state.profile.email){ data.creatorEmail = this.state.profile.email}
+      let res = await api.post("rooms", data)
+      commit("setRoom", res.data)
+      console.log(res)
+      router.push({ name: "Room", params:{code:res.data.code} })
+      } catch(error) {
+        console.error(error);
+      }
+    },
+    async addName({commit}, payload){
+      try {
+        
+        if(this.state.room.names.includes(payload.addName) || payload.addName == ""){
+          return
+        }
+        else{
+          await api.put(`rooms/${this.state.room.id}/names`, {addName:payload.addName})
+        }
+      } catch (error) {
+        
+      }
+    },
+    async startPoll({}, code){
+      try {
+        api.put(`rooms/${code}/start`)
+      } catch (error) {
+        
+      }
+    },
+    async getGamebyID({commit}, id){
+      try{
+        let res = await api.get(`games/${id}`)
+        commit("setActiveGame", res.data)
+      }catch(error) {
+        console.error(error);
+      }
+    },
+    async getGames({commit, state}, code ){
+      try{
+        let res = await api.get(`rooms/${code}/games`)
+        commit("setGames", res.data)
+      } catch(error) {
+        console.error(error);
+      }
+    },
+    async editGame({commit}, data){
+      try{
+        let res = await api.put("games"+data.id, data)
+        commit("editGame", res.data)
+      } catch(err) {
+        console.error(err);
+      }
+    },
+    async deleteGame({}, id){
+      try{
+        await api.delete(`games/${id}`)
+      } catch(error) {
+        console.error(error);
+      }
+    },
+    async createGame({commit}, data){
+      try{
+      let res = await api.post("games", data)
+      commit("addGame", res.data)
+      } catch(error) {
+        console.error(error);
+      }
+    },
+    async respond({}, data){
+      try {
+        await api.post("responses", data)
       } catch (error) {
         console.error(error);
       }
+    },
+    async upGame({commit, state}, data){
+      try {
+        
+        await api.put(`games/${data.id}/upvote`, {code: data.code})
+      } catch (error) {
+      console.error(error);
+      }
+    },
+    async downGame({commit, state}, data, code){
+      try { 
+        await api.put(`games/${data.id}/downvote`, code)
+      } catch (error) {
+      console.error(error);
+      }
+    },
+    setMyName({commit}, name){
+      commit("setMyName", name)
+    },
+    async startVote({commit, state, dispatch}, code){
+      try {
+        let res = await api.get(`rooms/${code}/games`)
+        commit("setGames", res.data)
+        commit("setActiveGame", res.data[0])
+      } catch (error) {
+        console.error(error);
+        
+      }
     }
+  },
+  modules:{
+    socketService
   }
 });

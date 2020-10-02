@@ -5,11 +5,15 @@ let ObjectId = Schema.Types.ObjectId
 
 const Room = new Schema({
     name: { type: String, required: true },
-    startTime: { type: Date },
-    runTime: { type: Number },
+    // startTime: { type: Date },
+    // runTime: { type: Number },
     options: { type: Object },
-    items: { type: Array },
-    owner: { type: ObjectId },
+    items: [{ type: Object }],
+    creatorEmail: { type: String },
+    names: [{type: String}],
+    code: { type: String, required: true },
+    expired: { type: Boolean, default: false },
+    started: { type: Boolean, default: false }
 }, { timestamps: true, toJSON: { virtuals: true } })
 
 Room.virtual("creator",

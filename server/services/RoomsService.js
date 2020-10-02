@@ -1,14 +1,43 @@
 import { dbContext } from "../db/DbContext"
 import { BadRequest } from "../utils/Errors"
 
-
 class RoomsService {
+    async startPoll(code) {
+    let room = await dbContext.Rooms.findOne({ code: code })
+    let reqScore = Math.floor(room.names.length *.75)
+    await dbContext.Games.updateMany({roomId: room._id}, {reqScore: reqScore})
+    return await dbContext.Rooms.findOneAndUpdate({code: code}, {started:true}, {new: true})
+    }
+    async addName(data, id) {
+        if(data.addName == null){
+            throw new BadRequest("Please Enter a Name")
+        }
+        await dbContext.Rooms.findOneAndUpdate({_id: id}, {$push:{"names": data.addName}})
+        return await dbContext.Rooms.findOne({ _id: id })
+    }
     async getAll() {
         return await dbContext.Rooms.find({}).populate("creator", "name picture")
     }
 
-    async getById(id) {
-        let data = await dbContext.Rooms.findOne({ _id: id })
+    async getByCode(code) {
+        let data = await dbContext.Rooms.findOne({ code: code })
+        if (!data) {
+            throw new BadRequest("Invalid ID")
+        }
+        return data
+    }
+
+    async getRoomGames(code) {
+        let room = await dbContext.Rooms.findOne({code: code})
+        let data = await dbContext.Games.find({ roomId: room._id })
+        if (!data) {
+            throw new BadRequest("Invalid ID")
+        }
+        return data
+    }
+
+    async getRoomResponses(id) {
+        let data = await dbContext.Responses.find({ roomId: id })
         if (!data) {
             throw new BadRequest("Invalid ID")
         }
@@ -20,7 +49,7 @@ class RoomsService {
         return data
     }
 
-    async edit(id, userEmail, update) {
+    async edit(id, update) {
         let data = await dbContext.Rooms.findOneAndUpdate({ _id: id }, update, { new: true })
         if (!data) {
             throw new BadRequest("Invalid ID");
