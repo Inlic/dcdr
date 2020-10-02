@@ -170,8 +170,8 @@ export default new Vuex.Store({
       }
     },
     async upGame({commit, state}, data, code){
-      try { 
-        await api.put(`games/${data.id}/upvote`, code)
+      try {
+        await api.put(`games/${data.id}/upvote`, {code: code})
       } catch (error) {
       console.error(error);
       }

@@ -28,14 +28,15 @@ export class RoomsController extends BaseController {
     }
     async startPoll(req, res, next) {
         try {
-            let room = await roomsService.startPoll(req.params.code)  
+            let room = await roomsService.startPoll(req.params.code)
+            socketService.messageRoom(room.code, "startPoll", room.code)
             return res.send("lets go")  
         } catch (error) {
             next(error)
         }
         
         // @ts-ignore
-        // socketService.messageRoom(room.code, "startPoll", room.code)
+        
         
     }   
     // @ts-ignore
