@@ -20,6 +20,9 @@ export const socketService = {
       socket.on("startPoll", data =>{
         router.push({ name: 'Vote', params: { code: data } })
       } )
+      socket.on("poll ended", data =>{
+        router.push({name:'Results', params: {code:data}})
+      })
     },
     joinRoom({ commit, dispatch }, roomName) {
     

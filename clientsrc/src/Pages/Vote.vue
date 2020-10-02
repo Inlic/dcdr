@@ -55,7 +55,7 @@ export default {
   methods:{
     voteUp(){
       if(!this.activeGame.id){this.$store.dispatch("getGamebyID", this.games[this.index].id)}
-      this.$store.dispatch("upGame", this.activeGame, this.$route.params.code)
+      this.$store.dispatch("upGame", {id:this.activeGame.id, code:this.$route.params.code})
       this.getNext()
     },
     voteDown(){
