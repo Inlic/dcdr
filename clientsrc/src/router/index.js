@@ -12,6 +12,7 @@ import Results from "../Pages/Results.vue";
 import Vote from "../Pages/Vote.vue";
 // @ts-ignore
 import Rooms from "../Pages/Rooms.vue";
+import WaitResults from "../Pages/WaitResults.vue"
 import { authGuard } from "@bcwdev/auth0-vue";
 
 Vue.use(VueRouter);
@@ -46,7 +47,7 @@ const routes = [
   {
     path: "/room/:code/waitresults",
     name: "WaitResults",
-    component: Results
+    component: WaitResults
   },
   {
     path: "/room/:code/vote",
