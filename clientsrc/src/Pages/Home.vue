@@ -2,7 +2,7 @@
   <div class="background container-fluid">
     <div class="row mt-5">
       <div class="col-8">
-          <img class="card-img img-card-md-two" src="@/assets/neontogether.jpg" alt="Card image" style="height: 60vh;">
+          <img class="card-img img-card-md-one" src="@/assets/neontogether.jpg" alt="Card image" style="height: 60vh;">
       </div>
       <div class="col-4">
         <div class="card text-center border-0" style="height: 60vh">
@@ -24,12 +24,12 @@
               <h3>Persistent Polls</h3>
             </div>
             <div class="card-body bg-dark neon blue">
-            <p style="font-size: 2.5em">Love the games you voted on last time, but want to create another poll?  No problem your prior polls are saved to your account.</p>
+            <p>Love the games you voted on last time, but want to create another poll?  No problem your prior polls are saved to your account.</p>
             </div>
           </div>
         </div>
       <div class="col-7">
-        <img class="card-img img-card-md-one" src="@/assets/gameon.jpg" alt="Card image" style="height: 60vh;">
+        <img class="card-img img-card-md-two" src="@/assets/gameon.jpg" alt="Card image" style="height: 60vh;">
       </div>   
     </div>
     <div class="divider"></div>
