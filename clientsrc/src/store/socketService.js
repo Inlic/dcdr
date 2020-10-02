@@ -2,11 +2,14 @@ import io from "socket.io-client"
 import router from "../router";
 
 let socket = {};
+let baseUrl = location.host.includes("localhost")
+  ? "http://localhost:3000/"
+  : "/";
 
 export const socketService = {
   actions: {
     initializeSocket({ commit, dispatch, state }) {
-      socket = io("//localhost:3000");
+      socket = io(baseUrl);
       socket.on("CONNECTED", data => {
         console.log(data.message + " sockets on")
       })
