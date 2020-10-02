@@ -1,4 +1,5 @@
 import io from "socket.io-client"
+import router from "../router";
 
 let socket = {};
 
@@ -16,6 +17,9 @@ export const socketService = {
       })
       socket.on("joined room", data => console.log(data))
       socket.on("new user", data => console.log(data))
+      socket.on("startPoll", data =>{
+        router.push({ name: 'Vote', params: { code: data } })
+      } )
     },
     joinRoom({ commit, dispatch }, roomName) {
     

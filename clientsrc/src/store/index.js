@@ -116,6 +116,13 @@ export default new Vuex.Store({
         
       }
     },
+    async startPoll({}, code){
+      try {
+        api.put(`rooms/${code}/start`)
+      } catch (error) {
+        
+      }
+    },
     async getGamebyID({commit}, id){
       try{
         let res = await api.get(`games/${id}`)

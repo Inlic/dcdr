@@ -1,9 +1,12 @@
+// @ts-ignore
 import express from 'express'
 import BaseController from "../utils/BaseController";
+// @ts-ignore
 import auth0provider from "@bcwdev/auth0provider";
 import { roomsService } from '../services/RoomsService'
 import { codeGenerator } from "../utils/CodeGenerator"
 import socketService from "../services/SocketService";
+import { gamesService } from "../services/GamesService";
 
 
 
@@ -19,12 +22,20 @@ export class RoomsController extends BaseController {
         .put('/:id', this.edit)
         .put('/:id/names', this.addName)
         .use(auth0provider.getAuthorizedUserInfo)
+        .put('/:code/start', this.startPoll)
         .post('', this.create)
         .delete('/:id', this.delete)
     }
+    async startPoll(req, res, next) {
+        let room = await roomsService.startPoll(req.params.code)
+        // @ts-ignore
+        socketService.messageRoom(room.code, "startPoll", room.code)
+    }
+    // @ts-ignore
     async addName(req, res, next) {
         try {
             let data = await roomsService.addName(req.body, req.params.id)
+            // @ts-ignore
             socketService.messageRoom(data.code, "updateRoom", data)
             return 
         } catch (error) {
@@ -33,6 +44,7 @@ export class RoomsController extends BaseController {
     }
 
 
+    // @ts-ignore
     async getAll(req, res, next) {
         try {
             let data = await roomsService.getAll()
@@ -74,6 +86,7 @@ export class RoomsController extends BaseController {
     async edit(req, res, next) {
         try {
             let data = await roomsService.edit(req.params.id, req.body)
+            // @ts-ignore
             socketService.messageRoom(data.code, "updateRoom", data)
             return res.send(data)
         } catch (error) { next(error) }

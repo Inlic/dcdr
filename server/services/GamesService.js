@@ -3,8 +3,8 @@ import { BadRequest } from "../utils/Errors"
 
 
 class GamesService {
-    async update(id, data, pram) {
-        let res= await dbContext.Games.findOneAndUpdate({_id : id}, data, pram)
+    async update(id, data) {
+        let res= await dbContext.Games.findOneAndUpdate({_id : id}, data, {new: true})
         return res
     }
     async getAll() {
