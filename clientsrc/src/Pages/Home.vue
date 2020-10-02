@@ -3,11 +3,11 @@
     <div style="height: 10vh"></div>
     <div class="row">
       <div class="col-8">
-          <img class="card-img" src="@/assets/neontogether.jpg" alt="Card image" style="height: 60vh; border-radius: 10px; filter: contrast(135%);">
+          <img class="card-img img-card-md-two" src="@/assets/neontogether.jpg" alt="Card image" style="height: 60vh;">
       </div>
       <div class="col-4">
         <div class="card text-center border-0" style="height: 60vh">
-          <div class="card-header bg-dark flashy neon red" style="font-size: 2em">
+          <div class="card-header bg-dark flashy neon red">
             Level Up Your Gaming Experience
           </div>
           <div class="card-body bg-dark">
@@ -16,11 +16,11 @@
         </div>
       </div>
     </div>
-    <div style="height: 10vh"></div>
+    <div class="divider"></div>
     <div class="row">
       <div class="col-5">
         <div class="card text-center border-0" style="height: 60vh">
-            <div class="card-header bg-dark flashy neon red" style="font-size: 2em">
+            <div class="card-header bg-dark flashy neon red">
               Persistent Polls
             </div>
             <div class="card-body bg-dark neon blue">
@@ -29,10 +29,10 @@
           </div>
       </div>
       <div class="col-7">
-        <img class="card-img" src="@/assets/gameon.jpg" alt="Card image" style="height: 60vh; filter: brightness(75%); filter: contrast(150%)">
+        <img class="card-img img-card-md-one" src="@/assets/gameon.jpg" alt="Card image" style="height: 60vh;">
       </div>   
     </div>
-    <div style="height: 10vh"></div>
+    <div class="divider"></div>
     <div class="row">
       <div class="col-3">
         <img class="img-fluid img-card-sm" src="@/assets/neondesktop.jpg" style="height: 60vh; width: 100%;">
@@ -47,7 +47,7 @@
         <img class="img-fluid img-card-sm" src="@/assets/vrdude.jpg" style="height: 60vh; width: 100%;">
       </div>
     </div>
-    <div style="height: 10vh"></div>
+    <div class="divider"></div>
   </div>
 </template>
 
