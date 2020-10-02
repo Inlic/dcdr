@@ -2,15 +2,12 @@ import { dbContext } from "../db/DbContext"
 import { BadRequest } from "../utils/Errors"
 
 class RoomsService {
-    // async startPoll(code) {
-    // this.getByCode(code)
-    //     .then(async function(room){
-    //         let reqScore = Math.floor(room.names.length() *.75)
-    //         await dbContext.Games.updateMany({roomId: room._id}, {reqScore: reqScore})
-            
-    //     })
-    //     return await dbContext.Rooms.findOneAndUpdate({code: code}, {started:true}, {new: true})
-    // }
+    async startPoll(code) {
+    let room = await dbContext.Rooms.findOne({ code: code })
+    let reqScore = Math.floor(room.names.length *.75)
+    await dbContext.Games.updateMany({roomId: room._id}, {reqScore: reqScore})
+    return await dbContext.Rooms.findOneAndUpdate({code: code}, {started:true}, {new: true})
+    }
     async addName(data, id) {
         if(data.addName == null){
             throw new BadRequest("Please Enter a Name")
@@ -32,7 +29,7 @@ class RoomsService {
 
     async getRoomGames(code) {
         let room = await dbContext.Rooms.findOne({code: code})
-        let data = await dbContext.Games.find({ roomId: room.id })
+        let data = await dbContext.Games.find({ roomId: room._id })
         if (!data) {
             throw new BadRequest("Invalid ID")
         }

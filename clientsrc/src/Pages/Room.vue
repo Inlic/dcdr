@@ -67,9 +67,9 @@
         this.newGame = {}
       },
       startPoll() {
-        // this.$store.dispatch("startPoll", this.room.code)
-        this.$store.dispatch("getGames", this.room.id)
-        this.$router.push({ name: 'Vote', params: { code: this.room.code } })
+        this.$store.dispatch("startPoll", this.room.code)
+        this.$store.dispatch("getGames", this.room.code)
+        // this.$router.push({ name: 'Vote', params: { code: this.room.code } })
       },
       async checkName(){
         
