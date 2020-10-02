@@ -28,11 +28,10 @@
             </div>
           </div>
         </div>
-      </div>
       <div class="col-7">
         <img class="card-img img-card-md-one" src="@/assets/gameon.jpg" alt="Card image" style="height: 60vh;">
       </div>   
-    </div>
+      </div>
     <div class="divider"></div>
     <div class="row">
       <div class="col-3">
