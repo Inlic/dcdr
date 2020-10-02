@@ -1,32 +1,41 @@
 <template>
   <div class="container-fluid background">
+    <div style="height: 2.5vh"></div>
     <div v-if="!room">
       <loading-component></loading-component>
     </div>
     <div v-else class="row">
       <div class="offset-3 col-6">
-      <div class="card bg-dark text-center">
-        <h1 class="flashy neon red">{{room.name}}</h1>
-        <h4 class="flasy neon green">{{room.code}}</h4>
-        <form @submit.prevent="createGame" class="justify-content-center">
-          <input type="text" placeholder="name" required v-model="newGame.name" class="col-10 m-1" />
-          <input type="Url" placeholder="image" v-model="newGame.imgUrl" class="col-10 m-1" />
-          <button type="submit" class="btn btn-outline-light m-1">Add a game</button>
-        </form>
-        <button type="button" @click="this.startPoll" class="btn btn-dark btn-outline-light m-1 flashy neon red"> Go! </button>
-        <ul>
-          <li v-for="name in room.names" :key="name">{{name}}</li>
-        </ul>
+        <div class="card bg-dark text-center">
+          <h1 class="flashy neon red my-3">{{room.name}}</h1>
+          <h4 class="flasy neon green">Room Code: {{room.code}}</h4>
+          <form @submit.prevent="createGame" class="justify-content-center">
+            <input type="text" placeholder="Game name..." required v-model="newGame.name" class="col-10 m-1" />
+            <input type="Url" placeholder="Image url..." v-model="newGame.imgUrl" class="col-10 m-1" />
+            <button type="submit" class="btn btn-primary flashy neon blue m-1">Add a game</button>
+          </form>
+          <button type="button" @click="this.startPoll" class="btn btn-primary m-2 flashy neon blue"> Go! </button>
+          <div>
+            <h3 class="flashy neon red my-2">Participants</h3>
+          </div>
+          <ul>
+            <li class="flashy neon purple" v-for="name in room.names" :key="name">{{name}}</li>
+          </ul>
+        </div>
       </div>
     </div>
-    </div>
+    <div style="height: 5vh"></div>
+    <div class="row">
+      <game-component class="col-2" v-for="game in games" :key="game.id" :gameData="game"/>  
+    </div> 
   </div>
 
 </template>
 
 <script>
   import as from '../store/alertsService'
-  import loadingComponent from "../components/loadingComponent.vue"
+  import loadingComponent from "../components/loadingComponent"
+  import gameComponent from "../components/GameComponent"
   export default {
     name: "Room",
     data() {
@@ -77,11 +86,15 @@
     },
     
     components: {
-      loadingComponent
+      loadingComponent,
+      gameComponent
     }
   }
 </script>
 
 <style>
+ul{
+  list-style: none;
+}
 
 </style>

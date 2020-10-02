@@ -1,21 +1,22 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid background">
+    <div style="height: 2.5vh"></div>
     <div class="row justify-content-around text-center">
       <div class="col-1 align-self-center">
-        <button type="button" @click="voteUp" class="btn btn-outline-primary">
+        <button type="button" @click="voteUp" class="btn btn-primary flashy neon blue">
         <i class="far fa-thumbs-up "></i>
         </button>
       </div>
       <div class="col-8">
-        <game-component :gameData="this.activeGame" />
+        <game-component style="height: 40vh" :gameData="this.activeGame" />
       </div>
       <div class="col-1 align-self-center">
-        <button @click="voteDown" type="button" class="btn btn-outline-primary">
+        <button @click="voteDown" type="button" class="btn btn-primary flashy neon blue">
         <i class="far fa-thumbs-down"></i>
         </button>
       </div>
       <div class="col-4 justify-content-center my-2">
-        <button type="button" class="btn btn-danger">
+        <button type="button" class="btn btn-warning flashy neon purple">
           <i class="fas fa-times-circle"></i>
         </button>
       </div>

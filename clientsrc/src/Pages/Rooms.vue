@@ -2,46 +2,39 @@
   <div class="container-fluid background">
     <div class="row">
       <div class="offset-2 col-8">
-        <div class="jumbotron mt-5">
-          <h1 class="display-4">Hello, world!</h1>
-          <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
-            featured content or information.</p>
+        <div class="jumbotron mt-5 bg-dark">
+          <h1 class="display-4 flashy neon red">Create a Poll</h1>
+          <p class="lead neon blue">Use this page to create a poll so you and your friends can get gaming quicker.</p>
           <hr>
-          <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+          <p class="neon blue">Check out the poll options down below.</p>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="offset-1 col-10">
-        <div class="card text-center my-5">
-          <div class="card-header">
+        <div class="card text-center my-5 bg-dark">
+          <div class="card-header flashy neon red">
             Create a New Poll
           </div>
           <div class="card-body">
-            <h5 class="card-title">Create Room</h5>
+            <h5 class="card-title flashy neon red">Create Room</h5>
             <form @submit.prevent="addRoom" class="row justify-content-center">
-              <input type="text" placeholder="name" v-model="newRoom.name" required class="col-10 m-1" />
-              <button type="submit" class="btn btn-success"> Go! </button>
+              <input type="text" placeholder="New room name..." v-model="newRoom.name" required class="col-10 m-1 neon blue" />
+              <button type="submit" class="btn btn-primary flashy neon blue"> Go! </button>
             </form>
-          </div>
-          <div class="card-footer text-muted">
-            2 days ago
           </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="offset-1 col-10">
-        <div class="card text-center my-5">
-          <div class="card-header">
+        <div class="card text-center my-5 bg-dark">
+          <div class="card-header flashy neon red">
             My Previous Polls
           </div>
           <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          </div>
-          <div class="card-footer text-muted">
-            2 days ago
+            <h5 class="card-title neon blue">Prior Profile Polls would go here.</h5>
+            <p class="card-text neon blue">Supporting text may or may not get removed.</p>
           </div>
         </div>
       </div>
@@ -54,7 +47,7 @@
     name: "Rooms",
     data() {
       return {
-        newRoom: { name: "potato" }
+        newRoom: { name: "" }
       }
     },
     computed: {
