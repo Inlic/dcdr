@@ -14,7 +14,8 @@
             <input type="Url" placeholder="Image url..." v-model="newGame.imgUrl" class="col-10 m-1" />
             <button type="submit" class="btn btn-primary flashy neon blue m-1">Add a game</button>
           </form>
-          <button v-if="!room.started" type="button" @click="this.startPoll" class="btn btn-primary m-2 flashy neon blue"> Go! </button>
+          <button v-if="!room.started" type="button" @click="this.startPoll"
+            class="btn btn-primary m-2 flashy neon blue"> Go! </button>
           <div>
             <h3 class="flashy neon red my-2">Participants</h3>
           </div>
@@ -25,7 +26,7 @@
       </div>
     </div>
     <div class="divider-small"></div>
-    <div class="row">
+    <div class="row justify-content-center justify-content-md-start">
       <game-component class="col-11 col-md-2" v-for="game in games" :key="game.id" :gameData="game" />
     </div>
   </div>
