@@ -65,6 +65,7 @@
     methods: {
       createGame() {
         this.newGame.roomId = this.room.id
+        this.newGame.code= this.$route.params.code
         this.$store.dispatch("createGame", this.newGame)
         this.newGame = {}
       },

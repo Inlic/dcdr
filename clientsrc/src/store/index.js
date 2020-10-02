@@ -160,7 +160,7 @@ export default new Vuex.Store({
     async createGame({commit}, data){
       try{
       let res = await api.post("games", data)
-      commit("addGame", res.data)
+      // commit("addGame", res.data)
       } catch(error) {
         console.error(error);
       }

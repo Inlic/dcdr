@@ -26,6 +26,9 @@ export const socketService = {
       socket.on("poll ended", data =>{
         router.push({name:'Results', params: {code:data}})
       })
+      socket.on("new game", data =>{
+        commit("addGame", data)
+      })
     },
     joinRoom({ commit, dispatch }, roomName) {
     

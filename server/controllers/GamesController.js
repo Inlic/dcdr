@@ -48,6 +48,7 @@ export class GamesController extends BaseController {
     async create(req, res, next) {
         try {
             let data = await gamesService.create(req.body)
+            socketService.messageRoom(req.body.code, "new game", data)
             return res.status(201).send(data)
         } catch (error) { next(error) }
     }
