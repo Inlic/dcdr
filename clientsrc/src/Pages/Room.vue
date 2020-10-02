@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid background">
-    <div style="height: 2.5vh"></div>
+    <div class="divider-tiny"></div>
     <div v-if="!room">
       <loading-component></loading-component>
     </div>
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div style="height: 5vh"></div>
+    <div class="divider-small"></div>
     <div class="row">
       <game-component class="col-2" v-for="game in games" :key="game.id" :gameData="game"/>  
     </div> 

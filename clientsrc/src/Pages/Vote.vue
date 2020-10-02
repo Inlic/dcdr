@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid background">
-    <div style="height: 2.5vh"></div>
-    <div class="row justify-content-around text-center">
+    <div class="divider-tiny"></div>
+    <div class="row d-flex justify-content-around text-center">
       <div class="col-1 align-self-center">
         <button type="button" @click="voteUp" class="btn btn-primary flashy neon blue">
         <i class="far fa-thumbs-up "></i>
@@ -15,7 +15,9 @@
         <i class="far fa-thumbs-down"></i>
         </button>
       </div>
-      <div class="col-4 justify-content-center my-2">
+    </div>
+    <div class="row text-center fixed-bottom my-3">
+      <div class="offset-4 col-4">
         <button type="button" class="btn btn-warning flashy neon purple">
           <i class="fas fa-times-circle"></i>
         </button>

@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid background">
-    <div style="height: 10vh"></div>
+    <div class="divider"></div>
     <div class="row">
       <div class="col-4">
           <div class="card border-0" style="height: 70vh">
@@ -12,13 +12,13 @@
               <i class="fas fa-pen-alt" aria-hidden="true" @click="toggleEdit"></i>
               <form v-if="editing" class="form-inline" @submit="finishEdit">
                 <div class="form-group">
-                  <label>New Profile Name:</label>
-                  <input type="text" v-model="eProfile.name" class="form-control ml-1" placeholder="New Name">
+                  <label class="neon blue">New Profile Name:</label>
+                  <input type="text" v-model="eProfile.name" class="form-control m-3 neon blue" placeholder="New Name">
                 </div>
                 <div class="form-group">
-                  <label>New Profile Picture:</label>
-                  <input type="text" v-model="eProfile.picture" class="form-control ml-1" placeholder="New Picture URL">
-                  <button class="btn btn-primary mx-2" type="submit">Submit</button>
+                  <label class="neon blue">New Profile Picture:</label>
+                  <input type="text" v-model="eProfile.picture" class="form-control m-1 neon blue" placeholder="New Picture URL">
+                  <button class="btn btn-primary mx-2 flashy neon blue" type="submit">Submit</button>
                 </div>
               </form>
             </div>
@@ -26,7 +26,7 @@
       </div>
       <div class="col-8">
         <div class="card bg-dark text-light">
-          <img class="card-img" src="@/assets/gameon.jpg" alt="Card image" style="height: 70vh;  filter: brightness(75%); filter: contrast(150%); filter: opacity(25%);">
+          <img class="card-img profile-img-overlay" src="@/assets/gameon.jpg" alt="Card image" style="height: 70vh;">
           <div class="card-img-overlay">
             <h5 class="card-title flashy neon red">My Channel</h5>
             <p class="card-text neon blue">This is where I could potentially invite people to hang out and run polls.  Also where I would receive messages or feeds if I was subscribed to those things.</p>
@@ -47,7 +47,7 @@
         </ul>
       </div>
     </div>
-    <div style="height: 10vh"></div>
+    <div class="divider"></div>
   </div>
 </template>
 
