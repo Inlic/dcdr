@@ -21,8 +21,8 @@
       </div>
     </div>
     <div style="height: 5vh"></div>
-    <div class="row">
-        <game-component class="col-12 text-center" v-for="game in games" :key="game.id" :gameData="game"/>
+    <div class="row justify-content-center">
+        <game-component class="col-10 text-center p-3" v-for="game in games" :key="game.id" :gameData="game"/>
     </div>
     <div style="height: 10vh"></div>
   </div>
