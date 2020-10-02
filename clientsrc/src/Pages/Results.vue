@@ -11,7 +11,7 @@
     <div style="height: 2vh"></div>
     <div class="row">
       <div class="offset-4 col-4 text-center">
-          <img src="https://images-na.ssl-images-amazon.com/images/I/416zAtw+MML._SX306_BO1,204,203,200_.jpg">
+          <game-component style="height: 40vh" :gameData="this.winner" />
       </div>
     </div>
     <div style="height: 5vh"></div>
@@ -22,7 +22,7 @@
     </div>
     <div style="height: 5vh"></div>
     <div class="row">
-        <game-component class="col-4 text-center" v-for="game in games" :key="game.id" :gameData="game"/>
+        <game-component class="col-12 text-center" v-for="game in games" :key="game.id" :gameData="game"/>
     </div>
     <div style="height: 10vh"></div>
   </div>
@@ -34,8 +34,14 @@ export default {
 name:"Results",
 computed: {
   games(){
-    return this.$store.state.games
+    return this.$store.state.games.sort(function(a,b){return b.score-a.score})
+  },
+  winner(){
+    return this.games[0]
   }
+},
+mounted(){
+  this.$store.dispatch("getGames", this.$route.params.code)
 },
 components: {
   gameComponent

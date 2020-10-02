@@ -59,14 +59,14 @@ export class GamesController extends BaseController {
     }
     async upvote(req, res, next) {
         try {
-            let data = await gamesService.update(req.params.id, {$inc:{upvotes: 1, score: 1 }})
+            let data = await gamesService.update(req.params.id, {$inc:{upvotes: 1, score: 1 }}, {new: true})
             return res.send(data)
         } catch (error) { next(error) }
     }
 
     async downvote(req, res, next) {
         try {
-            let data = await gamesService.update(req.params.id, {$inc:{downvotes: 1, score: -1}})
+            let data = await gamesService.update(req.params.id, {$inc:{downvotes: 1, score: -1}}, {new: true})
             return res.send(data)
         } catch (error) { next(error) }
     }
