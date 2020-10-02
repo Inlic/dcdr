@@ -78,20 +78,44 @@ flex-direction: column;
   filter: contrast(110%)
 }
 
-.img-card-md-one{
+.img-card-md-two{
   filter: brightness(75%); 
   filter: contrast(150%)
 }
 
-.img-card-md-two{
+.img-card-md-one{
   border-radius: 10px; 
   filter: contrast(135%);
 }
 
-.divider{
-  height: 10vh
+.profile-img-overlay{
+  filter: brightness(75%);
+  filter: contrast(150%);
+  filter: opacity(25%);
 }
 
+//Divider Classes
+
+.divider-tiny{
+  height: 2.5vh;
+}
+
+.divider-small{
+  height: 5vh;
+}
+
+.divider{
+  height: 10vh;
+}
+
+//Position Classes
+
+.centered{
+  width: 75%;
+  position: fixed;
+  left: 50%;
+  margin-left: -37.5%;
+}
 
 //Text Neon
 
