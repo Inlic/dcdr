@@ -44,6 +44,11 @@ const routes = [
     component: Results
   },
   {
+    path: "/room/:code/waitresults",
+    name: "WaitResults",
+    component: Results
+  },
+  {
     path: "/room/:code/vote",
     name: "Vote",
     component: Vote
