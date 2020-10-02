@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid background">
-    <div class="row">
-      <div class="offset-2 col-8">
-        <div class="jumbotron mt-5 bg-dark">
+    <div class="row justify-content-center">
+      <div class="col-11 col-md-8">
+        <div class="jumbotron mt-5 bg-dark text-center">
           <h1 class="display-4 flashy neon red">Create a Poll</h1>
           <p class="lead neon blue">Use this page to create a poll so you and your friends can get gaming quicker.</p>
           <hr>
@@ -19,7 +19,8 @@
           <div class="card-body">
             <h5 class="card-title flashy neon red">Create Room</h5>
             <form @submit.prevent="addRoom" class="row justify-content-center">
-              <input type="text" placeholder="New room name..." v-model="newRoom.name" required class="col-10 m-1 neon blue" />
+              <input type="text" placeholder="New room name..." v-model="newRoom.name" required
+                class="col-10 m-1 neon blue" />
               <button type="submit" class="btn btn-primary flashy neon blue"> Go! </button>
             </form>
           </div>
@@ -55,11 +56,11 @@
         return this.$store.state.room
       },
       profile() {
-      return this.$store.state.profile;
-    },
-    name() {
-      return this.$store.state.name;
-    }
+        return this.$store.state.profile;
+      },
+      name() {
+        return this.$store.state.name;
+      }
     },
     methods: {
       addRoom() {
