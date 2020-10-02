@@ -54,12 +54,12 @@ export default {
   },
   methods:{
     voteUp(){
-      if(!this.activeGame.id){this.$store.dispatch("getGamebyID", this.games[this.index].id)}
+      if(!this.activeGame.id){this.$store.dispatch("getGamebyID", this.games[this.index].id, this.$route.params.code)}
       this.$store.dispatch("upGame", this.activeGame)
       this.getNext()
     },
     voteDown(){
-      if(!this.activeGame.id){this.$store.dispatch("getGamebyID", this.games[this.index].id)}
+      if(!this.activeGame.id){this.$store.dispatch("getGamebyID", this.games[this.index].id, this.$route.params.code)}
       this.$store.dispatch("downGame", this.activeGame)
       this.getNext()
     },
@@ -68,7 +68,7 @@ export default {
       if(this.index < this.games.length){
       this.$store.dispatch("getGamebyID", this.games[this.index].id)}
       else{
-        this.$router.push({ name: 'Results', params: { code: this.$route.params.code } })
+        this.$router.push({ name: 'WaitResults', params: { code: this.$route.params.code } })
       }
     }
   }
