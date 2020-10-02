@@ -12,8 +12,8 @@ class RoomsService {
         if(data.addName == null){
             throw new BadRequest("Please Enter a Name")
         }
-        await dbContext.Rooms.findOneAndUpdate({_id: id}, {$push:{"names": data.addName}})
-        return await dbContext.Rooms.findOne({ _id: id })
+        return await dbContext.Rooms.findOneAndUpdate({_id: id}, {$push:{"names": data.addName}}, {new: true})
+        
     }
     async getAll() {
         return await dbContext.Rooms.find({}).populate("creator", "name picture")
