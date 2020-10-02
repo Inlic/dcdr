@@ -2,6 +2,7 @@ import express from 'express'
 import BaseController from "../utils/BaseController";
 import auth0provider from "@bcwdev/auth0provider";
 import { gamesService } from '../services/GamesService'
+import socketService from "../services/SocketService";
 
 
 
@@ -60,6 +61,10 @@ export class GamesController extends BaseController {
     async upvote(req, res, next) {
         try {
             let data = await gamesService.update(req.params.id, {$inc:{upvotes: 1, score: 1 }})
+            console.log(data.score);
+            if(data.score == data.reqScore){
+                socketService.messageRoom(req.body.code,"poll ended")
+            }
             return res.send(data)
         } catch (error) { next(error) }
     }
