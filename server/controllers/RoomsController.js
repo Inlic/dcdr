@@ -27,19 +27,26 @@ export class RoomsController extends BaseController {
         .delete('/:id', this.delete)
     }
     async startPoll(req, res, next) {
-        let room = await roomsService.startPoll(req.params.code)
+        try {
+            let room = await roomsService.startPoll(req.params.code)  
+            return res.send("lets go")  
+        } catch (error) {
+            next(error)
+        }
+        
         // @ts-ignore
-        socketService.messageRoom(room.code, "startPoll", room.code)
-    }
+        // socketService.messageRoom(room.code, "startPoll", room.code)
+        
+    }   
     // @ts-ignore
     async addName(req, res, next) {
         try {
             let data = await roomsService.addName(req.body, req.params.id)
             // @ts-ignore
             socketService.messageRoom(data.code, "updateRoom", data)
-            return 
+            return res.send("added name")
         } catch (error) {
-            console.error(error);
+            next(error)
         }
     }
 
@@ -51,7 +58,7 @@ export class RoomsController extends BaseController {
             
             return res.send(data)
         }
-        catch (err) { next(err) }
+        catch (err) {  }
     }
 
     async getByCode(req, res, next) {
