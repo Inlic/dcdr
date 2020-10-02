@@ -9,13 +9,13 @@
       <div class="d-flex align-items-md-center w-100">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item" :class="{ active: $route.name == 'Home' }">
-            <router-link :to="{ name: 'Home' }" class="nav-link flashy neon blue">Home</router-link>
+            <router-link :to="{ name: 'Home' }" class="nav-link text-light flashy neon blue">Home</router-link>
           </li>
           <li class="nav-item" :class="{ active: $route.name == 'Rooms' }">
-            <router-link :to="{ name: 'Rooms' }" class="nav-link flashy neon blue">Create a Poll</router-link>
+            <router-link :to="{ name: 'Rooms' }" class="nav-link text-light flashy neon blue">Create a Poll</router-link>
           </li>
           <li class="nav-item" v-if="$auth.isAuthenticated" :class="{ active: $route.name == 'Profile' }">
-            <router-link class="nav-link flashy neon blue" :to="{ name: 'Profile' }">Profile</router-link>
+            <router-link class="nav-link text-light flashy neon blue" :to="{ name: 'Profile' }">Profile</router-link>
           </li>
           <li class="nav-item">
             <form class="form-inline ml-3" @submit="setActiveRoom">
