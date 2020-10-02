@@ -27,6 +27,7 @@ export default {
 
 <style lang="scss">
 @import "./assets/_variables.scss";
-@import "bootstrap";
+//@import "bootstrap";
+@import "./assets/_bs4neonglow.css";
 @import "./assets/_overrides.scss";
 </style>
