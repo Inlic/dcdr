@@ -1,16 +1,16 @@
 <template>
   <div class="container-fluid background">
     <div class="divider-tiny"></div>
-    <div class="row d-flex justify-content-around text-center">
-      <div class="col-1 align-self-center">
+    <div class="row text-center">
+      <div class="col-1">
         <button type="button" @click="voteUp" class="btn btn-primary flashy neon blue">
         <i class="far fa-thumbs-up "></i>
         </button>
       </div>
-      <div class="col-8">
-        <game-component style="height: 40vh" :gameData="this.activeGame" />
+      <div class="col-10">
+        <game-component style="height: 80vh;" :gameData="this.activeGame" />
       </div>
-      <div class="col-1 align-self-center">
+      <div class="col-1">
         <button @click="voteDown" type="button" class="btn btn-primary flashy neon blue">
         <i class="far fa-thumbs-down"></i>
         </button>
@@ -18,7 +18,7 @@
     </div>
     <div class="row text-center fixed-bottom my-3">
       <div class="offset-4 col-4">
-        <button type="button" class="btn btn-warning flashy neon purple">
+        <button type="button" class="btn btn-primary flashy neon blue">
           <i class="fas fa-times-circle"></i>
         </button>
       </div>
