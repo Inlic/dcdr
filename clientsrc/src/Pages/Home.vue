@@ -30,22 +30,22 @@
         </div>
       </div>
       <div class="col-7 d-none d-md-block">
-        <img class="card-img img-card-md-one " src="@/assets/gameon.jpg" alt="Card image" style="height: 60vh;">
+        <img class="card-img img-card-md-one " src="@/assets/gameon.jpg" alt="Card image">
       </div>
     </div>
     <div class="divider"></div>
     <div class="row ">
       <div class="col-3 d-none d-md-block">
-        <img class="img-fluid img-card-sm" src="@/assets/neondesktop.jpg" style="height: 60vh; width: 100%;">
+        <img class="img-fluid img-card-sm" src="@/assets/neondesktop.jpg">
       </div>
       <div class="col-3 d-none d-md-block">
-        <img class="img-fluid img-card-sm" src="@/assets/racinggirl.jpg" style="height: 60vh; width: 100%;">
+        <img class="img-fluid img-card-sm" src="@/assets/racinggirl.jpg">
       </div>
       <div class="col-3 d-none d-md-block">
-        <img class="img-fluid img-card-sm" src="@/assets/neoncompguts.jpg" style="height: 60vh; width: 100%;">
+        <img class="img-fluid img-card-sm" src="@/assets/neoncompguts.jpg">
       </div>
       <div class="col-3 d-none d-md-block">
-        <img class="img-fluid img-card-sm" src="@/assets/vrdude.jpg" style="height: 60vh; width: 100%;">
+        <img class="img-fluid img-card-sm" src="@/assets/vrdude.jpg">
       </div>
     </div>
     <div class="divider"></div>
