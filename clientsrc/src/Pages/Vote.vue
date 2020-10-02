@@ -54,13 +54,13 @@ export default {
   },
   methods:{
     voteUp(){
-      if(!this.activeGame.id){this.$store.dispatch("getGamebyID", this.games[this.index].id, this.$route.params.code)}
-      this.$store.dispatch("upGame", this.activeGame)
+      if(!this.activeGame.id){this.$store.dispatch("getGamebyID", this.games[this.index].id)}
+      this.$store.dispatch("upGame", this.activeGame, this.$route.params.code)
       this.getNext()
     },
     voteDown(){
-      if(!this.activeGame.id){this.$store.dispatch("getGamebyID", this.games[this.index].id, this.$route.params.code)}
-      this.$store.dispatch("downGame", this.activeGame)
+      if(!this.activeGame.id){this.$store.dispatch("getGamebyID", this.games[this.index].id)}
+      this.$store.dispatch("downGame", this.activeGame, this.$route.params.code)
       this.getNext()
     },
     getNext(){
