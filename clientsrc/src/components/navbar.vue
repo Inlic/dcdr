@@ -6,7 +6,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <div class="d-flex">
+      <div class="d-flex align-items-md-center w-100">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item" :class="{ active: $route.name == 'Home' }">
             <router-link :to="{ name: 'Home' }" class="nav-link flashy neon blue">Home</router-link>
@@ -27,7 +27,7 @@
             </form>
           </li>
         </ul>
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end align-items-start h-100">
           <span class="navbar-text">
             <button class="btn btn-primary flashy neon blue" @click="login" v-if="!$auth.isAuthenticated">
               Login
