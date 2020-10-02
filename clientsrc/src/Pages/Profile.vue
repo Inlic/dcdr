@@ -8,7 +8,7 @@
             <h5 class="card-title flashy neon red">Welcome: {{ profile.name }}</h5>
             <p class="card-text neon blue">Some quick example text to build on the card title and make up the bulk of
               the card's content.</p>
-            <p class="flashy neon green">{{profile.email}}</p>
+            <p class="neon green">{{profile.email}}</p>
             <i class="fas fa-pen-alt" aria-hidden="true" @click="toggleEdit"></i>
             <form v-if="editing" class="form-inline" @submit="finishEdit">
               <div class="form-group">
