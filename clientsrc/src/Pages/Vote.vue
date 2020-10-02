@@ -51,6 +51,7 @@ export default {
   },
   mounted(){
     this.$store.dispatch("startVote", this.$route.params.code)
+    this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
   },
   methods:{
     voteUp(){

@@ -42,6 +42,7 @@ computed: {
 },
 mounted(){
   this.$store.dispatch("getGames", this.$route.params.code)
+  this.$store.dispatch('leaveRoom', `${this.$route.params.code}`)
 },
 components: {
   gameComponent
