@@ -14,10 +14,9 @@
       <div class="offset-1 col-10">
         <div class="card text-center my-5 bg-dark">
           <div class="card-header flashy neon red">
-            Create a New Poll
+            <h5>Create a New Poll</h5>
           </div>
           <div class="card-body">
-            <h5 class="card-title flashy neon red">Create Room</h5>
             <form @submit.prevent="addRoom" class="row justify-content-center">
               <input type="text" placeholder="New room name..." v-model="newRoom.name" required
                 class="col-10 m-1 neon blue" />
@@ -31,7 +30,7 @@
       <div class="offset-1 col-10">
         <div class="card text-center my-5 bg-dark">
           <div class="card-header flashy neon red">
-            My Previous Polls
+            <h5>My Previous Polls</h5>
           </div>
           <div class="card-body">
             <h5 class="card-title neon blue">Prior Profile Polls would go here.</h5>

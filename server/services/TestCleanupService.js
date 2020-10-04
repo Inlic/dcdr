@@ -13,3 +13,5 @@ class CleanupService {
 
 const cleanupService = new CleanupService();
 export default cleanupService;
+
+//FIXME this service is directly from bug report and should probably be deleted from the code

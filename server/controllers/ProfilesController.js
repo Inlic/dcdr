@@ -24,8 +24,8 @@ export class ProfilesController extends BaseController {
   async getUserRooms(req, res, next) {
     try {
       req.body.creatorId = req.user.sub
-      let profile = await profilesService.getUserRooms(req.body.creatorId);
-      res.send(profile);
+      let rooms = await profilesService.getUserRooms(req.userInfo);
+      res.send(rooms);
     } catch (error) {
       next(error);
     }

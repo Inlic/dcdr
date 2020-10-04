@@ -42,9 +42,8 @@
           My Previous Polls
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item bg-dark neon blue">Cras justo odio</li>
-          <li class="list-group-item bg-dark neon blue">Dapibus ac facilisis in</li>
-          <li class="list-group-item bg-dark neon blue">Vestibulum at eros</li>
+          <li class="list-group-item bg-dark neon blue" v-for="room in myRooms" :key="room.id">{{room.name}}</li>
+          
         </ul>
       </div>
     </div>
@@ -54,9 +53,16 @@
 <script>
   export default {
     name: "Profile",
+    mounted(){
+      console.log("mounted ran")
+      this.$store.dispatch("getRooms", this.profile.id)
+    },
     computed: {
       profile() {
         return this.$store.state.profile;
+      },
+      myRooms(){
+        return this.$store.state.myRooms;
       }
     },
     data() {
