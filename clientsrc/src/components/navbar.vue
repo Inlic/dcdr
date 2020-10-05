@@ -77,8 +77,9 @@
           let res = await as.addName()
           this.$store.dispatch("setMyName", res.value)
         }
-        // this.$store.dispatch("getRoomByCode", this.code);
+        this.$store.dispatch("getRoomByCode", this.code);
         this.$store.dispatch('joinRoom', `${this.code}`)
+        this.$store.dispatch("getGames", this.code)
         this.$router.push({ name: 'Room', params: { code: this.code } })
       },
     }
