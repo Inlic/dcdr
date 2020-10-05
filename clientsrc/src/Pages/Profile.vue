@@ -16,6 +16,10 @@
                 <input type="text" v-model="eProfile.name" class="form-control m-3 neon blue" placeholder="New Name">
               </div>
               <div class="form-group">
+                <label class="neon blue">New Profile Steam Id:</label>
+                <input type="text" v-model="eProfile.steamId" class="form-control m-3 neon blue" placeholder="New Name">
+              </div>
+              <div class="form-group">
                 <label class="neon blue">New Profile Picture:</label>
                 <input type="text" v-model="eProfile.picture" class="form-control m-1 neon blue"
                   placeholder="New Picture URL">
