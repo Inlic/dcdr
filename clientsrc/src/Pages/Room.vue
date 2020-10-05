@@ -16,7 +16,7 @@
           </form>
           <form v-if="!room.started" @submit.prevent="getSteamGames" class="justify-content-center">
             <input type="text" placeholder="Steam ID..." required v-model="steamUser.steamId" class="col-10 m-1" />
-            <button type="submit" class="btn btn-primary flashy neon blue m-1">Add a game</button>
+            <button type="submit" class="btn btn-primary flashy neon blue m-1">Get Steam libary</button>
           </form>
           <button v-if="!room.started" type="button" @click="this.startPoll"
             class="btn btn-primary m-2 flashy neon blue"> Go! </button>
@@ -26,6 +26,9 @@
           <ul>
             <li class="flashy neon purple" v-for="name in room.names" :key="name">{{name}}</li>
           </ul>
+        </div>
+        <div class="row">
+          <steam-game-componet v-for="game in steam" :key="game.appid" :gameData="game"/>
         </div>
       </div>
     </div>
@@ -41,6 +44,7 @@
   import as from '../store/alertsService'
   import loadingComponent from "../components/loadingComponent"
   import gameComponent from "../components/GameComponent"
+  import steamGameComponet from "../components/SteamGameComponet"
   export default {
     name: "Room",
     data() {
@@ -65,6 +69,9 @@
       },
       profile() {
         return this.$store.state.profile;
+      },
+      steam(){
+        return this.$store.state.steam
       }
     },
     methods: {
@@ -81,6 +88,7 @@
       },
       getSteamGames(){
         if(this.steamUser.steamId){
+          console.log("hi");
           this.$store.dispatch("getOwnedGames", this.steamUser.steamId)
         }
       },
@@ -101,7 +109,9 @@
 
     components: {
       loadingComponent,
-      gameComponent
+      gameComponent,
+      steamGameComponet
+
     }
   }
 </script>

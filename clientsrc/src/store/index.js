@@ -209,7 +209,8 @@ export default new Vuex.Store({
     async getOwnedGames({commit, state, dispatch}, steamUser){
       try {
         let res = await api.get(`steam/${steamUser}`)
-        commit("setSteamLibray", res.games)
+        console.log("got", res.data.game_count);
+        commit("setSteamLibray", res.data.games)
       } catch (error) {
         console.error(error);
       }
