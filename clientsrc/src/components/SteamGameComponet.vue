@@ -2,8 +2,8 @@
   <div class="col-12 card my-2 content-shadow pop">
     <div class="row justify-content-between">
       <img :src="this.imgurl" alt="">
-      <h4>{{gameData.name}}</h4>
-      <button type="button" class="btn btn-primary" @click="addGame" >Add to poll</button>
+      <h4 class="align-self-center">{{gameData.name}}</h4>
+      <button type="button" class="btn btn-primary m-1" @click="addGame" >Add to poll</button>
     </div>
   </div>
 </template>
