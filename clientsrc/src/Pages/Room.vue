@@ -17,6 +17,7 @@
           <form v-if="!room.started" @submit.prevent="getSteamGames" class="justify-content-center">
             <input type="text" placeholder="Steam ID..." required v-model="steamUser.steamId" class="col-10 m-1" />
             <button type="submit" class="btn btn-primary flashy neon blue m-1">Get Steam libary</button>
+            <button v-if="profile.steamId" type="button" @click="getUserSteam" class="btn btn-primary flashy neon blue m-1">Get My Steam libary</button>
           </form>
           <button v-if="!room.started" type="button" @click="this.startPoll"
             class="btn btn-primary m-2 flashy neon blue"> Go! </button>
@@ -88,10 +89,12 @@
       },
       getSteamGames(){
         if(this.steamUser.steamId){
-          console.log("hi");
           this.$store.dispatch("getOwnedGames", this.steamUser.steamId)
         }
       },
+        getUserSteam(){
+          this.$store.dispatch("getOwnedGames", this.profile.steamId)
+        },
       async checkName() {
 
         if (this.$auth.isAuthenticated) {
