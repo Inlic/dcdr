@@ -191,6 +191,15 @@ export default new Vuex.Store({
       console.error(error);
       }
     },
+    async vetoGame({commit, state}, data, code){
+      try { 
+        
+        data.veto = true
+        await api.put(`games/${data.id}`, data)
+      } catch (error) {
+      console.error(error);
+      }
+    },
     setMyName({commit}, name){
       commit("setMyName", name)
     },

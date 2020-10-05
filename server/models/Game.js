@@ -10,7 +10,8 @@ const Game = new Schema({
     upvotes: { type: Number, default: 0 },
     downvotes: { type: Number, default: 0 },
     score: {type:Number, default: 0},
-    reqScore: {type:Number, default: 0}
+    reqScore: {type:Number, default: 0},
+    veto: {type: Boolean, default: false}
 }, { timestamps: true, toJSON: { virtuals: true } })
 
 Game.virtual("creator",

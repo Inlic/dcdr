@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid background">
     <div class="divider-tiny"></div>
-    <div v-if="!room" >
+    <div v-if="!room">
       <loading-component></loading-component>
     </div>
     <div v-else class="row justify-content-center">
@@ -59,18 +59,20 @@
       this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
       // this.$store.dispatch('addName', { addName: this.$store.state.name })
       this.$store.dispatch("getGames", this.$route.params.code)
-
     },
     computed: {
       games() {
         return this.$store.state.games
+        console.log("Games updated");
       },
       room() {
         return this.$store.state.room
+        console.log("room updated");
       },
       profile() {
         return this.$store.state.profile;
       },
+      
       steam(){
         return this.$store.state.steam
       }
@@ -78,7 +80,7 @@
     methods: {
       createGame() {
         this.newGame.roomId = this.room.id
-        this.newGame.code= this.$route.params.code
+        this.newGame.code = this.$route.params.code
         this.$store.dispatch("createGame", this.newGame)
         this.newGame = {}
       },
