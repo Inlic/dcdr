@@ -34,11 +34,15 @@
       },
       winner() {
         return this.games[0]
-      },
-      results() {
-        return this.games.slice(1)
       }
-    }
+    },
+    mounted() {
+      this.$store.dispatch("getGames", this.$route.params.code)
+      this.$store.dispatch('leaveRoom', `${this.$route.params.code}`)
+    },
+    components: {
+      gameComponent
+    },
   }
 </script>
 
