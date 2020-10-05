@@ -71,12 +71,10 @@ export default new Vuex.Store({
       commit("setRoom", res.data)
       dispatch("addName")
     },
-    //FIXME function does not currently work, not receiving the correct user info
     async getRooms({commit}){
       try{
         let res = await api.get(`profile/${this.state.profile.id}/rooms`)
         commit("setMyRooms", res.data)
-         //FIXME remove after testing
       } catch(error) {
         console.error(error);
       }

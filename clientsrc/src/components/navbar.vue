@@ -19,7 +19,7 @@
             <router-link class="nav-link text-light flashy neon blue" :to="{ name: 'Profile' }">Profile</router-link>
           </li>
           <li class="nav-item">
-            <form class="form-inline ml-md-3" @submit="setActiveRoom">
+            <form class="form-inline ml-md-3" @submit.prevent="setActiveRoom">
               <div class="form-group">
                 <input type="text" v-model="code" class="form-control neon blue" placeholder="Join Room"
                   aria-describedby="helpId">
