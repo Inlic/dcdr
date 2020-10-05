@@ -27,7 +27,6 @@
 </template>
 
 <script>
-//FIXME restyle vote component when mongo servers are up
 import gameComponent from "../components/GameComponent"
 export default {
   name:"Vote",
