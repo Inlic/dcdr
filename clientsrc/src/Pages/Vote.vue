@@ -94,10 +94,8 @@ export default {
     endSwipe(delta){
       this.startDrag = false;
       if(delta > 0){
-        console.log("vote up"+delta)
         this.voteUp()
       } else{
-        console.log("vote down"+delta)
         this.voteDown()
       }
     },
