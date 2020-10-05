@@ -3,16 +3,16 @@
     <div class="divider-tiny"></div>
     <div class="row text-center">
       <div class="d-none d-lg-block col-1">
-        <button type="button" @click="voteUp" class="mid-page btn btn-primary flashy neon blue">
-        <i class="far fa-thumbs-up "></i>
+        <button @click="voteDown" type="button" class="mid-page btn btn-primary flashy neon blue">
+        <i class="far fa-thumbs-down"></i>
         </button>
       </div>
       <div class="col-12 col-lg-10">
         <game-component style="height: 80vh;" :gameData="this.activeGame" />
       </div>
       <div class="d-none d-lg-block col-1">
-        <button @click="voteDown" type="button" class="mid-page btn btn-primary flashy neon blue">
-        <i class="far fa-thumbs-down"></i>
+        <button type="button" @click="voteUp" class="mid-page btn btn-primary flashy neon blue">
+        <i class="far fa-thumbs-up "></i>
         </button>
       </div>
     </div>
