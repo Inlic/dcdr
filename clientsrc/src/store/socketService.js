@@ -14,26 +14,27 @@ export const socketService = {
         console.log(data.message + " sockets on")
       })
       //registers additional listeners for client side here
-      socket.on("updateRoom", data => { 
-        
+      socket.on("updateRoom", data => {
+
         commit("setRoom", data)
       })
-      socket.on("joined room", data => console.log(data))
-      socket.on("new user", data => console.log(data))
-      socket.on("startPoll", data =>{
+      //testing console logs
+      //socket.on("joined room", data => console.log(data))
+      //socket.on("new user", data => console.log(data))
+      socket.on("startPoll", data => {
         router.push({ name: 'Vote', params: { code: data } })
-      } )
-      socket.on("poll ended", data =>{
-        router.push({name:'Results', params: {code:data}})
       })
-      socket.on("new game", data =>{
+      socket.on("poll ended", data => {
+        router.push({ name: 'Results', params: { code: data } })
+      })
+      socket.on("new game", data => {
         commit("addGame", data)
       })
     },
     joinRoom({ commit, dispatch }, roomName) {
-    
-    socket.emit("dispatch", { action: "JoinRoom", data: roomName })
-     
+
+      socket.emit("dispatch", { action: "JoinRoom", data: roomName })
+
     },
     leaveRoom({ commit, dispatch }, roomName) {
       socket.emit("disconnect", { action: "LeaveRoom", data: roomName })

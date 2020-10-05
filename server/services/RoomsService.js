@@ -4,6 +4,7 @@ import { BadRequest } from "../utils/Errors"
 class RoomsService {
     async startPoll(code) {
         let room = await dbContext.Rooms.findOne({ code: code })
+        //TODO add a variable for consensus, not 0
         let reqScore = Math.floor(room.names.length *.75)
         await dbContext.Games.updateMany({roomId: room._id}, {reqScore: reqScore})
         return await dbContext.Rooms.findOneAndUpdate({code: code}, {started:true}, {new: true})

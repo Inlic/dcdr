@@ -14,12 +14,35 @@
       <div class="offset-1 col-10">
         <div class="card text-center my-5 bg-dark">
           <div class="card-header flashy neon red">
-            <h5>Create a New Poll</h5>
+            <h3>Create a New Room</h3>
           </div>
           <div class="card-body">
-            <form @submit.prevent="addRoom" class="row justify-content-center">
-              <input type="text" placeholder="New room name..." v-model="newRoom.name" required
-                class="col-10 m-1 neon blue" />
+            <form @submit.prevent="addRoom" class="row justify-content-center form-inline">
+              <div class="form-group mx-2">
+              <label class="neon blue mx-2" for="room">Room Name</label>
+              <input type="text" placeholder="New room name..." name="room" v-model="newRoom.name" required
+                class="neon blue form-control" />
+              </div>
+              <div class="form-group">
+              <label class="neon blue mx-2" for="vetos">Allowed User Vetos</label>
+              <select class="neon blue form-control mr-2" placeholder="User vetos" name="vetos" id="vetos" v-model="newRoom.options.uservetos">
+                <option class="neon blue" value="1">1</option>
+                <option class="neon blue" value="2">2</option>
+                <option class="neon blue" value="3">3</option>
+              </select>
+              </div>
+              <div class="form-group">
+                <label class="neon blue" for="formConsensus">Required Consensus: {{newRoom.options.consensus}}%</label>
+                <input type="range" class="form-control-range" min="50" max="100" v-model="newRoom.options.consensus" id="formConsensus">
+              </div>
+              <div class="form-group">
+                <label class="neon blue" for="formQuestionTime">Allowed Vote Time: {{newRoom.options.questionTime}}s</label>
+                <input type="range" class="form-control-range mr-2" min="30" max="60" v-model="newRoom.options.questionTime" id="formQuestionTime">
+              </div>
+              <div class="form-group">
+                <label class="neon blue" for="formPollItems">Allowed Poll Items: {{newRoom.options.pollItems}}</label>
+                <input type="range" class="form-control-range mr-2" min="2" max="12" v-model="newRoom.options.pollItems" id="formPollItems">
+              </div>
               <button type="submit" class="btn btn-primary flashy neon blue"> Go! </button>
             </form>
           </div>
@@ -46,7 +69,10 @@
     name: "Rooms",
     data() {
       return {
-        newRoom: { name: "" }
+        newRoom: { name: "", 
+        options: { consensus: 75,
+                   questionTime: 45,
+                   pollItems: 8 } }
       }
     },
     computed: {
