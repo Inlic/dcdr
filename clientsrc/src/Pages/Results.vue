@@ -38,6 +38,8 @@
       results() {
         return this.games.slice(1)
       }
+    }
+  }
 </script>
 
 <style>
