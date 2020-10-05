@@ -9,7 +9,7 @@
         <div class="card bg-dark text-center">
           <h1 class="flashy neon red my-3">{{room.name}}</h1>
           <h4 class="flasy neon green">Room Code: {{room.code}}</h4>
-          <form v-if="!room.started" @submit.prevent="createGame" class="justify-content-center">
+          <form v-if="!room.started && games.length < room.options.pollItems" @submit.prevent="createGame" class="justify-content-center">
             <input type="text" placeholder="Game name..." required v-model="newGame.name" class="col-10 m-1" />
             <input type="Url" placeholder="Image url..." v-model="newGame.imgUrl" class="col-10 m-1" />
             <button type="submit" class="btn btn-primary flashy neon blue m-1">Add a game</button>

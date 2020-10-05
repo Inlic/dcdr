@@ -35,7 +35,7 @@ export default {
         index: 0,
         xDown: null,
         xCurrent: null,
-        startDrag: false,
+        timeout: null,
       }
     },
   components:{
@@ -46,6 +46,7 @@ export default {
       if(this.$store.state.activeGame.veto == true){
         this.getNext()
       }
+      this.timeout = setTimeout(this.getNext, this.room.options.questionTime*1000 );
       return this.$store.state.activeGame
     },
     games(){
@@ -77,9 +78,12 @@ export default {
     },
     getNext(){
       this.index ++
+      clearTimeout(this.timeout)
+      
       if(this.index < this.games.length){
       this.$store.dispatch("getGamebyID", this.games[this.index].id)}
       else{
+        clearTimeout(this.timeout)
         this.$router.push({ name: 'WaitResults', params: { code: this.$route.params.code } })
       }
     },

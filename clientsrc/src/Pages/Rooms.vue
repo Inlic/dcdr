@@ -25,7 +25,8 @@
               </div>
               <div class="form-group">
               <label class="neon blue mx-2" for="vetos">Allowed User Vetos</label>
-              <select class="neon blue form-control mr-2" placeholder="User vetos" name="vetos" id="vetos" v-model="newRoom.options.uservetos">
+              <select class="neon blue form-control mr-2" placeholder="User vetos" name="vetos" id="vetos" v-model="newRoom.options.userVetos">
+                <option class="neon blue" value="0">0</option>
                 <option class="neon blue" value="1">1</option>
                 <option class="neon blue" value="2">2</option>
                 <option class="neon blue" value="3">3</option>
@@ -37,7 +38,7 @@
               </div>
               <div class="form-group">
                 <label class="neon blue" for="formQuestionTime">Allowed Vote Time: {{newRoom.options.questionTime}}s</label>
-                <input type="range" class="form-control-range mr-2" min="30" max="60" v-model="newRoom.options.questionTime" id="formQuestionTime">
+                <input type="range" class="form-control-range mr-2" min="1" max="60" v-model="newRoom.options.questionTime" id="formQuestionTime">
               </div>
               <div class="form-group">
                 <label class="neon blue" for="formPollItems">Allowed Poll Items: {{newRoom.options.pollItems}}</label>
@@ -69,10 +70,12 @@
     name: "Rooms",
     data() {
       return {
-        newRoom: { name: "", 
-        options: { consensus: 75,
-                   questionTime: 45,
-                   pollItems: 8 } }
+        newRoom: { 
+          name: "", 
+          options: { 
+            consensus: 75,
+            questionTime: 45,
+            pollItems: 8 } }
       }
     },
     computed: {
@@ -92,6 +95,10 @@
     methods: {
       addRoom() {
         this.$store.dispatch("setMyName", this.profile.name)
+        this.newRoom.options.consensus = parseInt(this.newRoom.options.consensus)
+        this.newRoom.options.questionTime = parseInt(this.newRoom.options.questionTime)
+        this.newRoom.options.pollItems = parseInt(this.newRoom.options.pollItems)
+        this.newRoom.options.userVetos = parseInt(this.newRoom.options.userVetos)
         this.$store.dispatch("createRoom", this.newRoom)
       }
     },
