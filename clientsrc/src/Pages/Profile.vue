@@ -10,14 +10,14 @@
               the card's content.</p>
             <p class="neon green">{{profile.email}}</p>
             <i class="fas fa-pen-alt" aria-hidden="true" @click="toggleEdit"></i>
-            <form v-if="editing" class="form-inline" @submit="finishEdit">
+            <form v-if="editing" class="form-inline" @submit.prevent="finishEdit">
               <div class="form-group">
                 <label class="neon blue">New Profile Name:</label>
                 <input type="text" v-model="eProfile.name" class="form-control m-3 neon blue" placeholder="New Name">
               </div>
               <div class="form-group">
                 <label class="neon blue">New Profile Steam Id:</label>
-                <input type="text" v-model="eProfile.steamId" class="form-control m-3 neon blue" placeholder="New Name">
+                <input type="text" v-model="eProfile.steamId" class="form-control m-3 neon blue" placeholder="Steam Id">
               </div>
               <div class="form-group">
                 <label class="neon blue">New Profile Picture:</label>
