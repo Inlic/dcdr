@@ -18,7 +18,7 @@
     </div>
     <div class="row text-center fixed-bottom my-3">
       <div class="offset-4 col-4">
-        <button type="button" class="btn btn-primary flashy neon blue">
+        <button @click="veto" type="button" class="btn btn-primary flashy neon blue">
           <i class="fas fa-times-circle"></i>
         </button>
       </div>
@@ -40,7 +40,10 @@ export default {
   },
   computed: {
     activeGame(){
-        return this.$store.state.activeGame
+      if(this.$store.state.activeGame.veto == true){
+        this.getNext()
+      }
+      return this.$store.state.activeGame
     },
     games(){
       return this.$store.state.games
@@ -52,6 +55,7 @@ export default {
   mounted(){
     this.$store.dispatch("startVote", this.$route.params.code)
     this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
+    
   },
   methods:{
     voteUp(){
@@ -63,6 +67,10 @@ export default {
       if(!this.activeGame.id){this.$store.dispatch("getGamebyID", this.games[this.index].id)}
       this.$store.dispatch("downGame", this.activeGame, this.$route.params.code)
       this.getNext()
+    },
+    veto(){
+      if(!this.activeGame.id){this.$store.dispatch("getGamebyID", this.games[this.index].id)}
+      this.$store.dispatch("vetoGame", this.activeGame)
     },
     getNext(){
       this.index ++

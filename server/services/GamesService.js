@@ -36,7 +36,7 @@ class GamesService {
         return data
     }
 
-    async edit(id, userEmail, update) {
+    async edit(id, update) {
         let data = await dbContext.Games.findOneAndUpdate({ _id: id }, update, { new: true })
         if (!data) {
             throw new BadRequest("Invalid ID");
