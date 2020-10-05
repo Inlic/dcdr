@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import router from "../router";
-import { api } from "./AxiosService"
 import {socketService} from "./socketService"
+import {api} from "./AxiosService.js"
 
 Vue.use(Vuex);
 
@@ -15,7 +15,8 @@ export default new Vuex.Store({
     myRooms: [],
     games: [],
     activeGame: {},
-    name: ""
+    name: "",
+    steam:[]
   },
   mutations: {
     setProfile(state, profile) {
@@ -39,6 +40,9 @@ export default new Vuex.Store({
     },
     setMyName(state, name){
       state.name = name
+    },
+    setSteamLibray(state, games){
+      state.steam = games
     }
   },
   actions: {
@@ -199,9 +203,20 @@ export default new Vuex.Store({
         console.error(error);
         
       }
-    }
+    },
+    
+    //steam api
+    async getOwnedGames({commit, state, dispatch}, steamUser){
+      try {
+        let res = await api.get(`steam/${steamUser}`)
+        commit("setSteamLibray", res.games)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
   },
-  modules:{
+    modules:{
     socketService
   }
 });

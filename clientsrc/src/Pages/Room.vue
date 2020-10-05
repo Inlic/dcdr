@@ -14,6 +14,10 @@
             <input type="Url" placeholder="Image url..." v-model="newGame.imgUrl" class="col-10 m-1" />
             <button type="submit" class="btn btn-primary flashy neon blue m-1">Add a game</button>
           </form>
+          <form v-if="!room.started" @submit.prevent="getSteamGames" class="justify-content-center">
+            <input type="text" placeholder="Steam ID..." required v-model="steamUser.steamId" class="col-10 m-1" />
+            <button type="submit" class="btn btn-primary flashy neon blue m-1">Add a game</button>
+          </form>
           <button v-if="!room.started" type="button" @click="this.startPoll"
             class="btn btn-primary m-2 flashy neon blue"> Go! </button>
           <div>
@@ -41,7 +45,8 @@
     name: "Room",
     data() {
       return {
-        newGame: {}
+        newGame: {},
+        steamUser: {}
       }
     },
     mounted() {
@@ -73,6 +78,11 @@
         this.$store.dispatch("startPoll", this.room.code)
         this.$store.dispatch("getGames", this.room.code)
         // this.$router.push({ name: 'Vote', params: { code: this.room.code } })
+      },
+      getSteamGames(){
+        if(this.steamUser.steamId){
+          this.$store.dispatch("getOwnedGames", this.steamUser.steamId)
+        }
       },
       async checkName() {
 
