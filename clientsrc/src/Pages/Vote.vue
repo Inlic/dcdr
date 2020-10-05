@@ -7,7 +7,7 @@
         <i class="far fa-thumbs-down"></i>
         </button>
       </div>
-      <div class="col-12 col-lg-10">
+      <div class="col-12 col-lg-10" @touchstart="startSwipe" @touchmove="moveSwipe">
         <game-component style="height: 80vh;" :gameData="this.activeGame" />
       </div>
       <div class="d-none d-lg-block col-1">
@@ -32,7 +32,10 @@ export default {
   name:"Vote",
   data() {
       return {
-        index: 0
+        index: 0,
+        xDown: null,
+        xCurrent: null,
+        startDrag: false,
       }
     },
   components:{
@@ -79,9 +82,32 @@ export default {
       else{
         this.$router.push({ name: 'WaitResults', params: { code: this.$route.params.code } })
       }
-    }
+    },
+    getMouseXPosFromEvent(event){
+      return event.clientX || event.touches[0].pageX;
+    },
+    startSwipe(event){
+      this.xDown = this.getMouseXPosFromEvent(event);
+      this.startDrag = true;
+    },
+    moveSwipe(){
+      if( !this.startDrag ){
+        return;
+      }
+      this.xCurrent = this.getMouseXPosFromEvent(event);
+      const delta = this.xCurrent - this.xDown
+      this.endSwipe(delta)
+      this.xDown = null;
+    },
+    endSwipe(delta){
+      this.startDrag = false;
+      if(delta > 0){
+        this.voteUp()
+      } else{
+        this.voteDown()
+      }
+    },
   }
-
 }
 </script>
 
