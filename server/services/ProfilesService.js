@@ -56,7 +56,7 @@ class ProfileService {
 
   //Provided a user Id, returns all rooms where that user is the creator
   async getUserRooms(user) {
-    let data = await dbContext.Rooms.find({ email: user.email })
+    let data = await dbContext.Rooms.find({ creatorEmail: user.email })
     if (!data) {
       throw new BadRequest("Invalid ID")
     }

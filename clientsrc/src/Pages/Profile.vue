@@ -54,8 +54,7 @@
   export default {
     name: "Profile",
     mounted(){
-      console.log("mounted ran")
-      this.$store.dispatch("getRooms", this.profile.id)
+      this.$store.dispatch("getRooms")
     },
     computed: {
       profile() {
