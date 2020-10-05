@@ -1,5 +1,7 @@
+// @ts-ignore
 import express from 'express'
 import BaseController from "../utils/BaseController";
+// @ts-ignore
 import auth0provider from "@bcwdev/auth0provider";
 import { gamesService } from '../services/GamesService'
 import socketService from "../services/SocketService";
@@ -23,6 +25,7 @@ export class GamesController extends BaseController {
     }
 
 
+    // @ts-ignore
     async getAll(req, res, next) {
         try {
             let data = await gamesService.getAll()
@@ -62,7 +65,9 @@ export class GamesController extends BaseController {
     async upvote(req, res, next) {
         try {
             let data = await gamesService.update(req.params.id, {$inc:{upvotes: 1, score: 1 }})
+            // @ts-ignore
             console.log(data.score);
+            // @ts-ignore
             if(data.score >= data.reqScore){
                 socketService.messageRoom(req.body.code,"poll ended", req.body.code)
             }

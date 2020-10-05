@@ -58,8 +58,8 @@ class RoomsService {
     }
 
     //FIXME function doesn't use either input
-    async delete(id, userEmail) {
-        let data = await dbContext.Rooms.findOneAndRemove({ _id: IDBKeyRange });
+    async delete(id) {
+        let data = await dbContext.Rooms.findOneAndRemove({ _id: id });
         if (!data) {
             throw new BadRequest("Invalid ID");
         }
