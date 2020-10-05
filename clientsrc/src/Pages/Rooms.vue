@@ -33,8 +33,7 @@
             <h5>My Previous Polls</h5>
           </div>
           <div class="card-body">
-            <h5 class="card-title neon blue">Prior Profile Polls would go here.</h5>
-            <p class="card-text neon blue">Supporting text may or may not get removed.</p>
+            <h5 v-for="room in myRooms" :key="room.id" class="card-title neon blue">{{room.name}}</h5>
           </div>
         </div>
       </div>
@@ -54,6 +53,9 @@
       activeroom() {
         return this.$store.state.room
       },
+      myRooms(){
+        return this.$store.state.myRooms;
+      },
       profile() {
         return this.$store.state.profile;
       },
@@ -70,6 +72,7 @@
     mounted() {
       this.$store.dispatch('joinRoom', "default")
       this.$store.dispatch("setMyName", this.profile.name)
+      this.$store.dispatch("getRooms")
     },
 
   }
