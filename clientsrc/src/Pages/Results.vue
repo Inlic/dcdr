@@ -22,7 +22,7 @@
     </div>
     <div style="height: 5vh"></div>
     <div class="row justify-content-center">
-        <game-component class="col-10 text-center p-3" v-for="game in games" :key="game.id" :gameData="game"/>
+        <game-component class="col-10 text-center p-3" v-for="game in results" :key="game.id" :gameData="game"/>
     </div>
     <div style="height: 10vh"></div>
   </div>
@@ -38,6 +38,9 @@ computed: {
   },
   winner(){
     return this.games[0]
+  },
+  results(){
+    return this.games.slice(1)
   }
 },
 mounted(){
