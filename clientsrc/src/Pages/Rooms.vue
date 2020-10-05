@@ -37,11 +37,11 @@
               </div>
               <div class="form-group">
                 <label class="neon blue" for="formQuestionTime">Allowed Vote Time: {{newRoom.options.questionTime}}s</label>
-                <input type="range" class="form-control-range" min="30" max="60" v-model="newRoom.options.questionTime" id="formQuestionTime">
+                <input type="range" class="form-control-range mr-2" min="30" max="60" v-model="newRoom.options.questionTime" id="formQuestionTime">
               </div>
               <div class="form-group">
                 <label class="neon blue" for="formPollItems">Allowed Poll Items: {{newRoom.options.pollItems}}</label>
-                <input type="range" class="form-control-range" min="2" max="12" v-model="newRoom.options.pollItems" id="formPollItems">
+                <input type="range" class="form-control-range mr-2" min="2" max="12" v-model="newRoom.options.pollItems" id="formPollItems">
               </div>
               <button type="submit" class="btn btn-primary flashy neon blue"> Go! </button>
             </form>
