@@ -11,6 +11,8 @@ class GamesService {
         return await dbContext.Games.find({}).populate("creator", "name picture")
     }
 
+
+    //FIXME These look like a duplicate functions
     async getById(id) {
         let data = await dbContext.Games.findOne({ _id: id })
         if (!data) {
@@ -26,13 +28,15 @@ class GamesService {
         }
         return data
     }
+    //FIXME
+
 
     async create(rawData) {
         let data = await dbContext.Games.create(rawData)
         return data
     }
 
-    async edit(id, userEmail, update) {
+    async edit(id, update) {
         let data = await dbContext.Games.findOneAndUpdate({ _id: id }, update, { new: true })
         if (!data) {
             throw new BadRequest("Invalid ID");

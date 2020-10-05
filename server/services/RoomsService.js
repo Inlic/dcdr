@@ -3,10 +3,10 @@ import { BadRequest } from "../utils/Errors"
 
 class RoomsService {
     async startPoll(code) {
-    let room = await dbContext.Rooms.findOne({ code: code })
-    let reqScore = Math.floor(room.names.length *.75)
-    await dbContext.Games.updateMany({roomId: room._id}, {reqScore: reqScore})
-    return await dbContext.Rooms.findOneAndUpdate({code: code}, {started:true}, {new: true})
+        let room = await dbContext.Rooms.findOne({ code: code })
+        let reqScore = Math.floor(room.names.length *.75)
+        await dbContext.Games.updateMany({roomId: room._id}, {reqScore: reqScore})
+        return await dbContext.Rooms.findOneAndUpdate({code: code}, {started:true}, {new: true})
     }
     async addName(data, id) {
         if(data.addName == null){
@@ -57,8 +57,9 @@ class RoomsService {
         return data;
     }
 
-    async delete(id, userEmail) {
-        let data = await dbContext.Rooms.findOneAndRemove({ _id: IDBKeyRange });
+    //FIXME function doesn't use either input
+    async delete(id) {
+        let data = await dbContext.Rooms.findOneAndRemove({ _id: id });
         if (!data) {
             throw new BadRequest("Invalid ID");
         }

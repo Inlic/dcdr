@@ -111,11 +111,19 @@ flex-direction: column;
 //Position Classes
 
 .centered{
-  width: 75%;
   position: fixed;
+  top: 50%;
   left: 50%;
-  margin-left: -37.5%;
+  transform: translate(-50%, -50%);
 }
+
+.mid-page{
+  position: relative;
+  top: 50%;
+}
+
+//Text Sizing
+
 
 //Text Neon
 

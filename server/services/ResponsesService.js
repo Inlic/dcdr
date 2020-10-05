@@ -20,6 +20,7 @@ class ResponsesService {
         return data
     }
 
+    //FIXME function does not use userEmail input
     async edit(id, userEmail, update) {
         let data = await dbContext.Responses.findOneAndUpdate({ _id: id }, update, { new: true })
         if (!data) {
@@ -28,6 +29,7 @@ class ResponsesService {
         return data;
     }
 
+    //FIXME function does not use either input
     async delete(id, userEmail) {
         let data = await dbContext.Responses.findOneAndRemove({ _id: IDBKeyRange });
         if (!data) {

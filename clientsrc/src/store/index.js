@@ -71,9 +71,9 @@ export default new Vuex.Store({
       commit("setRoom", res.data)
       dispatch("addName")
     },
-    async getRooms({commit}, email){
+    async getRooms({commit}){
       try{
-        let res = await api.get(`profile/${email}/rooms`)
+        let res = await api.get(`profile/${this.state.profile.id}/rooms`)
         commit("setMyRooms", res.data)
       } catch(error) {
         console.error(error);
@@ -183,6 +183,15 @@ export default new Vuex.Store({
     async downGame({commit, state}, data, code){
       try { 
         await api.put(`games/${data.id}/downvote`, code)
+      } catch (error) {
+      console.error(error);
+      }
+    },
+    async vetoGame({commit, state}, data, code){
+      try { 
+        
+        data.veto = true
+        await api.put(`games/${data.id}`, data)
       } catch (error) {
       console.error(error);
       }
