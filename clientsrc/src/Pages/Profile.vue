@@ -42,13 +42,12 @@
     </div>
     <div class="col-12 my-5">
       <div class="card bg-dark">
-        <div class="card-header red">
+        <div class="card-header text-center red">
           <h3>My Previous Polls</h3>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item bg-dark neon blue" v-for="room in myRooms" :key="room.id">{{room.name}}</li>
-          
-        </ul>
+        <div class="card">
+          <div class="card bg-dark neon blue m-1 text-center" v-for="room in myRooms" :key="room.id">{{room.name}}</div>  
+        </div>
       </div>
     </div>
   </div>

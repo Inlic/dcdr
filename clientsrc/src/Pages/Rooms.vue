@@ -61,8 +61,8 @@
           <div class="card-header red">
             <h3>My Previous Polls</h3>
           </div>
-          <div class="card-body">
-            <h5 v-for="room in myRooms" :key="room.id" class="card-title neon blue">{{room.name}}</h5>
+          <div class="card">
+            <div v-for="room in myRooms" :key="room.id" class="card bg-dark neon blue m-1 text-center">{{room.name}}</div>
           </div>
         </div>
       </div>
