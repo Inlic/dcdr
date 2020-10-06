@@ -1,7 +1,7 @@
 <template>
   <div class="background container-fluid">
-    <div class="divider-small"></div>
-    <div class="row">
+
+    <div class="row my-5">
       <div class="col-12 col-md-8">
         <img class="card-img img-card-md-two" src="@/assets/neontogether.jpg" alt="Card image">
       </div>
@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-    <div class="divider-small"></div>
+
     <div class="row">
       <div class="col-12 col-md-5">
         <div class="card text-center border-0">
@@ -34,8 +34,7 @@
         <img class="card-img img-card-md-one " src="@/assets/gameon.jpg" alt="Card image">
       </div>
     </div>
-    <div class="divider-small"></div>
-    <div class="row ">
+    <div class="row my-5">
       <div class="col-3 d-none d-md-block">
         <img class="img-fluid img-card-sm" src="@/assets/neondesktop.jpg">
       </div>
@@ -49,7 +48,6 @@
         <img class="img-fluid img-card-sm" src="@/assets/vrdude.jpg">
       </div>
     </div>
-    <div class="divider"></div>
   </div>
 </template>
 
