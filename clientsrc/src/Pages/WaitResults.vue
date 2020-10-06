@@ -15,8 +15,18 @@
 
 <script>
 export default {
-  name: "WaitResults"
-
+  name: "WaitResults",
+  data(){
+    return {
+      timeout: 0
+    }
+  },
+  mounted(){
+    // this.timeout = setTimeout(() => {
+    //   this.$store.dispatch()
+    //   // this.$router.push({ name: 'Results', params: { code: this.$route.params.code } })
+    // }, 600000);
+  }
 }
 </script>
 
