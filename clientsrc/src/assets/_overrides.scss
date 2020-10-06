@@ -241,6 +241,46 @@ input[type=range]:focus::-ms-fill-upper {
 //Text Sizing
 
 
+
+//Colors without Animations
+
+.red{
+  color: #FF88FF;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.253);
+  font-family: Iceland;
+}
+
+
+
+.blue{
+  color: #316aae;
+  font-family: Iceland;
+}
+
+.yellow{
+  color: #FFDD1B;
+  text-shadow: 0 0 10px #fff;
+  font-family: Pacifico;
+}
+
+.green{
+  color: #B6FF00;
+  text-shadow: 0 0 10px #fff;
+  font-family: "Press Start 2P";
+}
+
+.orange{
+  color: #FF9900;
+  text-shadow: 0 0 10px #fff;
+  font-family: Audiowide;
+}
+
+.purple{
+  color: #BA01FF;
+  text-shadow: 0 0 10px #fff;
+  font-family: Vampiro One;
+}
+
 //Text Neon
 
 .neon {

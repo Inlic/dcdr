@@ -7,7 +7,7 @@
     <div v-else class="row justify-content-center">
       <div class="col-12 col-md-6">
         <div class="card bg-dark text-center">
-          <h1 class="flashy neon red my-3">{{room.name}}</h1>
+          <h1 class="red my-3">{{room.name}}</h1>
           <h4 class="flasy neon green">Room Code: {{room.code}}</h4>
           <form v-if="!room.started && games.length < room.options.pollItems" @submit.prevent="createGame" class="justify-content-center">
             <input type="text" placeholder="Game name..." required v-model="newGame.name" class="col-10 m-1" />
@@ -22,7 +22,7 @@
           <button v-if="!room.started" type="button" @click="this.startPoll"
             class="btn btn-primary m-2 flashy neon blue"> Go! </button>
           <div>
-            <h3 class="flashy neon red my-2">Participants</h3>
+            <h3 class="red my-2">Participants</h3>
           </div>
           <ul>
             <li class="flashy neon purple" v-for="name in room.names" :key="name">{{name}}</li>
