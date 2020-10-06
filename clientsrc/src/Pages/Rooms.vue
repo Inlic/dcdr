@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid background">
     <div class="row">
-      
+        <img class="col-12 mt-2" src="@/assets/levelup.jpg" style="max-height: 52vh; object-fit: cover; border-radius: 10px; object-position: 50% 44%;">
     </div>
     <div class="row">
       <div class="col-7">
