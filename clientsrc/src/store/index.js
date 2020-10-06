@@ -127,7 +127,14 @@ export default new Vuex.Store({
       try {
         api.put(`rooms/${code}/start`)
       } catch (error) {
-        
+        console.error(error);
+      }
+    },
+    async userDone({}, code){
+      try {
+        api.put(`rooms/${code}/done`)
+      } catch (error) {
+        console.error(error);
       }
     },
     async getGamebyID({commit}, id){

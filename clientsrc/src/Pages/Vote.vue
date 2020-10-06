@@ -84,6 +84,7 @@ export default {
       this.$store.dispatch("getGamebyID", this.games[this.index].id)}
       else{
         clearTimeout(this.timeout)
+        this.$store.dispatch("userDone", this.$route.params.code)
         this.$router.push({ name: 'WaitResults', params: { code: this.$route.params.code } })
       }
     },

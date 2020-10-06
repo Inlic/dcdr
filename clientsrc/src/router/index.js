@@ -12,6 +12,7 @@ import Results from "../Pages/Results.vue";
 import Vote from "../Pages/Vote.vue";
 // @ts-ignore
 import Rooms from "../Pages/Rooms.vue";
+// @ts-ignore
 import WaitResults from "../Pages/WaitResults.vue"
 import { authGuard } from "@bcwdev/auth0-vue";
 
