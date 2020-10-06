@@ -1,18 +1,11 @@
 <template>
   <div class="container-fluid background">
-    <div class="row justify-content-center">
-      <div class="col-11 col-md-8">
-        <div class="jumbotron mt-5 bg-dark text-center">
-          <h1 class="display-4 red">Create a Poll</h1>
-          <p class="lead neon blue">Use this page to create a poll so you and your friends can get gaming quicker.</p>
-          <hr>
-          <p class="neon blue">Check out the poll options down below.</p>
-        </div>
-      </div>
+    <div class="row">
+        <img class="col-12 mt-2" src="@/assets/levelup.jpg" style="max-height: 52vh; object-fit: cover; border-radius: 10px; object-position: 50% 44%;">
     </div>
     <div class="row">
-      <div class="offset-1 col-10">
-        <div class="card text-center my-5 bg-dark">
+      <div class="col-12 col-md-7">
+        <div class="card text-center my-2 bg-dark">
           <div class="card-header red">
             <h3>Create a New Room</h3>
           </div>
@@ -54,14 +47,12 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="offset-1 col-10">
-        <div class="card text-center my-5 bg-dark">
+      <div class="col-12 col-md-5">
+        <div class="card text-center my-2 bg-dark">
           <div class="card-header red">
             <h3>My Previous Polls</h3>
           </div>
-          <div class="card">
+          <div class="card poll-container-create">
             <div v-for="room in myRooms" :key="room.id" class="card bg-dark neon blue m-1 text-center">{{room.name}}</div>
           </div>
         </div>
