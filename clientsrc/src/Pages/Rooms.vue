@@ -4,7 +4,7 @@
         <img class="col-12 mt-2" src="@/assets/levelup.jpg" style="max-height: 52vh; object-fit: cover; border-radius: 10px; object-position: 50% 44%;">
     </div>
     <div class="row">
-      <div class="col-7">
+      <div class="col-12 col-md-7">
         <div class="card text-center my-2 bg-dark">
           <div class="card-header red">
             <h3>Create a New Room</h3>
@@ -47,7 +47,7 @@
           </div>
         </div>
       </div>
-      <div class="col-5">
+      <div class="col-12 col-md-5">
         <div class="card text-center my-2 bg-dark">
           <div class="card-header red">
             <h3>My Previous Polls</h3>
