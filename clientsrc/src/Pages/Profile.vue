@@ -1,50 +1,57 @@
 <template>
   <div class="container-fluid background">
     <div class="row">
-      <div class="col-12 col-md-4 mt-5">
-        <div class="card border-0">
-          <img class="card-img-top" :src="profile.picture" alt="Card image cap">
-          <div class="card-body bg-dark">
-            <h5 class="card-title flashy neon red">Welcome: {{ profile.name }}</h5>
-            <p class="card-text neon blue">Some quick example text to build on the card title and make up the bulk of
-              the card's content.</p>
-            <p class="neon green">{{profile.email}}</p>
-            <i class="fas fa-pen-alt" aria-hidden="true" @click="toggleEdit"></i>
-            <form v-if="editing" class="form-inline" @submit="finishEdit">
-              <div class="form-group">
-                <label class="neon blue">New Profile Name:</label>
-                <input type="text" v-model="eProfile.name" class="form-control m-3 neon blue" placeholder="New Name">
+      <div class="col-12 col-md-4">
+        <div class="row">
+          <div class="col-12 col-md-12 mt-2">
+            <div class="card border-0">
+              <img class="card-img-top" :src="profile.picture" alt="Card image cap">
+              <div class="card-body bg-dark">
+                <h3 class="card-title red">Welcome: {{ profile.name }}</h3>
+                <p class="card-text neon blue">Some quick example text to build on the card title and make up the bulk of
+                  the card's content.</p>
+                <p class="neon green">{{profile.email}}</p>
+                <i class="fas fa-pen-alt" aria-hidden="true" @click="toggleEdit"></i>
+                <form v-if="editing" class="form-inline" @submit.prevent="finishEdit">
+                  <div class="form-group">
+                    <label class="neon blue">New Profile Name:</label>
+                    <input type="text" v-model="eProfile.name" class="form-control m-3 neon blue" placeholder="New Name">
+                  </div>
+                  <div class="form-group">
+                    <label class="neon blue">New Profile Steam Id:</label>
+                    <input type="text" v-model="eProfile.steamId" class="form-control m-3 neon blue" placeholder="Steam Id">
+                  </div>
+                  <div class="form-group">
+                    <label class="neon blue">New Profile Picture:</label>
+                    <input type="text" v-model="eProfile.picture" class="form-control m-1 neon blue"
+                      placeholder="New Picture URL">
+                    <button class="btn btn-primary mx-2 flashy neon blue" type="submit">Submit</button>
+                  </div>
+                </form>
               </div>
-              <div class="form-group">
-                <label class="neon blue">New Profile Picture:</label>
-                <input type="text" v-model="eProfile.picture" class="form-control m-1 neon blue"
-                  placeholder="New Picture URL">
-                <button class="btn btn-primary mx-2 flashy neon blue" type="submit">Submit</button>
+            </div>
+          </div>
+          <div class="col-12 col-md-12 my-2">
+            <div class="card bg-dark">
+              <div class="card-header text-center red">
+                <h3>My Previous Polls</h3>
               </div>
-            </form>
+              <div class="card poll-container">
+                <div class="card bg-dark neon blue m-1 text-center" v-for="room in myRooms" :key="room.id">{{room.name}}</div>  
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-8 mt-5">
+      <div class="col-12 col-md-8 mt-2">
         <div class="card bg-dark text-light p-4">
           <img class="card-img profile-img-overlay" src="@/assets/gameon.jpg" alt="Card image">
           <div class="card-img-overlay">
-            <h5 class="card-title flashy neon red">My Channel</h5>
+            <h3 class="card-title red">My Channel</h3>
             <p class="card-text neon blue">This is where I could potentially invite people to hang out and run polls.
               Also where I would receive messages or feeds if I was subscribed to those things.</p>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="col-12 my-5">
-      <div class="card bg-dark">
-        <div class="card-header flashy neon red">
-          My Previous Polls
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item bg-dark neon blue" v-for="room in myRooms" :key="room.id">{{room.name}}</li>
-          
-        </ul>
       </div>
     </div>
   </div>

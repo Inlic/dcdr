@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import router from "../router";
-import { api } from "./AxiosService"
 import {socketService} from "./socketService"
+import {api} from "./AxiosService.js"
 
 Vue.use(Vuex);
 
@@ -15,7 +15,8 @@ export default new Vuex.Store({
     myRooms: [],
     games: [],
     activeGame: {},
-    name: ""
+    name: "",
+    steam:[]
   },
   mutations: {
     setProfile(state, profile) {
@@ -39,6 +40,9 @@ export default new Vuex.Store({
     },
     setMyName(state, name){
       state.name = name
+    },
+    setSteamLibray(state, games){
+      state.steam = games
     }
   },
   actions: {
@@ -123,7 +127,14 @@ export default new Vuex.Store({
       try {
         api.put(`rooms/${code}/start`)
       } catch (error) {
-        
+        console.error(error);
+      }
+    },
+    async userDone({}, code){
+      try {
+        api.put(`rooms/${code}/done`)
+      } catch (error) {
+        console.error(error);
       }
     },
     async getGamebyID({commit}, id){
@@ -150,9 +161,10 @@ export default new Vuex.Store({
         console.error(err);
       }
     },
-    async deleteGame({}, id){
+    async deleteGame({commit, state}, id){
       try{
         await api.delete(`games/${id}`)
+        commit("setGames", this.state.games.filter(g => g.id != id))
       } catch(error) {
         console.error(error);
       }
@@ -160,7 +172,7 @@ export default new Vuex.Store({
     async createGame({commit}, data){
       try{
       let res = await api.post("games", data)
-      // commit("addGame", res.data)
+      commit("addGame", res.data)
       } catch(error) {
         console.error(error);
       }
@@ -208,9 +220,24 @@ export default new Vuex.Store({
         console.error(error);
         
       }
+    },
+    
+    //steam api
+    async getOwnedGames({commit, state, dispatch}, steamUser){
+      try {
+        let res = await api.get(`steam/${steamUser}`)
+        console.log("got", res.data.game_count);
+        commit("setSteamLibray", res.data.games)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    removeFromList({commit, state}, game){
+      commit("setSteamLibray", state.steam.filter(g => g.name != game.name))
     }
+
   },
-  modules:{
+    modules:{
     socketService
   }
 });

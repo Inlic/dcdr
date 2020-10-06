@@ -4,16 +4,51 @@
   border-color: darken($color: $primary, $amount: 10);
   border-width: medium;
 }
+.spacer{
+  height: 33vh
+}
+.logo{
+  max-height: 55px;
+}
+.steam{
+  overflow: hidden;
+}
+.steam-container{
+  max-height: 100vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+.steam-container::-webkit-scrollbar {
+  display: none;
+}
+
+.poll-container{
+  max-height: 16vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+.poll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.poll-container-create{
+  max-height: 29.1vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+.poll-container-create::-webkit-scrollbar {
+  display: none;
+}
 
 .background{
   background-image: url("assets/neonapartments.jpg");
-  background-color: transparentize($color: #080708, $amount: .5);
   background-attachment: fixed;
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
   flex-grow: 1;
 }
+.background-subdued
 
 .flex-grow{
   flex-grow: 1;
@@ -56,6 +91,9 @@ flex-direction: column;
 .bg-faded{
   background-color: transparentize($color: #F8F6F7, $amount: .10);
 }
+.bg-darken{
+  background-color: transparentize($color: #000000, $amount: .25);
+}
 .profile-img{
   border-radius: 50%;
   height: 15vh;
@@ -70,12 +108,131 @@ flex-direction: column;
 }
 //end loading screen stuff
 
+//Range Slider Styling
+input[type=range]{
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+
+input[type=range]::webkit-slider-thumb{
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus{
+  outline:none;
+}
+
+input[type=range]::-ms-track{
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid  #11111d;
+  height: 16px;
+  width: 16px;
+  border-radius: 3px;
+  background:#316aae;
+  cursor: pointer;
+  margin-top: -6px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 12px #316aae, 0px 0px 5px #fff; /* Add cool effects to your sliders! */
+}
+
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid  #11111d;
+  height: 16px;
+  width: 16px;
+  border-radius: 3px;
+  background: #316aae;
+  cursor: pointer;
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid  #11111d;
+  height: 16px;
+  width: 16px;
+  border-radius: 3px;
+  background: #316aae;
+  cursor: pointer;
+}
+
+//Track
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #316aae;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #316aae;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #316aae;
+  border-radius: 1.3px;
+  border: 0.2px solid #010101;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #316aae;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #316aae;
+}
+input[type=range]::-ms-fill-upper {
+  background: #316aae;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #316aae;
+}
+
 //custom image styling
 
 .img-card-sm{
   border-radius: 10px; 
   filter: brightness(85%); 
-  filter: contrast(110%)
+  filter: contrast(110%);
+  height: 60vh;
+  width:100%;
+  object-fit: cover;
 }
 
 .img-card-md-two{
@@ -125,6 +282,40 @@ flex-direction: column;
 //Text Sizing
 
 
+
+//Colors without Animations
+
+.red{
+  color: #FF88FF;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.253);
+  font-family: Iceland;
+}
+
+.blue{
+  color: #316aae;
+  font-family: Iceland;
+}
+
+.yellow{
+  color: #FFDD1B;
+  font-family: Pacifico;
+}
+
+.green{
+  color: #B6FF00;
+  font-family: "Press Start 2P";
+}
+
+.orange{
+  color: #FF9900;
+  font-family: Audiowide;
+}
+
+.purple{
+  color: #BA01FF;
+  font-family: Vampiro One;
+}
+
 //Text Neon
 
 .neon {
@@ -134,19 +325,32 @@ flex-direction: column;
   transition: all 0.5s;
 }
 
-.flashy.neon.red {
-  color: #fff;
-  font-family: Monoton;
+.flashy.neon.red.on {
+  color:#fff;
   -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
   -moz-animation: neon1 1.5s ease-in-out infinite alternate;
   animation: neon1 1.5s ease-in-out infinite alternate;
+  font-family: Monoton; 
+}
+
+.flashy.neon.red.on:hover{
+  color:#fff;
+  -webkit-animation: none;
+  -moz-animation: none;
+  animation: none;
+}
+
+
+.flashy.neon.red {
+  color: #fff;
+  font-family: Iceland; 
 }
 
 .neon.red:hover {
   color: #b22167;
-  -webkit-animation: none;
-  -moz-animation: none;
-  animation: none;
+  -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+  animation: neon1 1.5s ease-in-out infinite alternate;
 }
 
 .neon.blue{
@@ -194,6 +398,24 @@ flex-direction: column;
   -moz-animation: neon5 1.5s ease-in-out infinite alternate;
   animation: neon5 1.5s ease-in-out infinite alternate;
 }
+
+.flashy.neon.orange.on{
+  color: #fff;
+  -webkit-animation: neon5 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon5 1.5s ease-in-out infinite alternate;
+  animation: neon5 1.5s ease-in-out infinite alternate;
+  font-family: Audiowide;
+}
+
+.flashy.neon.orange.on:hover{
+  color:  #FF9900;
+  -webkit-animation: none;
+  -moz-animation: none;
+  animation: none;
+  font-family: Audiowide;
+}
+
+
 
 .neon.purple {
   color: #BA01FF;

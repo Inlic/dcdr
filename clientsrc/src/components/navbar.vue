@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <router-link class="navbar-brand flashy neon red" :to="{ name: 'Home' }">Dcdr</router-link>
+    <router-link class="navbar-brand flashy neon red on" :to="{ name: 'Home' }">  D. C. <img class="logo" src="../assets/logo.png" alt=""> D. R.</router-link>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,7 +11,7 @@
           <li class="nav-item" :class="{ active: $route.name == 'Home' }">
             <router-link :to="{ name: 'Home' }" class="nav-link text-light flashy neon blue">Home</router-link>
           </li>
-          <li class="nav-item" :class="{ active: $route.name == 'Rooms' }">
+          <li class="nav-item" :class="{ active: $route.name == 'Rooms' }" v-if="$auth.isAuthenticated">
             <router-link :to="{ name: 'Rooms' }" class="nav-link text-light flashy neon blue">Create a Poll
             </router-link>
           </li>
@@ -77,8 +77,8 @@
           let res = await as.addName()
           this.$store.dispatch("setMyName", res.value)
         }
-        // this.$store.dispatch("getRoomByCode", this.code);
         this.$store.dispatch('joinRoom', `${this.code}`)
+        this.$store.dispatch("getGames", this.code)
         this.$router.push({ name: 'Room', params: { code: this.code } })
       },
     }

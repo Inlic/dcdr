@@ -46,7 +46,7 @@ class GamesService {
 
 
     async delete(id, userEmail) {
-        let data = await dbContext.Games.findOneAndRemove({ _id: IDBKeyRange });
+        let data = await dbContext.Games.findOneAndRemove({ _id: id });
         if (!data) {
             throw new BadRequest("Invalid ID");
         }
