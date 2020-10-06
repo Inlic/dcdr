@@ -1,9 +1,9 @@
 <template>
   <div class="background container-fluid">
-
-    <div class="row my-5">
+    <div class="divider-small"></div>
+    <div class="row bg-darken my-2">
       <div class="col-12 col-md-8">
-        <img class="card-img img-card-md-two" src="@/assets/neontogether.jpg" alt="Card image">
+        <img id="neonTogether" class="card-img img-card-md-two m-2" src="@/assets/neontogether.jpg" alt="Card image">
       </div>
       <div class="col-12 col-md-4">
         <div class="card text-center border-0">
