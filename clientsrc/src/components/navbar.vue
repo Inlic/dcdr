@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <router-link class="navbar-brand flashy neon red" :to="{ name: 'Home' }">Dcdr</router-link>
+    <router-link class="navbar-brand flashy neon red" :to="{ name: 'Home' }"><h3>Dcdr</h3></router-link>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
