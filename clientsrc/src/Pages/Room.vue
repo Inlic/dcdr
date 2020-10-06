@@ -7,26 +7,34 @@
     <div v-else class="row justify-content-center">
       <div class="col-12 col-md-6">
         <div class="card bg-dark text-center">
-          <h1 class="red my-3">{{room.name}}</h1>
-          <h4 class="flasy neon green">Room Code: {{room.code}}</h4>
-          <form v-if="!room.started && games.length < room.options.pollItems" @submit.prevent="createGame" class="justify-content-center">
-            <input type="text" placeholder="Game name..." required v-model="newGame.name" class="col-10 m-1" />
-            <input type="Url" placeholder="Image url..." v-model="newGame.imgUrl" class="col-10 m-1" />
-            <button type="submit" class="btn btn-primary flashy neon blue m-1">Add a game</button>
-          </form>
-          <form v-if="!room.started" @submit.prevent="getSteamGames" class="justify-content-center">
-            <input type="text" placeholder="Steam ID..." required v-model="steamUser.steamId" class="col-10 m-1" />
-            <button type="submit" class="btn btn-primary flashy neon blue m-1">Get Steam libary</button>
-            <button v-if="profile.steamId" type="button" @click="getUserSteam" class="btn btn-primary flashy neon blue m-1">Get My Steam libary</button>
-          </form>
-          <button v-if="!room.started && games.length > 1" type="button" @click="this.startPoll"
-            class="btn btn-primary m-2 flashy neon blue"> Go! </button>
-          <div>
-            <h3 class="red my-2">Participants</h3>
+          <div class="card-header">
+            <h1 class="red my-3">{{room.name}}</h1>
+            <h4 class="neon green">Room Code: {{room.code}}</h4>
           </div>
-          <ul>
-            <li class="purple" v-for="name in room.names" :key="name">{{name}}</li>
-          </ul>
+          <div class="card-body">
+            <form v-if="!room.started && games.length < room.options.pollItems" @submit.prevent="createGame" class="justify-content-center">
+              <div class="form-group card">
+              <input type="text" placeholder="Game name..." required v-model="newGame.name" class="col-10 m-1 neon blue form-control" />
+              <input type="Url" placeholder="Image url..." v-model="newGame.imgUrl" class="col-10 m-1 neon blue form-control" />
+              <button type="submit" class="btn btn-primary flashy neon blue m-1">Add a game</button>
+              </div>
+            </form>
+            <form v-if="!room.started" @submit.prevent="getSteamGames" class="justify-content-center">
+              <div class="form-group card">
+              <input type="text" placeholder="Steam ID..." required v-model="steamUser.steamId" class="col-10 m-1 neon blue form-control" />
+              <button type="submit" class="btn btn-primary flashy neon blue m-1">Get Steam libary</button>
+              <button v-if="profile.steamId" type="button" @click="getUserSteam" class="btn btn-primary flashy neon blue m-1">Get My Steam libary</button>
+              </div>
+            </form>
+            <button v-if="!room.started && games.length > 1" type="button" @click="this.startPoll"
+            class="btn btn-primary m-2 flashy neon blue"> Go! </button>
+            <div>
+              <h3 class="red my-2">Participants</h3>
+            </div>
+            <div class="card">
+              <div class="neon orange card" v-for="name in room.names" :key="name">{{name}}</div>
+            </div>
+          </div>
         </div>
         <div class="row">
           <steam-game-componet v-for="game in steam" :key="game.appid" :gameData="game"/>

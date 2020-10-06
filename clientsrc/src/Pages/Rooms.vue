@@ -79,8 +79,8 @@
           name: "",
           options: {
             consensus: 75,
-            questionTime: 45,
-            pollItems: 8
+            questionTime: 30,
+            pollItems: 7
           }
         }
       }
