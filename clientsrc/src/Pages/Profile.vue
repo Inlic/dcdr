@@ -92,6 +92,10 @@
 
 <style scoped>
   .fas {
-    color: #b22167
+    color: #FF88FF;
+    cursor: pointer;
+  }
+  .fas:hover{
+    
   }
 </style>
