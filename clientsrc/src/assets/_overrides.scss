@@ -294,6 +294,22 @@ input[type=range]:focus::-ms-fill-upper {
   transition: all 0.5s;
 }
 
+.flashy.neon.red.on {
+  color:#fff;
+  -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+  animation: neon1 1.5s ease-in-out infinite alternate;
+  font-family: Monoton; 
+}
+
+.flashy.neon.red.on:hover{
+  color:#fff;
+  -webkit-animation: none;
+  -moz-animation: none;
+  animation: none;
+}
+
+
 .flashy.neon.red {
   color: #fff;
   font-family: Iceland; 
