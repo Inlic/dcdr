@@ -7,7 +7,7 @@
       </div>
       <div class="col-12 col-md-4">
         <div class="card text-center border-0">
-          <div class="card-header bg-dark flashy neon red">
+          <div class="card-header bg-dark red">
             <h3>Level Up Your Gaming Experience</h3>
           </div>
           <div class="card-body bg-dark">
@@ -21,7 +21,7 @@
     <div class="row">
       <div class="col-12 col-md-5">
         <div class="card text-center border-0">
-          <div class="card-header bg-dark flashy neon red">
+          <div class="card-header bg-dark red">
             <h3>Persistent Polls</h3>
           </div>
           <div class="card-body bg-dark neon blue">

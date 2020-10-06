@@ -5,7 +5,7 @@
         <div class="card border-0">
           <img class="card-img-top" :src="profile.picture" alt="Card image cap">
           <div class="card-body bg-dark">
-            <h5 class="card-title flashy neon red">Welcome: {{ profile.name }}</h5>
+            <h3 class="card-title red">Welcome: {{ profile.name }}</h3>
             <p class="card-text neon blue">Some quick example text to build on the card title and make up the bulk of
               the card's content.</p>
             <p class="neon green">{{profile.email}}</p>
@@ -33,7 +33,7 @@
         <div class="card bg-dark text-light p-4">
           <img class="card-img profile-img-overlay" src="@/assets/gameon.jpg" alt="Card image">
           <div class="card-img-overlay">
-            <h5 class="card-title flashy neon red">My Channel</h5>
+            <h3 class="card-title red">My Channel</h3>
             <p class="card-text neon blue">This is where I could potentially invite people to hang out and run polls.
               Also where I would receive messages or feeds if I was subscribed to those things.</p>
           </div>
@@ -42,8 +42,8 @@
     </div>
     <div class="col-12 my-5">
       <div class="card bg-dark">
-        <div class="card-header flashy neon red">
-          My Previous Polls
+        <div class="card-header red">
+          <h3>My Previous Polls</h3>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item bg-dark neon blue" v-for="room in myRooms" :key="room.id">{{room.name}}</li>
