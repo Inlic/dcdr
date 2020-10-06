@@ -39,11 +39,11 @@
         <div class="col-12">
 
         <div class="row">
-        <div class="col-6 steam-container">
+        <div class="col-6 steam-container px-3">
           <h1 v-if="steam.length" >Steam Libray results:</h1>
-          <steam-game-componet v-for="game in steam" :key="game.appid" :gameData="game"/>
+          <steam-game-componet class="" v-for="game in steam" :key="game.appid" :gameData="game"/>
         </div>
-        <div class="col-6 steam-container">
+        <div class="col-6 steam-container px-3">
           <h1>Current Games:</h1>
           <game-vote-component class="" v-for="game in games" :key="game.id" :gameData="game" />
         </div>
@@ -74,6 +74,9 @@
       this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
       // this.$store.dispatch('addName', { addName: this.$store.state.name })
       this.$store.dispatch("getGames", this.$route.params.code)
+      if(this.profile.steamId){
+        this.getUserSteam()
+      }
     },
     computed: {
       games() {
