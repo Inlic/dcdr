@@ -369,6 +369,24 @@ input[type=range]:focus::-ms-fill-upper {
   animation: neon5 1.5s ease-in-out infinite alternate;
 }
 
+.flashy.neon.orange.on{
+  color: #fff;
+  -webkit-animation: neon5 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon5 1.5s ease-in-out infinite alternate;
+  animation: neon5 1.5s ease-in-out infinite alternate;
+  font-family: Audiowide;
+}
+
+.flashy.neon.orange.on:hover{
+  color:  #FF9900;
+  -webkit-animation: none;
+  -moz-animation: none;
+  animation: none;
+  font-family: Audiowide;
+}
+
+
+
 .neon.purple {
   color: #BA01FF;
   font-family: Vampiro One;
