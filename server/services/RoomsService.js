@@ -2,6 +2,10 @@ import { dbContext } from "../db/DbContext"
 import { BadRequest } from "../utils/Errors"
 
 class RoomsService {
+    async userDone(code) {
+        let room = await dbContext.Rooms.findOneAndUpdate({ code: code }, {$inc:{doneUsers: 1}},{new: true})
+        return room
+    }
     async startPoll(code) {
         let room = await dbContext.Rooms.findOne({ code: code })
         //TODO add a variable for consensus, not 0

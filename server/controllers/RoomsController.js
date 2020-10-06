@@ -1,11 +1,14 @@
 // @ts-ignore
+// @ts-ignore
 import express from 'express'
 import BaseController from "../utils/BaseController";
+// @ts-ignore
 // @ts-ignore
 import auth0provider from "@bcwdev/auth0provider";
 import { roomsService } from '../services/RoomsService'
 import { codeGenerator } from "../utils/CodeGenerator"
 import socketService from "../services/SocketService";
+// @ts-ignore
 import { gamesService } from "../services/GamesService";
 
 
@@ -21,23 +24,34 @@ export class RoomsController extends BaseController {
         .get('/:id/responses', this.getRoomResponses)
         .put('/:id', this.edit)
         .put('/:id/names', this.addName)
+        .put('/:code/done', this.userDone)
         .use(auth0provider.getAuthorizedUserInfo)
         .put('/:code/start', this.startPoll)
         .post('', this.create)
         .delete('/:id', this.delete)
     }
+    // @ts-ignore
+    async userDone(req, res, next) {
+        try {
+            let room = await roomsService.userDone(req.params.code)
+            // @ts-ignore
+            if(room.doneUsers >= room.names.length){
+                socketService.messageRoom(req.params.code,"poll ended", req.params.code)
+            }
+            return res.send("responses recorded")
+        } catch (error) {
+            next(error)
+        }
+    }
     async startPoll(req, res, next) {
         try {
             let room = await roomsService.startPoll(req.params.code)
+            // @ts-ignore
             socketService.messageRoom(room.code, "startPoll", room.code)
             return res.send("lets go")  
         } catch (error) {
             next(error)
         }
-        
-        // @ts-ignore
-        
-        
     }   
     // @ts-ignore
     async addName(req, res, next) {
@@ -52,6 +66,7 @@ export class RoomsController extends BaseController {
     }
 
 
+    // @ts-ignore
     // @ts-ignore
     async getAll(req, res, next) {
         try {
