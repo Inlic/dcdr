@@ -19,13 +19,13 @@
             <button type="submit" class="btn btn-primary flashy neon blue m-1">Get Steam libary</button>
             <button v-if="profile.steamId" type="button" @click="getUserSteam" class="btn btn-primary flashy neon blue m-1">Get My Steam libary</button>
           </form>
-          <button v-if="!room.started" type="button" @click="this.startPoll"
+          <button v-if="!room.started && games.length > 1" type="button" @click="this.startPoll"
             class="btn btn-primary m-2 flashy neon blue"> Go! </button>
           <div>
             <h3 class="red my-2">Participants</h3>
           </div>
           <ul>
-            <li class="flashy neon purple" v-for="name in room.names" :key="name">{{name}}</li>
+            <li class="purple" v-for="name in room.names" :key="name">{{name}}</li>
           </ul>
         </div>
         <div class="row">
