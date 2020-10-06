@@ -21,6 +21,16 @@
 .steam-container::-webkit-scrollbar {
   display: none;
 }
+
+.poll-container{
+  max-height: 16vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+.poll-container::-webkit-scrollbar {
+  display: none;
+}
+
 .background{
   background-image: url("assets/neonapartments.jpg");
   background-attachment: fixed;
