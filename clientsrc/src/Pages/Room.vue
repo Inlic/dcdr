@@ -36,13 +36,15 @@
             </div>
           </div>
         </div>
-        <div class="col-10">
+        <div class="col-12">
 
         <div class="row">
-        <div class="col-6">
+        <div class="col-6 steam-container">
+          <h1 v-if="steam.length" >Steam Libray results:</h1>
           <steam-game-componet v-for="game in steam" :key="game.appid" :gameData="game"/>
         </div>
-        <div class="col-6">
+        <div class="col-6 steam-container">
+          <h1>Current Games:</h1>
           <game-vote-component class="" v-for="game in games" :key="game.id" :gameData="game" />
         </div>
         </div>

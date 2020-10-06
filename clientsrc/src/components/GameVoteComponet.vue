@@ -20,7 +20,7 @@ export default {
   methods:{
 
     removeGame(){
-    this.$store.dispatch("deleteGame", gameData._id)
+    this.$store.dispatch("deleteGame", this.gameData.id)
   }
   }
   

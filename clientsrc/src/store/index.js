@@ -157,7 +157,7 @@ export default new Vuex.Store({
     async deleteGame({commit, state}, id){
       try{
         await api.delete(`games/${id}`)
-        commit("setGames", [this.state.games.filter(g => g.id != id)])
+        commit("setGames", this.state.games.filter(g => g.id != id))
       } catch(error) {
         console.error(error);
       }
