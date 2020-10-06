@@ -37,7 +37,8 @@ const routes = [
   {
     path: "/room",
     name: "Rooms",
-    component: Rooms
+    component: Rooms,
+    beforeEnter: authGuard
   },
   {
     path: "/room/:code/results",
