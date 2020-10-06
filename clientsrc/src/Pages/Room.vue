@@ -5,23 +5,23 @@
       <loading-component></loading-component>
     </div>
     <div v-else class="row justify-content-center">
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-10">
         <div class="card bg-dark text-center">
           <div class="card-header">
             <h1 class="red my-3">{{room.name}}</h1>
             <h4 class="neon green">Room Code: {{room.code}}</h4>
           </div>
-          <div class="card-body">
+          <div class="card-body text-center">
             <form v-if="!room.started && games.length < room.options.pollItems" @submit.prevent="createGame" class="justify-content-center">
-              <div class="form-group card">
-              <input type="text" placeholder="Game name..." required v-model="newGame.name" class="col-10 m-1 neon blue form-control" />
-              <input type="Url" placeholder="Image url..." v-model="newGame.imgUrl" class="col-10 m-1 neon blue form-control" />
+              <div class="form-group card p-3">
+              <input type="text" placeholder="Game name..." required v-model="newGame.name" class="col-12 my-1 neon blue form-control" />
+              <input type="Url" placeholder="Image url..." v-model="newGame.imgUrl" class="col-12 my-1 neon blue form-control" />
               <button type="submit" class="btn btn-primary flashy neon blue m-1">Add a game</button>
               </div>
             </form>
             <form v-if="!room.started" @submit.prevent="getSteamGames" class="justify-content-center">
-              <div class="form-group card">
-              <input type="text" placeholder="Steam ID..." required v-model="steamUser.steamId" class="col-10 m-1 neon blue form-control" />
+              <div class="form-group card p-3">
+              <input type="text" placeholder="Steam ID..." required v-model="steamUser.steamId" class="col-12 my-1 neon blue form-control" />
               <button type="submit" class="btn btn-primary flashy neon blue m-1">Get Steam libary</button>
               <button v-if="profile.steamId" type="button" @click="getUserSteam" class="btn btn-primary flashy neon blue m-1">Get My Steam libary</button>
               </div>
@@ -36,14 +36,20 @@
             </div>
           </div>
         </div>
+        <div class="col-12">
+
         <div class="row">
+        <div class="col-6 steam-container">
+          <h1 v-if="steam.length" >Steam Libray results:</h1>
           <steam-game-componet v-for="game in steam" :key="game.appid" :gameData="game"/>
         </div>
+        <div class="col-6 steam-container">
+          <h1>Current Games:</h1>
+          <game-vote-component class="" v-for="game in games" :key="game.id" :gameData="game" />
+        </div>
+        </div>
+        </div>
       </div>
-    </div>
-    <div class="divider-small"></div>
-    <div class="row justify-content-center justify-content-md-start">
-      <game-component v-for="game in games" :key="game.id" :gameData="game" />
     </div>
   </div>
 
@@ -54,6 +60,7 @@
   import loadingComponent from "../components/loadingComponent"
   import gameComponent from "../components/GameComponent"
   import steamGameComponet from "../components/SteamGameComponet"
+  import gameVoteComponent from "../components/GameVoteComponet"
   export default {
     name: "Room",
     data() {
@@ -123,7 +130,8 @@
     components: {
       loadingComponent,
       gameComponent,
-      steamGameComponet
+      steamGameComponet,
+      gameVoteComponent
 
     }
   }

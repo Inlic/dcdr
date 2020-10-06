@@ -10,6 +10,17 @@
 .logo{
   max-height: 55px;
 }
+.steam{
+  overflow: hidden;
+}
+.steam-container{
+  max-height: 100vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+.steam-container::-webkit-scrollbar {
+  display: none;
+}
 .background{
   background-image: url("assets/neonapartments.jpg");
   background-attachment: fixed;
