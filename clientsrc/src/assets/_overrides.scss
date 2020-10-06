@@ -191,7 +191,9 @@ input[type=range]:focus::-ms-fill-upper {
 .img-card-sm{
   border-radius: 10px; 
   filter: brightness(85%); 
-  filter: contrast(110%)
+  filter: contrast(110%);
+  height:100%;
+  width:100%;
 }
 
 .img-card-md-two{
@@ -292,17 +294,14 @@ input[type=range]:focus::-ms-fill-upper {
 
 .flashy.neon.red {
   color: #fff;
-  font-family: Monoton;
-  -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
-  -moz-animation: neon1 1.5s ease-in-out infinite alternate;
-  animation: neon1 1.5s ease-in-out infinite alternate;
+  font-family: Monoton; 
 }
 
 .neon.red:hover {
   color: #b22167;
-  -webkit-animation: none;
-  -moz-animation: none;
-  animation: none;
+  -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+  animation: neon1 1.5s ease-in-out infinite alternate;
 }
 
 .neon.blue{
