@@ -43,7 +43,7 @@
     </div>
     <div class="divider-small"></div>
     <div class="row justify-content-center justify-content-md-start">
-      <game-component class="col-11 col-md-2" v-for="game in games" :key="game.id" :gameData="game" />
+      <game-component v-for="game in games" :key="game.id" :gameData="game" />
     </div>
   </div>
 
