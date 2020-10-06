@@ -1,25 +1,24 @@
 <template>
   <div class="container-fluid background">
     <div class="row mt-3">
-      <div class="col-12 text-center">
-        <h1 class=" red">
+      <div class="col-12 offset-md-4 col-md-4 text-center">
+        <h1 class="card bg-dark red">
           The winner is:
         </h1>
       </div>
     </div>
     <div class="row mt-3 justify-content-center">
-      <div class="col-11 col-md-4 text-center">
-        <game-component :gameData="this.winner" />
+      <div class="col-12 col-md-4 text-center">
+        <game-component class="col-12 mx-1 text-center" :gameData="this.winner" />
       </div>
     </div>
     <div class="row mt-5">
-      <div class="col-12">
-        <h1 class="red text-center">Runners Up:</h1>
+      <div class="col-12 offset-md-4 col-md-4">
+        <h1 class="red card bg-dark text-center">Runners Up:</h1>
       </div>
     </div>
-    <div class="row justify-content-center my-3">
-      <game-component class="col-10 col-md-3 text-center p-3 m-2" v-for="game in games" :key="game.id"
-        :gameData="game" />
+    <div class="row">
+      <game-component class="col-12 col-md-4 text-center mx-2" v-for="game in games" :key="game.id" :gameData="game" />
     </div>
   </div>
 </template>
