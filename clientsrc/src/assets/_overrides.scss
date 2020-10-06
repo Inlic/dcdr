@@ -5,7 +5,7 @@
   border-width: medium;
 }
 #neonTogether{
-
+  max-height: 40vh;
 }
 .logo{
   max-height: 55px;
@@ -62,7 +62,7 @@ flex-direction: column;
   background-color: transparentize($color: #F8F6F7, $amount: .10);
 }
 .bg-darken{
-  background-color: transparentize($color: #000000, $amount: .01);
+  background-color: transparentize($color: #000000, $amount: .25);
 }
 .profile-img{
   border-radius: 50%;
