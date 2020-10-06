@@ -7,7 +7,7 @@
       </div>
       <div class="col-12 col-md-4">
         <div class="card text-center border-0">
-          <div class="card-header bg-dark flashy neon red">
+          <div class="card-header bg-dark red">
             <h3>Level Up Your Gaming Experience</h3>
           </div>
           <div class="card-body bg-dark">
@@ -17,11 +17,11 @@
         </div>
       </div>
     </div>
-    <div class="divider-small"></div>
+
     <div class="row">
       <div class="col-12 col-md-5">
         <div class="card text-center border-0">
-          <div class="card-header bg-dark flashy neon red">
+          <div class="card-header bg-dark red">
             <h3>Persistent Polls</h3>
           </div>
           <div class="card-body bg-dark neon blue">
@@ -34,8 +34,7 @@
         <img class="card-img img-card-md-one " src="@/assets/gameon.jpg" alt="Card image">
       </div>
     </div>
-    <div class="divider-small"></div>
-    <div class="row ">
+    <div class="row my-5">
       <div class="col-3 d-none d-md-block">
         <img class="img-fluid img-card-sm" src="@/assets/neondesktop.jpg">
       </div>
@@ -49,7 +48,6 @@
         <img class="img-fluid img-card-sm" src="@/assets/vrdude.jpg">
       </div>
     </div>
-    <div class="divider"></div>
   </div>
 </template>
 

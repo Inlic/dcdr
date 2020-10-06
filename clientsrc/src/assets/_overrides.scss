@@ -199,7 +199,9 @@ input[type=range]:focus::-ms-fill-upper {
 .img-card-sm{
   border-radius: 10px; 
   filter: brightness(85%); 
-  filter: contrast(110%)
+  filter: contrast(110%);
+  height:100%;
+  width:100%;
 }
 
 .img-card-md-two{
@@ -249,6 +251,44 @@ input[type=range]:focus::-ms-fill-upper {
 //Text Sizing
 
 
+
+//Colors without Animations
+
+.red{
+  color: #FF88FF;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.253);
+  font-family: Iceland;
+}
+
+.blue{
+  color: #316aae;
+  font-family: Iceland;
+}
+
+.yellow{
+  color: #FFDD1B;
+  text-shadow: 0 0 10px #fff;
+  font-family: Pacifico;
+}
+
+.green{
+  color: #B6FF00;
+  text-shadow: 0 0 10px #fff;
+  font-family: "Press Start 2P";
+}
+
+.orange{
+  color: #FF9900;
+  text-shadow: 0 0 10px #fff;
+  font-family: Audiowide;
+}
+
+.purple{
+  color: #BA01FF;
+  text-shadow: 0 0 10px #fff;
+  font-family: Vampiro One;
+}
+
 //Text Neon
 
 .neon {
@@ -260,17 +300,14 @@ input[type=range]:focus::-ms-fill-upper {
 
 .flashy.neon.red {
   color: #fff;
-  font-family: Monoton;
-  -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
-  -moz-animation: neon1 1.5s ease-in-out infinite alternate;
-  animation: neon1 1.5s ease-in-out infinite alternate;
+  font-family: Iceland; 
 }
 
 .neon.red:hover {
   color: #b22167;
-  -webkit-animation: none;
-  -moz-animation: none;
-  animation: none;
+  -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+  animation: neon1 1.5s ease-in-out infinite alternate;
 }
 
 .neon.blue{

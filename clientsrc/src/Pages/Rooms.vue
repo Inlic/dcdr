@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-11 col-md-8">
         <div class="jumbotron mt-5 bg-dark text-center">
-          <h1 class="display-4 flashy neon red">Create a Poll</h1>
+          <h1 class="display-4 red">Create a Poll</h1>
           <p class="lead neon blue">Use this page to create a poll so you and your friends can get gaming quicker.</p>
           <hr>
           <p class="neon blue">Check out the poll options down below.</p>
@@ -13,7 +13,7 @@
     <div class="row">
       <div class="offset-1 col-10">
         <div class="card text-center my-5 bg-dark">
-          <div class="card-header flashy neon red">
+          <div class="card-header red">
             <h3>Create a New Room</h3>
           </div>
           <div class="card-body">
@@ -53,8 +53,8 @@
     <div class="row">
       <div class="offset-1 col-10">
         <div class="card text-center my-5 bg-dark">
-          <div class="card-header flashy neon red">
-            <h5>My Previous Polls</h5>
+          <div class="card-header red">
+            <h3>My Previous Polls</h3>
           </div>
           <div class="card-body">
             <h5 v-for="room in myRooms" :key="room.id" class="card-title neon blue">{{room.name}}</h5>

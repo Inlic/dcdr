@@ -2,7 +2,7 @@
   <div class="container-fluid background">
     <div class="row mt-3">
       <div class="col-12 text-center">
-        <h1 class=" flashy neon red">
+        <h1 class=" red">
           The winner is:
         </h1>
       </div>
@@ -14,7 +14,7 @@
     </div>
     <div class="row mt-5">
       <div class="col-12">
-        <h1 class="flashy neon red text-center">Runners Up:</h1>
+        <h1 class="red text-center">Runners Up:</h1>
       </div>
     </div>
     <div class="row justify-content-center my-3">
