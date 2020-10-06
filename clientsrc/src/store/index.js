@@ -225,6 +225,9 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
+    removeFromList({commit, state}, game){
+      commit("setSteamLibray", state.steam.filter(g => g.name != game.name))
+    }
 
   },
     modules:{

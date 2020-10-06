@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 card my-2 content-shadow pop">
+  <div class="col-12 card my-3 content-shadow">
     <div class="row justify-content-between">
       <img class="col" :src="this.imgurl" alt="">
       <h6 class="align-self-center steam col">{{gameData.name}}</h6>
@@ -33,6 +33,7 @@ export default {
     this.newGame.imgUrl = this.imgurl
     console.log(this.newGame);
     this.$store.dispatch("createGame", this.newGame)
+    this.$store.dispatch("removeFromList", this.newGame)
   }
   }
   
