@@ -25,7 +25,7 @@
             <h3 class="red my-2">Participants</h3>
           </div>
           <ul>
-            <li class="flashy neon purple" v-for="name in room.names" :key="name">{{name}}</li>
+            <li class="purple" v-for="name in room.names" :key="name">{{name}}</li>
           </ul>
         </div>
         <div class="row">
