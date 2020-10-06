@@ -4,16 +4,21 @@
   border-color: darken($color: $primary, $amount: 10);
   border-width: medium;
 }
+#neonTogether{
 
+}
+.logo{
+  max-height: 55px;
+}
 .background{
   background-image: url("assets/neonapartments.jpg");
-  background-color: transparentize($color: #080708, $amount: .5);
   background-attachment: fixed;
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
   flex-grow: 1;
 }
+.background-subdued
 
 .flex-grow{
   flex-grow: 1;
@@ -55,6 +60,9 @@ flex-direction: column;
 }
 .bg-faded{
   background-color: transparentize($color: #F8F6F7, $amount: .10);
+}
+.bg-darken{
+  background-color: transparentize($color: #000000, $amount: .01);
 }
 .profile-img{
   border-radius: 50%;
@@ -252,8 +260,6 @@ input[type=range]:focus::-ms-fill-upper {
   font-family: Iceland;
 }
 
-
-
 .blue{
   color: #316aae;
   font-family: Iceland;
@@ -261,25 +267,21 @@ input[type=range]:focus::-ms-fill-upper {
 
 .yellow{
   color: #FFDD1B;
-  text-shadow: 0 0 10px #fff;
   font-family: Pacifico;
 }
 
 .green{
   color: #B6FF00;
-  text-shadow: 0 0 10px #fff;
   font-family: "Press Start 2P";
 }
 
 .orange{
   color: #FF9900;
-  text-shadow: 0 0 10px #fff;
   font-family: Audiowide;
 }
 
 .purple{
   color: #BA01FF;
-  text-shadow: 0 0 10px #fff;
   font-family: Vampiro One;
 }
 
@@ -294,7 +296,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .flashy.neon.red {
   color: #fff;
-  font-family: Monoton; 
+  font-family: Iceland; 
 }
 
 .neon.red:hover {
