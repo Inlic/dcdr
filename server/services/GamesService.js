@@ -8,10 +8,6 @@ class GamesService {
         let res= await dbContext.Games.findOneAndUpdate({_id : id}, data, {new: true, runValidators: true})
         return res
     }
-    async getAll() {
-        return await dbContext.Games.find({}).populate("creator", "name picture")
-    }
-
     async getById(id) {
         let data = await dbContext.Games.findOne({ _id: id })
         if (!data) {
