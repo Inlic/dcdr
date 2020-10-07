@@ -127,8 +127,9 @@ export default {
       }
     },
   },
-  beforeDestory(){
+  beforeRouteLeave(to, from, next){
     clearTimeout(this.timeout)
+    next()
   }
 }
 </script>
