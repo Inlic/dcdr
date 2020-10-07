@@ -3,6 +3,7 @@ import Vuex from "vuex";
 import router from "../router";
 import {socketService} from "./socketService"
 import {api} from "./AxiosService.js"
+import as from "./alertsService.js"
 
 Vue.use(Vuex);
 
@@ -228,7 +229,8 @@ export default new Vuex.Store({
         console.log("got", res.data.game_count);
         commit("setSteamLibray", res.data.games)
       } catch (error) {
-        console.error(error);
+        console.error(error)
+          as.steamNotice();
       }
     },
     removeFromList({commit, state}, game){
