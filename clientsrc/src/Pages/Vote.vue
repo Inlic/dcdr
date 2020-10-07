@@ -9,6 +9,9 @@
       </div>
       <div class="col-12 col-lg-10" @touchstart="startSwipe" @touchmove="moveSwipe">
         <game-component style="height: 80vh;" :gameData="this.activeGame" />
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style=""></div>
+        </div>
       </div>
       <div class="d-none d-lg-block col-1">
         <button type="button" @click="voteUp" class="mid-page btn btn-primary flashy neon blue">
@@ -18,7 +21,7 @@
     </div>
     <div class="row text-center fixed-bottom my-3">
       <div class="offset-4 col-4">
-        <p class="orange">item {{currentItemNum}} of {{games.length}}</p>
+        <h2 class="red">Item {{currentItemNum}} of {{games.length}}</h2>
         <button @click="veto" v-if="vetos" type="button" class="btn btn-primary flashy neon blue">
           <i class="fas fa-times-circle"></i>
         </button>
