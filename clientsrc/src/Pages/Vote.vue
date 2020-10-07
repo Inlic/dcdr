@@ -18,6 +18,7 @@
     </div>
     <div class="row text-center fixed-bottom my-3">
       <div class="offset-4 col-4">
+        <p>item {{currentItemNum}} of {{games.length}}</p>
         <button @click="veto" type="button" class="btn btn-primary flashy neon blue">
           <i class="fas fa-times-circle"></i>
         </button>
@@ -54,6 +55,10 @@ export default {
     },
     room(){
       return this.$store.state.room
+    },
+    currentItemNum(){
+      let num = this.index
+      return num+1
     }
   },
   mounted(){
