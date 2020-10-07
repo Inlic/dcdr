@@ -9,6 +9,9 @@
       </div>
       <div class="col-12 col-lg-10" @touchstart="startSwipe" @touchmove="moveSwipe">
         <game-component style="height: 80vh;" :gameData="this.activeGame" />
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style=""></div>
+        </div>
       </div>
       <div class="d-none d-lg-block col-1">
         <button type="button" @click="voteUp" class="mid-page btn btn-primary flashy neon blue">
@@ -18,10 +21,11 @@
     </div>
     <div class="row text-center fixed-bottom my-3">
       <div class="offset-4 col-4">
-        <p>item {{currentItemNum}} of {{games.length}}</p>
-        <button @click="veto" type="button" class="btn btn-primary flashy neon blue">
+        <h2 class="red">Item {{currentItemNum}} of {{games.length}}</h2>
+        <button @click="veto" v-if="vetos" type="button" class="btn btn-primary flashy neon blue">
           <i class="fas fa-times-circle"></i>
         </button>
+        <p class="neon" :class="{green: vetos, bad: !vetos }">Vetos Remaining: {{vetos}}</p>
       </div>
     </div>
   </div>
@@ -37,6 +41,7 @@ export default {
         xDown: null,
         xCurrent: null,
         timeout: null,
+        vetos: 0,
       }
     },
   components:{
@@ -64,7 +69,7 @@ export default {
   mounted(){
     this.$store.dispatch("startVote", this.$route.params.code)
     this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
-    
+    this.vetos = this.room.options.userVetos
   },
   methods:{
     voteUp(){
@@ -78,6 +83,7 @@ export default {
       this.getNext()
     },
     veto(){
+      this.vetos--
       if(!this.activeGame.id){this.$store.dispatch("getGamebyID", this.games[this.index].id)}
       this.$store.dispatch("vetoGame", this.activeGame)
     },
@@ -117,6 +123,9 @@ export default {
         this.voteDown()
       }
     },
+  },
+  beforeDestory(){
+    clearTimeout(this.timeout)
   }
 }
 </script>

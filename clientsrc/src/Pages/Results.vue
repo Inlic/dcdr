@@ -10,6 +10,8 @@
     <div class="row mt-3 justify-content-center">
       <div class="col-12 col-md-4 text-center">
         <game-component class="col-12 mx-1 text-center" :gameData="this.winner" />
+        <p class="neon green">{{(winner.upvotes/room.names.length) *100}}% agree</p>
+        <p class="neon bad">{{(winner.downvotes/room.names.length) *100}}% disagree</p>
       </div>
     </div>
     <div class="row mt-5">
@@ -18,7 +20,14 @@
       </div>
     </div>
     <div class="row">
-      <game-component class="col-12 col-md-4 text-center mx-2" v-for="game in results" :key="game.id" :gameData="game" />
+      <div class="col-12 col-md-4 text-center mx-2" v-for="game in results" :key="game.id">
+        <game-component   :gameData="game" />
+        <div v-if="!game.veto">
+          <p class="neon green">{{(game.upvotes/room.names.length) *100}}% agree</p>
+          <p class="neon bad">{{(game.downvotes/room.names.length) *100}}% disagree</p>
+        </div>
+          <p v-else class="neon bad">V-<i class="fas fa-frog"></i></p>
+      </div>
     </div>
   </div>
 </template>
@@ -36,6 +45,9 @@
       },
       results(){
         return this.$store.state.games.slice(1)
+      },
+      room(){
+        return this.$store.state.room
       }
     },
     mounted() {
