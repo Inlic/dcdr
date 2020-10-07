@@ -21,6 +21,7 @@ export class RoomsController extends BaseController {
         this.router
         .get('/:code', this.getByCode)
         .get('/:code/games', this.getRoomGames)
+        .put('/:id/games', this.resetGames)
         .get('/:id/responses', this.getRoomResponses)
         .put('/:id', this.edit)
         .put('/:id/names', this.addName)
@@ -29,6 +30,13 @@ export class RoomsController extends BaseController {
         .put('/:code/start', this.startPoll)
         .post('', this.create)
         .delete('/:id', this.delete)
+    }
+    async resetGames(req, res, next) {
+        try {
+            await gamesService.resetGames(req.body._id)
+        } catch (error) {
+            next (error)
+        }
     }
     // @ts-ignore
     async userDone(req, res, next) {

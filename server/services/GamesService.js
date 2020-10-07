@@ -3,6 +3,10 @@ import { BadRequest } from "../utils/Errors"
 
 
 class GamesService {
+    async resetGames(code) {
+        let res = await dbContext.Games.update({roomId: code},{score:0, downvotes:0, upvotes:0}, {multi:true} )
+        return res
+    }
     async update(id, data) {
         // REVIEW check if you want to runValidators on updates this insures the edit still adheres to the Schema
         let res= await dbContext.Games.findOneAndUpdate({_id : id}, data, {new: true, runValidators: true})
