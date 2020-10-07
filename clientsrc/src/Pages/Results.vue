@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="row">
-      <game-component class="col-12 col-md-4 text-center mx-2" v-for="game in games" :key="game.id" :gameData="game" />
+      <game-component class="col-12 col-md-4 text-center mx-2" v-for="game in results" :key="game.id" :gameData="game" />
     </div>
   </div>
 </template>
@@ -33,6 +33,9 @@
       },
       winner() {
         return this.games[0]
+      },
+      results(){
+        return this.$store.state.games.slice(1)
       }
     },
     mounted() {
