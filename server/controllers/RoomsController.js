@@ -34,6 +34,7 @@ export class RoomsController extends BaseController {
     async resetGames(req, res, next) {
         try {
             await gamesService.resetGames(req.body._id)
+            return res.send("games reset")
         } catch (error) {
             next (error)
         }
