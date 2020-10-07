@@ -51,6 +51,7 @@ export class GamesController extends BaseController {
     async create(req, res, next) {
         try {
             let data = await gamesService.create(req.body)
+            // REVIEW events by convention should be kabob case
             socketService.messageRoom(req.body.code, "new game", data)
             return res.status(201).send(data)
         } catch (error) { next(error) }
@@ -69,6 +70,7 @@ export class GamesController extends BaseController {
             console.log(data.score);
             // @ts-ignore
             if(data.score >= data.reqScore){
+                // REVIEW events by convention should be kabob case
                 socketService.messageRoom(req.body.code,"poll ended", req.body.code)
             }
             return res.send(data)
