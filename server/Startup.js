@@ -4,7 +4,7 @@ import express from "express";
 import helmet from "helmet";
 import { RegisterControllers, Paths } from "../Setup";
 import auth0Provider from "@bcwdev/auth0provider";
-import cleanupService from "./services/TestCleanupService";
+// import cleanupService from "./services/TestCleanupService";
 
 export default class Startup {
   static ConfigureGlobalMiddleware(app) {
