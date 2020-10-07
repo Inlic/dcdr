@@ -79,7 +79,6 @@
     mounted() {
       this.$store.dispatch("getRoomByCode", this.$route.params.code)
       this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
-      // this.$store.dispatch('addName', { addName: this.$store.state.name })
       this.$store.dispatch("getGames", this.$route.params.code)
       if(this.profile.steamId){
         this.getUserSteam()

@@ -19,7 +19,7 @@ export default {
   },
   methods:{
     rehost(){
-      this.pollData.compleated = false
+      this.pollData.completed = false
       this.pollData.started = false
       this.pollData.names = []
       this.$store.dispatch("resetRoom", this.pollData)
