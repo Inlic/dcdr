@@ -19,7 +19,7 @@ export default {
   },
   computed: {
     imgurl(){
-      return `http://media.steampowered.com/steamcommunity/public/images/apps/${this.gameData.appid}/${this.gameData.img_logo_url}.jpg`
+      return `https://media.steampowered.com/steamcommunity/public/images/apps/${this.gameData.appid}/${this.gameData.img_logo_url}.jpg`
     },
     room() {
         return this.$store.state.room
@@ -31,6 +31,7 @@ export default {
     this.newGame.roomId = this.room.id
     this.newGame.name = this.gameData.name
     this.newGame.imgUrl = this.imgurl
+    this.newGame.code = this.$route.params.code
     console.log(this.newGame);
     this.$store.dispatch("createGame", this.newGame)
     this.$store.dispatch("removeFromList", this.newGame)

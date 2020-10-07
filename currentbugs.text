@@ -1,6 +1,4 @@
 2x game adds sometimes, 
 no steam images for some users ERR_CERT_COMMON_NAME_INVALID (http: fix)
-remove remove game button from game comp
-fix runner up logic again
 need to add v-if to remove games form poll on poll creation, maybe a before enter on router?
-awaing results sometimes pops on results
+awaing results sometimes pops on results 
