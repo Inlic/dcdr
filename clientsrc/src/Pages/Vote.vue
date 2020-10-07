@@ -43,7 +43,7 @@ export default {
         xDown: null,
         xCurrent: null,
         timeout: null,
-        timeoutstyle: "width:"+,
+        timeoutstyle: "width:"+100+"%",
         vetos: 0,
       }
     },
