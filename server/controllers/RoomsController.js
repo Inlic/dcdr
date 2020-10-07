@@ -22,7 +22,6 @@ export class RoomsController extends BaseController {
         .get('/:code', this.getByCode)
         .get('/:code/games', this.getRoomGames)
         .put('/:id/games', this.resetGames)
-        .get('/:id/responses', this.getRoomResponses)
         .put('/:id', this.edit)
         .put('/:id/names', this.addName)
         .put('/:code/done', this.userDone)
@@ -34,6 +33,7 @@ export class RoomsController extends BaseController {
     async resetGames(req, res, next) {
         try {
             await gamesService.resetGames(req.body._id)
+            return res.send("games reset")
         } catch (error) {
             next (error)
         }
@@ -76,15 +76,6 @@ export class RoomsController extends BaseController {
 
     // @ts-ignore
     // @ts-ignore
-    async getAll(req, res, next) {
-        try {
-            let data = await roomsService.getAll()
-            
-            return res.send(data)
-        }
-        catch (err) {  }
-    }
-
     async getByCode(req, res, next) {
         try {
             let data = await roomsService.getByCode(req.params.code)
@@ -98,14 +89,6 @@ export class RoomsController extends BaseController {
             return res.send(data)
         } catch (error) { next(error) }
     }
-
-    async getRoomResponses(req, res, next) {
-        try {
-            let data = await roomsService.getRoomResponses(req.params.id)
-            return res.send(data)
-        } catch (error) { next(error) }
-    }
-
     async create(req, res, next) {
         try {
             req.body.code = codeGenerator.generateCode()
