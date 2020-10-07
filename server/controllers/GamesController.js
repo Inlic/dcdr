@@ -13,9 +13,7 @@ export class GamesController extends BaseController {
     constructor() {
         super("api/games")
         this.router
-        .get('', this.getAll)
         .get('/:id', this.getById)
-        .get('/:id/responses', this.getGameResponses)
         .post('', this.create)
         .put('/:id', this.edit)
         .put('/:id/upvote', this.upvote)
@@ -23,34 +21,16 @@ export class GamesController extends BaseController {
         .delete('/:id', this.delete)
         // .use(auth0provider.getAuthorizedUserInfo)
     }
-
-
-    // @ts-ignore
-    async getAll(req, res, next) {
-        try {
-            let data = await gamesService.getAll()
-            return res.send(data)
-        }
-        catch (err) { next(err) }
-    }
-
     async getById(req, res, next) {
         try {
             let data = await gamesService.getById(req.params.id)
             return res.send(data)
         } catch (error) { next(error) }
     }
-
-    async getGameResponses(req, res, next) {
-        try {
-            let data = await gamesService.getGameResponses(req.params.id)
-            return res.send(data)
-        } catch (error) { next(error) }
-    }
-
     async create(req, res, next) {
         try {
             let data = await gamesService.create(req.body)
+            // REVIEW events by convention should be kabob case
             socketService.messageRoom(req.body.code, "new game", data)
             return res.status(201).send(data)
         } catch (error) { next(error) }
@@ -69,6 +49,7 @@ export class GamesController extends BaseController {
             console.log(data.score);
             // @ts-ignore
             if(data.score >= data.reqScore){
+                // REVIEW events by convention should be kabob case
                 socketService.messageRoom(req.body.code,"poll ended", req.body.code)
             }
             return res.send(data)
