@@ -1,9 +1,6 @@
 <template>
   <div class="container-fluid background">
     <div class="row">
-        <img class="col-12 mt-2" src="@/assets/levelup.jpg" style="max-height: 52vh; object-fit: cover; border-radius: 10px; object-position: 50% 44%; filter: contrast(125%); filter: brightness(110%);">
-    </div>
-    <div class="row">
       <div class="col-12 col-md-7">
         <div class="card text-center my-2 bg-dark">
           <div class="card-header red">
@@ -57,6 +54,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="row">
+        <img class="col-12" src="@/assets/levelup.jpg" style="max-height: 52vh; object-fit: cover; border-radius: 40px; object-position: 50% 44%; filter: contrast(125%); filter: brightness(110%);">
     </div>
   </div>
 </template>
