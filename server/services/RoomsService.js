@@ -20,9 +20,7 @@ class RoomsService {
         return await dbContext.Rooms.findOneAndUpdate({_id: id}, {$push:{"names": data.addName}}, {new: true})
         
     }
-    async getAll() {
-        return await dbContext.Rooms.find({}).populate("creator", "name picture")
-    }
+
 
     async getByCode(code) {
         let data = await dbContext.Rooms.findOne({ code: code })

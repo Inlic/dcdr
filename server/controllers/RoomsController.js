@@ -15,10 +15,10 @@ import { gamesService } from "../services/GamesService";
 
 //PUBLIC
 export class RoomsController extends BaseController {
+    // REVIEW make :id and :code a more consistent behavior (consider query params)
     constructor() {
         super("api/rooms")
         this.router
-        .get('', this.getAll)
         .get('/:code', this.getByCode)
         .get('/:code/games', this.getRoomGames)
         .get('/:id/responses', this.getRoomResponses)
