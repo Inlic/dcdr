@@ -50,7 +50,7 @@
             <h3>My Previous Polls</h3>
           </div>
           <div class="card poll-container-create">
-            <div v-for="room in myRooms" :key="room.id" class="card bg-dark neon blue m-1 text-center">{{room.name}}</div>
+            <historic-poll-component v-for="room in myRooms" :key="room.id" :pollData="room" />
           </div>
         </div>
       </div>
@@ -62,6 +62,7 @@
 </template>
 
 <script>
+  import historicPollComponent from "../components/HistoricPollComponet.vue"
   export default {
     name: "Rooms",
     data() {
@@ -104,6 +105,9 @@
       this.$store.dispatch('joinRoom', "default")
       this.$store.dispatch("setMyName", this.profile.name)
       this.$store.dispatch("getRooms")
+    },
+    components: {
+      historicPollComponent,
     },
 
   }

@@ -3,6 +3,7 @@ import Vuex from "vuex";
 import router from "../router";
 import {socketService} from "./socketService"
 import {api} from "./AxiosService.js"
+import as from "./alertsService.js"
 
 Vue.use(Vuex);
 
@@ -91,9 +92,10 @@ export default new Vuex.Store({
         console.error(err);
       }
     },
-    async deleteRoom({}, id){
+    async deleteRoom({commit, state}, id){
       try{
         await api.delete(`rooms/${id}`)
+        commit("setMyRooms", this.state.myRooms.filter(r => r.id != id))
       } catch(error) {
         console.error(error);
       }
@@ -176,6 +178,15 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
+    async resetRoom({commit}, data){
+      try {
+        console.log(data);
+        await api.put(`/rooms/${data.id}`, data)
+        await api.put(`/rooms/${data.id}/games`, data)
+      } catch (error) {
+        
+      }
+    },
     async respond({}, data){
       try {
         await api.post("responses", data)
@@ -228,7 +239,8 @@ export default new Vuex.Store({
         console.log("got", res.data.game_count);
         commit("setSteamLibray", res.data.games)
       } catch (error) {
-        console.error(error);
+        console.error(error)
+          as.steamNotice();
       }
     },
     removeFromList({commit, state}, game){

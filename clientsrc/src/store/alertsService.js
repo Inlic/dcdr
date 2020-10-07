@@ -36,4 +36,26 @@ export default class NotificationService {
 
         }
     }
+
+    static async steamNotice(){
+        try {
+            Swal.fire({
+                icon: 'error',
+                title: 'Somethings off...',
+                text: 'Couldnt find those games boss. Make sure your steam games are public and try again',
+                footer: `<router-link :to="{ name: 'Faq' }">learn more about this error</router-link>`
+              })
+        } catch (error) {
+            
+        }
+    }
+
+    static async gameLength(length){
+        Swal.fire({
+            icon: 'error',
+            title: 'Somethings off...',
+            text: `This poll can only have ${length} games`,
+            footer: `<router-link :to="{ name: 'Faq' }">learn more about this error</router-link>`
+        })
+    }
 }

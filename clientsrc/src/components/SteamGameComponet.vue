@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import as from "../store/alertsService.js"
 export default {
   name:"steam-game-component",
   props:["gameData"],
@@ -24,17 +25,24 @@ export default {
     room() {
         return this.$store.state.room
       },
+    games(){
+      return this.$store.state.games
+    }
   },
   methods:{
 
     addGame(){
+      if(this.games.length < this.room.options.pollItems){
     this.newGame.roomId = this.room.id
     this.newGame.name = this.gameData.name
     this.newGame.imgUrl = this.imgurl
     this.newGame.code = this.$route.params.code
     console.log(this.newGame);
     this.$store.dispatch("createGame", this.newGame)
-    this.$store.dispatch("removeFromList", this.newGame)
+    this.$store.dispatch("removeFromList", this.newGame)}
+    else{
+      as.gameLength(this.room.options.pollItems)
+    }
   }
   }
   

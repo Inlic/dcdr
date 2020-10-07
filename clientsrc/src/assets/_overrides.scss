@@ -232,7 +232,6 @@ input[type=range]:focus::-ms-fill-upper {
   filter: contrast(110%);
   height: 60vh;
   width:100%;
-  object-fit: cover;
 }
 
 .img-card-md-two{
@@ -303,6 +302,10 @@ input[type=range]:focus::-ms-fill-upper {
 
 .green{
   color: #B6FF00;
+  font-family: "Press Start 2P";
+}
+.bad{
+  color: #be0000;
   font-family: "Press Start 2P";
 }
 
@@ -378,6 +381,11 @@ input[type=range]:focus::-ms-fill-upper {
 
 .neon.green {
   color: #B6FF00;
+  font-family: "Press Start 2P";
+  font-size: 0.8em;
+}
+.neon.bad {
+  color: #be0000;
   font-family: "Press Start 2P";
   font-size: 0.8em;
 }

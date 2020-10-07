@@ -9,6 +9,7 @@
       </div>
       <div class="col-12 col-lg-10" @touchstart="startSwipe" @touchmove="moveSwipe">
         <game-component style="height: 80vh;" :gameData="this.activeGame" />
+        
       </div>
       <div class="d-none d-lg-block col-1">
         <button type="button" @click="voteUp" class="mid-page btn btn-primary flashy neon blue">
@@ -18,10 +19,15 @@
     </div>
     <div class="row text-center fixed-bottom my-3">
       <div class="offset-4 col-4">
-        <p>item {{currentItemNum}} of {{games.length}}</p>
-        <button @click="veto" type="button" class="btn btn-primary flashy neon blue">
+          <h2 class="red">Remaining Time</h2>
+        <div class="progress">
+          <div class="progress-bar bg-primary" role="progressbar" :style="progressStyle" ></div>
+        </div>
+        <h2 class="red">Item {{currentItemNum}} of {{games.length}}</h2>
+        <button @click="veto" v-if="vetos" type="button" class="btn btn-primary flashy neon blue">
           <i class="fas fa-times-circle"></i>
         </button>
+        <p class="neon" :class="{green: vetos, bad: !vetos }">Vetos Remaining: {{vetos}}</p>
       </div>
     </div>
   </div>
@@ -37,6 +43,10 @@ export default {
         xDown: null,
         xCurrent: null,
         timeout: null,
+        vetos: 0,
+        interval: null,
+        counter: 0,
+        progressStyle: "width: 100%",
       }
     },
   components:{
@@ -59,12 +69,17 @@ export default {
     currentItemNum(){
       let num = this.index
       return num+1
-    }
+    },
   },
   mounted(){
     this.$store.dispatch("startVote", this.$route.params.code)
     this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
-    
+    this.vetos = this.room.options.userVetos
+    this.counter = this.room.options.questionTime
+    this.interval = setInterval(()=>{
+        this.counter--
+        this.progressStyle = "width:"+Math.floor((this.counter/this.room.options.questionTime)*100)+"%"
+        }, 1000)
   },
   methods:{
     voteUp(){
@@ -78,17 +93,25 @@ export default {
       this.getNext()
     },
     veto(){
+      this.vetos--
       if(!this.activeGame.id){this.$store.dispatch("getGamebyID", this.games[this.index].id)}
       this.$store.dispatch("vetoGame", this.activeGame)
     },
     getNext(){
       this.index ++
       clearTimeout(this.timeout)
-      
+      clearInterval(this.interval)
+      this.counter = this.room.options.questionTime
       if(this.index < this.games.length){
-      this.$store.dispatch("getGamebyID", this.games[this.index].id)}
+        this.$store.dispatch("getGamebyID", this.games[this.index].id)
+        this.interval = setInterval(()=>{
+              this.counter--
+              this.progressStyle = "width:"+Math.floor((this.counter/this.room.options.questionTime)*100)+"%"
+              }, 1000)
+        }
       else{
         clearTimeout(this.timeout)
+        clearInterval(this.interval)
         this.$store.dispatch("userDone", this.$route.params.code)
         this.$router.push({ name: 'WaitResults', params: { code: this.$route.params.code } })
       }
@@ -117,6 +140,11 @@ export default {
         this.voteDown()
       }
     },
+  },
+  beforeRouteLeave(to, from, next){
+    clearInterval(this.interval)
+    clearTimeout(this.timeout)
+    next()
   }
 }
 </script>
