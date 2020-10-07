@@ -38,5 +38,7 @@ export default {
 </script>
 
 <style>
-
+.fa{
+  cursor: pointer;
+}
 </style>
