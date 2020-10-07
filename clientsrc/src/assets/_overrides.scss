@@ -305,6 +305,10 @@ input[type=range]:focus::-ms-fill-upper {
   color: #B6FF00;
   font-family: "Press Start 2P";
 }
+.bad{
+  color: #be0000;
+  font-family: "Press Start 2P";
+}
 
 .orange{
   color: #FF9900;
@@ -378,6 +382,11 @@ input[type=range]:focus::-ms-fill-upper {
 
 .neon.green {
   color: #B6FF00;
+  font-family: "Press Start 2P";
+  font-size: 0.8em;
+}
+.neon.bad {
+  color: #be0000;
   font-family: "Press Start 2P";
   font-size: 0.8em;
 }
