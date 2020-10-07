@@ -38,6 +38,14 @@ class SocketService {
     socket.join(room);
     socket.emit("joined room", room+" succesfully joined")
     // this.io.to(room).emit("new user", "todo")
+
+// REVIEW 
+    // socket["name"] = payload.name
+    // socket.join(payload.room);
+    // await dbContext.Rooms.findOneAndUpdate({code: payload.code}, {$push:{"names": payload.name}}, {new: true})
+    // socket.emit("joined room", payload.room+" succesfully joined")
+
+
   }
   /**
    * @param {SocketIO.Socket} socket

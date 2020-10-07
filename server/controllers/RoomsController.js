@@ -15,6 +15,7 @@ import { gamesService } from "../services/GamesService";
 
 //PUBLIC
 export class RoomsController extends BaseController {
+    // REVIEW make :id and :code a more consistent behavior (consider query params)
     constructor() {
         super("api/rooms")
         this.router

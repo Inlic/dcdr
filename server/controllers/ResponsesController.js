@@ -3,7 +3,7 @@ import BaseController from "../utils/BaseController";
 import auth0provider from "@bcwdev/auth0provider";
 import { responsesService } from '../services/ResponsesService'
 
-
+// REVIEW Do we need this?
 
 //PUBLIC
 export class ResponsesController extends BaseController {

@@ -1,6 +1,8 @@
 import { dbContext } from "../db/DbContext"
 import { BadRequest } from "../utils/Errors"
 
+// REVIEW remove this service
+
 
 class ResponsesService {
     async getAll() {

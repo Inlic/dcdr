@@ -38,6 +38,10 @@ export const socketService = {
     },
     leaveRoom({ commit, dispatch }, roomName) {
       socket.emit("disconnect", { action: "LeaveRoom", data: roomName })
+    },
+    // REVIEW
+    done({ commit, dispatch }, roomName) {
+      socket.emit("dispatch", { action: "Done", data: roomName })
     }
   }
 }
