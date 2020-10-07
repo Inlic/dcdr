@@ -24,9 +24,10 @@
           <div class="progress-bar bg-primary" role="progressbar" :style="timeoutstyle" ></div>
         </div>
         <h2 class="red">Item {{currentItemNum}} of {{games.length}}</h2>
-        <button @click="veto" type="button" class="btn btn-primary flashy neon blue">
+        <button @click="veto" v-if="vetos" type="button" class="btn btn-primary flashy neon blue">
           <i class="fas fa-times-circle"></i>
         </button>
+        <p class="neon" :class="{green: vetos, bad: !vetos }">Vetos Remaining: {{vetos}}</p>
       </div>
     </div>
   </div>
@@ -42,7 +43,8 @@ export default {
         xDown: null,
         xCurrent: null,
         timeout: null,
-        timeoutstyle: "width:"+
+        timeoutstyle: "width:"+,
+        vetos: 0,
       }
     },
   components:{
@@ -70,7 +72,7 @@ export default {
   mounted(){
     this.$store.dispatch("startVote", this.$route.params.code)
     this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
-    
+    this.vetos = this.room.options.userVetos
   },
   methods:{
     voteUp(){
@@ -84,6 +86,7 @@ export default {
       this.getNext()
     },
     veto(){
+      this.vetos--
       if(!this.activeGame.id){this.$store.dispatch("getGamebyID", this.games[this.index].id)}
       this.$store.dispatch("vetoGame", this.activeGame)
     },
