@@ -101,6 +101,7 @@ export default {
       this.index ++
       clearTimeout(this.timeout)
       clearInterval(this.interval)
+      this.progressStyle = "width: 100%"
       this.counter = this.room.options.questionTime
       if(this.index < this.games.length){
         this.$store.dispatch("getGamebyID", this.games[this.index].id)
