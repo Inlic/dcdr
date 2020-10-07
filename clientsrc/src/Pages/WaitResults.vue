@@ -22,10 +22,14 @@ export default {
     }
   },
   mounted(){
-    // this.timeout = setTimeout(() => {
-    //   this.$store.dispatch()
-    //   // this.$router.push({ name: 'Results', params: { code: this.$route.params.code } })
-    // }, 600000);
+    this.timeout = setTimeout(() => {
+      this.$store.dispatch()
+      this.$router.push({ name: 'Results', params: { code: this.$route.params.code } })
+    }, 300000);
+  },
+  beforeRouteLeave(to, from, next){
+    clearTimeout(this.timeout)
+    next()
   }
 }
 </script>
