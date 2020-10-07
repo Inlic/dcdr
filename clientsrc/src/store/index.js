@@ -177,6 +177,15 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
+    async resetRoom({commit}, data){
+      try {
+        console.log(data);
+        await api.put(`/rooms/${data.id}`, data)
+        await api.put(`/rooms/${data.id}/games`, data)
+      } catch (error) {
+        
+      }
+    },
     async respond({}, data){
       try {
         await api.post("responses", data)

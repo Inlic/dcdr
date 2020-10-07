@@ -38,15 +38,6 @@ class RoomsService {
         }
         return data
     }
-
-    async getRoomResponses(id) {
-        let data = await dbContext.Responses.find({ roomId: id })
-        if (!data) {
-            throw new BadRequest("Invalid ID")
-        }
-        return data
-    }
-
     async create(rawData) {
         let data = await dbContext.Rooms.create(rawData)
         return data

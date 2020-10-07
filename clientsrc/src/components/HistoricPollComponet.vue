@@ -19,17 +19,10 @@ export default {
   },
   methods:{
     rehost(){
-      this.$store.dispatch("getGames", this.pollData.code)
-      games.forEach(game => {
-        game.upvotes = 0
-        game.downvotes = 0
-        game.score = 0
-        this.$store.dispatch("editGame", game)
-      });
-
-      this.pollData.compleated = false
+      this.pollData.completed = false
       this.pollData.started = false
-      this.$store.dispatch("editRoom", this.pollData)
+      this.pollData.names = []
+      this.$store.dispatch("resetRoom", this.pollData)
       this.$store.dispatch("setMyName", this.profile.name)
       this.$router.push({ name: "Room", params:{code:this.pollData.code} })
     }
