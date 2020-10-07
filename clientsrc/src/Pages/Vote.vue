@@ -9,9 +9,7 @@
       </div>
       <div class="col-12 col-lg-10" @touchstart="startSwipe" @touchmove="moveSwipe">
         <game-component style="height: 80vh;" :gameData="this.activeGame" />
-        <div class="progress">
-          <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style=""></div>
-        </div>
+        
       </div>
       <div class="d-none d-lg-block col-1">
         <button type="button" @click="voteUp" class="mid-page btn btn-primary flashy neon blue">
@@ -21,6 +19,10 @@
     </div>
     <div class="row text-center fixed-bottom my-3">
       <div class="offset-4 col-4">
+          <h2 class="red">Remaining Time</h2>
+        <div class="progress">
+          <div class="progress-bar bg-primary" role="progressbar" :style="timeoutstyle" ></div>
+        </div>
         <h2 class="red">Item {{currentItemNum}} of {{games.length}}</h2>
         <button @click="veto" type="button" class="btn btn-primary flashy neon blue">
           <i class="fas fa-times-circle"></i>
@@ -40,6 +42,7 @@ export default {
         xDown: null,
         xCurrent: null,
         timeout: null,
+        timeoutstyle: "width:"+
       }
     },
   components:{
@@ -50,7 +53,7 @@ export default {
       if(this.$store.state.activeGame.veto == true){
         this.getNext()
       }
-      this.timeout = setTimeout(this.getNext, this.room.options.questionTime*1000 );
+      // this.timeout = setTimeout(this.getNext, this.room.options.questionTime*1000 );
       return this.$store.state.activeGame
     },
     games(){
@@ -86,12 +89,12 @@ export default {
     },
     getNext(){
       this.index ++
-      clearTimeout(this.timeout)
+      // clearTimeout(this.timeout)
       
       if(this.index < this.games.length){
       this.$store.dispatch("getGamebyID", this.games[this.index].id)}
       else{
-        clearTimeout(this.timeout)
+        // clearTimeout(this.timeout)
         this.$store.dispatch("userDone", this.$route.params.code)
         this.$router.push({ name: 'WaitResults', params: { code: this.$route.params.code } })
       }
@@ -121,9 +124,9 @@ export default {
       }
     },
   },
-  beforeDestory(){
-    clearTimeout(this.timeout)
-  }
+  // beforeDestory(){
+  //   clearTimeout(this.timeout)
+  // }
 }
 </script>
 
