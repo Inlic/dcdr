@@ -19,9 +19,10 @@
     <div class="row text-center fixed-bottom my-3">
       <div class="offset-4 col-4">
         <p>item {{currentItemNum}} of {{games.length}}</p>
-        <button @click="veto" type="button" class="btn btn-primary flashy neon blue">
+        <button @click="veto" v-if="vetos" type="button" class="btn btn-primary flashy neon blue">
           <i class="fas fa-times-circle"></i>
         </button>
+        <p class="neon" :class="{green: vetos, bad: !vetos }">Vetos Remaining: {{vetos}}</p>
       </div>
     </div>
   </div>
@@ -37,6 +38,7 @@ export default {
         xDown: null,
         xCurrent: null,
         timeout: null,
+        vetos: 0,
       }
     },
   components:{
@@ -64,7 +66,7 @@ export default {
   mounted(){
     this.$store.dispatch("startVote", this.$route.params.code)
     this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
-    
+    this.vetos = this.room.options.userVetos
   },
   methods:{
     voteUp(){
@@ -78,6 +80,7 @@ export default {
       this.getNext()
     },
     veto(){
+      this.vetos--
       if(!this.activeGame.id){this.$store.dispatch("getGamebyID", this.games[this.index].id)}
       this.$store.dispatch("vetoGame", this.activeGame)
     },
