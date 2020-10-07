@@ -21,6 +21,7 @@ export default {
     rehost(){
       this.pollData.completed = false
       this.pollData.started = false
+      this.pollData.names = []
       this.$store.dispatch("resetRoom", this.pollData)
       this.$store.dispatch("setMyName", this.profile.name)
       this.$router.push({ name: "Room", params:{code:this.pollData.code} })
