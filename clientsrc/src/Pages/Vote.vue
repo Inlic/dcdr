@@ -120,6 +120,9 @@ export default {
         this.voteDown()
       }
     },
+  },
+  beforeDestory(){
+    clearTimeout(this.timeout)
   }
 }
 </script>
