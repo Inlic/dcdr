@@ -31,6 +31,7 @@ export default {
     this.newGame.roomId = this.room.id
     this.newGame.name = this.gameData.name
     this.newGame.imgUrl = this.imgurl
+    this.newGame.code = this.$route.params.code
     console.log(this.newGame);
     this.$store.dispatch("createGame", this.newGame)
     this.$store.dispatch("removeFromList", this.newGame)
