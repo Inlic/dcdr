@@ -9,7 +9,7 @@
     </div>
     <div class="row mt-3 justify-content-center">
       <div class="col-12 col-md-4 text-center">
-        <game-component class="col-12 mx-1 text-center" :gameData="this.winner" />
+        <game-component class="col-12 mx-1 text-center animate__animated animate__backInDown" :gameData="this.winner" />
         <p class="neon green">{{(winner.upvotes/room.names.length) *100}}% agree</p>
         <p class="neon bad">{{(winner.downvotes/room.names.length) *100}}% disagree</p>
       </div>
