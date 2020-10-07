@@ -77,9 +77,9 @@ export default {
     this.vetos = this.room.options.userVetos
     this.counter = this.room.options.questionTime
     this.interval = setInterval(()=>{
-        this.counter--
-        this.progressStyle = "width:"+Math.floor((this.counter/this.room.options.questionTime)*100)+"%"
-        }, 1000)
+      this.counter--
+        this.progressStyle = "width:"+(Math.floor((this.counter/this.room.options.questionTime)*100-(100*(1/this.room.options.questionTime))))+"%"
+      }, 1000)
   },
   methods:{
     voteUp(){
@@ -107,7 +107,7 @@ export default {
         this.$store.dispatch("getGamebyID", this.games[this.index].id)
         this.interval = setInterval(()=>{
               this.counter--
-              this.progressStyle = "width:"+Math.floor((this.counter/this.room.options.questionTime)*100)+"%"
+              this.progressStyle = "width:"+(Math.floor((this.counter/this.room.options.questionTime)*100-(100*(1/this.room.options.questionTime))))+"%"
               }, 1000)
         }
       else{
@@ -151,5 +151,9 @@ export default {
 </script>
 
 <style>
+.progress-bar{
+  transition: all 1000ms linear;
+}
+
 
 </style>
