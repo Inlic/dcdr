@@ -18,7 +18,6 @@ export class RoomsController extends BaseController {
     constructor() {
         super("api/rooms")
         this.router
-        .get('', this.getAll)
         .get('/:code', this.getByCode)
         .get('/:code/games', this.getRoomGames)
         .get('/:id/responses', this.getRoomResponses)
