@@ -49,4 +49,13 @@ export default class NotificationService {
             
         }
     }
+
+    static async gameLength(length){
+        Swal.fire({
+            icon: 'error',
+            title: 'Somethings off...',
+            text: `This poll can only have ${length} games`,
+            footer: `<router-link :to="{ name: 'Faq' }">learn more about this error</router-link>`
+        })
+    }
 }
