@@ -44,7 +44,7 @@
           <steam-game-componet class="" v-for="game in steam" :key="game.appid" :gameData="game"/>
         </div>
         <div class="col-6 steam-container px-3">
-          <h1>Current Games:</h1>
+          <h1 v-if="!room.started">Current Games:</h1>
           <game-vote-component class="" v-for="game in games" :key="game.id" :gameData="game" />
         </div>
         </div>
