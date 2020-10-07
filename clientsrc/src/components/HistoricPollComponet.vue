@@ -1,11 +1,13 @@
 <template>
-  <div class="card bg-dark neon blue m-1">
-    <div class="h1">{{pollData.name}}</div>
-    <button type="button" @click="rehost" class="btn btn-outline-primary">Re-host poll</button>
+  <div class="card bg-dark neon blue m-1 justify-content-between">
+    <i class="fa fa-trash text-right fa-sm mt-2 mr-2" @click="deletePoll" aria-hidden="true"></i>
+    <h2>{{pollData.name}}</h2>
+    <button type="button" @click="rehost" class="btn btn-outline-secondary">Re-host poll</button>
   </div>
 </template>
 
 <script>
+import as from "../store/alertsService.js"
 export default {
   name: "historicPollComponent",
   props: ["pollData"],
@@ -18,6 +20,10 @@ export default {
     }
   },
   methods:{
+    async deletePoll(){
+       if (await as.confirmDelete())
+       {this.$store.dispatch("deleteRoom", this.pollData.id)}
+    },
     rehost(){
       this.pollData.completed = false
       this.pollData.started = false

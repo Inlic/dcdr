@@ -92,9 +92,10 @@ export default new Vuex.Store({
         console.error(err);
       }
     },
-    async deleteRoom({}, id){
+    async deleteRoom({commit, state}, id){
       try{
         await api.delete(`rooms/${id}`)
+        commit("setMyRooms", this.state.myRooms.filter(r => r.id != id))
       } catch(error) {
         console.error(error);
       }
