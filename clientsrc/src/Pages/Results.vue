@@ -21,9 +21,12 @@
     </div>
     <div class="row">
       <div class="col-12 col-md-4 text-center mx-2" v-for="game in results" :key="game.id">
-      <game-component   :gameData="game" />
-      <p class="neon green">{{(game.upvotes/room.names.length) *100}}% agree</p>
-      <p class="neon bad">{{(game.downvotes/room.names.length) *100}}% disagree</p>
+        <game-component   :gameData="game" />
+        <div v-if="!game.veto">
+          <p class="neon green">{{(game.upvotes/room.names.length) *100}}% agree</p>
+          <p class="neon bad">{{(game.downvotes/room.names.length) *100}}% disagree</p>
+        </div>
+          <p v-else class="neon bad">V-<i class="fas fa-frog"></i></p>
       </div>
     </div>
   </div>

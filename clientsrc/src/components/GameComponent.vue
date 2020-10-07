@@ -5,8 +5,9 @@
       </div>
       <div class="card-body">
       <img class="img-fluid" :src="gameData.imgUrl">
-      <h6 v-if="!gameData.veto" class="orange">Score: {{gameData.score}}</h6>
-      <h6 v-else class="flashy neon purple">V-<i class="fas fa-frog"></i></h6>
+      <!-- leaving this here in case we want to render game score again -->
+      <!-- <h6 v-if="!gameData.veto" class="orange">Score: {{gameData.score}}</h6> -->
+      <!-- <h6 v-else class="flashy neon purple">V-<i class="fas fa-frog"></i></h6> -->
       </div>
   </div>
 </template>
