@@ -32,7 +32,7 @@ export default {
   methods:{
 
     addGame(){
-      if(this.games.length < this.romm.options.pollItems){
+      if(this.games.length < this.room.options.pollItems){
     this.newGame.roomId = this.room.id
     this.newGame.name = this.gameData.name
     this.newGame.imgUrl = this.imgurl
@@ -41,7 +41,7 @@ export default {
     this.$store.dispatch("createGame", this.newGame)
     this.$store.dispatch("removeFromList", this.newGame)}
     else{
-      as.gameLength(this.romm.options.pollItems)
+      as.gameLength(this.room.options.pollItems)
     }
   }
   }

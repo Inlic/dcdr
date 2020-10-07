@@ -41,7 +41,7 @@
                 <h3>My Previous Polls</h3>
               </div>
               <div class="card poll-container">
-                <div class="card bg-dark neon blue m-1 text-center" v-for="room in myRooms" :key="room.id">{{room.name}}</div>  
+                <historic-poll-component v-for="room in myRooms" :key="room.id" :pollData="room" />  
               </div>
             </div>
           </div>
@@ -62,6 +62,7 @@
 </template>
 
 <script>
+import historicPollComponent from "../components/HistoricPollComponet"
   export default {
     name: "Profile",
     mounted(){
@@ -90,6 +91,9 @@
         this.editing = false
         this.$store.dispatch("editProfile", this.eProfile)
       }
+    },
+    components: {
+      historicPollComponent,
     }
   };
 </script>
