@@ -1,12 +1,10 @@
 <template>
   <div class="">
     <div class="card">
-      <form @submit.prevent="addChannel" class="form-group">
-        <label for="">New Channel</label>
-        <input type="text" 
-        :v-model="newChannel.name"
-        name="name" class="form-control" placeholder="name" aria-describedby="helpId">
-        <button type="submit" class="btn btn-outline-primary">add channel</button>
+    <form @submit.prevent="addChannel" class="justify-content-center">
+                <input type="text" placeholder="New Channel" required v-model="newChannel.name"
+                  class="col-12 my-1 neon blue form-control" />
+        <button type="submit" class="btn btn-outline-primary">Add Channel</button>
       </form>
     </div>
   </div>

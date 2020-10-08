@@ -1,4 +1,4 @@
-// import { Document } from "mongoose";
+
 import { dbContext } from "../db/DbContext";
 import { BadRequest } from "../utils/Errors"
 
@@ -46,11 +46,11 @@ function sanitizeBody(body) {
 }
 
 class ProfileService {
-  async updateUserChannels(user, body) {
-    let update = sanitizeBody(body);
+  async updateUserChannels(user, data) {
+    let channels =  sanitizeBody({channels: data}).channels
     let profile = await dbContext.Profile.findOneAndUpdate(
       { email: user.email },
-      { $push: update },
+      { $push: {channels}},
       { runValidators: true, setDefaultsOnInsert: true, new: true }
     );
     return profile;

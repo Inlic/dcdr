@@ -248,8 +248,10 @@ export default new Vuex.Store({
     },
     
     //Channels
-    async addChannel({commit}, channel){
+    async addChannel({commit, state}, channel){
       try {
+        channel.user = this.state.profile
+        console.log(channel);
         let res = await api.post('channels', channel)
         console.log(res);
       } catch (error) {
