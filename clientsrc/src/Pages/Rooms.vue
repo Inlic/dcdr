@@ -10,17 +10,17 @@
             <form @submit.prevent="addRoom" class="row justify-content-center form-inline">
               <div class="form-group m-2">
                 <label class="neon blue mx-2" for="room">Room Name</label>
-                <input type="text" placeholder="New room name..." name="room" v-model="newRoom.name" required
-                  class="neon blue form-control" />
+                <input id="room-name-input" type="text" placeholder="New room name..." name="room"
+                  v-model="newRoom.name" required class="neon blue form-control" />
               </div>
               <div class="form-group">
                 <label class="neon blue mx-2" for="vetos">Allowed User Vetos</label>
                 <select class="neon blue form-control mr-2" placeholder="User vetos" name="vetos" id="vetos"
                   v-model="newRoom.options.userVetos">
-                  <option class="neon blue" value="0">0</option>
-                  <option class="neon blue" value="1">1</option>
-                  <option class="neon blue" value="2">2</option>
-                  <option class="neon blue" value="3">3</option>
+                  <option id="one-veto-option" class="neon blue" value="0">0</option>
+                  <option id="two-veto-option" class="neon blue" value="1">1</option>
+                  <option id="three-veto-option" class="neon blue" value="2">2</option>
+                  <option id="four-veto-option" class="neon blue" value="3">3</option>
                 </select>
               </div>
               <div class="form-check">
@@ -44,7 +44,8 @@
                 <input type="range" class="form-control-range mr-2" min="2" max="12" v-model="newRoom.options.pollItems"
                   id="formPollItems">
               </div>
-              <button type="submit" class="btn btn-primary flashy neon blue w-25 mx-1 mt-3"> Go! </button>
+              <button id="create-poll-btn" type="submit" class="btn btn-primary flashy neon blue w-25 mx-1 mt-3"> Go!
+              </button>
             </form>
           </div>
         </div>
@@ -60,9 +61,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="row mt-1">
-      <img class="col-12 lvl-up-img" src="@/assets/levelup.jpg">
-    </div> -->
   </div>
 </template>
 

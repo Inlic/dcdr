@@ -17,16 +17,16 @@
   import loadingComponent from "../components/loadingComponent"
   export default {
     name: "WaitResults",
-    data() {
-      return {
-        timeout: 0
-      }
-    },
     mounted() {
       this.timeout = setTimeout(() => {
         this.$store.dispatch()
         this.$router.push({ name: 'Results', params: { code: this.$route.params.code } })
       }, 300000);
+    },
+    data() {
+      return {
+        timeout: 0
+      }
     },
     beforeRouteLeave(to, from, next) {
       clearTimeout(this.timeout)
