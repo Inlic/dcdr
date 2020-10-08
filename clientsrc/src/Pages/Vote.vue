@@ -1,7 +1,6 @@
 <template>
   <div class="container-fluid background">
-    <div class="divider-tiny"></div>
-    <div class="row text-center">
+    <div class="row text-center mt-2">
       <div class="d-none d-lg-block col-1">
         <button @click="voteDown" type="button" class="mid-page btn btn-primary flashy neon blue">
           <i class="far fa-thumbs-down"></i>
