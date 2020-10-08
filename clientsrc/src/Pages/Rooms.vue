@@ -23,6 +23,10 @@
                   <option class="neon blue" value="3">3</option>
                 </select>
               </div>
+              <div class="form-check">
+                <label class="neon blue mx-2" for="vetos">Participants can add items</label>
+                <input v-model='newRoom.options.userItems' class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="test" aria-label="...">
+              </div>
               <div class="form-group w-75">
                 <label class="neon blue" for="formConsensus">Required Consensus: {{newRoom.options.consensus}}%</label>
                 <input type="range" class="form-control-range" min="50" max="100" v-model="newRoom.options.consensus"
@@ -72,7 +76,8 @@
           options: {
             consensus: 75,
             questionTime: 30,
-            pollItems: 7
+            pollItems: 7,
+            userItems: false
           }
         }
       }
@@ -98,6 +103,7 @@
         this.newRoom.options.questionTime = parseInt(this.newRoom.options.questionTime)
         this.newRoom.options.pollItems = parseInt(this.newRoom.options.pollItems)
         this.newRoom.options.userVetos = parseInt(this.newRoom.options.userVetos)
+        // console.log(this.newRoom);
         this.$store.dispatch("createRoom", this.newRoom)
       }
     },

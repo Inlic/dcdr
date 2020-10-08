@@ -1,7 +1,7 @@
 <template>
   <div class="card bg-dark neon blue m-1 justify-content-between">
-    <i class="fa fa-trash text-right fa-sm mt-2 mr-2" @click="deletePoll" aria-hidden="true"></i>
-    <h2>{{pollData.name}}</h2>
+    
+    <h2>{{pollData.name}} <i class="fa fa-trash float-right fa-sm mt-2 mr-2" @click="deletePoll" aria-hidden="true"></i></h2>
     <button type="button" @click="rehost" class="btn btn-outline-secondary">Re-host poll</button>
   </div>
 </template>
@@ -38,5 +38,11 @@ export default {
 </script>
 
 <style>
+.fa{
+  cursor: pointer;
+}
 
+.fa:hover{
+    text-shadow: 0 0 12px #81C8FF, 0px 0px 3px #fff
+}
 </style>
