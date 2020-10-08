@@ -8,7 +8,7 @@
           </div>
           <div class="card-body">
             <form @submit.prevent="addRoom" class="row justify-content-center form-inline">
-              <div class="form-group mx-2">
+              <div class="form-group m-2">
                 <label class="neon blue mx-2" for="room">Room Name</label>
                 <input type="text" placeholder="New room name..." name="room" v-model="newRoom.name" required
                   class="neon blue form-control" />
@@ -25,7 +25,8 @@
               </div>
               <div class="form-check">
                 <label class="neon blue mx-2" for="vetos">Participants can add items</label>
-                <input v-model='newRoom.options.userItems' class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="test" aria-label="...">
+                <input v-model='newRoom.options.userItems' class="form-check-input position-static" type="checkbox"
+                  id="blankCheckbox" value="test" aria-label="...">
               </div>
               <div class="form-group w-75">
                 <label class="neon blue" for="formConsensus">Required Consensus: {{newRoom.options.consensus}}%</label>
@@ -59,8 +60,9 @@
         </div>
       </div>
     </div>
-    <div class="row">
-        <img class="col-12" src="@/assets/levelup.jpg" style="max-height: 52vh; object-fit: cover; border-radius: 40px; object-position: 50% 44%; filter: contrast(125%); filter: brightness(110%);">
+    <div class="row my-3">
+      <img class="col-12" src="@/assets/levelup.jpg"
+        style="max-height: 52vh; object-fit: cover; border-radius: 40px; object-position: 50% 44%; filter: contrast(125%); filter: brightness(110%);">
     </div>
   </div>
 </template>
