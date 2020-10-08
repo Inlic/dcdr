@@ -12,29 +12,34 @@
             <h4 class="neon green">Room Code: {{room.code}}</h4>
           </div>
           <div class="card-body text-center col">
-            <div class="row">
-                <h3 class="card orange col-6">User Vetos: {{room.options.userVetos}}</h3>
-                <h3 class="card orange col-6">Required Consensus: {{room.options.consensus}}%</h3>
+            <div class="row justify-content-around">
+              <h3 class="card orange col-5">User Vetos: {{room.options.userVetos}}</h3>
+              <h3 class="card orange col-5">Required Consensus: {{room.options.consensus}}%</h3>
             </div>
-            <div class="row">
-                <h3 class="card orange col-6">Time Per Item: {{room.options.questionTime}}s</h3>
-                <h3 class="card orange col-6">Allowed Items: {{room.options.pollItems}} items</h3>
+            <div class="row justify-content-around">
+              <h3 class="card orange col-5">Time Per Item: {{room.options.questionTime}}s</h3>
+              <h3 class="card orange col-5">Allowed Items: {{room.options.pollItems}}</h3>
             </div>
-            <div class="form-group card p-3 row" v-if="!room.started && games.length < room.options.pollItems && userItems">
+            <div class="form-group card p-3 row"
+              v-if="!room.started && games.length < room.options.pollItems && userItems">
               <form @submit.prevent="createGame" class="justify-content-center">
-                <input type="text" placeholder="Game name..." required v-model="newGame.name" class="col-12 my-1 neon blue form-control" />
-                <input type="Url" placeholder="Image url..." v-model="newGame.imgUrl" class="col-12 my-1 neon blue form-control" />
+                <input type="text" placeholder="Game name..." required v-model="newGame.name"
+                  class="col-12 my-1 neon blue form-control" />
+                <input type="Url" placeholder="Image url..." v-model="newGame.imgUrl"
+                  class="col-12 my-1 neon blue form-control" />
                 <button type="submit" class="btn btn-primary flashy neon blue m-1">Add a game</button>
               </form>
             </div>
             <div class="form-group card p-3 row" v-if="!room.started && userItems" @submit.prevent="getSteamGames">
               <form class="justify-content-center">
-                <input type="text" placeholder="Steam ID..." required v-model="steamUser.steamId" class="col-12 my-1 neon blue form-control" />
+                <input type="text" placeholder="Steam ID..." required v-model="steamUser.steamId"
+                  class="col-12 my-1 neon blue form-control" />
                 <button type="submit" class="btn btn-primary flashy neon blue m-1">Get Steam libary</button>
-                <button v-if="profile.steamId" type="button" @click="getUserSteam" class="btn btn-primary flashy neon blue m-1">Get My Steam libary</button>
+                <button v-if="profile.steamId" type="button" @click="getUserSteam"
+                  class="btn btn-primary flashy neon blue m-1">Get My Steam libary</button>
               </form>
             </div>
-              <button v-if="!room.started && games.length > 1" type="button" @click="this.startPoll"
+            <button v-if="!room.started && games.length > 1" type="button" @click="this.startPoll"
               class="btn btn-primary m-2 flashy neon blue"> Go! </button>
             <div class="row">
               <h3 class="red my-2 col-4 offset-4">Participants</h3>
@@ -48,8 +53,8 @@
       <div class="col-12">
         <div class="row">
           <div class="col-6 steam-container px-3" v-if="userItems">
-            <h1 v-if="steam.length" >Steam Libray results:</h1>
-            <steam-game-componet class="" v-for="game in steam" :key="game.appid" :gameData="game"/>
+            <h1 v-if="steam.length">Steam Libray results:</h1>
+            <steam-game-componet class="" v-for="game in steam" :key="game.appid" :gameData="game" />
           </div>
           <div class="steam-container px-3" :class="{'col-6':userItems, 'col-12':!userItems}">
             <h1 v-if="!room.started">Current Games:</h1>
@@ -80,7 +85,7 @@
       this.$store.dispatch("getRoomByCode", this.$route.params.code)
       this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
       this.$store.dispatch("getGames", this.$route.params.code)
-      if(this.profile.steamId){
+      if (this.profile.steamId) {
         this.getUserSteam()
       }
     },
@@ -96,15 +101,15 @@
       profile() {
         return this.$store.state.profile;
       },
-      
-      steam(){
+
+      steam() {
         return this.$store.state.steam
       },
-      userItems(){
-        if(this.room.options.userItems){
+      userItems() {
+        if (this.room.options.userItems) {
           return true
         }
-        if(this.$auth.userInfo.email == this.room.creatorEmail){
+        if (this.$auth.userInfo.email == this.room.creatorEmail) {
           return true
         }
         return false
@@ -122,14 +127,14 @@
         this.$store.dispatch("getGames", this.room.code)
         // this.$router.push({ name: 'Vote', params: { code: this.room.code } })
       },
-      getSteamGames(){
-        if(this.steamUser.steamId){
+      getSteamGames() {
+        if (this.steamUser.steamId) {
           this.$store.dispatch("getOwnedGames", this.steamUser.steamId)
         }
       },
-        getUserSteam(){
-          this.$store.dispatch("getOwnedGames", this.profile.steamId)
-        },
+      getUserSteam() {
+        this.$store.dispatch("getOwnedGames", this.profile.steamId)
+      },
       async checkName() {
 
         if (this.$auth.isAuthenticated) {
@@ -151,7 +156,11 @@
       steamGameComponet,
       gameVoteComponent
 
-    }
+    },
+  beforeRouteLeave(to, from, next){
+    this.$store.dispatch('leaveRoom', this.$route.params.code)
+    next()
+  }
   }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 card my-3 content-shadow">
+  <div :id="gameData.name" class="col-12 card my-3 content-shadow">
     <div class="row justify-content-between">
       <img class="col" :src="this.imgurl" alt="">
       <h6 class="align-self-center steam col">{{gameData.name}}</h6>
@@ -37,9 +37,12 @@ export default {
     this.newGame.name = this.gameData.name
     this.newGame.imgUrl = this.imgurl
     this.newGame.code = this.$route.params.code
-    console.log(this.newGame);
+    //TODO edit delay for animation
+    // let target = document.getElementById(this.gameData.name)
+    // target.classList.add('animate__animated', 'animate__fadeOutRight')
     this.$store.dispatch("createGame", this.newGame)
-    this.$store.dispatch("removeFromList", this.newGame)}
+    this.$store.dispatch("removeFromList", this.newGame)
+    }
     else{
       as.gameLength(this.room.options.pollItems)
     }

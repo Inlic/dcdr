@@ -4,7 +4,7 @@ import { BadRequest } from "../utils/Errors"
 
 class GamesService {
     async resetGames(code) {
-        let res = await dbContext.Games.update({roomId: code},{score:0, downvotes:0, upvotes:0}, {multi:true} )
+        let res = await dbContext.Games.update({roomId: code},{score:0, downvotes:0, upvotes:0, veto: false}, {multi:true} )
         return res
     }
     async update(id, data) {

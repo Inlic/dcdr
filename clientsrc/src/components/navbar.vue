@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <router-link class="navbar-brand flashy neon red on" :to="{ name: 'Home' }">  D. C. <img class="logo" src="../assets/logo.png" alt=""> D. R.</router-link>
+    <router-link class="navbar-brand flashy neon red on" :to="{ name: 'Home' }">  D. C. <img class="logo animate__animated animate__pulse" src="../assets/logo.png" alt=""> D. R.</router-link>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

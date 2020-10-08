@@ -1,5 +1,5 @@
 <template>
-  <div class="col-12 card my-3 content-shadow">
+  <div class="col-12 card my-3 content-shadow animate__animated animate__fadeInRight">
     <div class="row justify-content-between">
       <img class="col" :src="gameData.imgUrl" alt="">
       <h6 class="align-self-center steam col">{{gameData.name}}</h6>
