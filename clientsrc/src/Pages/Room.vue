@@ -20,14 +20,14 @@
                 <h3 class="card orange col-6">Time Per Item: {{room.options.questionTime}}s</h3>
                 <h3 class="card orange col-6">Allowed Items: {{room.options.pollItems}} items</h3>
             </div>
-            <div class="form-group card p-3 row" v-if="!room.started && games.length < room.options.pollItems">
+            <div class="form-group card p-3 row" v-if="!room.started && games.length < room.options.pollItems && userItems">
               <form @submit.prevent="createGame" class="justify-content-center">
                 <input type="text" placeholder="Game name..." required v-model="newGame.name" class="col-12 my-1 neon blue form-control" />
                 <input type="Url" placeholder="Image url..." v-model="newGame.imgUrl" class="col-12 my-1 neon blue form-control" />
                 <button type="submit" class="btn btn-primary flashy neon blue m-1">Add a game</button>
               </form>
             </div>
-            <div class="form-group card p-3 row" v-if="!room.started" @submit.prevent="getSteamGames">
+            <div class="form-group card p-3 row" v-if="!room.started && userItems" @submit.prevent="getSteamGames">
               <form class="justify-content-center">
                 <input type="text" placeholder="Steam ID..." required v-model="steamUser.steamId" class="col-12 my-1 neon blue form-control" />
                 <button type="submit" class="btn btn-primary flashy neon blue m-1">Get Steam libary</button>
@@ -47,11 +47,11 @@
       </div>
       <div class="col-12">
         <div class="row">
-          <div class="col-6 steam-container px-3">
+          <div class="col-6 steam-container px-3" v-if="userItems">
             <h1 v-if="steam.length" >Steam Libray results:</h1>
             <steam-game-componet class="" v-for="game in steam" :key="game.appid" :gameData="game"/>
           </div>
-          <div class="col-6 steam-container px-3">
+          <div class="steam-container px-3" :class="{'col-6':userItems, 'col-12':!userItems}">
             <h1 v-if="!room.started">Current Games:</h1>
             <game-vote-component class="" v-for="game in games" :key="game.id" :gameData="game" />
           </div>
@@ -99,6 +99,15 @@
       
       steam(){
         return this.$store.state.steam
+      },
+      userItems(){
+        if(this.room.options.userItems){
+          return true
+        }
+        if(this.$auth.userInfo.email == this.room.creatorEmail){
+          return true
+        }
+        return false
       }
     },
     methods: {
