@@ -14,7 +14,8 @@ const Room = new Schema({
     code: { type: String, required: true },
     completed: { type: Boolean, default: false },
     started: { type: Boolean, default: false },
-    doneUsers: {type: Number, default: 0}
+    doneUsers: {type: Number, default: 0},
+    winnningItem:{type: ObjectId}
 }, { timestamps: true, toJSON: { virtuals: true } })
 
 Room.virtual("creator",

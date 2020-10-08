@@ -7,7 +7,7 @@
         </button>
       </div>
       <div class="col-12 col-lg-10" @touchstart="startSwipe" @touchmove="moveSwipe">
-        <game-component style="height: 80vh;" :gameData="this.activeGame" />
+        <game-component style="height: 85vh;" :gameData="this.activeGame" />
 
       </div>
       <div class="d-none d-lg-block col-1">
