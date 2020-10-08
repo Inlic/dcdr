@@ -19,6 +19,9 @@
           <li class="nav-item" v-if="$auth.isAuthenticated" :class="{ active: $route.name == 'Profile' }">
             <router-link class="nav-link text-light flashy neon blue" :to="{ name: 'Profile' }">Profile</router-link>
           </li>
+          <li class="nav-item" :class="{ active: $route.name == 'Faq' }">
+            <router-link class="nav-link text-light flashy neon blue" :to="{ name: 'Faq' }">FAQ</router-link>
+          </li>
           <li class="nav-item">
             <form class="form-inline ml-md-3" @submit.prevent="setActiveRoom">
               <div class="form-group">
