@@ -1,9 +1,6 @@
 <template>
   <div class="background container-fluid">
     <div class="row justify-content-center bg-darken">
-      <!-- <div class="col-10 col-md-8">
-        <img id="neonTogether" class="card-img img-card-md-one" src="@/assets/neontogether.jpg" alt="Card image">
-      </div> -->
       <div class="col-4 align-self-center">
         <div class="card text-center border-0 content-shadow pop">
           <div class="card-header bg-black red">
@@ -58,28 +55,6 @@
           <img class="card-img-top" src="@/assets/bannerimage/tf2banner.jpg" alt="">
       </div>
     </div>
-
-    <!-- <div class="row bg-darken py-2">
-      <div class="col-12 col-md-5 d-flex">
-      </div>
-      <div class="col-7 d-none d-md-block">
-        <img class="card-img img-card-md-one " src="@/assets/gameon.jpg" alt="Card image">
-      </div>
-    </div> -->
-    <!-- <div class="row text-center bg-darken">
-      <div class="col-3 d-none d-md-block img-box my-2">
-        <img class="img-fluid img-card-sm" src="@/assets/neondesktop.jpg">
-      </div>
-      <div class="col-3 d-none d-md-block img-box my-2">
-        <img class="img-fluid img-card-sm" src="@/assets/racinggirl.jpg">
-      </div>
-      <div class="col-3 d-none d-md-block img-box my-2">
-        <img class="img-fluid img-card-sm" src="@/assets/neoncompguts.jpg">
-      </div>
-      <div class="col-3 d-none d-md-block img-box my-2">
-        <img class="img-fluid img-card-sm" src="@/assets/vrdude.jpg">
-      </div>
-    </div> -->
   </div>
 </template>
 
