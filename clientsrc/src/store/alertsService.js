@@ -22,11 +22,14 @@ export default class NotificationService {
     static async confirmDelete(text = "You won't be able to revert this!") {
         try {
             let res = await Swal.fire({
-                title: "Are You Sure?",
+                title: "<h2 style='color:#FF88FF'>Are You Sure?</h2>",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Yes, delete it!',
-                
+                cancelButtonColor: "#81C8FF",
+                confirmButtonColor:  "#FF9900",
+                iconColor: "#FF88FF",
+                background: "#171228",
             })
             if (res.value) {
                 return true
@@ -43,7 +46,8 @@ export default class NotificationService {
                 icon: 'error',
                 title: 'Somethings off...',
                 text: 'Couldnt find those games boss. Make sure your steam games are public and try again',
-                footer: `<router-link :to="{ name: 'Faq' }">learn more about this error</router-link>`
+                footer: `<router-link :to="{ name: 'Faq' }">learn more about this error</router-link>`,
+                background: "#171228"
               })
         } catch (error) {
             
@@ -55,7 +59,8 @@ export default class NotificationService {
             icon: 'error',
             title: 'Somethings off...',
             text: `This poll can only have ${length} games`,
-            footer: `<router-link :to="{ name: 'Faq' }">learn more about this error</router-link>`
+            footer: `<router-link :to="{ name: 'Faq' }">learn more about this error</router-link>`,
+            background: "#171228"
         })
     }
 }
