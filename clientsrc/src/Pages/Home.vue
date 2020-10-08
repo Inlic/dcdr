@@ -32,6 +32,33 @@
         </div>
       </div>
     </div>
+    <div class="row bg-darken">
+      <div style="border: 5px solid #81C8FF; border-radius: 10px" class="col-3 content-shadow">
+          <img class="card-img-top" src="@/assets/bannerimage/amongusbanner.jpg" alt="">
+      </div>
+      <div style="border: 5px solid #FF88FF; border-radius: 10px" class="col-3 content-shadow">
+          <img class="card-img-top" src="@/assets/bannerimage/csgobanner.jpg" alt="">
+      </div>
+      <div style="border: 5px solid #81C8FF; border-radius: 10px" class="col-3 content-shadow">
+          <img class="card-img-top" src="@/assets/bannerimage/halobanner.jpg" alt="">
+      </div>
+      <div style="border: 5px solid #FF88FF; border-radius: 10px" class="col-3 content-shadow">
+          <img class="card-img-top" src="@/assets/bannerimage/phasmophobiabanner.jpg" alt="">
+      </div>
+      <div style="border: 5px solid #FF88FF; border-radius: 10px" class="col-3 content-shadow">
+          <img class="card-img-top" src="@/assets/bannerimage/seaofthievesbanner.jpg" alt="">
+      </div>
+      <div style="border: 5px solid #81C8FF; border-radius: 10px" class="col-3 content-shadow">
+          <img class="card-img-top" src="@/assets/bannerimage/fallguysbanner.jpg" alt="">
+      </div>
+      <div style="border: 5px solid #FF88FF; border-radius: 10px" class="col-3 content-shadow">
+          <img class="card-img-top" src="@/assets/bannerimage/terrariabanner.jpg" alt="">
+      </div>
+      <div style="border: 5px solid #81C8FF; border-radius: 10px" class="col-3 content-shadow">
+          <img class="card-img-top" src="@/assets/bannerimage/tf2banner.jpg" alt="">
+      </div>
+    </div>
+
     <!-- <div class="row bg-darken py-2">
       <div class="col-12 col-md-5 d-flex">
       </div>
