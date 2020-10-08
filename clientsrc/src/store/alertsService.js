@@ -27,11 +27,11 @@ export default class NotificationService {
             let res = await Swal.fire({
                 title: "<h2 style='color:#FF88FF'>Are You Sure?</h2>",
                 icon: 'warning',
+                iconColor: "#FF88FF",
                 showCancelButton: true,
                 confirmButtonText: 'Yes, delete it!',
                 cancelButtonColor: "#81C8FF",
                 confirmButtonColor:  "#FF9900",
-                iconColor: "#FF88FF",
                 background: "#171228",
             })
             if (res.value) {
@@ -49,8 +49,7 @@ export default class NotificationService {
                 icon: "info",
                 iconColor: "#FF88FF",
                 title: "<h2 style='color:#FF88FF'>Somethings off...</h2>",
-                text: "<h2 style='color:#FF88FF'>Couldnt find those games boss. Make sure your steam games are public and try again</h2>",
-                footer: "<router-link :to='{ name: 'Faq' }'>learn more about this error</router-link>",
+                html: "<h2 style='color:#81C8FF'>Couldnt find those games boss. Make sure your steam games are public and try again.</h2>",
                 background: "#171228"
               })
         } catch (error) {
