@@ -1,12 +1,12 @@
 <template>
-  
+
 </template>
 
 <script>
-export default {
-  name: "profileComponent"
+  export default {
+    name: "profileComponent"
 
-}
+  }
 </script>
 
 <style>

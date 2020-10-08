@@ -1,10 +1,9 @@
 <template>
   <div class="container-fluid background">
-    <div class="divider-tiny"></div>
     <div v-if="!room">
       <loading-component></loading-component>
     </div>
-    <div v-else class="row justify-content-center">
+    <div v-else class="row justify-content-center mt-3">
       <div class="col-12 col-md-10">
         <div class="card bg-dark text-center row">
           <div class="card-header col">
@@ -23,23 +22,24 @@
             <div class="form-group card p-3 row"
               v-if="!room.started && games.length < room.options.pollItems && userItems">
               <form @submit.prevent="createGame" class="justify-content-center">
-                <input type="text" placeholder="Game name..." required v-model="newGame.name"
+                <input id="game-name-input" type="text" placeholder="Game name..." required v-model="newGame.name"
                   class="col-12 my-1 neon blue form-control" />
-                <input type="Url" placeholder="Image url..." v-model="newGame.imgUrl"
+                <input id="game-img-input" type="Url" placeholder="Image url..." v-model="newGame.imgUrl"
                   class="col-12 my-1 neon blue form-control" />
-                <button type="submit" class="btn btn-primary flashy neon blue m-1">Add a game</button>
+                <button id="add-game-btn" type="submit" class="btn btn-primary flashy neon blue m-1">Add a game</button>
               </form>
             </div>
             <div class="form-group card p-3 row" v-if="!room.started && userItems" @submit.prevent="getSteamGames">
               <form class="justify-content-center">
-                <input type="text" placeholder="Steam ID..." required v-model="steamUser.steamId"
+                <input id="steam-id-input" type="text" placeholder="Steam ID..." required v-model="steamUser.steamId"
                   class="col-12 my-1 neon blue form-control" />
-                <button type="submit" class="btn btn-primary flashy neon blue m-1">Get Steam libary</button>
-                <button v-if="profile.steamId" type="button" @click="getUserSteam"
+                <button id="get-steam-library-btn" type="submit" class="btn btn-primary flashy neon blue m-1">Get Steam
+                  libary</button>
+                <button id="get-user-steam-btn" v-if="profile.steamId" type="button" @click="getUserSteam"
                   class="btn btn-primary flashy neon blue m-1">Get My Steam libary</button>
               </form>
             </div>
-            <button v-if="!room.started && games.length > 1" type="button" @click="this.startPoll"
+            <button id="start-poll-btn" v-if="!room.started && games.length > 1" type="button" @click="this.startPoll"
               class="btn btn-primary m-2 flashy neon blue"> Go! </button>
             <div class="row">
               <h3 class="red my-2 col-4 offset-4">Participants</h3>
@@ -75,18 +75,18 @@
   import gameVoteComponent from "../components/GameVoteComponet"
   export default {
     name: "Room",
-    data() {
-      return {
-        newGame: {},
-        steamUser: {}
-      }
-    },
     mounted() {
       this.$store.dispatch("getRoomByCode", this.$route.params.code)
       this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
       this.$store.dispatch("getGames", this.$route.params.code)
       if (this.profile.steamId) {
         this.getUserSteam()
+      }
+    },
+    data() {
+      return {
+        newGame: {},
+        steamUser: {}
       }
     },
     computed: {
@@ -101,7 +101,6 @@
       profile() {
         return this.$store.state.profile;
       },
-
       steam() {
         return this.$store.state.steam
       },
@@ -136,31 +135,26 @@
         this.$store.dispatch("getOwnedGames", this.profile.steamId)
       },
       async checkName() {
-
         if (this.$auth.isAuthenticated) {
           this.$store.dispatch("addName", { id: this.room.id, addName: this.profile.name })
           return
         }
         else if (!this.$auth.isAuthenticated) {
           let res = await as.addName()
-
-
           this.$store.dispatch("addName", { id: this.room.id, addName: res.value })
         }
       }
     },
-
     components: {
       loadingComponent,
       gameComponent,
       steamGameComponet,
       gameVoteComponent
-
     },
-  beforeRouteLeave(to, from, next){
-    this.$store.dispatch('leaveRoom', this.$route.params.code)
-    next()
-  }
+    beforeRouteLeave(to, from, next) {
+      this.$store.dispatch('leaveRoom', this.$route.params.code)
+      next()
+    }
   }
 </script>
 

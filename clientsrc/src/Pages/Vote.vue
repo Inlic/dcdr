@@ -2,16 +2,15 @@
   <div class="container-fluid background">
     <div class="row text-center mt-2">
       <div class="d-none d-lg-block col-1">
-        <button @click="voteDown" type="button" class="mid-page btn btn-primary flashy neon blue">
+        <button id="downvote-btn" @click="voteDown" type="button" class="mid-page btn btn-primary flashy neon blue">
           <i class="far fa-thumbs-down"></i>
         </button>
       </div>
       <div class="col-12 col-lg-10" @touchstart="startSwipe" @touchmove="moveSwipe">
         <game-component style="height: 85vh;" :gameData="this.activeGame" />
-
       </div>
       <div class="d-none d-lg-block col-1">
-        <button type="button" @click="voteUp" class="mid-page btn btn-primary flashy neon blue">
+        <button id="downvote-btn" type="button" @click="voteUp" class="mid-page btn btn-primary flashy neon blue">
           <i class="far fa-thumbs-up "></i>
         </button>
       </div>
@@ -23,7 +22,7 @@
           <div class="progress-bar bg-primary" role="progressbar" :style="progressStyle">{{counter}}</div>
         </div>
         <h2 class="red">Item {{currentItemNum}} of {{games.length}}</h2>
-        <button @click="veto" v-if="vetos" type="button" class="btn btn-primary flashy neon blue">
+        <button id="veto-btn" @click="veto" v-if="vetos" type="button" class="btn btn-primary flashy neon blue">
           <i class="fas fa-times-circle"></i>
         </button>
         <p class="neon" :class="{green: vetos, bad: !vetos }">Vetos Remaining: {{vetos}}</p>
@@ -36,6 +35,16 @@
   import gameComponent from "../components/GameComponent"
   export default {
     name: "Vote",
+    mounted() {
+      this.$store.dispatch("startVote", this.$route.params.code)
+      this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
+      this.vetos = this.room.options.userVetos
+      this.counter = this.room.options.questionTime
+      this.interval = setInterval(() => {
+        this.counter--
+        this.progressStyle = "width:" + (Math.floor((this.counter / this.room.options.questionTime) * 100 - (100 * (1 / this.room.options.questionTime)))) + "%"
+      }, 1000)
+    },
     data() {
       return {
         index: 0,
@@ -47,9 +56,6 @@
         counter: 0,
         progressStyle: "width: 100%",
       }
-    },
-    components: {
-      gameComponent
     },
     computed: {
       activeGame() {
@@ -69,16 +75,6 @@
         let num = this.index
         return num + 1
       },
-    },
-    mounted() {
-      this.$store.dispatch("startVote", this.$route.params.code)
-      this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
-      this.vetos = this.room.options.userVetos
-      this.counter = this.room.options.questionTime
-      this.interval = setInterval(() => {
-        this.counter--
-        this.progressStyle = "width:" + (Math.floor((this.counter / this.room.options.questionTime) * 100 - (100 * (1 / this.room.options.questionTime)))) + "%"
-      }, 1000)
     },
     methods: {
       voteUp() {
@@ -145,7 +141,10 @@
       clearInterval(this.interval)
       clearTimeout(this.timeout)
       next()
-    }
+    },
+    components: {
+      gameComponent
+    },
   }
 </script>
 

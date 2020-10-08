@@ -9,7 +9,8 @@
     </div>
     <div class="row mt-3 justify-content-center">
       <div class="col-12 col-md-4 text-center">
-        <game-component class="col-12 mx-1 text-center animate__animated animate__backInDown" :gameData="this.winner" :totalVotes="room.names.length" />
+        <game-component class="col-12 mx-1 text-center animate__animated animate__backInDown" :gameData="this.winner"
+          :totalVotes="room.names.length" />
       </div>
     </div>
     <div class="row mt-5">
