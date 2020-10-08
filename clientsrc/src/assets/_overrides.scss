@@ -278,8 +278,12 @@ input[type=range]:focus::-ms-fill-upper {
   top: 50%;
 }
 
-//Text Sizing
+//Input Text
 
+input[type="text"] {
+  color: #81C8FF;
+  font-family: Iceland;
+}
 
 
 //Colors without Animations

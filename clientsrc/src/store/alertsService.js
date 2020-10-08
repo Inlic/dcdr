@@ -3,14 +3,17 @@ export default class NotificationService {
     static async addName() {
         try {
             let res = await Swal.fire({
-                title: "Enter your name",
+                title: "<h2 style='color:#FF88FF'>Enter your name</h2>",
                 input: 'text',
+                inputPlaceholder: "Your name here...",
                 showCancelButton: false,
-                confirmButtonText: 'Yes',
+                confirmButtonText: "Confirm",
+                confirmButtonColor:  "#FF9900",
                 allowOutsideClick: false,
+                background: "#171228",
                 inputValidator: (value) => {
                     if (!value) {
-                      return 'You need to write something!'
+                      return "<h2 style='color:#81C8FF;'>You need to write something!</h2>"
                     }
                   }
             })
@@ -43,10 +46,11 @@ export default class NotificationService {
     static async steamNotice(){
         try {
             Swal.fire({
-                icon: 'error',
-                title: 'Somethings off...',
-                text: 'Couldnt find those games boss. Make sure your steam games are public and try again',
-                footer: `<router-link :to="{ name: 'Faq' }">learn more about this error</router-link>`,
+                icon: "info",
+                iconColor: "#FF88FF",
+                title: "<h2 style='color:#FF88FF'>Somethings off...</h2>",
+                text: "<h2 style='color:#FF88FF'>Couldnt find those games boss. Make sure your steam games are public and try again</h2>",
+                footer: "<router-link :to='{ name: 'Faq' }'>learn more about this error</router-link>",
                 background: "#171228"
               })
         } catch (error) {
