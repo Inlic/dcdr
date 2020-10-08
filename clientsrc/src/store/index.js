@@ -245,6 +245,13 @@ export default new Vuex.Store({
     },
     removeFromList({commit, state}, game){
       commit("setSteamLibray", state.steam.filter(g => g.name != game.name))
+    },
+    setWinner({commit, dispatch}, payload){
+      try {
+        api.put('rooms/'+payload.id, {winningItem: payload.winner})
+      } catch (error) {
+        console.error(error);
+      }
     }
 
   },
