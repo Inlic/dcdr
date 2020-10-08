@@ -5,9 +5,6 @@
     </div>
     <div class="card-body">
       <img class="img-fluid" :src="gameData.imgUrl">
-      <!-- leaving this here in case we want to render game score again -->
-      <!-- <h6 v-if="!gameData.veto" class="orange">Score: {{gameData.score}}</h6> -->
-      <!-- <h6 v-else class="flashy neon purple">V-<i class="fas fa-frog"></i></h6> -->
       <div v-if="this.$route.name == 'Results'">
         <div class="progress">
           <div class="progress-bar bg-success" role="progressbar"
