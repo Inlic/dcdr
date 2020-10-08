@@ -156,7 +156,11 @@
       steamGameComponet,
       gameVoteComponent
 
-    }
+    },
+  beforeRouteLeave(to, from, next){
+    this.$store.dispatch('leaveRoom', this.$route.params.code)
+    next()
+  }
   }
 </script>
 
