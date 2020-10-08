@@ -15,12 +15,12 @@
                   <form v-if="editing" class="form-inline" @submit.prevent="finishEdit">
                     <div class="form-group col-12">
                       <label for="profilename" class="neon blue">New Profile Name:</label>
-                      <input id="new-name-input" id="profilename" type="text" v-model="eProfile.name"
+                      <input id="new-name-input" type="text" v-model="eProfile.name"
                         class="form-control p-1 m-1 neon blue" placeholder="New Name">
                     </div>
                     <div class="form-group col-12">
                       <label for="profilesteam" class="neon blue">New Profile Steam Id:</label>
-                      <input id="new-steam-id-input" id="profilesteam" type="text" v-model="eProfile.steamId"
+                      <input id="new-steam-id-input" type="text" v-model="eProfile.steamId"
                         class="form-control p-1 m-1 neon blue" placeholder="Steam Id">
                     </div>
                     <div class="form-group col-12">

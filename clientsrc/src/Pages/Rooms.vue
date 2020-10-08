@@ -15,8 +15,8 @@
               </div>
               <div class="form-group">
                 <label class="neon blue mx-2" for="vetos">Allowed User Vetos</label>
-                <select id="veto-select" class="neon blue form-control mr-2" placeholder="User vetos" name="vetos"
-                  id="vetos" v-model="newRoom.options.userVetos">
+                <select class="neon blue form-control mr-2" placeholder="User vetos" name="vetos" id="vetos"
+                  v-model="newRoom.options.userVetos">
                   <option id="one-veto-option" class="neon blue" value="0">0</option>
                   <option id="two-veto-option" class="neon blue" value="1">1</option>
                   <option id="three-veto-option" class="neon blue" value="2">2</option>
@@ -25,25 +25,24 @@
               </div>
               <div class="form-check">
                 <label class="neon blue mx-2" for="vetos">Participants can add items</label>
-                <input id="allow-user-edit-checkbox" v-model='newRoom.options.userItems'
-                  class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="test"
-                  aria-label="...">
+                <input v-model='newRoom.options.userItems' class="form-check-input position-static" type="checkbox"
+                  id="blankCheckbox" value="test" aria-label="...">
               </div>
               <div class="form-group w-75">
                 <label class="neon blue" for="formConsensus">Required Consensus: {{newRoom.options.consensus}}%</label>
-                <input id="user-consensus-input" type="range" class="form-control-range" min="50" max="100"
-                  v-model="newRoom.options.consensus" id="formConsensus">
+                <input type="range" class="form-control-range" min="50" max="100" v-model="newRoom.options.consensus"
+                  id="formConsensus">
               </div>
               <div class="form-group w-75">
                 <label class="neon blue" for="formQuestionTime">Allowed Vote Time:
                   {{newRoom.options.questionTime}}s</label>
-                <input id="allowed-time-input" type="range" class="form-control-range mr-2" min="1" max="60"
+                <input type="range" class="form-control-range mr-2" min="1" max="60"
                   v-model="newRoom.options.questionTime" id="formQuestionTime">
               </div>
               <div class="form-group w-75">
                 <label class="neon blue" for="formPollItems">Allowed Poll Items: {{newRoom.options.pollItems}}</label>
-                <input id="allowed-poll-items-input" type="range" class="form-control-range mr-2" min="2" max="12"
-                  v-model="newRoom.options.pollItems" id="formPollItems">
+                <input type="range" class="form-control-range mr-2" min="2" max="12" v-model="newRoom.options.pollItems"
+                  id="formPollItems">
               </div>
               <button id="create-poll-btn" type="submit" class="btn btn-primary flashy neon blue w-25 mx-1 mt-3"> Go!
               </button>
