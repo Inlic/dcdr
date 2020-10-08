@@ -33,9 +33,6 @@ export class ChannelsController extends BaseController {
     async create(req, res, next) {
     try {
         let data = await channelsService.create(req.params.id)
-        let userupdate ={}
-        userupdate.channels = data.id
-        await profilesService.updateProfileChannels(userupdate)
         return res.send(data)
     } catch (error) { next(error) }
   }
@@ -45,6 +42,10 @@ export class ChannelsController extends BaseController {
       let data = await channelsService.edit(req.params.id)
       return res.send(data)
   } catch (error) { next(error) }
+  }
+
+  async addUser(req, res, next){
+    
   }
 
     async delete(req, res, next) {

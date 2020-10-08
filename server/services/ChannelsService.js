@@ -8,8 +8,9 @@ class ChannelsService {
   edit(id) {
     throw new Error("Method not implemented.")
   }
-  create(id) {
-    throw new Error("Method not implemented.")
+  async create(rawData) {
+    let data = await dbContext.Channels.create(rawData)
+        return data
   }
   async getById(id) {
     let data = await dbContext.Channels.findOne({ _id: id })
@@ -19,7 +20,7 @@ class ChannelsService {
         return data
   }
   getAllUser() {
-    throw new Error("Method not implemented.")
+    
   }
 
 

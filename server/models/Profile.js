@@ -9,7 +9,6 @@ const Profile = new Schema(
     name: { type: String, required: true },
     steamId: {type: String},
     picture: { type: String },
-    channels: [{type: ObjectId}]
     // NOTE If you wish to add additional public properties for profiles do so here
   },
   { timestamps: true, toJSON: { virtuals: true } }
