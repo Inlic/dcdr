@@ -3,7 +3,8 @@
     <div class="row justify-content-between">
       <img class="col" :src="this.imgurl" alt="">
       <h6 class="align-self-center steam col">{{gameData.name}}</h6>
-      <button type="button" class="btn btn-primary m-1 col-2" @click="addGame">Add to poll</button>
+      <button id="add-steam-game-btn" type="button" class="btn btn-primary m-1 col-2" @click="addGame">Add to
+        poll</button>
     </div>
   </div>
 </template>

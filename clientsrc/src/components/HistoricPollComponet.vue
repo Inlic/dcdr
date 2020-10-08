@@ -1,7 +1,7 @@
 <template>
   <div class="card bg-dark neon blue m-1 justify-content-between">
-
-    <h2>{{pollData.name}} <i class="fa fa-trash float-right fa-sm mt-2 mr-2" @click="deletePoll" aria-hidden="true"></i>
+    <h2>{{pollData.name}} <i id="delete-historic-poll" class="fa fa-trash float-right fa-sm mt-2 mr-2"
+        @click="deletePoll" aria-hidden="true"></i>
     </h2>
     <button type="button" @click="rehost" class="btn btn-outline-secondary">Re-host poll</button>
   </div>

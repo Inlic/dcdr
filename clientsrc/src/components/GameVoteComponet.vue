@@ -3,7 +3,8 @@
     <div class="row justify-content-between">
       <img class="col" :src="gameData.imgUrl" alt="">
       <h6 class="align-self-center steam col">{{gameData.name}}</h6>
-      <button type="button" class="btn btn-primary m-1 col-2" @click="removeGame">Remove from poll</button>
+      <button id="remove-game-button" type="button" class="btn btn-primary m-1 col-2" @click="removeGame">Remove from
+        poll</button>
     </div>
   </div>
 </template>
