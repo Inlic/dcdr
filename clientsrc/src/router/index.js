@@ -55,7 +55,11 @@ const routes = [
     path: "/room/:code/vote",
     name: "Vote",
     component: Vote
-  }
+  },
+  {
+    path: "*",
+    redirect: "/",
+  },
 ];
 
 const router = new VueRouter({
