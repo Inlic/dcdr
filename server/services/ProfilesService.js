@@ -1,3 +1,4 @@
+import { Document } from "mongoose";
 import { dbContext } from "../db/DbContext";
 import { BadRequest } from "../utils/Errors"
 
@@ -39,11 +40,21 @@ function sanitizeBody(body) {
     name: body.name,
     picture: body.picture,
     steamId: body.steamId,
+    channels: body.channels
   };
   return writable;
 }
 
 class ProfileService {
+  async updateUserChannels(user, body) {
+    let update = sanitizeBody(body);
+    let profile = await dbContext.Profile.findOneAndUpdate(
+      { email: user.email },
+      { $push: update },
+      { runValidators: true, setDefaultsOnInsert: true, new: true }
+    );
+    return profile;
+  }
 
   /**
    * Provided an array of user emails will return an array of user profiles with email picture and name

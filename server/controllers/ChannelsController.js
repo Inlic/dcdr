@@ -1,10 +1,11 @@
 import express from 'express'
 import BaseController from "../utils/BaseController";
 // @ts-ignore
-import auth0provider from "@bcwdev/auth0provider";
 import { channelsService } from '../services/ChannelsService';
 import { profilesService } from "../services/ProfilesService";
 
+
+//PUBLIC
 export class ChannelsController extends BaseController {
   constructor() {
       super("api/channels")
@@ -33,6 +34,9 @@ export class ChannelsController extends BaseController {
     async create(req, res, next) {
     try {
         let data = await channelsService.create(req.params.id)
+        let user = await profilesService.getProfile(req.userInfo)
+        await profilesService.updateUserChannels(user, data)
+
         return res.send(data)
     } catch (error) { next(error) }
   }
@@ -44,9 +48,6 @@ export class ChannelsController extends BaseController {
   } catch (error) { next(error) }
   }
 
-  async addUser(req, res, next){
-    
-  }
 
     async delete(req, res, next) {
   try {

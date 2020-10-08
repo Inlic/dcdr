@@ -245,6 +245,16 @@ export default new Vuex.Store({
     },
     removeFromList({commit, state}, game){
       commit("setSteamLibray", state.steam.filter(g => g.name != game.name))
+    },
+    
+    //Channels
+    async addChannel({commit}, channel){
+      try {
+        let res = await api.post('channels', channel)
+        console.log(res);
+      } catch (error) {
+        
+      }
     }
 
   },
