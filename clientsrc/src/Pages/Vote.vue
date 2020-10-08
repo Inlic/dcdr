@@ -2,7 +2,7 @@
   <div class="container-fluid background">
     <div class="row text-center mt-2">
       <div class="d-none d-lg-block col-1">
-        <button @click="voteDown" type="button" class="mid-page btn btn-primary flashy neon blue">
+        <button id="downvote-btn" @click="voteDown" type="button" class="mid-page btn btn-primary flashy neon blue">
           <i class="far fa-thumbs-down"></i>
         </button>
       </div>
@@ -10,7 +10,7 @@
         <game-component style="height: 85vh;" :gameData="this.activeGame" />
       </div>
       <div class="d-none d-lg-block col-1">
-        <button type="button" @click="voteUp" class="mid-page btn btn-primary flashy neon blue">
+        <button id="downvote-btn" type="button" @click="voteUp" class="mid-page btn btn-primary flashy neon blue">
           <i class="far fa-thumbs-up "></i>
         </button>
       </div>
@@ -22,7 +22,7 @@
           <div class="progress-bar bg-primary" role="progressbar" :style="progressStyle">{{counter}}</div>
         </div>
         <h2 class="red">Item {{currentItemNum}} of {{games.length}}</h2>
-        <button @click="veto" v-if="vetos" type="button" class="btn btn-primary flashy neon blue">
+        <button id="veto-btn" @click="veto" v-if="vetos" type="button" class="btn btn-primary flashy neon blue">
           <i class="fas fa-times-circle"></i>
         </button>
         <p class="neon" :class="{green: vetos, bad: !vetos }">Vetos Remaining: {{vetos}}</p>

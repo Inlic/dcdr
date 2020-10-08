@@ -22,23 +22,24 @@
             <div class="form-group card p-3 row"
               v-if="!room.started && games.length < room.options.pollItems && userItems">
               <form @submit.prevent="createGame" class="justify-content-center">
-                <input type="text" placeholder="Game name..." required v-model="newGame.name"
+                <input id="game-name-input" type="text" placeholder="Game name..." required v-model="newGame.name"
                   class="col-12 my-1 neon blue form-control" />
-                <input type="Url" placeholder="Image url..." v-model="newGame.imgUrl"
+                <input id="game-img-input" type="Url" placeholder="Image url..." v-model="newGame.imgUrl"
                   class="col-12 my-1 neon blue form-control" />
-                <button type="submit" class="btn btn-primary flashy neon blue m-1">Add a game</button>
+                <button id="add-game-btn" type="submit" class="btn btn-primary flashy neon blue m-1">Add a game</button>
               </form>
             </div>
             <div class="form-group card p-3 row" v-if="!room.started && userItems" @submit.prevent="getSteamGames">
               <form class="justify-content-center">
-                <input type="text" placeholder="Steam ID..." required v-model="steamUser.steamId"
+                <input id="steam-id-input" type="text" placeholder="Steam ID..." required v-model="steamUser.steamId"
                   class="col-12 my-1 neon blue form-control" />
-                <button type="submit" class="btn btn-primary flashy neon blue m-1">Get Steam libary</button>
-                <button v-if="profile.steamId" type="button" @click="getUserSteam"
+                <button id="get-steam-library-btn" type="submit" class="btn btn-primary flashy neon blue m-1">Get Steam
+                  libary</button>
+                <button id="get-user-steam-btn" v-if="profile.steamId" type="button" @click="getUserSteam"
                   class="btn btn-primary flashy neon blue m-1">Get My Steam libary</button>
               </form>
             </div>
-            <button v-if="!room.started && games.length > 1" type="button" @click="this.startPoll"
+            <button id="start-poll-btn" v-if="!room.started && games.length > 1" type="button" @click="this.startPoll"
               class="btn btn-primary m-2 flashy neon blue"> Go! </button>
             <div class="row">
               <h3 class="red my-2 col-4 offset-4">Participants</h3>

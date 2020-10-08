@@ -10,17 +10,17 @@
                 <h3 class="card-title red">Welcome: {{ profile.name }}</h3>
                 <p class="card-text neon blue">Total Prior Polls: {{myRooms.length}}</p>
                 <p class="neon green">{{profile.email}}</p>
-                <i class="fas fa-pen-alt" aria-hidden="true" @click="toggleEdit"></i>
+                <i id="edit-name-btn" class="fas fa-pen-alt" aria-hidden="true" @click="toggleEdit"></i>
                 <div class="row">
                   <form v-if="editing" class="form-inline" @submit.prevent="finishEdit">
                     <div class="form-group col-12">
                       <label for="profilename" class="neon blue">New Profile Name:</label>
-                      <input id="profilename" type="text" v-model="eProfile.name" class="form-control p-1 m-1 neon blue"
-                        placeholder="New Name">
+                      <input id="new-name-input" id="profilename" type="text" v-model="eProfile.name"
+                        class="form-control p-1 m-1 neon blue" placeholder="New Name">
                     </div>
                     <div class="form-group col-12">
                       <label for="profilesteam" class="neon blue">New Profile Steam Id:</label>
-                      <input id="profilesteam" type="text" v-model="eProfile.steamId"
+                      <input id="new-steam-id-input" id="profilesteam" type="text" v-model="eProfile.steamId"
                         class="form-control p-1 m-1 neon blue" placeholder="Steam Id">
                     </div>
                     <div class="form-group col-12">
@@ -29,7 +29,8 @@
                         class="form-control p-1 m-1 neon blue" placeholder="New Picture URL">
                     </div>
                     <div class="col-12 text-center">
-                      <button class="btn btn-primary mx-2 flashy neon blue" type="submit">Submit</button>
+                      <button id="edit-submit-btn" class="btn btn-primary mx-2 flashy neon blue"
+                        type="submit">Submit</button>
                     </div>
                   </form>
                 </div>
