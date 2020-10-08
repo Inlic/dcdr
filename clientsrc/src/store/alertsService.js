@@ -50,6 +50,7 @@ export default class NotificationService {
                 iconColor: "#FF88FF",
                 title: "<h2 style='color:#FF88FF'>Somethings off...</h2>",
                 html: "<h2 style='color:#81C8FF'>Couldnt find those games boss. Make sure your steam games are public and try again.</h2>",
+                confirmButtonColor:  "#FF9900",
                 background: "#171228"
               })
         } catch (error) {
@@ -60,9 +61,10 @@ export default class NotificationService {
     static async gameLength(length){
         Swal.fire({
             icon: 'error',
-            title: 'Somethings off...',
-            text: `This poll can only have ${length} games`,
-            footer: `<router-link :to="{ name: 'Faq' }">learn more about this error</router-link>`,
+            iconColor: "#FF88FF",
+            title: "<h2 style='color:#FF88FF'>Somethings off...</h2>",
+            html: `<h2 style='color:#81C8FF'> This poll can only have ${length} games</h2>`,
+            confirmButtonColor:  "#FF9900",
             background: "#171228"
         })
     }
