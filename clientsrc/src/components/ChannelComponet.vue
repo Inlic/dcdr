@@ -6,6 +6,9 @@
                   class="col-12 my-1 neon blue form-control" />
         <button type="submit" class="btn btn-outline-primary">Add Channel</button>
       </form>
+      <ul>
+        <!-- <li :v-for="channel in channels">{{channel.name}}</li> -->
+      </ul>
     </div>
   </div>
 </template>
@@ -18,9 +21,20 @@ export default {
       newChannel: {}
       }
   },
+  mounted(){
+    this.$store.dispatch("getChannels", this.$store.state.profile)
+  },
   methods:{
     addChannel(){
       this.$store.dispatch("addChannel", this.newChannel)
+    }
+  },
+  computed:{
+    channels(){
+      return this.$store.state.userChannels
+    },
+    profile(){
+      return this.$store.state.profile
     }
   }
 

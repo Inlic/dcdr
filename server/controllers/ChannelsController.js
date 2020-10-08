@@ -19,7 +19,7 @@ export class ChannelsController extends BaseController {
 
     async getAllUser(req, res, next) {
         try {
-            let data = await channelsService.getAllUser()
+            let data = await channelsService.getAllUser(req)
             return res.send(data)
         } catch (error) { next(error) }
     }

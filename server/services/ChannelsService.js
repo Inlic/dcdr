@@ -26,7 +26,8 @@ class ChannelsService {
         }
         return data
   }
-  getAllUser() {
+  getAllUser(data) {
+
     
   }
 

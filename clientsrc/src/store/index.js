@@ -17,7 +17,8 @@ export default new Vuex.Store({
     games: [],
     activeGame: {},
     name: "",
-    steam:[]
+    steam:[],
+    userChannels: [],
   },
   mutations: {
     setProfile(state, profile) {
@@ -44,6 +45,9 @@ export default new Vuex.Store({
     },
     setSteamLibray(state, games){
       state.steam = games
+    },
+    setUserChannels(state, channel){
+      state.userChannels = channel
     }
   },
   actions: {
@@ -254,6 +258,15 @@ export default new Vuex.Store({
         console.log(channel);
         let res = await api.post('channels', channel)
         console.log(res);
+      } catch (error) {
+        
+      }
+    },
+    async getChannels({commit, state}, user){
+      try {
+        console.log(user);
+        let res = await api.get("channels", user.channels)
+        commit("setUserChannels", res.data)
       } catch (error) {
         
       }
