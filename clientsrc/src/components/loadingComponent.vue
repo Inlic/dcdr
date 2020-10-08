@@ -1,7 +1,6 @@
 <template>
     <div class="d-flex loading-component justify-content-center m-2">
         <canvas id="animationCanvas" class="loading-animations">
-
         </canvas>
     </div>
 </template>
@@ -64,7 +63,6 @@
                     }
                 }, animationRate);
             }
-
         }
     }
 </script>
