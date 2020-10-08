@@ -1,10 +1,9 @@
 <template>
   <div class="container-fluid background">
-    <div class="divider-tiny"></div>
     <div v-if="!room">
       <loading-component></loading-component>
     </div>
-    <div v-else class="row justify-content-center">
+    <div v-else class="row justify-content-center mt-3">
       <div class="col-12 col-md-10">
         <div class="card bg-dark text-center row">
           <div class="card-header col">
@@ -75,18 +74,18 @@
   import gameVoteComponent from "../components/GameVoteComponet"
   export default {
     name: "Room",
-    data() {
-      return {
-        newGame: {},
-        steamUser: {}
-      }
-    },
     mounted() {
       this.$store.dispatch("getRoomByCode", this.$route.params.code)
       this.$store.dispatch('joinRoom', `${this.$route.params.code}`)
       this.$store.dispatch("getGames", this.$route.params.code)
       if (this.profile.steamId) {
         this.getUserSteam()
+      }
+    },
+    data() {
+      return {
+        newGame: {},
+        steamUser: {}
       }
     },
     computed: {
@@ -101,7 +100,6 @@
       profile() {
         return this.$store.state.profile;
       },
-
       steam() {
         return this.$store.state.steam
       },
@@ -136,31 +134,26 @@
         this.$store.dispatch("getOwnedGames", this.profile.steamId)
       },
       async checkName() {
-
         if (this.$auth.isAuthenticated) {
           this.$store.dispatch("addName", { id: this.room.id, addName: this.profile.name })
           return
         }
         else if (!this.$auth.isAuthenticated) {
           let res = await as.addName()
-
-
           this.$store.dispatch("addName", { id: this.room.id, addName: res.value })
         }
       }
     },
-
     components: {
       loadingComponent,
       gameComponent,
       steamGameComponet,
       gameVoteComponent
-
     },
-  beforeRouteLeave(to, from, next){
-    this.$store.dispatch('leaveRoom', this.$route.params.code)
-    next()
-  }
+    beforeRouteLeave(to, from, next) {
+      this.$store.dispatch('leaveRoom', this.$route.params.code)
+      next()
+    }
   }
 </script>
 
