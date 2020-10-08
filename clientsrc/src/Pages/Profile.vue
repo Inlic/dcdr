@@ -8,8 +8,7 @@
               <img class="card-img-top" :src="profile.picture" alt="Card image cap">
               <div class="card-body bg-dark">
                 <h3 class="card-title red">Welcome: {{ profile.name }}</h3>
-                <p class="card-text neon blue">Some quick example text to build on the card title and make up the bulk of
-                  the card's content.</p>
+                <p class="card-text neon blue">Total Historical Polls: {{myRooms.length}}</p>
                 <p class="neon green">{{profile.email}}</p>
                 <i class="fas fa-pen-alt" aria-hidden="true" @click="toggleEdit"></i>
                 <div class="row">
