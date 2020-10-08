@@ -60,10 +60,9 @@
         </div>
       </div>
     </div>
-    <div class="row my-3">
-      <img class="col-12" src="@/assets/levelup.jpg"
-        style="max-height: 52vh; object-fit: cover; border-radius: 40px; object-position: 50% 44%; filter: contrast(125%); filter: brightness(110%);">
-    </div>
+    <!-- <div class="row mt-1">
+      <img class="col-12 lvl-up-img" src="@/assets/levelup.jpg">
+    </div> -->
   </div>
 </template>
 
