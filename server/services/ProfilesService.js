@@ -63,7 +63,7 @@ class ProfileService {
   async getProfiles(emails = []) {
     let profiles = await dbContext.Profile.find({
       email: { $in: emails }
-    }).select("email picture name");
+    }).select("email picture name channels");
     return profiles;
   }
 

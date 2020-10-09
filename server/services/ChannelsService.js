@@ -2,6 +2,10 @@ import { dbContext } from "../db/DbContext"
 import { BadRequest } from "../utils/Errors"
 
 class ChannelsService {
+  async getByUser(email) {
+    let data = await dbContext.Channels.find({users: {$in: email}})
+    return data
+  }
   async delete(id) {
     let data = await dbContext.Channels.findOneAndRemove({ _id: id });
         if (!data) {
@@ -25,10 +29,6 @@ class ChannelsService {
             throw new BadRequest("Invalid ID")
         }
         return data
-  }
-  getAllUser(data) {
-
-    
   }
 
 

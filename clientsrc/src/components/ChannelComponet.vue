@@ -1,19 +1,25 @@
 <template>
-  <div class="">
-    <div class="card">
-    <form @submit.prevent="addChannel" class="justify-content-center">
-                <input type="text" placeholder="New Channel" required v-model="newChannel.name"
-                  class="col-12 my-1 neon blue form-control" />
-        <button type="submit" class="btn btn-outline-primary">Add Channel</button>
-      </form>
+  <div class="col-12">
+    <div class="row">
+    <div class="card col-12 justify-content-center d-flex">
+      <h1>My Channels</h1>
       <ul>
-        <!-- <li :v-for="channel in channels">{{channel.name}}</li> -->
+        <channel-body-component v-for="channel in channels" :key="channel.id" :channelData="channel"/>
       </ul>
+    <div class="justify-content-center col-12">
+    <form @submit.prevent="addChannel" class="justify-content-center row">
+                <input type="text" placeholder="New Channel" required v-model="newChannel.name"
+                  class="col-12 my-1 neon blue form-control col-8" />
+    <button type="submit" class="btn btn-outline-primary col-2 mb-2">Add Channel</button>
+  </form>
+    </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
+import channelBodyComponent from "./ChannelBodyComponet.vue"
 export default {
   name:"channel-component",
   data(){
@@ -22,10 +28,12 @@ export default {
       }
   },
   mounted(){
-    this.$store.dispatch("getChannels", this.$store.state.profile)
+    console.log(this.$auth.user.email);
+    this.$store.dispatch("getChannels", this.$auth.user.email)
   },
   methods:{
     addChannel(){
+      this.newChannel.users = this.$auth.user.email
       this.$store.dispatch("addChannel", this.newChannel)
     }
   },
@@ -36,9 +44,11 @@ export default {
     profile(){
       return this.$store.state.profile
     }
-  }
-
+  },
+  components: {
+    channelBodyComponent,
 }
+  }
 </script>
 
 <style>

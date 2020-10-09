@@ -254,7 +254,6 @@ export default new Vuex.Store({
     //Channels
     async addChannel({commit, state}, channel){
       try {
-        channel.user = this.state.profile
         console.log(channel);
         let res = await api.post('channels', channel)
         console.log(res);
@@ -262,14 +261,16 @@ export default new Vuex.Store({
         
       }
     },
-    async getChannels({commit, state}, user){
+    async getChannels({commit, state}, useremail){
       try {
-        console.log(user);
-        let res = await api.get("channels", user.channels)
+        let res = await api.get(`channels/${useremail}/user`)
         commit("setUserChannels", res.data)
       } catch (error) {
         
       }
+    },
+    async addRoomtoChannel({commit, state}, payload){
+      let res = await api.put('channels', payload)
     }
 
   },

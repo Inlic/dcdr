@@ -10,19 +10,21 @@ export class ChannelsController extends BaseController {
   constructor() {
       super("api/channels")
       this.router
-      .get('', this.getAllUser)
+      .get('/:email/user', this.getUser)
       .get('/:id', this.getById)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
     }
-
-    async getAllUser(req, res, next) {
-        try {
-            let data = await channelsService.getAllUser(req)
-            return res.send(data)
-        } catch (error) { next(error) }
+  async getUser(req, res, next) {
+    try {
+      let data = await channelsService.getByUser(req.params.email)
+      return res.send(data)
+    } catch (error) {
+      next(error)
     }
+  }
+
 
     async getById(req, res, next) {
       try {
@@ -34,8 +36,8 @@ export class ChannelsController extends BaseController {
     async create(req, res, next) {
     try {
         let data = await channelsService.create(req.body)
-        let profile = await profilesService.updateUserChannels(req.body.user, data.id)
-        return res.send(data, profile)
+        // let profile = await profilesService.updateUserChannels(req.body.user, data.id)
+        return res.send(data)
     } catch (error) { next(error) }
   }
 
