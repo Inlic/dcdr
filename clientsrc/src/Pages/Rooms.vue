@@ -118,5 +118,11 @@
 </script>
 
 <style>
+@media only screen and (max-width: 600px){
+  .form-check-input{
+  margin-left: 2px;
+  }
+}
+
 
 </style>

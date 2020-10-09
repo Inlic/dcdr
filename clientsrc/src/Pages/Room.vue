@@ -12,12 +12,12 @@
           </div>
           <div class="card-body text-center col">
             <div class="row justify-content-around">
-              <h3 class="card orange col-5">User Vetos: {{room.options.userVetos}}</h3>
-              <h3 class="card orange col-5">Required Consensus: {{room.options.consensus}}%</h3>
+              <h4 class="card orange col-5">User Vetos: {{room.options.userVetos}}</h4>
+              <h4 class="card orange col-5">Required Consensus: {{room.options.consensus}}%</h4>
             </div>
             <div class="row justify-content-around">
-              <h3 class="card orange col-5">Time Per Item: {{room.options.questionTime}}s</h3>
-              <h3 class="card orange col-5">Allowed Items: {{room.options.pollItems}}</h3>
+              <h4 class="card orange col-5">Time Per Item: {{room.options.questionTime}}s</h4>
+              <h4 class="card orange col-5">Allowed Items: {{room.options.pollItems}}</h4>
             </div>
             <div class="form-group card p-3 row"
               v-if="!room.started && games.length < room.options.pollItems && userItems">
