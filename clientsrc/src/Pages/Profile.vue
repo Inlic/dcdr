@@ -64,7 +64,7 @@
 </template>
 
 <script>
-  import historicPollComponent from "../components/HistoricPollComponet"
+  import historicPollComponent from "../components/HistoricPollComponent"
   export default {
     name: "Profile",
     mounted() {

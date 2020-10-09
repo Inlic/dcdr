@@ -1,12 +1,12 @@
 <template>
   <div class="row card bg-dark">
-    <div class="my-2 card-header">
+    <div class="card-header">
       <h3 class="orange">{{gameData.name}}</h3>
     </div>
-    <div class="card-body">
-      <img class="img-fluid" :src="gameData.imgUrl">
+    <div class="card-body" style="min-height: 15vh;">
+      <img class="img-fluid" :src="gameData.imgUrl" style="max-height: 100px; max-width: 200px">
       <div v-if="this.$route.name == 'Results'">
-        <div class="progress">
+        <div class="progress mt-3">
           <div class="progress-bar bg-success" role="progressbar"
             v-bind:style="{width: `${(gameData.upvotes / this.totalVotes) * 100}%`}" aria-valuenow="30"
             aria-valuemin="0" aria-valuemax="100">
@@ -44,5 +44,13 @@
 </script>
 
 <style>
+.progress-bar.bg-success{
+  color: black;
+  font-size: 12pt;
+}
+.progress-bar.bg-danger{
+  color: white;
+  font-size: 12pt;
+}
 
 </style>

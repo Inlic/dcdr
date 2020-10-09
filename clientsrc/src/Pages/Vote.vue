@@ -16,13 +16,13 @@
       </div>
     </div>
     <div class="row text-center fixed-bottom my-3">
-      <div class="offset-4 col-4">
+      <div class="offset-4 col-4 card">
         <h2 class="red">Remaining Time</h2>
         <div class="progress">
-          <div class="progress-bar bg-primary" role="progressbar" :style="progressStyle">{{counter}}</div>
+          <div class="progress-bar bg-primary glow" role="progressbar" :style="progressStyle">{{counter}}s</div>
         </div>
         <h2 class="red">Item {{currentItemNum}} of {{games.length}}</h2>
-        <button id="veto-btn" @click="veto" v-if="vetos" type="button" class="btn btn-primary flashy neon blue">
+        <button id="veto-btn" @click="veto" v-if="vetos" type="button" class="btn btn-primary flashy neon blue mb-3">
           <i class="fas fa-times-circle"></i>
         </button>
         <p class="neon" :class="{green: vetos, bad: !vetos }">Vetos Remaining: {{vetos}}</p>
@@ -151,5 +151,28 @@
 <style>
   .progress-bar {
     transition: all 1000ms linear;
+    color: white;
+    font-size: 14pt;
   }
+  .glow{
+  box-shadow: 0 5px 5px rgba(255, 255, 255, .7) inset,
+              0 -5px 5px rgba(255, 255, 255, .7) inset;
+  animation: animate-glow 1s ease-out infinite;
+}
+
+@keyframes animate-glow {
+  0% {
+    box-shadow: 0 5px 5px rgba(255, 255, 255, .7) inset,
+                0 -5px 5px rgba(255, 255, 255, .7) inset;
+  }
+  50% {
+    box-shadow: 0 5px 5px rgba(255, 255, 255, .3) inset,
+                0 -5px 5px rgba(255, 255, 255, .3) inset;
+  }
+  100% {
+    box-shadow: 0 5px 5px rgba(255, 255, 255, .7) inset,
+                0 -5px 5px rgba(255, 255, 255, .7) inset;
+  }
+}
+
 </style>

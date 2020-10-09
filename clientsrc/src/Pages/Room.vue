@@ -54,7 +54,7 @@
         <div class="row">
           <div class="col-6 steam-container px-3" v-if="userItems">
             <h1 v-if="steam.length">Steam Libray results:</h1>
-            <steam-game-componet class="" v-for="game in steam" :key="game.appid" :gameData="game" />
+            <steam-game-component class="" v-for="game in steam" :key="game.appid" :gameData="game" />
           </div>
           <div class="steam-container px-3" :class="{'col-6':userItems, 'col-12':!userItems}">
             <h1 v-if="!room.started">Current Games:</h1>
@@ -71,8 +71,8 @@
   import as from '../store/alertsService'
   import loadingComponent from "../components/loadingComponent"
   import gameComponent from "../components/GameComponent"
-  import steamGameComponet from "../components/SteamGameComponet"
-  import gameVoteComponent from "../components/GameVoteComponet"
+  import steamGameComponent from "../components/SteamGameComponent"
+  import gameVoteComponent from "../components/GameVoteComponent"
   export default {
     name: "Room",
     mounted() {
@@ -124,7 +124,6 @@
       startPoll() {
         this.$store.dispatch("startPoll", this.room.code)
         this.$store.dispatch("getGames", this.room.code)
-        // this.$router.push({ name: 'Vote', params: { code: this.room.code } })
       },
       getSteamGames() {
         if (this.steamUser.steamId) {
@@ -148,7 +147,7 @@
     components: {
       loadingComponent,
       gameComponent,
-      steamGameComponet,
+      steamGameComponent,
       gameVoteComponent
     },
     beforeRouteLeave(to, from, next) {
