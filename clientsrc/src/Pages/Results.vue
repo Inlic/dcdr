@@ -11,9 +11,11 @@
       <div class="col-12 col-md-4 text-center">
         <game-component class="text-center animate__animated animate__backInDown" :gameData="this.winner"
           :totalVotes="room.names.length" />
-          <h2 class="card bg-dark red" v-if="winner.appid">
-          Have steam? <button @click="launchGame()" type="button" class="btn btn-primary" >Launch Game</button>
-        </h2>
+          <div class="card mt-3" v-if="winner.appid">
+            <h1 class="bg-dark red">
+            Have steam?</h1> 
+            <button @click="launchGame()" type="button" class="btn btn-primary neon blue m-2" >Launch Game</button>
+          </div>
       </div>
     </div>
     <div class="row mt-5">
