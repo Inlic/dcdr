@@ -31,6 +31,14 @@ class ChannelsService {
         return data
   }
 
+  async addRoom(payload){
+    let data = await dbContext.Channels.findOneAndUpdate({_id: payload._id},{$push:{rooms: payload.rooms}})
+    if (!data) {
+      throw new BadRequest("Invalid ID")
+  }
+  return data
+  }
+
 
 }
 

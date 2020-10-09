@@ -14,8 +14,18 @@ export class ChannelsController extends BaseController {
       .get('/:id', this.getById)
       .post('', this.create)
       .put('/:id', this.edit)
+      .put('/:id/rooms', this.addRoom)
       .delete('/:id', this.delete)
     }
+  async addRoom(req, res, next) {
+    try {
+      let data = await channelsService.addRoom(req.body)
+      return res.send(data)
+    } catch (error) {
+      next(error)
+    }
+    
+  }
   async getUser(req, res, next) {
     try {
       let data = await channelsService.getByUser(req.params.email)

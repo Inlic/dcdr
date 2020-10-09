@@ -19,6 +19,7 @@ export default new Vuex.Store({
     name: "",
     steam:[],
     userChannels: [],
+    channelRooms: {},
   },
   mutations: {
     setProfile(state, profile) {
@@ -270,7 +271,7 @@ export default new Vuex.Store({
       }
     },
     async addRoomtoChannel({commit, state}, payload){
-      let res = await api.put('channels', payload)
+      let res = await api.put(`channels/${payload._id}/rooms`, payload)
     }
 
   },
