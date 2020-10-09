@@ -19,7 +19,7 @@ export default class NotificationService {
             })
             return res
         } catch (error) {
-
+            console.error(error)
         }
     }
     static async confirmDelete(text = "You won't be able to revert this!") {
@@ -39,7 +39,7 @@ export default class NotificationService {
             }
             return false
         } catch (error) {
-
+            console.error(error)
         }
     }
     static async confirmLeave(text = "You won't be able to revert this!") {
@@ -59,7 +59,7 @@ export default class NotificationService {
             }
             return false
         } catch (error) {
-
+            console.error(error)
         }
     }
 
@@ -74,11 +74,12 @@ export default class NotificationService {
                 background: "#171228"
               })
         } catch (error) {
-            
+            console.error(error)
         }
     }
 
     static async gameLength(length){
+        try{
         Swal.fire({
             icon: 'error',
             iconColor: "#FF88FF",
@@ -87,5 +88,25 @@ export default class NotificationService {
             confirmButtonColor:  "#FF9900",
             background: "#171228"
         })
+        } catch(error){
+            console.error(error)
+        }
+    }
+
+    static async actionNotice(title= "You did a thing", timer = 1500){
+        try {
+        Swal.fire({
+          title: `<h3 style="color: #FF88FF">${title}</h3>`,
+          icon: "success",
+          iconColor: "#FF88FF",
+          timer: timer,
+          toast: true,
+          position: "top-right",
+          showConfirmButton: false,
+          background: "#171228"
+        })
+        } catch (error) {
+            console.error(error)
+        }
     }
 }
