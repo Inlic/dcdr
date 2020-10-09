@@ -138,11 +138,6 @@
         }
       },
     },
-    beforeRouteLeave(to, from, next) {
-      clearInterval(this.interval)
-      clearTimeout(this.timeout)
-      next()
-    },
     components: {
       gameComponent
     },
@@ -152,9 +147,13 @@
         if(await as.confirmLeave()){
           this.$store.dispatch("removeName", {id: this.room.id})
           this.$store.dispatch('leaveRoom', this.$route.params.code)
+          clearInterval(this.interval)
+          clearTimeout(this.timeout)
           next()
         }
       }}
+      clearInterval(this.interval)
+      clearTimeout(this.timeout)
       next()
     }
   

@@ -3,8 +3,8 @@
     <div class="row justify-content-between">
       <img class="col" :src="this.imgurl" alt="" style="max-height: 100px; max-width: 200px">
       <h6 class="align-self-center steam col">{{gameData.name}}</h6>
-      <button id="add-steam-game-btn" type="button" class="btn btn-primary m-1 col-2" @click="addGame">Add to
-        poll</button>
+      <button id="add-steam-game-btn" type="button" class="btn btn-primary m-1 col-lg-2" @click="addGame"><span class="long-text blue">Add to
+        poll</span><span class="short-text blue">+</span></button>
     </div>
   </div>
 </template>
@@ -37,6 +37,7 @@
           this.newGame.name = this.gameData.name
           this.newGame.imgUrl = this.imgurl
           this.newGame.code = this.$route.params.code
+          this.newGame.appid = this.gameData.appid
           //TODO edit delay for animation
           // let target = document.getElementById(this.gameData.name)
           // target.classList.add('animate__animated', 'animate__fadeOutRight')
@@ -52,5 +53,26 @@
 </script>
 
 <style>
+
+@media only screen and (min-width: 601px){
+  .long-text{
+    display: inline-block;
+    font-size: 1.5rem;
+  }
+  .short-text{
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .short-text{
+    display: inline-block;
+    font-size: 1.5rem;
+  }
+  .long-text{
+    display: none;
+  }
+}
+
 
 </style>
