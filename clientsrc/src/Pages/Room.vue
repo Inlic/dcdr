@@ -12,12 +12,12 @@
           </div>
           <div class="card-body text-center col">
             <div class="row justify-content-around">
-              <h3 class="card orange col-5">User Vetos: {{room.options.userVetos}}</h3>
-              <h3 class="card orange col-5">Required Consensus: {{room.options.consensus}}%</h3>
+              <h4 class="card orange col-5">User Vetos: {{room.options.userVetos}}</h4>
+              <h4 class="card orange col-5">Required Consensus: {{room.options.consensus}}%</h4>
             </div>
             <div class="row justify-content-around">
-              <h3 class="card orange col-5">Time Per Item: {{room.options.questionTime}}s</h3>
-              <h3 class="card orange col-5">Allowed Items: {{room.options.pollItems}}</h3>
+              <h4 class="card orange col-5">Time Per Item: {{room.options.questionTime}}s</h4>
+              <h4 class="card orange col-5">Allowed Items: {{room.options.pollItems}}</h4>
             </div>
             <div class="form-group card p-3 row"
               v-if="!room.started && games.length < room.options.pollItems && userItems">
@@ -52,12 +52,12 @@
       </div>
       <div class="col-12">
         <div class="row">
-          <div class="col-6 steam-container px-3" v-if="userItems">
-            <h1 v-if="steam.length">Steam Libray results:</h1>
+          <div class="col-6 steam-container mt-1 px-3" v-if="userItems">
+            <h1 v-if="steam.length" class="text-center card bg-dark blue">Steam Libray results:</h1>
             <steam-game-component class="" v-for="game in steam" :key="game.appid" :gameData="game" />
           </div>
-          <div class="steam-container px-3" :class="{'col-6':userItems, 'col-12':!userItems}">
-            <h1 v-if="!room.started">Current Games:</h1>
+          <div class="steam-container mt-1 px-3" :class="{'col-6':userItems, 'col-12':!userItems}">
+            <h1 v-if="!room.started" class="text-center card bg-dark blue">Current Games:</h1>
             <game-vote-component class="" v-for="game in games" :key="game.id" :gameData="game" />
           </div>
         </div>
