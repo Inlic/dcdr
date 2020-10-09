@@ -2,6 +2,7 @@ require("dotenv").config();
 const puppeteer = require('puppeteer');
 const url = 'http://localhost:8080/';
 
+//Logs in with fake account. Necessary for anything that requires the user to be logged in
 async function Login(page) {
     return new Promise(async (resolve, reject) => {
         try {
@@ -25,16 +26,32 @@ async function Login(page) {
     })
 }
 
-
+//takes screenshot of homepage
 async function homePage() {
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
     await page.setViewport({ width: 1280, height: 800 })
     await page.goto(url);
-    await page.screenshot({ path: 'homepage.png', fullPage: true });
+    await page.screenshot({ path: 'Test/faq.png', fullPage: true });
     browser.close();
 }
 
+//takes screenshot of FAQ page
+async function faqPage() {
+    const browser = await puppeteer.launch({ headless: false });
+    const page = await browser.newPage();
+    await page.goto(url)
+    await page.setViewport({ width: 1280, height: 800 })
+    await page.waitForSelector('#nav-faq-link')
+    const [response] = await Promise.all([
+        page.waitForNavigation({ waitUntil: 'networkidle0' }),
+        page.click('#nav-faq-link')
+    ]);
+    await page.screenshot({ path: 'Test/homepage.png', fullPage: true });
+    browser.close();
+}
+
+//takes screenshot of profile page
 async function profilePage() {
     const browser = await puppeteer.launch({ headless: false });
     let page = await browser.newPage();
@@ -54,8 +71,11 @@ async function profilePage() {
     browser.close();
 }
 
+
+
 async function run() {
     await homePage()
+    await faqPage()
     await profilePage()
 }
 
