@@ -1,7 +1,7 @@
 require("dotenv").config();
 const puppeteer = require('puppeteer');
 const url = 'http://localhost:8080/';
-const testPollCode = null
+let testPollCode = null
 
 //Logs in with fake account. Necessary for anything that requires the user to be logged in
 async function Login(page) {
@@ -92,7 +92,7 @@ async function createPollPage() {
     browser.close();
 }
 
-//creates a test poll
+//creates a test poll and stores poll code
 async function createTestPoll() {
     const browser = await puppeteer.launch({ headless: false });
     let page = await browser.newPage();
@@ -116,7 +116,14 @@ async function createTestPoll() {
         page.waitForNavigation({ waitUntil: 'networkidle0' }),
         page.click('#create-poll-btn')
     ]);
-
+    //retrieves test poll join code for future tests
+    testPollCode = await page.evaluate(() => {
+        let item = document.querySelector('#room-code')
+        let rawText = item.innerText
+        rawText = rawText.split(" ")
+        let code = rawText[2]
+        return code
+    })
     await page.screenshot({ path: 'Test/Screenshots/createTestPoll.png', fullPage: true })
     browser.close();
 }
