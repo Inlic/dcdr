@@ -12,7 +12,7 @@
         <game-component class="text-center animate__animated animate__backInDown" :gameData="this.winner"
           :totalVotes="room.names.length" />
           <h2 class="card bg-dark red" v-if="winner.appid">
-          Have steam? <button @click="launchGame" type="button" class="btn btn-primary" >Launch Game</button>
+          Have steam? <button @click="launchGame()" type="button" class="btn btn-primary" >Launch Game</button>
         </h2>
       </div>
     </div>
@@ -54,7 +54,7 @@
     },
     methods:{
       launchGame(){
-        window.open(`steam://run/${winner.appid}`, "_blank");
+        window.open(`steam://run/${this.winner.appid}`, "_blank");
       }
     },
     components: {
