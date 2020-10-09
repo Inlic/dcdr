@@ -29,6 +29,9 @@ export default new Vuex.Store({
     startPoll(state){
       state.room.started = true
     },
+    endPoll(state){
+      state.room.completed = true
+    },
     setMyRooms(state, rooms){
       state.myRooms = rooms
     },

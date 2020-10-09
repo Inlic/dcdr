@@ -26,6 +26,7 @@ export const socketService = {
         router.push({ name: 'Vote', params: { code: data } })
       })
       socket.on("poll ended", data => {
+        commit("endPoll")
         router.push({ name: 'Results', params: { code: data } })
       })
       socket.on("new game", data => {
