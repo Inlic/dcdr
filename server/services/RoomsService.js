@@ -2,6 +2,9 @@ import { dbContext } from "../db/DbContext"
 import { BadRequest } from "../utils/Errors"
 
 class RoomsService {
+    async removeName(data, id) {
+        return await dbContext.Rooms.findOneAndUpdate({_id: id}, {$pull:{"names": data.name}}, {new: true})
+    }
     async userDone(code) {
         let room = await dbContext.Rooms.findOneAndUpdate({ code: code }, {$inc:{doneUsers: 1}},{new: true})
         return room
