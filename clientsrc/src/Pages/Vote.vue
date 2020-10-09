@@ -188,8 +188,6 @@
   }
 }
 
-
-
   .progress-bar {
     transition: all 1000ms linear;
     color: white;

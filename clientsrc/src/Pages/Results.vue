@@ -21,9 +21,6 @@
     <div class="row justify-content-center">
       <div v-for="game in results" class="col-12 col-md-3 text-center my-2 mx-4" :key="game.id">
         <game-component :gameData="game" :totalVotes="room.names.length" />
-        <div v-if="!game.veto">
-        </div>
-        <p v-else class="neon bad">V-<i class="fas fa-frog"></i></p>
       </div>
     </div>
   </div>
