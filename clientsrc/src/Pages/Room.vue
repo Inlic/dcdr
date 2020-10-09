@@ -52,12 +52,12 @@
       </div>
       <div class="col-12">
         <div class="row">
-          <div class="col-6 steam-container px-3" v-if="userItems">
-            <h1 v-if="steam.length">Steam Libray results:</h1>
+          <div class="col-6 steam-container mt-1 px-3" v-if="userItems">
+            <h1 v-if="steam.length" class="text-center card bg-dark blue">Steam Libray results:</h1>
             <steam-game-component class="" v-for="game in steam" :key="game.appid" :gameData="game" />
           </div>
-          <div class="steam-container px-3" :class="{'col-6':userItems, 'col-12':!userItems}">
-            <h1 v-if="!room.started">Current Games:</h1>
+          <div class="steam-container mt-1 px-3" :class="{'col-6':userItems, 'col-12':!userItems}">
+            <h1 v-if="!room.started" class="text-center card bg-dark blue">Current Games:</h1>
             <game-vote-component class="" v-for="game in games" :key="game.id" :gameData="game" />
           </div>
         </div>
