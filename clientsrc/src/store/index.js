@@ -182,6 +182,7 @@ export default new Vuex.Store({
       try{
         await api.delete(`games/${id}`)
         commit("setGames", this.state.games.filter(g => g.id != id))
+        as.actionNotice("Game Removed")
       } catch(error) {
         console.error(error);
       }
@@ -189,6 +190,7 @@ export default new Vuex.Store({
     async createGame({commit}, data){
       try{
       let res = await api.post("games", data)
+      as.actionNotice("Game Added")
       } catch(error) {
         console.error(error);
       }

@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="row text-center fixed-bottom my-3">
-      <div class="offset-4 col-4 card">
+      <div class="col-12 offset-lg-3 col-lg-6 offset-xl-4 col-xl-4 card">
         <h2 class="red">Remaining Time</h2>
         <div class="progress">
           <div class="progress-bar bg-primary glow" role="progressbar" :style="progressStyle">{{counter}}s</div>
