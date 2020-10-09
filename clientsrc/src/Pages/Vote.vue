@@ -156,6 +156,29 @@
   transform: translate(-50%, -50%);
   }
 
+@media only screen and (max-width: 600px){
+  .voting img{
+  min-height: 20vh;
+  min-width: 40vh;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px){
+  .voting img{
+  min-height: 30vh;
+  min-width: 60vh;
+  }
+}
+
+@media only screen and (min-width: 1025px){
+  .voting img{
+  min-height: 40vh;
+  min-width: 80vh;
+  }
+}
+
+
+
   .progress-bar {
     transition: all 1000ms linear;
     color: white;

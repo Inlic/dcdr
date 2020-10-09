@@ -1,7 +1,7 @@
 <template>
   <div class="background container-fluid d-flex flex-column h-100">
     <div class="row justify-content-center bg-darken flex-fill d-flex">
-      <div class="col-4 mt-5">
+      <div class="col-12 col-md-4 mt-5">
         <div class="card text-center border-0 content-shadow pop">
           <div class="card-header bg-black red">
             <h3>Level Up Your Gaming Experience</h3>
@@ -13,10 +13,10 @@
           </div>
         </div>
       </div>
-      <div class="col-4 my-1">
+      <div class="col-4 d-none d-lg-block my-1">
         <img id="neonTogether" class="card-img img-card-md-one" src="@/assets/neontogether.jpg" alt="Card image">
       </div>
-      <div class="col-4 mt-5">
+      <div class="col-12 col-md-4 mt-5">
         <div class="card text-center border-0content-shadow pop">
           <div class="card-header bg-black red">
             <h3>Persistent Polls</h3>

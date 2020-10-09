@@ -45,7 +45,7 @@
               <h3 class="red my-2 col-4 offset-4">Participants</h3>
             </div>
             <div class="card row">
-              <div class="neon orange card" v-for="name in room.names" :key="name"><profile-component class="align-self-center" v-if="name == profile.name"/><span v-else>{{name}}</span></div>
+              <div class="neon orange card" v-for="name in room.names" :key="name"><profile-component class="align-self-center profile" v-if="name == profile.name"/><span v-else>{{name}}</span></div>
             </div>
           </div>
         </div>
@@ -171,4 +171,9 @@
   ul {
     list-style: none;
   }
+  .profile div{
+    margin: .5em !important;
+  }
+
+
 </style>
