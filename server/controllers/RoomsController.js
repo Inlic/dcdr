@@ -24,6 +24,7 @@ export class RoomsController extends BaseController {
         .put('/:id/games', this.resetGames)
         .put('/:id', this.edit)
         .put('/:id/names', this.addName)
+        .put('/:id/noname', this.removeName)
         .put('/:code/done', this.userDone)
         .use(auth0provider.getAuthorizedUserInfo)
         .put('/:code/start', this.startPoll)
@@ -65,6 +66,16 @@ export class RoomsController extends BaseController {
     async addName(req, res, next) {
         try {
             let data = await roomsService.addName(req.body, req.params.id)
+            // @ts-ignore
+            socketService.messageRoom(data.code, "updateRoom", data)
+            return res.send("added name")
+        } catch (error) {
+            next(error)
+        }
+    }
+    async removeName(req, res, next) {
+        try {
+            let data = await roomsService.removeName(req.body, req.params.id)
             // @ts-ignore
             socketService.messageRoom(data.code, "updateRoom", data)
             return res.send("added name")

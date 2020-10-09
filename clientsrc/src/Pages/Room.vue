@@ -151,9 +151,17 @@
       steamGameComponet,
       gameVoteComponent
     },
-    beforeRouteLeave(to, from, next) {
-      this.$store.dispatch('leaveRoom', this.$route.params.code)
-      next()
+    async beforeRouteLeave(to, from, next) {
+      debugger
+      if(this.room.started == true){
+        next()
+        return
+      }
+      else if(await as.confirmLeave()){
+        this.$store.dispatch("removeName", {id: this.room.id})
+        this.$store.dispatch('leaveRoom', this.$route.params.code)
+        next()
+      }
     }
   }
 </script>
