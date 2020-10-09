@@ -26,6 +26,12 @@ export default new Vuex.Store({
     setRoom(state, room) {
       state.room = room;
     },
+    startPoll(state){
+      state.room.started = true
+    },
+    endPoll(state){
+      state.room.completed = true
+    },
     setMyRooms(state, rooms){
       state.myRooms = rooms
     },
@@ -125,6 +131,15 @@ export default new Vuex.Store({
         await api.put(`rooms/${this.state.room.id}/names`, {addName:this.state.profile.name})
       }
     },
+    async removeName({commit}, id){
+      if(this.state.name){
+        await api.put(`rooms/${this.state.room.id}/noname`, {name:this.state.name})
+        return
+      }
+      else{
+        await api.put(`rooms/${this.state.room.id}/noname`, {name:this.state.profile.name})
+      }
+    },
     async startPoll({}, code){
       try {
         api.put(`rooms/${code}/start`)
@@ -167,6 +182,7 @@ export default new Vuex.Store({
       try{
         await api.delete(`games/${id}`)
         commit("setGames", this.state.games.filter(g => g.id != id))
+        as.actionNotice("Game Removed")
       } catch(error) {
         console.error(error);
       }
@@ -174,6 +190,7 @@ export default new Vuex.Store({
     async createGame({commit}, data){
       try{
       let res = await api.post("games", data)
+      as.actionNotice("Game Added")
       } catch(error) {
         console.error(error);
       }
@@ -245,6 +262,13 @@ export default new Vuex.Store({
     },
     removeFromList({commit, state}, game){
       commit("setSteamLibray", state.steam.filter(g => g.name != game.name))
+    },
+    setWinner({commit, dispatch}, payload){
+      try {
+        api.put('rooms/'+payload.id, {winningItem: payload.winner})
+      } catch (error) {
+        console.error(error);
+      }
     }
 
   },

@@ -9,9 +9,13 @@
     </div>
     <div class="row mt-3 justify-content-center">
       <div class="col-12 col-md-4 text-center">
-        <game-component class="col-12 mx-1 text-center" :gameData="this.winner" />
-        <p class="neon green">{{(winner.upvotes/room.names.length) *100}}% agree</p>
-        <p class="neon bad">{{(winner.downvotes/room.names.length) *100}}% disagree</p>
+        <game-component class="text-center animate__animated animate__backInDown" :gameData="this.winner"
+          :totalVotes="room.names.length" />
+          <div class="card mt-3" v-if="winner.appid">
+            <h1 class="bg-dark red">
+            Have steam?</h1> 
+            <button @click="launchGame()" type="button" class="btn btn-primary neon blue m-2" >Launch Game</button>
+          </div>
       </div>
     </div>
     <div class="row mt-5">
@@ -19,14 +23,9 @@
         <h1 class="red card bg-dark text-center">Runners Up:</h1>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12 col-md-4 text-center mx-2" v-for="game in results" :key="game.id">
-        <game-component   :gameData="game" />
-        <div v-if="!game.veto">
-          <p class="neon green">{{(game.upvotes/room.names.length) *100}}% agree</p>
-          <p class="neon bad">{{(game.downvotes/room.names.length) *100}}% disagree</p>
-        </div>
-          <p v-else class="neon bad">V-<i class="fas fa-frog"></i></p>
+    <div class="row justify-content-center">
+      <div v-for="game in results" class="col-12 col-md-3 text-center my-2 mx-4" :key="game.id">
+        <game-component :gameData="game" :totalVotes="room.names.length" />
       </div>
     </div>
   </div>
@@ -36,6 +35,11 @@
   import gameComponent from "../components/GameComponent"
   export default {
     name: "Results",
+    mounted() {
+      this.$store.dispatch("getGames", this.$route.params.code)
+      this.$store.dispatch('leaveRoom', `${this.$route.params.code}`)
+      this.$store.dispatch('setWinner', {id: this.room.id, winner: this.winner.id})
+    },
     computed: {
       games() {
         return this.$store.state.games.sort(function (a, b) { return b.score - a.score })
@@ -43,16 +47,17 @@
       winner() {
         return this.games[0]
       },
-      results(){
+      results() {
         return this.$store.state.games.slice(1)
       },
-      room(){
+      room() {
         return this.$store.state.room
       }
     },
-    mounted() {
-      this.$store.dispatch("getGames", this.$route.params.code)
-      this.$store.dispatch('leaveRoom', `${this.$route.params.code}`)
+    methods:{
+      launchGame(){
+        window.open(`steam://run/${this.winner.appid}`, "_blank");
+      }
     },
     components: {
       gameComponent

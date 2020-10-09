@@ -1,7 +1,6 @@
 <template>
     <div class="d-flex loading-component justify-content-center m-2">
         <canvas id="animationCanvas" class="loading-animations">
-
         </canvas>
     </div>
 </template>
@@ -11,7 +10,7 @@
         name: "loadingComponent",
         mounted() {
             for (let i = 0; i < 20; i++) {
-                this.scribbleAnimation(255, 255, 255, (Math.random() - 0.5) * 100, (Math.random() - 0.5) * 100)
+                this.scribbleAnimation((Math.random() * 255), (Math.random() * 255), (Math.random() * 255), (Math.random() - 0.5) * 100, (Math.random() - 0.5) * 100)
             }
         },
         data() {
@@ -64,7 +63,6 @@
                     }
                 }, animationRate);
             }
-
         }
     }
 </script>

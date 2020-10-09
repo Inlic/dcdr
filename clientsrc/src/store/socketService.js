@@ -22,9 +22,11 @@ export const socketService = {
       //socket.on("joined room", data => console.log(data))
       //socket.on("new user", data => console.log(data))
       socket.on("startPoll", data => {
+        commit("startPoll")
         router.push({ name: 'Vote', params: { code: data } })
       })
       socket.on("poll ended", data => {
+        commit("endPoll")
         router.push({ name: 'Results', params: { code: data } })
       })
       socket.on("new game", data => {

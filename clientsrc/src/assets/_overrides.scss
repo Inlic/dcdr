@@ -94,6 +94,7 @@ flex-direction: column;
 .bg-darken{
   background-color: transparentize($color: #000000, $amount: .25);
 }
+
 .profile-img{
   border-radius: 50%;
   height: 15vh;
@@ -226,12 +227,16 @@ input[type=range]:focus::-ms-fill-upper {
 
 //custom image styling
 
+.img-box{
+  height: 100%;
+}
+
 .img-card-sm{
   border-radius: 10px; 
   filter: brightness(85%); 
   filter: contrast(110%);
-  height: 60vh;
-  width:100%;
+  max-width: 40%;
+  height: auto;
 }
 
 .img-card-md-two{
@@ -248,6 +253,27 @@ input[type=range]:focus::-ms-fill-upper {
   filter: brightness(75%);
   filter: contrast(150%);
   filter: opacity(25%);
+}
+
+.lvl-up-img{
+  max-height: 50vh;
+  object-fit: cover;
+  border-radius: 40px;
+  object-position: 50% 44%;
+  filter: contrast(125%);
+  filter: brightness(110%);
+}
+
+//Image Card Borders
+
+.img-border-blue{
+  border: 5px solid #81C8FF; 
+  border-radius: 10px;
+}
+
+.img-border-pink{
+  border: 5px solid #FF88FF; 
+  border-radius: 10px;
 }
 
 //Divider Classes
@@ -278,9 +304,23 @@ input[type=range]:focus::-ms-fill-upper {
   top: 50%;
 }
 
-//Text Sizing
+//Input Text
 
+input[type="text"] {
+  color: #81C8FF;
+  font-family: Iceland;
+}
 
+//Input Checkbox
+
+/* Create a custom checkbox */
+.form-check-input{
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+}
 
 //Colors without Animations
 
@@ -291,7 +331,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .blue{
-  color: #316aae;
+  color: #81C8FF;
   font-family: Iceland;
 }
 
@@ -358,7 +398,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .neon.blue{
   font-size: 1.5em;
-  color: #316aae;
+  color: #81C8FF;
   font-family: Iceland;
 }
 

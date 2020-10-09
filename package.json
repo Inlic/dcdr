@@ -7,18 +7,21 @@
     "debug": "node index.js",
     "start": "node index.js",
     "dev": "node index.js",
-    "setup": "npm install"
+    "setup": "npm install",
+    "test": "node Test/Puppet.js"
   },
   "author": "Codeworks",
   "license": "ISC",
   "dependencies": {
     "@bcwdev/auth0provider": "^0.0.6",
+    "animate.css": "^4.1.1",
     "cors": "^2.8.1",
     "dotenv": "^8.1.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "helmet": "^3.23.3",
     "mongoose": "^5.10.8",
+    "puppeteer": "^5.3.1",
     "socket.io": "^2.3.0"
   },
   "engines": {

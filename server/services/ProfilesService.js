@@ -38,12 +38,13 @@ function sanitizeBody(body) {
   let writable = {
     name: body.name,
     picture: body.picture,
-    steamId: body.steamId
+    steamId: body.steamId,
   };
   return writable;
 }
 
 class ProfileService {
+
   /**
    * Provided an array of user emails will return an array of user profiles with email picture and name
    * @param {String[]} emails Array of email addresses to lookup users by
