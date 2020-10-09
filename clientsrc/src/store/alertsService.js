@@ -42,6 +42,26 @@ export default class NotificationService {
 
         }
     }
+    static async confirmLeave(text = "You won't be able to revert this!") {
+        try {
+            let res = await Swal.fire({
+                title: "<h2 style='color:#FF88FF'>Are You Sure?</h2>",
+                icon: 'warning',
+                iconColor: "#FF88FF",
+                showCancelButton: true,
+                confirmButtonText: 'Yes, leave the room!',
+                cancelButtonColor: "#81C8FF",
+                confirmButtonColor:  "#FF9900",
+                background: "#171228",
+            })
+            if (res.value) {
+                return true
+            }
+            return false
+        } catch (error) {
+
+        }
+    }
 
     static async steamNotice(){
         try {

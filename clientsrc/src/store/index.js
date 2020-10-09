@@ -125,6 +125,15 @@ export default new Vuex.Store({
         await api.put(`rooms/${this.state.room.id}/names`, {addName:this.state.profile.name})
       }
     },
+    async removeName({commit}, id){
+      if(this.state.name){
+        await api.put(`rooms/${this.state.room.id}/noname`, {name:this.state.name})
+        return
+      }
+      else{
+        await api.put(`rooms/${this.state.room.id}/noname`, {name:this.state.profile.name})
+      }
+    },
     async startPoll({}, code){
       try {
         api.put(`rooms/${code}/start`)
