@@ -37,6 +37,7 @@
           this.newGame.name = this.gameData.name
           this.newGame.imgUrl = this.imgurl
           this.newGame.code = this.$route.params.code
+          this.newGame.appid = this.gameData.appid
           //TODO edit delay for animation
           // let target = document.getElementById(this.gameData.name)
           // target.classList.add('animate__animated', 'animate__fadeOutRight')
