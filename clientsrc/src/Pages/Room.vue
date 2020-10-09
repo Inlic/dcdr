@@ -34,7 +34,7 @@
                 <input id="steam-id-input" type="text" placeholder="Steam ID..." required v-model="steamUser.steamId"
                   class="col-12 my-1 neon blue form-control" />
                 <button id="get-steam-library-btn" type="submit" class="btn btn-primary flashy neon blue m-1">Get Steam
-                  libary</button>
+                  libary by Steam ID</button>
                 <button id="get-user-steam-btn" v-if="profile.steamId" type="button" @click="getUserSteam"
                   class="btn btn-primary flashy neon blue m-1">Get My Steam libary</button>
               </form>
@@ -45,7 +45,7 @@
               <h3 class="red my-2 col-4 offset-4">Participants</h3>
             </div>
             <div class="card row">
-              <div class="neon orange card" v-for="name in room.names" :key="name">{{name}}</div>
+              <div class="neon orange card" v-for="name in room.names" :key="name"><profile-component class="align-self-center profile" v-if="name == profile.name"/><span v-else>{{name}}</span></div>
             </div>
           </div>
         </div>
@@ -73,6 +73,7 @@
   import gameComponent from "../components/GameComponent"
   import steamGameComponent from "../components/SteamGameComponent"
   import gameVoteComponent from "../components/GameVoteComponent"
+  import profileComponent from "../components/ProfileComponent"
   export default {
     name: "Room",
     mounted() {
@@ -148,10 +149,11 @@
       loadingComponent,
       gameComponent,
       steamGameComponent,
-      gameVoteComponent
+      gameVoteComponent,
+      profileComponent
     },
     async beforeRouteLeave(to, from, next) {
-      debugger
+      
       if(this.room.started == true){
         next()
         return
@@ -169,4 +171,9 @@
   ul {
     list-style: none;
   }
+  .profile div{
+    margin: .5em !important;
+  }
+
+
 </style>

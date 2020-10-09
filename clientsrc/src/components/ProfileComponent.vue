@@ -1,10 +1,10 @@
 <template>
 <div>
   <div class="overflow-hidden" style="max-height: 50px; max-width: 400px">
-    <p class="m-3 neon orange">
+    <div class="m-3 neon orange">
     <img class="card-img-top" :src="profile.picture" style="max-height: 50px; max-width: 50px; border-radius: 50px;">
     {{profile.name}}
-    </p>
+    </div>
   </div>
 </div>
 </template>

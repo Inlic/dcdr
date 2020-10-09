@@ -7,7 +7,7 @@
         </button>
       </div>
       <div class="col-12 col-lg-10" @touchstart="startSwipe" @touchmove="moveSwipe">
-        <game-component style="height: 85vh;" :gameData="this.activeGame" />
+        <game-component class="voting" style="height: 85vh;" :gameData="this.activeGame" />
       </div>
       <div class="d-none d-lg-block col-1">
         <button id="downvote-btn" type="button" @click="voteUp" class="mid-page btn btn-primary flashy neon blue">
@@ -145,10 +145,49 @@
     components: {
       gameComponent
     },
+    async beforeRouteLeave(to, from, next) {
+      if(this.index != this.games.length){
+        if(await as.confirmLeave()){
+          this.$store.dispatch("removeName", {id: this.room.id})
+          this.$store.dispatch('leaveRoom', this.$route.params.code)
+          next()
+        }
+      }
+      next()
+    }
+  
   }
 </script>
 
 <style>
+  .voting img{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+
+@media only screen and (max-width: 600px){
+  .voting img{
+  min-height: 20vh;
+  min-width: 40vh;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px){
+  .voting img{
+  min-height: 30vh;
+  min-width: 60vh;
+  }
+}
+
+@media only screen and (min-width: 1025px){
+  .voting img{
+  min-height: 40vh;
+  min-width: 80vh;
+  }
+}
+
   .progress-bar {
     transition: all 1000ms linear;
     color: white;
