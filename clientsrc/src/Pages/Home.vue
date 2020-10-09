@@ -1,7 +1,7 @@
 <template>
-  <div class="background container-fluid">
-    <div class="row justify-content-center bg-darken">
-      <div class="col-4 align-self-center">
+  <div class="background container-fluid d-flex flex-column h-100">
+    <div class="row justify-content-center bg-darken flex-fill d-flex">
+      <div class="col-4 mt-5">
         <div class="card text-center border-0 content-shadow pop">
           <div class="card-header bg-black red">
             <h3>Level Up Your Gaming Experience</h3>
@@ -13,10 +13,10 @@
           </div>
         </div>
       </div>
-      <div class="col-4 my-2">
+      <div class="col-4 my-1">
         <img id="neonTogether" class="card-img img-card-md-one" src="@/assets/neontogether.jpg" alt="Card image">
       </div>
-      <div class="col-4 align-self-center">
+      <div class="col-4 mt-5">
         <div class="card text-center border-0content-shadow pop">
           <div class="card-header bg-black red">
             <h3>Persistent Polls</h3>
@@ -29,30 +29,38 @@
         </div>
       </div>
     </div>
-    <div class="row bg-darken">
-      <div style="border: 5px solid #81C8FF; border-radius: 10px" class="col-3 content-shadow">
+    <div class="row bg-darken fixed-bottom">
+      <div class="card d-none d-lg-block bg-darken border-0 col-3">
+      <div class="img-border-blue content-shadow">
           <img class="card-img-top" src="@/assets/bannerimage/amongusbanner.jpg" alt="">
       </div>
-      <div style="border: 5px solid #FF88FF; border-radius: 10px" class="col-3 content-shadow">
+      <div class="img-border-pink mt-3 content-shadow">
           <img class="card-img-top" src="@/assets/bannerimage/csgobanner.jpg" alt="">
       </div>
-      <div style="border: 5px solid #81C8FF; border-radius: 10px" class="col-3 content-shadow">
+      </div>
+      <div class="card d-none d-lg-block bg-darken border-0 col-3">
+      <div class="img-border-pink content-shadow">
           <img class="card-img-top" src="@/assets/bannerimage/halobanner.jpg" alt="">
       </div>
-      <div style="border: 5px solid #FF88FF; border-radius: 10px" class="col-3 content-shadow">
+      <div class="img-border-blue mt-3 content-shadow">
           <img class="card-img-top" src="@/assets/bannerimage/phasmophobiabanner.jpg" alt="">
       </div>
-      <div style="border: 5px solid #FF88FF; border-radius: 10px" class="col-3 content-shadow">
+      </div>
+      <div class="card d-none d-lg-block bg-darken border-0 col-3">
+      <div class="img-border-pink content-shadow">
           <img class="card-img-top" src="@/assets/bannerimage/seaofthievesbanner.jpg" alt="">
       </div>
-      <div style="border: 5px solid #81C8FF; border-radius: 10px" class="col-3 content-shadow">
+      <div class="img-border-blue mt-3 content-shadow">
           <img class="card-img-top" src="@/assets/bannerimage/fallguysbanner.jpg" alt="">
       </div>
-      <div style="border: 5px solid #FF88FF; border-radius: 10px" class="col-3 content-shadow">
+      </div>
+      <div class="card d-none d-lg-block bg-darken border-0 col-3">
+      <div class="img-border-blue content-shadow">
           <img class="card-img-top" src="@/assets/bannerimage/terrariabanner.jpg" alt="">
       </div>
-      <div style="border: 5px solid #81C8FF; border-radius: 10px" class="col-3 content-shadow">
+      <div class="img-border-pink mt-3 content-shadow">
           <img class="card-img-top" src="@/assets/bannerimage/tf2banner.jpg" alt="">
+      </div>
       </div>
     </div>
   </div>
