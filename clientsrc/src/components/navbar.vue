@@ -37,7 +37,9 @@
             </form>
           </li>
         </ul>
+        
         <div class="d-flex justify-content-end align-items-start h-100">
+          <span class="navbar-text d-none d-xl-block"><profile-component/></span> 
           <span class="navbar-text">
             <button id="login-btn" class="btn btn-primary flashy neon blue" @click="login"
               v-if="!$auth.isAuthenticated">
@@ -55,6 +57,7 @@
   import as from '../store/alertsService'
   import axios from "axios";
   import { getUserData } from "@bcwdev/auth0-vue";
+  import profileComponent from "../components/ProfileComponent";
   export default {
     name: "Navbar",
     data() {
@@ -91,6 +94,9 @@
         this.$store.dispatch("getGames", this.code)
         this.$router.push({ name: 'Room', params: { code: this.code } })
       },
+    },
+    components:{
+      profileComponent
     }
   };
 </script>

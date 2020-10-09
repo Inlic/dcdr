@@ -1,7 +1,7 @@
 <template>
   <div :id="gameData.name" class="col-12 card my-3 content-shadow">
     <div class="row justify-content-between">
-      <img class="col" :src="this.imgurl" alt="">
+      <img class="col" :src="this.imgurl" alt="" style="max-height: 100px; max-width: 200px">
       <h6 class="align-self-center steam col">{{gameData.name}}</h6>
       <button id="add-steam-game-btn" type="button" class="btn btn-primary m-1 col-2" @click="addGame">Add to
         poll</button>
@@ -21,7 +21,7 @@
     },
     computed: {
       imgurl() {
-        return `https://media.steampowered.com/steamcommunity/public/images/apps/${this.gameData.appid}/${this.gameData.img_logo_url}.jpg`
+        return `http://media.steampowered.com/steamcommunity/public/images/apps/${this.gameData.appid}/${this.gameData.img_logo_url}.jpg`
       },
       room() {
         return this.$store.state.room
