@@ -6,7 +6,7 @@
     <div class="card-body" style="min-height: 15vh;">
       <img class="img-fluid" :src="gameData.imgUrl" style="max-height: 100px; max-width: 200px">
       <div v-if="this.$route.name == 'Results'">
-        <div class="progress mt-3">
+        <div v-if="!gameData.veto" class="progress mt-3">
           <div class="progress-bar bg-success" role="progressbar"
             v-bind:style="{width: `${(gameData.upvotes / this.totalVotes) * 100}%`}" aria-valuenow="30"
             aria-valuemin="0" aria-valuemax="100">
@@ -17,6 +17,9 @@
             v-bind:style="{width: `${((gameData.downvotes / this.totalVotes) * 100)}%`}" aria-valuenow="20"
             aria-valuemin="0" aria-valuemax="100">{{gameData.downvotes}}
             ({{`${((gameData.downvotes / this.totalVotes) * 100).toFixed(0)}%`}})</div>
+        </div>
+        <div v-else class="mt-3">
+          <p class="blue">V-<i class="fas fa-frog"></i></p>
         </div>
       </div>
     </div>
