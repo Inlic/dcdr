@@ -7,7 +7,7 @@
         </button>
       </div>
       <div class="col-12 col-lg-10" @touchstart="startSwipe" @touchmove="moveSwipe">
-        <game-component style="height: 85vh;" :gameData="this.activeGame" />
+        <game-component class="voting" style="height: 85vh;" :gameData="this.activeGame" />
       </div>
       <div class="d-none d-lg-block col-1">
         <button id="downvote-btn" type="button" @click="voteUp" class="mid-page btn btn-primary flashy neon blue">
@@ -149,6 +149,13 @@
 </script>
 
 <style>
+  .voting img{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+
   .progress-bar {
     transition: all 1000ms linear;
     color: white;

@@ -3,7 +3,7 @@
     <h2>{{pollData.name}} <i id="delete-historic-poll" class="fa fa-trash float-right fa-sm mt-2 mr-2"
         @click="deletePoll" aria-hidden="true"></i>
     </h2>
-    <button type="button" @click="rehost" class="btn btn-outline-secondary">Re-host poll</button>
+    <button id="rehost-poll-btn" type="button" @click="rehost" class="btn btn-outline-secondary">Re-host poll</button>
   </div>
 </template>
 
