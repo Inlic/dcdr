@@ -145,6 +145,17 @@
     components: {
       gameComponent
     },
+    async beforeRouteLeave(to, from, next) {
+      if(this.index != this.games.length){
+        if(await as.confirmLeave()){
+          this.$store.dispatch("removeName", {id: this.room.id})
+          this.$store.dispatch('leaveRoom', this.$route.params.code)
+          next()
+        }
+      }
+      next()
+    }
+  
   }
 </script>
 
