@@ -8,7 +8,7 @@
         <div class="card bg-dark text-center row">
           <div class="card-header col">
             <h1 class="red my-3">{{room.name}}</h1>
-            <h4 class="neon green">Room Code: {{room.code}}</h4>
+            <h4 id="room-code" class="neon green">Room Code: {{room.code}}</h4>
           </div>
           <div class="card-body text-center col">
             <div class="row justify-content-around">
@@ -45,7 +45,9 @@
               <h3 class="red my-2 col-4 offset-4">Participants</h3>
             </div>
             <div class="card row">
-              <div class="neon orange card" v-for="name in room.names" :key="name"><profile-component class="align-self-center profile" v-if="name == profile.name"/><span v-else>{{name}}</span></div>
+              <div class="neon orange card" v-for="name in room.names" :key="name">
+                <profile-component class="align-self-center profile" v-if="name == profile.name" /><span
+                  v-else>{{name}}</span></div>
             </div>
           </div>
         </div>
@@ -153,13 +155,13 @@
       profileComponent
     },
     async beforeRouteLeave(to, from, next) {
-      
-      if(this.room.started == true){
+
+      if (this.room.started == true) {
         next()
         return
       }
-      else if(await as.confirmLeave()){
-        this.$store.dispatch("removeName", {id: this.room.id})
+      else if (await as.confirmLeave()) {
+        this.$store.dispatch("removeName", { id: this.room.id })
         this.$store.dispatch('leaveRoom', this.$route.params.code)
         next()
       }
@@ -171,9 +173,8 @@
   ul {
     list-style: none;
   }
-  .profile div{
+
+  .profile div {
     margin: .5em !important;
   }
-
-
 </style>

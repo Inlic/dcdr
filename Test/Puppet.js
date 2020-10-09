@@ -1,6 +1,7 @@
 require("dotenv").config();
 const puppeteer = require('puppeteer');
 const url = 'http://localhost:8080/';
+const testPollCode = null
 
 //Logs in with fake account. Necessary for anything that requires the user to be logged in
 async function Login(page) {
@@ -115,6 +116,7 @@ async function createTestPoll() {
         page.waitForNavigation({ waitUntil: 'networkidle0' }),
         page.click('#create-poll-btn')
     ]);
+
     await page.screenshot({ path: 'Test/Screenshots/createTestPoll.png', fullPage: true })
     browser.close();
 }
