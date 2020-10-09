@@ -151,7 +151,7 @@
       gameVoteComponent
     },
     async beforeRouteLeave(to, from, next) {
-      debugger
+      
       if(this.room.started == true){
         next()
         return
