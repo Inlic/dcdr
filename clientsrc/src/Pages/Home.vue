@@ -2,7 +2,7 @@
   <div class="background container-fluid d-flex flex-column h-100">
     <div class="row justify-content-center bg-darken flex-fill d-flex pb-5">
       <div class="col-12 col-md-6 col-xl-4 mt-2">
-        <div class="card text-center border-0 content-shadow pop">
+        <div class="card text-center border-0 content-shadow pop animate__animated animate__zoomIn">
           <div class="card-header bg-black red">
             <h3>Level Up Your Gaming Experience</h3>
           </div>
@@ -17,7 +17,7 @@
         <img id="neonTogether" class="card-img img-card-md-one" src="@/assets/neontogether.jpg" alt="Card image">
       </div>
       <div class="col-12 col-md-6 col-xl-4 mt-2">
-        <div class="card text-center border-0 content-shadow pop">
+        <div class="card text-center border-0 content-shadow pop animate__animated animate__zoomIn">
           <div class="card-header bg-black red">
             <h3>Persistent Polls</h3>
           </div>

@@ -4,7 +4,7 @@
       <div class="col-12 col-md-4">
         <div class="row">
           <div class="col-12 col-md-12 mt-2">
-            <div class="card border-0">
+            <div class="card border-0 animate__animated animate__slideInLeft">
               <img class="card-img-top" :src="profile.picture" alt="Card image cap">
               <div class="card-body bg-dark">
                 <h3 class="card-title red">Welcome: {{ profile.name }}</h3>

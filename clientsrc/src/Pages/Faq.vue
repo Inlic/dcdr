@@ -2,11 +2,11 @@
   <div class="container-fluid background">
     <div class="row justify-content-center bg-darken flex-fill d-flex">
       <div class="col-12 mt-5">
-        <div class="card text-center border-0 content-shadow">
+        <div class="card text-center border-0 content-shadow animate__animated animate__fadeInUp">
           <div class="card-header bg-black red">
             <h3>Frequently Asked Questions</h3>
           </div>
-          <div class="card-body bg-dark">
+          <div class="card-body bg-dark ">
             <div class="card">
             <p @click="toggle1=!toggle1" class="neon blue">
               1. Do I need to be logged in to create or join a poll?
