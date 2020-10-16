@@ -1,3 +1,4 @@
+
 import { dbContext } from "../db/DbContext";
 import { BadRequest } from "../utils/Errors"
 
@@ -39,11 +40,21 @@ function sanitizeBody(body) {
     name: body.name,
     picture: body.picture,
     steamId: body.steamId,
+    channels: body.channels
   };
   return writable;
 }
 
 class ProfileService {
+  async updateUserChannels(user, data) {
+    let channels =  sanitizeBody({channels: data}).channels
+    let profile = await dbContext.Profile.findOneAndUpdate(
+      { email: user.email },
+      { $push: {channels}},
+      { runValidators: true, setDefaultsOnInsert: true, new: true }
+    );
+    return profile;
+  }
 
   /**
    * Provided an array of user emails will return an array of user profiles with email picture and name
@@ -52,7 +63,7 @@ class ProfileService {
   async getProfiles(emails = []) {
     let profiles = await dbContext.Profile.find({
       email: { $in: emails }
-    }).select("email picture name");
+    }).select("email picture name channels");
     return profiles;
   }
 

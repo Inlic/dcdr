@@ -17,7 +17,9 @@ export default new Vuex.Store({
     games: [],
     activeGame: {},
     name: "",
-    steam:[]
+    steam:[],
+    userChannels: [],
+    channelRooms: {},
   },
   mutations: {
     setProfile(state, profile) {
@@ -50,6 +52,9 @@ export default new Vuex.Store({
     },
     setSteamLibray(state, games){
       state.steam = games
+    },
+    setUserChannels(state, channel){
+      state.userChannels = channel
     }
   },
   actions: {
@@ -263,12 +268,35 @@ export default new Vuex.Store({
     removeFromList({commit, state}, game){
       commit("setSteamLibray", state.steam.filter(g => g.name != game.name))
     },
+
     setWinner({commit, dispatch}, payload){
       try {
         api.put('rooms/'+payload.id, {winningItem: payload.winner})
       } catch (error) {
         console.error(error);
+      },
+
+    
+    //Channels
+    async addChannel({commit, state}, channel){
+      try {
+        console.log(channel);
+        let res = await api.post('channels', channel)
+        console.log(res);
+      } catch (error) {
+        
       }
+    },
+    async getChannels({commit, state}, useremail){
+      try {
+        let res = await api.get(`channels/${useremail}/user`)
+        commit("setUserChannels", res.data)
+      } catch (error) {
+        
+      }
+    },
+    async addRoomtoChannel({commit, state}, payload){
+      let res = await api.put(`channels/${payload._id}/rooms`, payload)
     }
 
   },
