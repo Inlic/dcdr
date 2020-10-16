@@ -10,7 +10,7 @@ class DbContext {
   Games = mongoose.model("Game", GameSchema);
   Responses = mongoose.model("Response", ResponseSchema);
   Profile = mongoose.model("Profile", ProfileSchema);
-  Channels = mongoose.model("Channel", ChannelSchema)
+  Channels = mongoose.model("Channel", ChannelSchema);
 }
 
 export const dbContext = new DbContext();
