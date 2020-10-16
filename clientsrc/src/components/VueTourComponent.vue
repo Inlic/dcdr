@@ -1,9 +1,5 @@
 <template>
   <div>
-    <div class="v-step-0"></div>
-    <div class="v-step-1"></div>
-    <div class="v-step-2"></div>
-    <div class="v-step-3"></div>
     <v-tour name="myTour" :steps="steps"></v-tour>
   </div>
 </template>
@@ -21,7 +17,7 @@ export default {
           },
           content: `Welcome to DCDR!`,
           params: {
-            placement: "top-start", // Any valid Popper.js placement. See https://popper.js.org/popper-documentation.html#Popper.placements
+            placement: "top", // Any valid Popper.js placement. See https://popper.js.org/popper-documentation.html#Popper.placements
           },
         },
         {
@@ -33,7 +29,7 @@ export default {
         },
         {
           target: ".v-step-2",
-          content: "Enter a room code and click 'Join' to join a poll room",
+          content: "Enter a room code and click 'Join' to join a poll room.",
           params: {
             placement: "top", // Any valid Popper.js placement. See https://popper.js.org/popper-documentation.html#Popper.placements
           },
@@ -42,7 +38,7 @@ export default {
           target: ".v-step-3",
           content: "Click on the login button to create a profile.",
           params: {
-            placement: "top-end", // Any valid Popper.js placement. See https://popper.js.org/popper-documentation.html#Popper.placements
+            placement: "top-right", // Any valid Popper.js placement. See https://popper.js.org/popper-documentation.html#Popper.placements
           },
         },
       ],
@@ -86,5 +82,23 @@ export default {
   color: #81c8ff;
   font-size: 1.5em;
   font-family: Iceland;
+}
+
+@media screen and (max-width: 768px) {
+  .v-step {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: 2.5em;
+    margin-top: 2.5em;
+  }
+}
+@media screen and (min-width: 769px) {
+  .v-step {
+    position: fixed;
+    left: 50%;
+    margin-left: 2.5em;
+    margin-top: 2.5em;
+  }
 }
 </style>
