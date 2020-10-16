@@ -6,15 +6,13 @@
       </div>
       <div class="card-body" v-if="this.toggle == true">
         <ul v-if="channelData.rooms.length > 0">
-          <li
-            v-for="room in channelData.rooms"
-            :key="room._id"
-            :roomData="room"
-          >
-            {{ room }}
-          </li>
+          <historic-poll-component
+                  v-for="room in channelData.rooms"
+                  :key="room._id"
+                  :pollData="room"
+                />
         </ul>
-        <div v-else>
+        <div>
           <select v-model="selected">
             <option disabled value="">Please select one</option>
             <option v-for="room in polls" :key="room.id" :value="room">
@@ -36,6 +34,7 @@
 </template>
 
 <script>
+import historicPollComponent from "../components/HistoricPollComponent";
 import as from "../store/alertsService";
 export default {
   name: "channel-body-component",
@@ -60,6 +59,9 @@ export default {
       return this.$store.state.myRooms;
     },
   },
+  components: {
+    historicPollComponent
+  }
 };
 </script>
 

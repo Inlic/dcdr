@@ -46,7 +46,6 @@ export class ChannelsController extends BaseController {
     async create(req, res, next) {
     try {
         let data = await channelsService.create(req.body)
-        // let profile = await profilesService.updateUserChannels(req.body.user, data.id)
         return res.send(data)
     } catch (error) { next(error) }
   }

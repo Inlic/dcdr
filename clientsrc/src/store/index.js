@@ -5,6 +5,7 @@ import { socketService } from "./socketService"
 import { api } from "./AxiosService.js"
 import as from "./alertsService.js"
 
+
 Vue.use(Vuex);
 
 
@@ -55,7 +56,12 @@ export default new Vuex.Store({
     },
     setUserChannels(state, channel) {
       state.userChannels = channel
-    }
+    },
+    modifyUserChannels(state, payload){
+      debugger
+      Vue.set(state.userChannels[payload.index], "rooms", payload.data)
+    },
+
   },
   actions: {
     setBearer({ }, bearer) {
@@ -283,7 +289,7 @@ export default new Vuex.Store({
       try {
         console.log(channel);
         let res = await api.post('channels', channel)
-        console.log(res);
+        commit("setUserChannels", [...state.userChannels, res.data])
       } catch (error) {
 
       }
@@ -298,6 +304,16 @@ export default new Vuex.Store({
     },
     async addRoomtoChannel({ commit, state }, payload) {
       let res = await api.put(`channels/${payload._id}/rooms`, payload)
+      commit("setUserChannels", [...state.userChannels.filter(c => c._id != res.data._id), res.data])
+      let index = state.userChannels.findIndex(c => c._id = res.data._id)
+      let subindex = res.data.rooms.findIndex(r => r._id = payload.rooms)
+      let query = {
+        data: res.data.rooms,
+        index,
+        subindex
+      }
+      debugger
+      commit("modifyUserChannels", query)
     }
 
   },

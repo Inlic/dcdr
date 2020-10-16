@@ -5,7 +5,7 @@ let ObjectId = Schema.Types.ObjectId
 
 const Channel = new Schema({
   name: { type: String, required: true},
-  rooms: [{type: ObjectId}],
+  rooms: [{type: Schema.Types.ObjectId, ref: 'Room'}],
   users: [{type: String}],
 })
 
