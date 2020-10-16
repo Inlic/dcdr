@@ -10,17 +10,17 @@
             <form @submit.prevent="addRoom" class="row justify-content-center form-inline">
               <div class="form-group m-2">
                 <label class="neon blue mx-2" for="room">Room Name</label>
-                <input type="text" placeholder="New room name..." name="room" v-model="newRoom.name" required
-                  class="neon blue form-control" />
+                <input id="room-name-input" type="text" placeholder="New room name..." name="room"
+                  v-model="newRoom.name" required class="neon blue form-control" />
               </div>
               <div class="form-group">
                 <label class="neon blue mx-2" for="vetos">Allowed User Vetos</label>
                 <select class="neon blue form-control mr-2" placeholder="User vetos" name="vetos" id="vetos"
                   v-model="newRoom.options.userVetos">
-                  <option class="neon blue" value="0">0</option>
-                  <option class="neon blue" value="1">1</option>
-                  <option class="neon blue" value="2">2</option>
-                  <option class="neon blue" value="3">3</option>
+                  <option id="one-veto-option" class="neon blue" value="0">0</option>
+                  <option id="two-veto-option" class="neon blue" value="1">1</option>
+                  <option id="three-veto-option" class="neon blue" value="2">2</option>
+                  <option id="four-veto-option" class="neon blue" value="3">3</option>
                 </select>
               </div>
               <div class="form-check">
@@ -36,15 +36,16 @@
               <div class="form-group w-75">
                 <label class="neon blue" for="formQuestionTime">Allowed Vote Time:
                   {{newRoom.options.questionTime}}s</label>
-                <input type="range" class="form-control-range mr-2" min="1" max="60"
+                <input type="range" class="form-control-range mr-2" min="5" max="60"
                   v-model="newRoom.options.questionTime" id="formQuestionTime">
               </div>
               <div class="form-group w-75">
                 <label class="neon blue" for="formPollItems">Allowed Poll Items: {{newRoom.options.pollItems}}</label>
-                <input type="range" class="form-control-range mr-2" min="2" max="12" v-model="newRoom.options.pollItems"
+                <input type="range" class="form-control-range mr-2" min="2" max="20" v-model="newRoom.options.pollItems"
                   id="formPollItems">
               </div>
-              <button type="submit" class="btn btn-primary flashy neon blue w-25 mx-1 mt-3"> Go! </button>
+              <button id="create-poll-btn" type="submit" class="btn btn-primary flashy neon blue w-25 mx-1 mt-3"> Go!
+              </button>
             </form>
           </div>
         </div>
@@ -60,15 +61,11 @@
         </div>
       </div>
     </div>
-    <div class="row my-3">
-      <img class="col-12" src="@/assets/levelup.jpg"
-        style="max-height: 52vh; object-fit: cover; border-radius: 40px; object-position: 50% 44%; filter: contrast(125%); filter: brightness(110%);">
-    </div>
   </div>
 </template>
 
 <script>
-  import historicPollComponent from "../components/HistoricPollComponet.vue"
+  import historicPollComponent from "../components/HistoricPollComponent.vue"
   export default {
     name: "Rooms",
     data() {
@@ -105,7 +102,6 @@
         this.newRoom.options.questionTime = parseInt(this.newRoom.options.questionTime)
         this.newRoom.options.pollItems = parseInt(this.newRoom.options.pollItems)
         this.newRoom.options.userVetos = parseInt(this.newRoom.options.userVetos)
-        // console.log(this.newRoom);
         this.$store.dispatch("createRoom", this.newRoom)
       }
     },
@@ -122,5 +118,11 @@
 </script>
 
 <style>
+@media only screen and (max-width: 600px){
+  .form-check-input{
+  margin-left: 2px;
+  }
+}
+
 
 </style>

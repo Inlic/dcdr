@@ -13,6 +13,8 @@ import Vote from "../Pages/Vote.vue";
 // @ts-ignore
 import Rooms from "../Pages/Rooms.vue";
 // @ts-ignore
+import Faq from "../Pages/Faq.vue";
+// @ts-ignore
 import WaitResults from "../Pages/WaitResults.vue"
 import { authGuard } from "@bcwdev/auth0-vue";
 
@@ -42,6 +44,11 @@ const routes = [
     beforeEnter: authGuard
   },
   {
+    path: "/faq",
+    name: "Faq",
+    component: Faq
+  },
+  {
     path: "/room/:code/results",
     name: "Results",
     component: Results
@@ -55,7 +62,11 @@ const routes = [
     path: "/room/:code/vote",
     name: "Vote",
     component: Vote
-  }
+  },
+  {
+    path: "*",
+    redirect: "/",
+  },
 ];
 
 const router = new VueRouter({
