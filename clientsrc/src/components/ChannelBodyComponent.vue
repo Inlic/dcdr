@@ -28,7 +28,9 @@
           >
             add a poll!
           </button>
+
         </div>
+        <button type="button" class="btn btn-primary" @click="deleteChannel">Delete channel</button>
       </div>
     </div>
   </div>
@@ -54,6 +56,9 @@ export default {
       let payload = { _id: this.channelData._id, rooms: this.selected.id };
       this.$store.dispatch("addRoomtoChannel", payload);
     },
+    deleteChannel(){
+      this.$store.dispatch("deleteChannel", this.channelData._id)
+    }
   },
   computed: {
     polls() {

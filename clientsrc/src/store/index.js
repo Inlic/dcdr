@@ -315,6 +315,16 @@ export default new Vuex.Store({
     async RemoveRoomFromChannel({commit, dispatch, state}, payload){
       let res = await api.put(`channels/${payload.parent}/drooms`, payload)
       commit("setUserChannels", [...state.userChannels.filter(c => c._id != res.data._id), res.data])
+
+    },
+    async deleteChannel({commit, state}, id){
+      try {
+        debugger
+        let res = await api.delete('channels/'+id)
+        commit('setUserChannels', [...state.userChannels.filter(c => c._id != id)])
+      } catch (error) {
+        console.error(error);
+      }
     }
 
   },
