@@ -1,10 +1,14 @@
 import Vue from "vue";
 import App from "./App.vue";
+import VueTour from 'vue-tour';
 import router from "./router";
 import store from "./store";
 import { Auth0Plugin, onAuth } from "@bcwdev/auth0-vue";
 import { domain, clientId, audience } from "./authConfig";
-import VueTour from 'vue-tour';
+
+require('vue-tour/dist/vue-tour.css');
+
+Vue.use(VueTour);
 
 Vue.use(Auth0Plugin, {
   domain,

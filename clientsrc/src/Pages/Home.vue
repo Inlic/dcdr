@@ -55,6 +55,7 @@
         </div>
       </div>
     </div>
+    <vue-tour-component />
     <div class="row bg-darken fixed-bottom">
       <div
         class="card d-none d-lg-block bg-darken border-0 col-3 animate__animated animate__backInUp"
@@ -133,9 +134,13 @@
 </template>
 
 <script>
+import vueTourComponent from "../components/VueTourComponent";
 export default {
   name: "Home",
   mounted() {},
+  components: {
+    vueTourComponent,
+  },
 };
 </script>
 
