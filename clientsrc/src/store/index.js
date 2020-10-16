@@ -319,7 +319,7 @@ export default new Vuex.Store({
     },
     async deleteChannel({commit, state}, id){
       try {
-        debugger
+        
         let res = await api.delete('channels/'+id)
         commit('setUserChannels', [...state.userChannels.filter(c => c._id != id)])
       } catch (error) {
