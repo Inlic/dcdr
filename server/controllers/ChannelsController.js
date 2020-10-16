@@ -1,27 +1,40 @@
 import express from 'express'
 import BaseController from "../utils/BaseController";
 // @ts-ignore
-import auth0provider from "@bcwdev/auth0provider";
 import { channelsService } from '../services/ChannelsService';
 import { profilesService } from "../services/ProfilesService";
 
+
+//PUBLIC
 export class ChannelsController extends BaseController {
   constructor() {
       super("api/channels")
       this.router
-      .get('', this.getAllUser)
+      .get('/:email/user', this.getUser)
       .get('/:id', this.getById)
       .post('', this.create)
       .put('/:id', this.edit)
+      .put('/:id/rooms', this.addRoom)
       .delete('/:id', this.delete)
     }
-
-    async getAllUser(req, res, next) {
-        try {
-            let data = await channelsService.getAllUser()
-            return res.send(data)
-        } catch (error) { next(error) }
+  async addRoom(req, res, next) {
+    try {
+      let data = await channelsService.addRoom(req.body)
+      return res.send(data)
+    } catch (error) {
+      next(error)
     }
+    
+  }
+  async getUser(req, res, next) {
+    try {
+      let data = await channelsService.getByUser(req.params.email)
+      return res.send(data)
+    } catch (error) {
+      next(error)
+    }
+  }
+
 
     async getById(req, res, next) {
       try {
@@ -32,7 +45,8 @@ export class ChannelsController extends BaseController {
 
     async create(req, res, next) {
     try {
-        let data = await channelsService.create(req.params.id)
+        let data = await channelsService.create(req.body)
+        // let profile = await profilesService.updateUserChannels(req.body.user, data.id)
         return res.send(data)
     } catch (error) { next(error) }
   }
@@ -44,9 +58,6 @@ export class ChannelsController extends BaseController {
   } catch (error) { next(error) }
   }
 
-  async addUser(req, res, next){
-    
-  }
 
     async delete(req, res, next) {
   try {

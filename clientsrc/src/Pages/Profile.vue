@@ -56,6 +56,7 @@
             <h3 class="card-title red">My Channel</h3>
             <p class="card-text neon blue">This is where I could potentially invite people to hang out and run polls.
               Also where I would receive messages or feeds if I was subscribed to those things.</p>
+              <channel-componet/>
           </div>
         </div>
       </div>
@@ -64,7 +65,8 @@
 </template>
 
 <script>
-  import historicPollComponent from "../components/HistoricPollComponent"
+import channelComponet from "../components/ChannelComponet"
+import historicPollComponent from "../components/HistoricPollComponet"
   export default {
     name: "Profile",
     mounted() {
@@ -96,6 +98,7 @@
     },
     components: {
       historicPollComponent,
+      channelComponet
     }
   };
 </script>
