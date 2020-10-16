@@ -9,7 +9,7 @@
             <h3>Level Up Your Gaming Experience</h3>
           </div>
           <div class="card-body bg-dark">
-            <p class="neon blue">
+            <p class="neon blue default-cursor">
               Don't Waste Time Deciding what to play.Match with your friends,
               find a game you all love, and get to the game faster.
             </p>
@@ -40,7 +40,7 @@
             <h3>Persistent Polls</h3>
           </div>
           <div class="card-body bg-dark">
-            <p class="neon blue">
+            <p class="neon blue default-cursor">
               Love the games you voted on last time, but want to create another
               poll? No problem your prior polls are saved to your account.
             </p>
@@ -138,3 +138,9 @@ export default {
   mounted() {},
 };
 </script>
+
+<style>
+.default-cursor {
+  cursor: default !important;
+}
+</style>
