@@ -11,18 +11,16 @@
 export default {
   name: "channel-room-compnet",
   props: ["roomData"],
- data(){
-   return{
-     currentRoom: {}
-   }
- },
- mounted(){
-   this.$store.dispatch("getRoombyid", this.roomData)
- }
-
-}
+  data() {
+    return {
+      currentRoom: {},
+    };
+  },
+  mounted() {
+    this.$store.dispatch("getRoombyid", this.roomData);
+  },
+};
 </script>
 
 <style>
-
 </style>
