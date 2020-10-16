@@ -6,15 +6,14 @@
       </div>
       <div class="card-body" v-if="this.toggle == true">
         <ul v-if="channelData.rooms.length > 0">
-          <li
-            v-for="room in channelData.rooms"
-            :key="room._id"
-            :roomData="room"
-          >
-            {{ room }}
-          </li>
+          <channel-poll-component
+                  v-for="room in channelData.rooms"
+                  :key="room._id"
+                  :pollData="room"
+                  :channelData="channelData"
+                />
         </ul>
-        <div v-else>
+        <div>
           <select v-model="selected">
             <option disabled value="">Please select one</option>
             <option v-for="room in polls" :key="room.id" :value="room">
@@ -29,13 +28,16 @@
           >
             add a poll!
           </button>
+
         </div>
+        <button type="button" class="btn btn-primary" @click="deleteChannel">Delete channel</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import channelPollComponent from "../components/ChannelPollComponent";
 import as from "../store/alertsService";
 export default {
   name: "channel-body-component",
@@ -54,12 +56,18 @@ export default {
       let payload = { _id: this.channelData._id, rooms: this.selected.id };
       this.$store.dispatch("addRoomtoChannel", payload);
     },
+    deleteChannel(){
+      this.$store.dispatch("deleteChannel", this.channelData._id)
+    }
   },
   computed: {
     polls() {
       return this.$store.state.myRooms;
     },
   },
+  components: {
+    channelPollComponent
+  }
 };
 </script>
 

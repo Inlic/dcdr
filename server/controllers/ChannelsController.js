@@ -16,7 +16,16 @@ export class ChannelsController extends BaseController {
       .put('/:id', this.edit)
       .put('/:id/rooms', this.addRoom)
       .delete('/:id', this.delete)
+      .put('/:id/drooms', this.removeRoom)
     }
+  async removeRoom(req, res, next) {
+    try {
+      let data = await channelsService.removeRoom(req.body)
+      return res.send(data)
+    } catch (error) {
+      next(error)
+    }
+  }
   async addRoom(req, res, next) {
     try {
       let data = await channelsService.addRoom(req.body)
@@ -46,7 +55,6 @@ export class ChannelsController extends BaseController {
     async create(req, res, next) {
     try {
         let data = await channelsService.create(req.body)
-        // let profile = await profilesService.updateUserChannels(req.body.user, data.id)
         return res.send(data)
     } catch (error) { next(error) }
   }

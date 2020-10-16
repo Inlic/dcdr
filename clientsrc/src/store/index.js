@@ -5,6 +5,7 @@ import { socketService } from "./socketService"
 import { api } from "./AxiosService.js"
 import as from "./alertsService.js"
 
+
 Vue.use(Vuex);
 
 
@@ -55,7 +56,8 @@ export default new Vuex.Store({
     },
     setUserChannels(state, channel) {
       state.userChannels = channel
-    }
+    },
+
   },
   actions: {
     setBearer({ }, bearer) {
@@ -283,7 +285,7 @@ export default new Vuex.Store({
       try {
         console.log(channel);
         let res = await api.post('channels', channel)
-        console.log(res);
+        commit("setUserChannels", [...state.userChannels, res.data])
       } catch (error) {
 
       }
@@ -298,6 +300,21 @@ export default new Vuex.Store({
     },
     async addRoomtoChannel({ commit, state }, payload) {
       let res = await api.put(`channels/${payload._id}/rooms`, payload)
+      commit('setUserChannels', [...state.userChannels.filter(c => c._id != payload._id), res.data])
+    },
+    async RemoveRoomFromChannel({commit, dispatch, state}, payload){
+      let res = await api.put(`channels/${payload.parent}/drooms`, payload)
+      commit("setUserChannels", [...state.userChannels.filter(c => c._id != res.data._id), res.data])
+
+    },
+    async deleteChannel({commit, state}, id){
+      try {
+        
+        let res = await api.delete('channels/'+id)
+        commit('setUserChannels', [...state.userChannels.filter(c => c._id != id)])
+      } catch (error) {
+        console.error(error);
+      }
     }
 
   },
