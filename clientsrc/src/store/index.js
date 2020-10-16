@@ -58,7 +58,6 @@ export default new Vuex.Store({
       state.userChannels = channel
     },
     modifyUserChannels(state, payload){
-      debugger
       Vue.set(state.userChannels[payload.index], "rooms", payload.data)
     },
 
@@ -304,7 +303,6 @@ export default new Vuex.Store({
     },
     async addRoomtoChannel({ commit, state }, payload) {
       let res = await api.put(`channels/${payload._id}/rooms`, payload)
-      commit("setUserChannels", [...state.userChannels.filter(c => c._id != res.data._id), res.data])
       let index = state.userChannels.findIndex(c => c._id = res.data._id)
       let subindex = res.data.rooms.findIndex(r => r._id = payload.rooms)
       let query = {
@@ -312,8 +310,11 @@ export default new Vuex.Store({
         index,
         subindex
       }
-      debugger
       commit("modifyUserChannels", query)
+    },
+    async RemoveRoomFromChannel({commit, dispatch, state}, payload){
+      let res = await api.put(`channels/${payload.parent}/drooms`, payload)
+      commit("setUserChannels", [...state.userChannels.filter(c => c._id != res.data._id), res.data])
     }
 
   },

@@ -10,8 +10,8 @@
 <script>
   import as from "../store/alertsService.js"
   export default {
-    name: "historicPollComponent",
-    props: ["pollData"],
+    name: "channelPollComponent",
+    props: ["pollData", "channelData"],
     computed: {
       profile() {
         return this.$store.state.profile;
@@ -22,7 +22,8 @@
     },
     methods: {
       async deletePoll() {
-        if (await as.confirmDelete()) { this.$store.dispatch("RemoveRoomFromChannel", this.pollData.id) }
+        this.pollData.parent = this.channelData._id
+        if (await as.confirmDelete()) { this.$store.dispatch("RemoveRoomFromChannel", this.pollData) }
       },
       rehost() {
         this.pollData.completed = false

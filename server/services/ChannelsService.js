@@ -2,6 +2,14 @@ import { dbContext } from "../db/DbContext"
 import { BadRequest } from "../utils/Errors"
 
 class ChannelsService {
+  async removeRoom(payload) {
+    let data = await dbContext.Channels.findOneAndUpdate({_id: payload.parent},{$pull:{rooms: payload._id}}, {new: true}).populate('rooms')
+    if (!data) {
+      throw new BadRequest("Invalid ID")
+  }
+  return data
+  }
+  
   async getByUser(email) {
     let data = await dbContext.Channels.find({users: {$in: email}}).populate('rooms')
     return data

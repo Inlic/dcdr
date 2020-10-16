@@ -6,10 +6,11 @@
       </div>
       <div class="card-body" v-if="this.toggle == true">
         <ul v-if="channelData.rooms.length > 0">
-          <historic-poll-component
+          <channel-poll-component
                   v-for="room in channelData.rooms"
                   :key="room._id"
                   :pollData="room"
+                  :channelData="channelData"
                 />
         </ul>
         <div>
@@ -34,7 +35,7 @@
 </template>
 
 <script>
-import historicPollComponent from "../components/HistoricPollComponent";
+import channelPollComponent from "../components/ChannelPollComponent";
 import as from "../store/alertsService";
 export default {
   name: "channel-body-component",
@@ -60,7 +61,7 @@ export default {
     },
   },
   components: {
-    historicPollComponent
+    channelPollComponent
   }
 };
 </script>
