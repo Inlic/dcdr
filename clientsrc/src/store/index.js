@@ -58,7 +58,7 @@ export default new Vuex.Store({
       state.userChannels = channel
     },
     modifyUserChannels(state, payload){
-      debugger
+      
       Vue.set(state.userChannels[payload.index], "rooms", payload.data)
     },
 
@@ -312,8 +312,17 @@ export default new Vuex.Store({
         index,
         subindex
       }
-      debugger
+      
       commit("modifyUserChannels", query)
+    },
+    async deleteChannel({commit, state}, id){
+      try {
+        debugger
+        let res = await api.delete('channels/'+id)
+        commit('setUserChannels', [...state.userChannels.filter(c => c._id != id)])
+      } catch (error) {
+        console.error(error);
+      }
     }
 
   },
