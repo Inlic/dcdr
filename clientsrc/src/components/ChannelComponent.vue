@@ -2,8 +2,8 @@
   <div class="col-12">
     <div class="row">
       <div class="card col-12 justify-content-center d-flex">
-        <h1>My Channels</h1>
-        <ul>
+        <h1 class="card-title red">My Channels</h1>
+        <ul class="channel-container">
           <channel-body-component
             v-for="channel in channels"
             :key="channel.id"

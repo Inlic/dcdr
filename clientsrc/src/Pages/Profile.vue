@@ -83,12 +83,18 @@
               <div class="card-header text-center red">
                 <h3>My Previous Polls</h3>
               </div>
-              <div class="card poll-container">
+              <div v-if="this.myRooms.length > 0" class="card poll-container">
                 <historic-poll-component
                   v-for="room in myRooms"
                   :key="room.id"
                   :pollData="room"
                 />
+              </div>
+              <div v-else class="div spacer neon blue align-items-center justify-content-center d-flex row">
+                <div class="col-1">
+                  <i class="fas fa-comment-slash text-muted"></i>
+                  </div>
+                <p class="text-muted">nothing here</p>
               </div>
             </div>
           </div>
@@ -102,12 +108,6 @@
             alt="Card image"
           />
           <div class="card-img-overlay">
-            <h3 class="card-title red">My Channel</h3>
-            <p class="card-text neon blue">
-              This is where I could potentially invite people to hang out and
-              run polls. Also where I would receive messages or feeds if I was
-              subscribed to those things.
-            </p>
             <channel-component />
           </div>
         </div>
