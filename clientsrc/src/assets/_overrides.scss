@@ -21,7 +21,11 @@
 .steam-container::-webkit-scrollbar {
   display: none;
 }
-
+.channel-container{
+  max-height: 65vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
 .poll-container{
   max-height: 16vh;
   overflow-y: scroll;
