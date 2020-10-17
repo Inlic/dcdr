@@ -1,32 +1,30 @@
 <template>
   <div
-    class="card bg-dark neon blue m-1 justify-content-between animate__animated animate__fadeIn"
+    class="bg-dark neon blue m-2 border p-1 justify-content-between animate__animated animate__fadeIn row"
   >
-    <h2 class="pl-2">
-      {{ pollData.name }}
-      <i
-        id="delete-historic-poll"
-        class="fa fa-trash float-right fa-sm mt-2 mr-2"
-        @click="deletePoll"
-        aria-hidden="true"
-      ></i>
-    </h2>
     <button
       id="rehost-poll-btn"
       type="button"
       @click="rehost"
-      class="btn btn-outline-secondary"
+      class="btn btn-outline-secondary blue"
     >
       Re-host poll
     </button>
+    <h2>{{ pollData.name }}</h2>
+    <i
+      id="delete-historic-poll"
+      class="fa fa-trash float-right fa-sm mt-2 mr-2"
+      @click="deletePoll"
+      aria-hidden="true"
+    ></i>
   </div>
 </template>
 
 <script>
 import as from "../store/alertsService.js";
 export default {
-  name: "historicPollComponent",
-  props: ["pollData"],
+  name: "channelPollComponent",
+  props: ["pollData", "channelData"],
   computed: {
     profile() {
       return this.$store.state.profile;
@@ -37,8 +35,9 @@ export default {
   },
   methods: {
     async deletePoll() {
+      this.pollData.parent = this.channelData._id;
       if (await as.confirmDelete()) {
-        this.$store.dispatch("deleteRoom", this.pollData.id);
+        this.$store.dispatch("RemoveRoomFromChannel", this.pollData);
       }
     },
     rehost() {

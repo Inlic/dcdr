@@ -119,6 +119,8 @@ async function createTestPoll() {
     //retrieves test poll join code for future tests
     testPollCode = await page.evaluate(() => {
         let item = document.querySelector('#room-code')
+        //VScode cannot guarantee that item has an innerText, so the ignore is required to prevent incorrect error messages
+        //@ts-ignore
         let rawText = item.innerText
         rawText = rawText.split(" ")
         let code = rawText[2]

@@ -23,6 +23,7 @@ export const socketService = {
       //socket.on("new user", data => console.log(data))
       socket.on("startPoll", data => {
         commit("startPoll")
+        commit("shuffleGames")
         router.push({ name: 'Vote', params: { code: data } })
       })
       socket.on("poll ended", data => {

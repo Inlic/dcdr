@@ -5,8 +5,8 @@ let ObjectId = Schema.Types.ObjectId
 
 const Channel = new Schema({
   name: { type: String, required: true},
-  rooms: [{type: ObjectId}],
-  users: [{type: String}]
+  rooms: [{type: Schema.Types.ObjectId, ref: 'Room'}],
+  users: [{type: String}],
 })
 
 Channel.virtual("creator",

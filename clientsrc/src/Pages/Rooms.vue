@@ -55,8 +55,14 @@
           <div class="card-header red">
             <h3>My Previous Polls</h3>
           </div>
-          <div class="card poll-container-create">
+          <div v-if="this.myRooms.length > 0" class="card poll-container-create">
             <historic-poll-component v-for="room in myRooms" :key="room.id" :pollData="room" />
+          </div>
+          <div v-else class="div p-5 neon blue align-items-center justify-content-center d-flex row">
+                <div class="col-1">
+                  <i class="fas fa-comment-slash text-muted"></i>
+                  </div>
+          <p class="text-muted">nothing here</p>
           </div>
         </div>
       </div>

@@ -9,7 +9,6 @@ export default class NotificationService {
                 showCancelButton: false,
                 confirmButtonText: "Confirm",
                 confirmButtonColor:  "#FF9900",
-                allowOutsideClick: false,
                 background: "#171228",
                 inputValidator: (value) => {
                     if (!value) {
@@ -70,6 +69,20 @@ export default class NotificationService {
                 iconColor: "#FF88FF",
                 title: "<h2 style='color:#FF88FF'>Somethings off...</h2>",
                 html: "<h2 style='color:#81C8FF'>Couldnt find those games boss. Make sure your steam games are public and try again.</h2>",
+                confirmButtonColor:  "#FF9900",
+                background: "#171228"
+              })
+        } catch (error) {
+            console.error(error)
+        }
+    }
+    static async nameNotice(){
+        try {
+            Swal.fire({
+                icon: "info",
+                iconColor: "#FF88FF",
+                title: "<h2 style='color:#FF88FF'>Somethings off...</h2>",
+                html: "<h2 style='color:#81C8FF'>We couldn't find your name, either wait a moment or try logging out and back in again.</h2>",
                 confirmButtonColor:  "#FF9900",
                 background: "#171228"
               })
