@@ -1,7 +1,7 @@
 <template>
   <div class="col-12">
-    <div class="row">
-      <div class="card col-12 justify-content-center d-flex">
+    <div class="row justify-content-center d-flex">
+      <div class="col-12">
         <h1 class="card-title red">My Channels</h1>
         <ul class="channel-container">
           <channel-body-component
@@ -10,7 +10,8 @@
             :channelData="channel"
           />
         </ul>
-        <div class="justify-content-center col-12">
+        </div>
+        <div class="justify-content-center col-11">
           <form @submit.prevent="addChannel" class="justify-content-center row">
             <input
               type="text"
@@ -23,7 +24,6 @@
               Add Channel
             </button>
           </form>
-        </div>
       </div>
     </div>
   </div>
@@ -50,7 +50,12 @@ export default {
   },
   computed: {
     channels() {
-      return this.$store.state.userChannels;
+      return this.$store.state.userChannels.sort(function(a,b){  
+        var x = a.name.toLowerCase();
+        var y = b.name.toLowerCase();
+        if (x < y) {return -1;}
+        if (x > y) {return 1;}
+        return 0;});
     },
     profile() {
       return this.$store.state.profile;
