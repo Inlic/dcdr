@@ -98,6 +98,7 @@ export default {
       interval: null,
       counter: 0,
       progressStyle: "width: 100%",
+      voteProtect: false,
     };
   },
   computed: {
@@ -126,6 +127,9 @@ export default {
   },
   methods: {
     voteUp() {
+      if(this.voteProtect){
+        return
+      }
       if (!this.activeGame.id) {
         this.$store.dispatch("getGamebyID", this.games[this.index].id);
       }
@@ -144,6 +148,10 @@ export default {
       }, 1000);
     },
     voteDown() {
+      if(this.voteProtect){
+        return
+      }
+      this.voteProtect = true
       if (!this.activeGame.id) {
         this.$store.dispatch("getGamebyID", this.games[this.index].id);
       }
@@ -167,6 +175,7 @@ export default {
       this.$store.dispatch("vetoGame", this.activeGame);
     },
     getNext() {
+      this.voteProtect = false;
       this.index++;
       clearTimeout(this.timeout);
       clearInterval(this.interval);
@@ -188,10 +197,12 @@ export default {
         clearTimeout(this.timeout);
         clearInterval(this.interval);
         this.$store.dispatch("userDone", this.$route.params.code);
-        this.$router.push({
-          name: "WaitResults",
+        if (!this.room.completed){
+          this.$router.push({
+            name: "WaitResults",
           params: { code: this.$route.params.code },
         });
+        }
       }
     },
     getMouseXPosFromEvent(event) {
