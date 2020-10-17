@@ -1,12 +1,13 @@
 <template>
-  <div class="row card bg-dark">
-    <div class="card-header">
-      <h3 class="orange">{{gameData.name}}</h3>
+  <div class="row card bg-dark" style="min-height: 30vh;">
+    <div class="card-header" style="min-height: 10vh;">
+      <h5 class="orange">{{gameData.name}}</h5>
     </div>
-    <div class="card-body" style="min-height: 15vh;">
+    <div class="card-body">
       <img class="img-fluid" :src="gameData.imgUrl" style="max-height: 100px; max-width: 200px">
       <div v-if="this.$route.name == 'Results'">
-        <div v-if="!gameData.veto" class="progress mt-3">
+        <div v-if="gameData.upvotes == 0 && gameData.downvotes == 0"></div>
+        <div v-else-if="!gameData.veto" class="progress mt-3">
           <div class="progress-bar bg-success" role="progressbar"
             v-bind:style="{width: `${(gameData.upvotes / this.totalVotes) * 100}%`}" aria-valuenow="30"
             aria-valuemin="0" aria-valuemax="100">
