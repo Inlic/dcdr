@@ -63,7 +63,9 @@
         if (this.$store.state.activeGame.veto == true) {
           this.getNext()
         }
+        if(!this.room.completed){
         this.timeout = setTimeout(this.getNext, this.room.options.questionTime * 1000);
+        }
         return this.$store.state.activeGame
       },
       games() {
