@@ -4,6 +4,7 @@ import router from "../router";
 import { socketService } from "./socketService"
 import { api } from "./AxiosService.js"
 import as from "./alertsService.js"
+import { STATES } from "mongoose";
 
 
 Vue.use(Vuex);
@@ -57,7 +58,17 @@ export default new Vuex.Store({
     setUserChannels(state, channel) {
       state.userChannels = channel
     },
-
+    shuffleGames(state){
+      let games = state.games
+      for(let i = games.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * i)
+        const temp = games[i]
+        games[i] = games[j]
+        games[j] = temp
+      }
+      debugger
+      state.games = games
+    }
   },
   actions: {
     setBearer({ }, bearer) {
@@ -246,17 +257,9 @@ export default new Vuex.Store({
     setMyName({ commit }, name) {
       commit("setMyName", name)
     },
-    async startVote({ commit, state, dispatch }, code) {
-      try {
-        let res = await api.get(`rooms/${code}/games`)
-        commit("setGames", res.data)
-        commit("setActiveGame", res.data[0])
-      } catch (error) {
-        console.error(error);
-
-      }
+    startVote({ commit, state, dispatch }, code) {
+        commit("setActiveGame", state.games[0])
     },
-
     //steam api
     async getOwnedGames({ commit, state, dispatch }, steamUser) {
       try {
