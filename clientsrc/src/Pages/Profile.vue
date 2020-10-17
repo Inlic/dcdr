@@ -6,7 +6,7 @@
           <div class="col-12 col-md-12 mt-2">
             <div class="card border-0 animate__animated animate__slideInLeft">
               <img
-                class="card-img-top"
+                class="card-img-top profile-page-img"
                 :src="profile.picture"
                 alt="Card image cap"
               />

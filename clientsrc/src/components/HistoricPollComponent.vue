@@ -2,7 +2,7 @@
   <div
     class="card bg-dark neon blue m-1 justify-content-between animate__animated animate__fadeIn"
   >
-    <h2 class="pl-2">
+    <h2 class="pl-2 col-12">
       {{ pollData.name }}
       <i
         id="delete-historic-poll"
@@ -15,7 +15,7 @@
       id="rehost-poll-btn"
       type="button"
       @click="rehost"
-      class="btn btn-outline-secondary"
+      class="btn btn-outline-secondary col-12"
     >
       Re-host poll
     </button>

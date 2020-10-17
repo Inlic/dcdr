@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <router-link
       id="navbar-logo"
       class="navbar-brand flashy neon red on"
