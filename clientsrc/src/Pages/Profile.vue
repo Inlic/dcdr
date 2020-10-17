@@ -90,10 +90,13 @@
                   :pollData="room"
                 />
               </div>
-              <div v-else class="div spacer neon blue align-items-center justify-content-center d-flex row">
+              <div
+                v-else
+                class="div spacer neon blue align-items-center justify-content-center d-flex row"
+              >
                 <div class="col-1">
                   <i class="fas fa-comment-slash text-muted"></i>
-                  </div>
+                </div>
                 <p class="text-muted">nothing here</p>
               </div>
             </div>
@@ -101,7 +104,8 @@
         </div>
       </div>
       <div class="col-12 col-md-8 mt-2">
-        <div class="card bg-dark text-light p-4">
+        <h3 class="card-header red">My Channels</h3>
+        <div class="card bg-dark text-light p-4 steam-container">
           <img
             class="card-img profile-img-overlay"
             src="@/assets/gameon.jpg"

@@ -1,17 +1,17 @@
 <template>
   <div>
     <div class="card m-1">
-      <div class="card-header methods" @click="toggleit">
+      <div class="card-header methods neon blue" @click="toggleit">
         {{ channelData.name }}
       </div>
       <div class="card-body" v-if="this.toggle == true">
         <ul v-if="channelData.rooms.length > 0">
           <channel-poll-component
-                  v-for="room in channelData.rooms"
-                  :key="room._id"
-                  :pollData="room"
-                  :channelData="channelData"
-                />
+            v-for="room in channelData.rooms"
+            :key="room._id"
+            :pollData="room"
+            :channelData="channelData"
+          />
         </ul>
         <div v-if="polls.length > 0" class="row justify-content-between p-2">
           <select class="m-1 col-8 neon blue form-control" v-model="selected">
@@ -23,13 +23,18 @@
           <button
             type="button"
             @click="addPoll"
-            class="btn btn-outline-primary col-2"
+            class="btn btn-outline-primary neon blue col-2"
           >
-            add a poll!
+            Add a poll
           </button>
-
         </div>
-        <button type="button" class="btn btn-primary" @click="deleteChannel">Delete channel</button>
+        <button
+          type="button"
+          class="btn btn-primary neon blue"
+          @click="deleteChannel"
+        >
+          Delete channel
+        </button>
       </div>
     </div>
   </div>
@@ -55,9 +60,9 @@ export default {
       let payload = { _id: this.channelData._id, rooms: this.selected.id };
       this.$store.dispatch("addRoomtoChannel", payload);
     },
-    deleteChannel(){
-      this.$store.dispatch("deleteChannel", this.channelData._id)
-    }
+    deleteChannel() {
+      this.$store.dispatch("deleteChannel", this.channelData._id);
+    },
   },
   computed: {
     polls() {
@@ -65,8 +70,8 @@ export default {
     },
   },
   components: {
-    channelPollComponent
-  }
+    channelPollComponent,
+  },
 };
 </script>
 
