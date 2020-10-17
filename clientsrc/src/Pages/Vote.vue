@@ -286,6 +286,10 @@ export default {
   .voting img {
     min-height: 20vh;
     min-width: 40vh;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
