@@ -7,7 +7,7 @@
         </button>
       </div>
       <div class="col-12 col-lg-10" @touchstart="startSwipe" @touchmove="moveSwipe">
-        <game-component class="voting" style="height: 85vh;" :gameData="this.activeGame" />
+        <game-component id="votegame" class="voting" style="height: 85vh;" :gameData="this.activeGame" />
       </div>
       <div class="d-none d-lg-block col-1">
         <button id="downvote-btn" type="button" @click="voteUp" class="mid-page btn btn-primary flashy neon blue">
@@ -81,12 +81,20 @@
       voteUp() {
         if (!this.activeGame.id) { this.$store.dispatch("getGamebyID", this.games[this.index].id) }
         this.$store.dispatch("upGame", { id: this.activeGame.id, code: this.$route.params.code })
-        this.getNext()
+        let elm = document.getElementById("votegame")
+        elm.classList.add("animate__animated", "animate__lightSpeedOutRight")
+        setTimeout(this.getNext, 800)
+        setTimeout(function(){ elm.classList.remove("animate__animated", "animate__lightSpeedOutRight")}, 1000)
+        
       },
       voteDown() {
         if (!this.activeGame.id) { this.$store.dispatch("getGamebyID", this.games[this.index].id) }
         this.$store.dispatch("downGame", this.activeGame, this.$route.params.code)
-        this.getNext()
+        let elm = document.getElementById("votegame")
+        elm.classList.add("animate__animated", "animate__lightSpeedOutLeft")
+        setTimeout(this.getNext, 800)
+        setTimeout(function(){ elm.classList.remove("animate__animated", "animate__lightSpeedOutLeft")}, 1000)
+        
       },
       veto() {
         this.vetos--
