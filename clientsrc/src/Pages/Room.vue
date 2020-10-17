@@ -6,18 +6,19 @@
     <div v-else class="row justify-content-center mt-3">
       <div class="col-12 col-md-10">
         <div class="card bg-dark text-center row">
-          <div class="card-header col">
+          <div  class="card-header col">
+            <i @click="this.dtoggle" class="far fa-minus-square float-right m-1"></i>
             <h1 class="red my-3">{{room.name}}</h1>
             <h4 id="room-code" class="neon green">Room Code: {{room.code}}</h4>
           </div>
-          <div class="card-body text-center col">
+          <div v-if="this.toggle == false" class="card-body text-center col">
             <div class="row justify-content-around">
-              <h4 class="card orange col-5">User Vetos: {{room.options.userVetos}}</h4>
-              <h4 class="card orange col-5">Required Consensus: {{room.options.consensus}}%</h4>
+              <h4 class="card orange col-10 col-md-5">User Vetos: {{room.options.userVetos}}</h4>
+              <h4 class="card orange col-10 col-md-5">Required Consensus: {{room.options.consensus}}%</h4>
             </div>
             <div class="row justify-content-around">
-              <h4 class="card orange col-5">Time Per Item: {{room.options.questionTime}}s</h4>
-              <h4 class="card orange col-5">Allowed Items: {{room.options.pollItems}}</h4>
+              <h4 class="card orange col-10 col-md-5">Time Per Item: {{room.options.questionTime}}s</h4>
+              <h4 class="card orange col-10 col-md-5">Allowed Items: {{room.options.pollItems}}</h4>
             </div>
             <div class="form-group card p-3 row"
               v-if="!room.started && games.length < room.options.pollItems && userItems">
@@ -41,8 +42,8 @@
             </div>
             <button id="start-poll-btn" v-if="!room.started && games.length > 1" type="button" @click="this.startPoll"
               class="btn btn-primary m-2 flashy neon blue"> Go! </button>
-            <div class="row">
-              <h3 class="red my-2 col-4 offset-4">Participants</h3>
+            <div class="row text-center">
+              <h3 class="red my-2 col-12">Participants</h3>
             </div>
             <div class="card row">
               <div class="neon orange card" v-for="name in room.names" :key="name">
@@ -54,14 +55,14 @@
       </div>
       <div class="col-12">
         <div class="row">
-          <div class="col-6 mt-1 px-3" v-if="userItems">
-              <h1 v-if="steam.length" class="text-center card bg-dark blue">Steam Libray results:</h1>
-              <div class="card bg-dark blue"><input type="text" id="myInput" v-on:keyup="this.searchItems" placeholder="Search for names.."></div>
+          <div class="order-2 order-md-1 col-12 col-md-6 mt-1 px-3" v-if="userItems">
+              <h1 v-if="steam.length" class="text-center card bg-dark blue">Steam Libray Results:</h1>
+              <div class="card bg-dark blue"><input type="text" class="form-control" id="myInput" v-on:keyup="this.searchItems" placeholder="Search for names.."></div>
             <div class="steam-container mt-1 px-3" id="steamGames">
               <steam-game-component class="" v-for="game in steam" :key="game.appid" :gameData="game" />
             </div>
           </div>
-          <div class="col-6 mt-1 px-3">
+          <div class="order-1 order-md-2 col-12 col-md-6 mt-1 px-3">
               <h1 v-if="!room.started" class="text-center card bg-dark blue">Current Games:</h1>
             <div class="steam-container mt-1 px-3">
               <game-vote-component class="" v-for="game in games" :key="game.id" :gameData="game" />
@@ -94,7 +95,8 @@
     data() {
       return {
         newGame: {},
-        steamUser: {}
+        steamUser: {},
+        toggle: true,
       }
     },
     computed: {
@@ -123,6 +125,9 @@
       }
     },
     methods: {
+      dtoggle(){
+        this.toggle =!this.toggle
+      },
       createGame() {
         this.newGame.roomId = this.room.id
         this.newGame.code = this.$route.params.code
@@ -199,5 +204,9 @@
 
   .profile div {
     margin: .5em !important;
+  }
+  .far{
+    color: #FF88FF;
+    cursor: pointer;
   }
 </style>

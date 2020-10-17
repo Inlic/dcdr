@@ -234,6 +234,7 @@ export default new Vuex.Store({
       try {
 
         await api.put(`games/${data.id}/upvote`, { code: data.code })
+        as.actionNotice("Voted Up")
       } catch (error) {
         console.error(error);
       }
@@ -241,6 +242,7 @@ export default new Vuex.Store({
     async downGame({ commit, state }, data, code) {
       try {
         await api.put(`games/${data.id}/downvote`, code)
+        as.actionNotice("Voted Down")
       } catch (error) {
         console.error(error);
       }
