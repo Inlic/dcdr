@@ -17,6 +17,7 @@
         @touchmove="moveSwipe"
       >
         <game-component
+          id="votegame"
           class="voting"
           style="height: 85vh"
           :gameData="this.activeGame"
@@ -132,6 +133,7 @@ export default {
       });
       this.getNext();
     },
+<<<<<<< HEAD
     voteDown() {
       if (!this.activeGame.id) {
         this.$store.dispatch("getGamebyID", this.games[this.index].id);
@@ -180,6 +182,97 @@ export default {
     },
     getMouseXPosFromEvent(event) {
       return event.clientX || event.touches[0].pageX;
+=======
+    computed: {
+      activeGame() {
+        if (this.$store.state.activeGame.veto == true) {
+          this.getNext()
+        }
+        if(!this.room.completed){
+        this.timeout = setTimeout(this.getNext, this.room.options.questionTime * 1000);
+        }
+        return this.$store.state.activeGame
+      },
+      games() {
+        return this.$store.state.games
+      },
+      room() {
+        return this.$store.state.room
+      },
+      currentItemNum() {
+        let num = this.index
+        return num + 1
+      },
+    },
+    methods: {
+      voteUp() {
+        if (!this.activeGame.id) { this.$store.dispatch("getGamebyID", this.games[this.index].id) }
+        this.$store.dispatch("upGame", { id: this.activeGame.id, code: this.$route.params.code })
+        let elm = document.getElementById("votegame")
+        elm.classList.add("animate__animated", "animate__lightSpeedOutRight")
+        setTimeout(this.getNext, 800)
+        setTimeout(function(){ elm.classList.remove("animate__animated", "animate__lightSpeedOutRight")}, 1000)
+        
+      },
+      voteDown() {
+        if (!this.activeGame.id) { this.$store.dispatch("getGamebyID", this.games[this.index].id) }
+        this.$store.dispatch("downGame", this.activeGame, this.$route.params.code)
+        let elm = document.getElementById("votegame")
+        elm.classList.add("animate__animated", "animate__lightSpeedOutLeft")
+        setTimeout(this.getNext, 800)
+        setTimeout(function(){ elm.classList.remove("animate__animated", "animate__lightSpeedOutLeft")}, 1000)
+        
+      },
+      veto() {
+        this.vetos--
+        if (!this.activeGame.id) { this.$store.dispatch("getGamebyID", this.games[this.index].id) }
+        this.$store.dispatch("vetoGame", this.activeGame)
+      },
+      getNext() {
+        this.index++
+        clearTimeout(this.timeout)
+        clearInterval(this.interval)
+        this.progressStyle = "width: 100%"
+        this.counter = this.room.options.questionTime
+        if (this.index < this.games.length) {
+          this.$store.dispatch("getGamebyID", this.games[this.index].id)
+          this.interval = setInterval(() => {
+            this.counter--
+            this.progressStyle = "width:" + (Math.floor((this.counter / this.room.options.questionTime) * 100 - (100 * (1 / this.room.options.questionTime)))) + "%"
+          }, 1000)
+        }
+        else {
+          clearTimeout(this.timeout)
+          clearInterval(this.interval)
+          this.$store.dispatch("userDone", this.$route.params.code)
+          this.$router.push({ name: 'WaitResults', params: { code: this.$route.params.code } })
+        }
+      },
+      getMouseXPosFromEvent(event) {
+        return event.clientX || event.touches[0].pageX;
+      },
+      startSwipe(event) {
+        this.xDown = this.getMouseXPosFromEvent(event);
+        this.startDrag = true;
+      },
+      moveSwipe() {
+        if (!this.startDrag) {
+          return;
+        }
+        this.xCurrent = this.getMouseXPosFromEvent(event);
+        const delta = this.xCurrent - this.xDown
+        this.endSwipe(delta)
+        this.xDown = null;
+      },
+      endSwipe(delta) {
+        this.startDrag = false;
+        if (delta > 0) {
+          this.voteUp()
+        } else {
+          this.voteDown()
+        }
+      },
+>>>>>>> 5e6e19cde2f53ed267cf135fde6047f888571666
     },
     startSwipe(event) {
       this.xDown = this.getMouseXPosFromEvent(event);
