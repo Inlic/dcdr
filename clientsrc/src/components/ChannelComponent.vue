@@ -14,12 +14,15 @@
           <form @submit.prevent="addChannel" class="justify-content-center row">
             <input
               type="text"
-              placeholder="New Channel"
+              placeholder="New Channel Name..."
               required
               v-model="newChannel.name"
               class="col-12 my-1 neon blue form-control col-8"
             />
-            <button type="submit" class="btn btn-outline-primary col-2 mb-2">
+            <button
+              type="submit"
+              class="btn btn-outline-primary col-2 mb-2 blue"
+            >
               Add Channel
             </button>
           </form>

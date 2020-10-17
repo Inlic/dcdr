@@ -26,6 +26,11 @@
   overflow-y: scroll;
   scrollbar-width: none;
 }
+
+.channel-container::-webkit-scrollbar {
+  display: none;
+}
+
 .poll-container{
   max-height: 16vh;
   overflow-y: scroll;
