@@ -36,10 +36,10 @@
     </div>
     <div class="row text-center fixed-bottom my-3">
       <div class="col-12 offset-lg-3 col-lg-6 offset-xl-4 col-xl-4 card">
-        <h2 class="red">Remaining Time</h2>
-        <h3 class="mobile-text blue mb-2">
+        <h3 class="red">Remaining Time</h3>
+        <h6 class="mobile-text blue mb-2">
           Swipe Right to Vote Up, Swipe Left to Vote Down
-        </h3>
+        </h6>
         <div class="progress">
           <div
             class="progress-bar bg-primary glow"
@@ -49,7 +49,7 @@
             {{ counter }}s
           </div>
         </div>
-        <h2 class="red">Item {{ currentItemNum }} of {{ games.length }}</h2>
+        <h3 class="red">Item {{ currentItemNum }} of {{ games.length }}</h3>
         <button
           id="veto-btn"
           @click="veto"
@@ -105,10 +105,12 @@ export default {
       if (this.$store.state.activeGame.veto == true) {
         this.getNext();
       }
-      this.timeout = setTimeout(
-        this.getNext,
-        this.room.options.questionTime * 1000
-      );
+      if (!this.room.completed) {
+        this.timeout = setTimeout(
+          this.getNext,
+          this.room.options.questionTime * 1000
+        );
+      }
       return this.$store.state.activeGame;
     },
     games() {
@@ -131,129 +133,69 @@ export default {
         id: this.activeGame.id,
         code: this.$route.params.code,
       });
-      this.getNext();
-    },
-    computed: {
-      activeGame() {
-        if (this.$store.state.activeGame.veto == true) {
-          this.getNext();
-        }
-        if (!this.room.completed) {
-          this.timeout = setTimeout(
-            this.getNext,
-            this.room.options.questionTime * 1000
-          );
-        }
-        return this.$store.state.activeGame;
-      },
-      games() {
-        return this.$store.state.games;
-      },
-      room() {
-        return this.$store.state.room;
-      },
-      currentItemNum() {
-        let num = this.index;
-        return num + 1;
-      },
-    },
-    methods: {
-      voteUp() {
-        if (!this.activeGame.id) {
-          this.$store.dispatch("getGamebyID", this.games[this.index].id);
-        }
-        this.$store.dispatch("upGame", {
-          id: this.activeGame.id,
-          code: this.$route.params.code,
-        });
-        let elm = document.getElementById("votegame");
-        elm.classList.add("animate__animated", "animate__lightSpeedOutRight");
-        setTimeout(this.getNext, 800);
-        setTimeout(function () {
-          elm.classList.remove(
-            "animate__animated",
-            "animate__lightSpeedOutRight"
-          );
-        }, 1000);
-      },
-      voteDown() {
-        if (!this.activeGame.id) {
-          this.$store.dispatch("getGamebyID", this.games[this.index].id);
-        }
-        this.$store.dispatch(
-          "downGame",
-          this.activeGame,
-          this.$route.params.code
+      let elm = document.getElementById("votegame");
+      elm.classList.add("animate__animated", "animate__lightSpeedOutRight");
+      setTimeout(this.getNext, 800);
+      setTimeout(function () {
+        elm.classList.remove(
+          "animate__animated",
+          "animate__lightSpeedOutRight"
         );
-        let elm = document.getElementById("votegame");
-        elm.classList.add("animate__animated", "animate__lightSpeedOutLeft");
-        setTimeout(this.getNext, 800);
-        setTimeout(function () {
-          elm.classList.remove(
-            "animate__animated",
-            "animate__lightSpeedOutLeft"
-          );
+      }, 1000);
+    },
+    voteDown() {
+      if (!this.activeGame.id) {
+        this.$store.dispatch("getGamebyID", this.games[this.index].id);
+      }
+      this.$store.dispatch(
+        "downGame",
+        this.activeGame,
+        this.$route.params.code
+      );
+      let elm = document.getElementById("votegame");
+      elm.classList.add("animate__animated", "animate__lightSpeedOutLeft");
+      setTimeout(this.getNext, 800);
+      setTimeout(function () {
+        elm.classList.remove("animate__animated", "animate__lightSpeedOutLeft");
+      }, 1000);
+    },
+    veto() {
+      this.vetos--;
+      if (!this.activeGame.id) {
+        this.$store.dispatch("getGamebyID", this.games[this.index].id);
+      }
+      this.$store.dispatch("vetoGame", this.activeGame);
+    },
+    getNext() {
+      this.index++;
+      clearTimeout(this.timeout);
+      clearInterval(this.interval);
+      this.progressStyle = "width: 100%";
+      this.counter = this.room.options.questionTime;
+      if (this.index < this.games.length) {
+        this.$store.dispatch("getGamebyID", this.games[this.index].id);
+        this.interval = setInterval(() => {
+          this.counter--;
+          this.progressStyle =
+            "width:" +
+            Math.floor(
+              (this.counter / this.room.options.questionTime) * 100 -
+                100 * (1 / this.room.options.questionTime)
+            ) +
+            "%";
         }, 1000);
-      },
-      veto() {
-        this.vetos--;
-        if (!this.activeGame.id) {
-          this.$store.dispatch("getGamebyID", this.games[this.index].id);
-        }
-        this.$store.dispatch("vetoGame", this.activeGame);
-      },
-      getNext() {
-        this.index++;
+      } else {
         clearTimeout(this.timeout);
         clearInterval(this.interval);
-        this.progressStyle = "width: 100%";
-        this.counter = this.room.options.questionTime;
-        if (this.index < this.games.length) {
-          this.$store.dispatch("getGamebyID", this.games[this.index].id);
-          this.interval = setInterval(() => {
-            this.counter--;
-            this.progressStyle =
-              "width:" +
-              Math.floor(
-                (this.counter / this.room.options.questionTime) * 100 -
-                  100 * (1 / this.room.options.questionTime)
-              ) +
-              "%";
-          }, 1000);
-        } else {
-          clearTimeout(this.timeout);
-          clearInterval(this.interval);
-          this.$store.dispatch("userDone", this.$route.params.code);
-          this.$router.push({
-            name: "WaitResults",
-            params: { code: this.$route.params.code },
-          });
-        }
-      },
-      getMouseXPosFromEvent(event) {
-        return event.clientX || event.touches[0].pageX;
-      },
-      startSwipe(event) {
-        this.xDown = this.getMouseXPosFromEvent(event);
-        this.startDrag = true;
-      },
-      moveSwipe() {
-        if (!this.startDrag) {
-          return;
-        }
-        this.xCurrent = this.getMouseXPosFromEvent(event);
-        const delta = this.xCurrent - this.xDown;
-        this.endSwipe(delta);
-        this.xDown = null;
-      },
-      endSwipe(delta) {
-        this.startDrag = false;
-        if (delta > 0) {
-          this.voteUp();
-        } else {
-          this.voteDown();
-        }
-      },
+        this.$store.dispatch("userDone", this.$route.params.code);
+        this.$router.push({
+          name: "WaitResults",
+          params: { code: this.$route.params.code },
+        });
+      }
+    },
+    getMouseXPosFromEvent(event) {
+      return event.clientX || event.touches[0].pageX;
     },
     startSwipe(event) {
       this.xDown = this.getMouseXPosFromEvent(event);
@@ -276,6 +218,27 @@ export default {
         this.voteDown();
       }
     },
+  },
+  startSwipe(event) {
+    this.xDown = this.getMouseXPosFromEvent(event);
+    this.startDrag = true;
+  },
+  moveSwipe() {
+    if (!this.startDrag) {
+      return;
+    }
+    this.xCurrent = this.getMouseXPosFromEvent(event);
+    const delta = this.xCurrent - this.xDown;
+    this.endSwipe(delta);
+    this.xDown = null;
+  },
+  endSwipe(delta) {
+    this.startDrag = false;
+    if (delta > 0) {
+      this.voteUp();
+    } else {
+      this.voteDown();
+    }
   },
   components: {
     gameComponent,
