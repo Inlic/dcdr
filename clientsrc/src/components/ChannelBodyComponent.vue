@@ -13,18 +13,17 @@
                   :channelData="channelData"
                 />
         </ul>
-        <div>
-          <select v-model="selected">
+        <div v-if="polls.length > 0" class="row justify-content-between p-2">
+          <select class="m-1 col-8 neon blue form-control" v-model="selected">
             <option disabled value="">Please select one</option>
             <option v-for="room in polls" :key="room.id" :value="room">
               {{ room.name }}
             </option>
           </select>
-          <span>Selected: {{ selected.name }}</span>
           <button
             type="button"
             @click="addPoll"
-            class="btn btn-outline-primary"
+            class="btn btn-outline-primary col-2"
           >
             add a poll!
           </button>
