@@ -4,17 +4,20 @@
       <div class="card-header methods neon blue" @click="toggleit">
         {{ channelData.name }}
       </div>
-      <div class="card-body" v-if="this.toggle == true">
-        <ul v-if="channelData.rooms.length > 0">
+      <div class="card" v-if="this.toggle == true">
+        <div v-if="channelData.rooms.length > 0">
           <channel-poll-component
             v-for="room in channelData.rooms"
             :key="room._id"
             :pollData="room"
             :channelData="channelData"
           />
-        </ul>
-        <div v-if="polls.length > 0" class="row justify-content-between p-2">
-          <select class="m-1 col-8 neon blue form-control" v-model="selected">
+        </div>
+        <div v-if="polls.length > 0" class="row justify-content-between p-3">
+          <select
+            class="col-12 col-lg-8 neon blue form-control"
+            v-model="selected"
+          >
             <option disabled value="">Please select one</option>
             <option v-for="room in polls" :key="room.id" :value="room">
               {{ room.name }}
@@ -23,14 +26,14 @@
           <button
             type="button"
             @click="addPoll"
-            class="btn btn-outline-primary neon blue col-2"
+            class="btn btn-outline-primary neon blue mt-3 mt-lg-0 col-12 col-lg-4"
           >
             Add a poll
           </button>
         </div>
         <button
           type="button"
-          class="btn btn-primary neon blue"
+          class="btn btn-primary neon blue col-12 mt-5"
           @click="deleteChannel"
         >
           Delete channel
