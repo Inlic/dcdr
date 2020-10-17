@@ -66,7 +66,7 @@ export default new Vuex.Store({
         games[i] = games[j]
         games[j] = temp
       }
-      debugger
+      
       state.games = games
     }
   },
