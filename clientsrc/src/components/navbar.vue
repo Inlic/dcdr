@@ -78,7 +78,7 @@
           </li>
           <li class="nav-item">
             <form class="form-inline ml-md-3" @submit.prevent="setActiveRoom">
-              <div class="form-group">
+              <div class="form-group input-group">
                 <input
                   id="nav-join-room-input"
                   type="text"
@@ -89,7 +89,7 @@
                 />
                 <button
                   id="nav-join-room-btn"
-                  class="btn btn-primary mx-md-2 form-control flashy neon blue v-step-2"
+                  class="btn btn-primary form-control flashy neon blue v-step-2 input-group-append"
                   type="submit"
                 >
                   Join!
@@ -99,7 +99,7 @@
           </li>
         </ul>
 
-        <div class="d-flex justify-content-end align-items-start h-100">
+        <div class="d-flex">
           <span class="navbar-text d-none d-xl-block"
             ><profile-component
           /></span>
@@ -114,7 +114,7 @@
             </button>
             <button
               id="logout-btn"
-              class="btn btn-primary flashy neon blue"
+              class="btn btn-primary flashy neon blue navbar-text"
               @click="logout"
               v-else
             >
