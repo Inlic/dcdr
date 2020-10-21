@@ -25,5 +25,14 @@ Room.virtual("creator",
         foreignField: "email",
         justOne: true
     })
+    // CASCADE ON DELETE
+Room.pre('findOneAndRemove', function (next) {
+    Promise.all([
+      // @ts-ignore
+      dbContext.Games.deleteMany({ roomId: this._conditions._id })
+    ])
+      .then(() => next())
+      .catch(err => next(err))
+  })
 
 export default Room
