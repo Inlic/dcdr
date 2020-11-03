@@ -127,8 +127,8 @@ export default {
   },
   methods: {
     voteUp() {
-      if(this.voteProtect){
-        return
+      if (this.voteProtect) {
+        return;
       }
       if (!this.activeGame.id) {
         this.$store.dispatch("getGamebyID", this.games[this.index].id);
@@ -148,10 +148,10 @@ export default {
       }, 1000);
     },
     voteDown() {
-      if(this.voteProtect){
-        return
+      if (this.voteProtect) {
+        return;
       }
-      this.voteProtect = true
+      this.voteProtect = true;
       if (!this.activeGame.id) {
         this.$store.dispatch("getGamebyID", this.games[this.index].id);
       }
@@ -197,11 +197,11 @@ export default {
         clearTimeout(this.timeout);
         clearInterval(this.interval);
         this.$store.dispatch("userDone", this.$route.params.code);
-        if (!this.room.completed){
+        if (!this.room.completed) {
           this.$router.push({
             name: "WaitResults",
-          params: { code: this.$route.params.code },
-        });
+            params: { code: this.$route.params.code },
+          });
         }
       }
     },
@@ -279,6 +279,10 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.far {
+  font-size: 2em;
 }
 
 @media only screen and (min-width: 769px) {
