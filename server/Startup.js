@@ -9,7 +9,7 @@ import auth0Provider from "@bcwdev/auth0provider";
 export default class Startup {
   static ConfigureGlobalMiddleware(app) {
     // NOTE Configure and Register Middleware
-    let whitelist = ["http://localhost:8080", "https://dcdr.herokuapp.com/"];
+    let whitelist = ["http://localhost:8080", "https://dcdr.herokuapp.com/", "media.steampowered.com"];
     let corsOptions = {
       origin: function(origin, callback) {
         let originIsWhitelisted = whitelist.indexOf(origin) !== -1;
