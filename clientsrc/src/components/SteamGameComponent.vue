@@ -21,7 +21,7 @@
     },
     computed: {
       imgurl() {
-        return `//media.steampowered.com/steamcommunity/public/images/apps/${this.gameData.appid}/${this.gameData.img_logo_url}.jpg`
+        return `http://media.steampowered.com/steamcommunity/public/images/apps/${this.gameData.appid}/${this.gameData.img_logo_url}.jpg`
       },
       room() {
         return this.$store.state.room
