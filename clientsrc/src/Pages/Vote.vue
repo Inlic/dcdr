@@ -130,6 +130,7 @@ export default {
       if (this.voteProtect) {
         return;
       }
+      this.voteProtect = true;
       if (!this.activeGame.id) {
         this.$store.dispatch("getGamebyID", this.games[this.index].id);
       }
