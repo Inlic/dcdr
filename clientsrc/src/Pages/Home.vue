@@ -9,7 +9,7 @@
             <h3>Level Up Your Gaming Experience</h3>
           </div>
           <div class="card-body bg-dark">
-            <p class="neon blue default-cursor">
+            <p class="neon blue default-cursor h6">
               Don't Waste Time Deciding what to play.Match with your friends,
               find a game you all love, and get to the game faster.
             </p>
@@ -40,7 +40,7 @@
             <h3>Persistent Polls</h3>
           </div>
           <div class="card-body bg-dark">
-            <p class="neon blue default-cursor">
+            <p class="neon blue default-cursor h6">
               Love the games you voted on last time, but want to create another
               poll? No problem your prior polls are saved to your account.
             </p>
@@ -63,14 +63,14 @@
           <img
             class="card-img-top"
             src="@/assets/bannerimage/amongusbanner.jpg"
-            alt=""
+            alt="Among Us Banner"
           />
         </div>
         <div class="img-border-pink mt-3 content-shadow">
           <img
             class="card-img-top"
             src="@/assets/bannerimage/csgobanner.jpg"
-            alt=""
+            alt="CS GO Banner"
           />
         </div>
       </div>
@@ -81,14 +81,14 @@
           <img
             class="card-img-top"
             src="@/assets/bannerimage/halobanner.jpg"
-            alt=""
+            alt="Halo Banner"
           />
         </div>
         <div class="img-border-blue mt-3 content-shadow">
           <img
             class="card-img-top"
             src="@/assets/bannerimage/phasmophobiabanner.jpg"
-            alt=""
+            alt="Phasmophobia Banner"
           />
         </div>
       </div>
@@ -99,14 +99,14 @@
           <img
             class="card-img-top"
             src="@/assets/bannerimage/seaofthievesbanner.jpg"
-            alt=""
+            alt="Sea of Thieves Banner"
           />
         </div>
         <div class="img-border-blue mt-3 content-shadow">
           <img
             class="card-img-top"
             src="@/assets/bannerimage/fallguysbanner.jpg"
-            alt=""
+            alt="Fall Guys Banner"
           />
         </div>
       </div>
@@ -117,14 +117,14 @@
           <img
             class="card-img-top"
             src="@/assets/bannerimage/terrariabanner.jpg"
-            alt=""
+            alt="Terraria Banner"
           />
         </div>
         <div class="img-border-pink mt-3 content-shadow">
           <img
             class="card-img-top"
             src="@/assets/bannerimage/tf2banner.jpg"
-            alt=""
+            alt="Team Fortress 2 Banner"
           />
         </div>
       </div>
