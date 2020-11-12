@@ -13,6 +13,7 @@ This was a Capstone project I worked on with fellow Codeworks students Samuel Ta
  - Mobile-First/Friendly Design
  - High Contrast Colors for Accessibility
  - Steam API connectivity
+ - User Authentication and Login with Auth 0
  - Polls can be joined by anyone regardless of login status
  - Created polls saved to user profiles for later use 
  - Sockets for real-time poll updates
