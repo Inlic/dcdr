@@ -4,17 +4,17 @@ let Schema = mongoose.Schema
 let ObjectId = Schema.Types.ObjectId
 
 const Channel = new Schema({
-  name: { type: String, required: true},
-  rooms: [{type: Schema.Types.ObjectId, ref: 'Room'}],
-  users: [{type: String}],
+  name: { type: String, required: true },
+  rooms: [{ type: ObjectId, ref: 'Room' }],
+  users: [{ type: String }],
 })
 
 Channel.virtual("creator",
-    {
-        localField: "creatorEmail",
-        ref: "Profile",
-        foreignField: "email",
-        justOne: true
-    })
+  {
+    localField: "creatorEmail",
+    ref: "Profile",
+    foreignField: "email",
+    justOne: true
+  })
 
-    export default Channel
+export default Channel
