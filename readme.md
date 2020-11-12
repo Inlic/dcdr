@@ -1,5 +1,9 @@
 # Capstone Project DCDR
 
+<div>
+  <img class="img-responsive"  style="border: 1px solid black;padding: 10px"  src="dcdr-front-page.png" />
+</div>
+
 # About
 
 This was a Capstone project I worked on with fellow Codeworks students Samuel Taylor, Lance Haney, and Corey Whitmore.  The idea behind this application was to create multi-user polls, referred to as rooms in the UML, to quickly decide on which PC game to play on a Friday evening.  Since most members of this group had steam accounts, we decided to include the steam API to help users add items to their polls, as well as allow for custom items to be added to any poll.  This is a Full-Stack Application written using the Vue.js framework on the front end and node.js, express, and mongoDB on the back end. 
